@@ -2,11 +2,14 @@
 
 [![Stories in Ready](https://badge.waffle.io/applegrain/dinners_ready.svg?label=ready&title=Ready)](http://waffle.io/applegrain/dinners_ready) [![Code Climate](https://codeclimate.com/github/applegrain/dinners_ready/badges/gpa.svg)](https://codeclimate.com/github/applegrain/dinners_ready) [![Build Status](https://travis-ci.org/applegrain/dinners_ready.svg)](https://travis-ci.org/applegrain/dinners_ready)
 
+##### [Jason Wright](https://github.com/noobjey), [Jai Misra](https://github.com/mrjaimisra), [Lovisa Svallingson](https://github.com/applegrain)
+
 The Little Shop of Orders is the final project in Module 2 at the [Turing School](http://turing.io). Groups need to 
 build an online store where a user can browse and order products and the admin can manage the products and view
 user info. 
 
 [Project spec](https://github.com/turingschool/curriculum/blob/master/source/projects/little_shop.markdown)
+[Heroku](https://dinners-ready.herokuapp.com/)
 
 ### Areas of focus
 - Use TDD to drive all layers of Rails development including unit, integration, and user acceptance tests
