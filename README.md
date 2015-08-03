@@ -8,8 +8,7 @@ The Little Shop of Orders is the final project in Module 2 at the [Turing School
 build an online store where a user can browse and order products and the admin can manage the products and view
 user info. 
 
-[Project spec](https://github.com/turingschool/curriculum/blob/master/source/projects/little_shop.markdown)
-[Heroku](https://dinners-ready.herokuapp.com/)
+[Project Outline](https://github.com/turingschool/curriculum/blob/master/source/projects/little_shop.markdown) | [Heroku](https://dinners-ready.herokuapp.com/)
 
 ### Areas of focus
 - Use TDD to drive all layers of Rails development including unit, integration, and user acceptance tests
