@@ -2,8 +2,11 @@ require "rails_helper"
 
 RSpec.describe "the category view", type: :feature do
   context "user visits /menu/category" do
-    let!(:item) { Item.create(name: "Breakfast burrito", description:
-      "delicious", price: 5, image_url: test_image_url, category_id: 1) }
+    let!(:item) { Item.create(name: "Breakfast burrito",
+                              description: "delicious",
+                              price: 5, image_url: test_image_url,
+                              category_id: 1) }
+
     let!(:category) { Category.create(name: "breakfast") }
 
     it "views the items in the lunch category" do
