@@ -1,29 +1,24 @@
-<!-- Simple header with fixed tabs. -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
-            mdl-layout--fixed-tabs">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       <!-- Title -->
       <span class="mdl-layout-title">Dinner's Ready 4 U</span>
-    </div>
-    <!-- Tabs -->
-    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-      <%= link_to 'Home', root_path, html_options: { class: "mdl-layout__tab is-active" } %>
-      <!--<a href="#fixed-tab-1" class="mdl-layout__tab is-active">Home</a>-->
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <%= link_to 'Home', root_path,  html_options = {class: "mdl-navigation__link"} %>
+        <%= link_to 'Menu', root_path,  html_options = {class: "mdl-navigation__link"} %>
+        <%= link_to 'Login', root_path,  html_options = {class: "mdl-navigation__link"} %>
+      </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">Dinner's Ready 4 U</span>
+    <nav class="mdl-navigation">
+      <%= link_to 'Home', root_path,  html_options = {class: "mdl-navigation__link"} %>
+      <%= link_to 'Menu', root_path,  html_options = {class: "mdl-navigation__link"} %>
+      <%= link_to 'Login', root_path,  html_options = {class: "mdl-navigation__link"} %>
+    </nav>
   </div>
-  <main class="mdl-layout__content">
-    <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
-      <div class="page-content"><!-- Your content goes here --></div>
-    </section>
-    <section class="mdl-layout__tab-panel" id="fixed-tab-2">
-      <div class="page-content"><!-- Your content goes here --></div>
-    </section>
-    <section class="mdl-layout__tab-panel" id="fixed-tab-3">
-      <div class="page-content"><!-- Your content goes here --></div>
-    </section>
-  </main>
 </div>
