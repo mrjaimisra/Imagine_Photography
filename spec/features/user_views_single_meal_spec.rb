@@ -19,6 +19,7 @@ RSpec.describe "the item view", type: :feature do
           expect(page).to have_content "Hamburger and fries"
           expect(page).to have_content "delicious"
           expect(page).to have_content "12"
+          expect(page).to have_css("img[src*='http://i.livescience.com/images/i/000/048/850/i02/capybara-02.jpg?1324347800']")
         end
       end
     end
