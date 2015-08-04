@@ -1,9 +1,12 @@
 <div class="items-list">
   <h1>All Meals</h1>
 
-  <% @items.each do |item| %>
-    <div class="item-box">
-      <%= item.name %> | $<%= item.price %> | <%= item.description %>
-    </div>
-  <% end %>
+  <ul>
+    <% @items.each do |item| %>
+      <div id="item-box">
+        <li><%= item.name %> | $<%= item.price %> | <%= item.description %></li>
+      </div>
+    <% end %>
+  </ul>
 </div>
+
