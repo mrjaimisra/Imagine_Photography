@@ -7,8 +7,8 @@ RSpec.describe "the landing page", type: :feature do
       expect(current_path).to eq(root_path)
 
       within("#how-it-works") do
-        expect(page).to have_content('How it Works')
-        expect(page).to have_field('post_city')
+        expect(page).to have_content("How it Works")
+        expect(page).to have_field("post_city")
       end
     end
   end
