@@ -1,12 +1,11 @@
 <div class="items-list">
   <h1>All Meals</h1>
 
-  <ul>
+  <div id="item-box">
     <% @items.each do |item| %>
-      <div id="item-box">
-        <li><%= item.name %> | $<%= item.price %> | <%= item.description %></li>
-      </div>
+        <%= link_to item.name, item_path(item) %> | $<%= item.price %> | <%= item.description %>
+      <%= image_tag(item.image_url, alt: "image url", class: "item-image") %>
     <% end %>
-  </ul>
+  </div>
 </div>
 

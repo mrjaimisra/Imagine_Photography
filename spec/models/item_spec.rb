@@ -1,7 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "the item", type: :model do
-  let(:item) { Item.create(name: "Hamburger", description: "Nice and juicy.", price: 12) }
+  let(:item) {
+    Item.create(name: "Hamburger", description: "Nice and juicy.",
+    price: 12, image_url: "hello.lpg")
+  }
 
   context "an item" do
     it "is valid" do
@@ -20,6 +23,11 @@ RSpec.describe "the item", type: :model do
 
     it "is invalid without a price" do
       item.price = nil
+      expect(item).to_not be_valid
+    end
+
+    it "is invalid without an image url" do
+      item.image_url = nil
       expect(item).to_not be_valid
     end
   end
