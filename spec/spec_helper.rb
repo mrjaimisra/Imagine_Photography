@@ -16,4 +16,8 @@ RSpec.configure do |config|
   config.order = :random
 
   Kernel.srand config.seed
+
+  def test_image_url
+    "http://i.livescience.com/images/i/000/048/850/i02/capybara-02.jpg?1324347800"
+  end
 end
