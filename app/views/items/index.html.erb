@@ -3,7 +3,7 @@
 
   <div id="item-box">
     <% @items.each do |item| %>
-        <li><%= link_to item.name, item_path(item) %> | $<%= item.price %> | <%= item.description %>
+        <%= link_to item.name, item_path(item) %> | $<%= item.price %> | <%= item.description %>
       <%= image_tag(item.image_url, alt: "image url", class: "item-image") %>
     <% end %>
   </div>
