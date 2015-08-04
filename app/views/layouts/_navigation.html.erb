@@ -1,19 +1,30 @@
-<%# navigation styled for Bootstrap 3.0 %>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <%= link_to 'Home', root_path, class: 'navbar-brand' %>
+<!-- Simple header with fixed tabs. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+            mdl-layout--fixed-tabs">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Title</span>
     </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <%= render 'layouts/navigation_links' %>
-      </ul>
+    <!-- Tabs -->
+    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+      <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Tab 1</a>
+      <a href="#fixed-tab-2" class="mdl-layout__tab">Tab 2</a>
+      <a href="#fixed-tab-3" class="mdl-layout__tab">Tab 3</a>
     </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Dinner's Ready 4 U</span>
   </div>
-</nav>
+  <main class="mdl-layout__content">
+    <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+      <div class="page-content"><!-- Your content goes here --></div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+      <div class="page-content"><!-- Your content goes here --></div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+      <div class="page-content"><!-- Your content goes here --></div>
+    </section>
+  </main>
+</div>
