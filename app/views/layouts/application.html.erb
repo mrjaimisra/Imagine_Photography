@@ -20,25 +20,10 @@
 
 </head>
 <body>
-<header>
-  <%= render 'layouts/navigation' %>
-</header>
+  <%= render 'layouts/header' %>
 
+  <%= yield %>
 
-<main role="main" class="container-fluid">
-  <%= render 'layouts/messages' %>
-
-    <div class="row">
-      <div id="main-content" class="col-xs-12">
-        <%= yield %>
-      </div>
-    </div>
-
-</main>
-
-<footer>
   <%= render 'layouts/footer' %>
-</footer>
-
 </body>
 </html>
