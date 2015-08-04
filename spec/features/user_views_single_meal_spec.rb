@@ -4,8 +4,8 @@ RSpec.describe "the item view", type: :feature do
   context "an existing item" do
     it "views a single item" do
       item = Item.create(name: "Hamburger and fries", description: "delicious",
-        price: 12, image_url: test_image_url)
-      visit items_path
+        price: 12, image_url: test_image_url, category_id: 1)
+      visit menu_path
 
       within(".items-list") do
         within("#item-box") do
