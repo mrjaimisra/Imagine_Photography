@@ -1,0 +1,15 @@
+<div class="category-view">
+  <%= @category.name %>
+
+  <div class="items-list">
+    <ul>
+      <div id="item-box">
+        <% @category.items.each do |item| %>
+          <%= link_to item.name, item_path(item) %> | $<%= item.price %> | <%= item.description %>
+          <%= image_tag(item.image_url, alt: "image url", class: "item-image") %>
+        <% end %>
+      </div>
+    </ul>
+  </div>
+
+</div>
