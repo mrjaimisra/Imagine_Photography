@@ -5,4 +5,4 @@ rvm:
 script:
   - bundle install
   - bundle exec rake db:create db:schema:load
-  - bundle exec rake
+  - bundle exec rspec
