@@ -2,10 +2,14 @@ require "rails_helper"
 
 RSpec.describe "the items view", type: :feature do
   context "a user visits the items view" do
-    let!(:item)  { Item.create(name: "Hamburger and fries", description: "delicious", price: 12, image_url: test_image_url) }
+    let!(:item)  { Item.create(name: "Hamburger and fries",
+                              description: "delicious",
+                              price: 12,
+                              image_url: test_image_url,
+                              category_id: 1) }
 
     it "displays all items" do
-      visit items_path
+      visit menu_path
 
       within(".items-list") do
         within("#item-box") do
@@ -15,7 +19,7 @@ RSpec.describe "the items view", type: :feature do
     end
 
     it "views an items name, description, price and image" do
-      visit items_path
+      visit menu_path
 
       within(".items-list") do
         within("#item-box") do

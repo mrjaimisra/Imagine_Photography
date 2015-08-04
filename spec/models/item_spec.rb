@@ -2,8 +2,11 @@ require "rails_helper"
 
 RSpec.describe "the item", type: :model do
   let(:item) {
-    Item.create(name: "Hamburger", description: "Nice and juicy.",
-    price: 12, image_url: "hello.lpg")
+    Item.create(name: "Hamburger",
+                description: "Nice and juicy.",
+                price: 12,
+                image_url: "hello.lpg",
+                category_id: 1)
   }
 
   context "an item" do
@@ -28,6 +31,11 @@ RSpec.describe "the item", type: :model do
 
     it "is invalid without an image url" do
       item.image_url = nil
+      expect(item).to_not be_valid
+    end
+
+    it "is invalid without a category id" do
+      item.category_id = nil
       expect(item).to_not be_valid
     end
   end
