@@ -10,8 +10,7 @@ RSpec.describe "the category view", type: :feature do
     let!(:category) { Category.create(name: "breakfast") }
 
     it "views the items in the lunch category" do
-      visit "/menu/breakfast"
-      expect(current_path).to  eq(category_path(category.name))
+      visit menu_category_path(category)
 
       within(".category-view") do
         expect(page).to have_content("#{category.name}")
@@ -28,12 +27,12 @@ RSpec.describe "the category view", type: :feature do
     end
 
     it "redirects to the item" do
-      visit "/menu/breakfast"
+      visit menu_category_path(category)
 
       within(".items-list") do
         within("#item-box") do
           click_link("#{item.name}")
-          expect(current_path).to eq item_path(item)
+          expect(current_path).to eq meal_path(item.id)
         end
       end
     end

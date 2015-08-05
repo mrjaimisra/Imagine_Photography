@@ -26,7 +26,6 @@
             <div class="carousel-inner">
               <div class="item active">
                 <!--<img class="slide-image" src="http://placehold.it/800x300" alt="">-->
-                <!--image_tag("icon.png", size: "16x10", alt: "Edit Entry")-->
                 <%= image_tag "breakfast.jpg", size: "800x300", class: "slide-image" %>
               </div>
 
@@ -56,12 +55,12 @@
           <div class="col-sm-4 col-lg-4 col-md-4 item-box">
             <div class="thumbnail">
               <!--<img src="http://placehold.it/320x150" alt="">-->
-              <%= link_to image_tag(item.image_url, alt: "image url", class: "item-image"), item_path(item) %>
+              <%= link_to image_tag(item.image_url, alt: "image url", class: "item-image"), meal_path(item) %>
               <div class="caption">
                 <h4 class="pull-right">$ <%= item.price %></h4>
                 <h4>
                   <!--<a href="#">First Product</a>-->
-                  <%= link_to item.name, item_path(item) %>
+                  <%= link_to item.name, meal_path(item) %>
                 </h4>
 
                 <p>
