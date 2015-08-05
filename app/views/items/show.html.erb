@@ -1,6 +1,6 @@
 <div class="item-show">
   <div class="item-info">
-    <%= @item.name %> | <%= @item.description %> | <%= @item.price %> <%= image_tag @item.image_url, class: "item-image" %>
+    <%= link_to @item.name, meal_path(id: @item.id) %> | <%= @item.description %> | <%= @item.price %> <%= image_tag @item.image_url, class: "item-image" %>
   </div>
 
   <h1><%= button_to "Add to Cart", cart_items_path %></h1>

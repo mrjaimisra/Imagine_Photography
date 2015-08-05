@@ -11,6 +11,9 @@
 /log/*
 !/log/.keep
 /tmp
+Gemfile.lock
 
 # Ignore SimpleCov coverage folder
 coverage/
+
+
