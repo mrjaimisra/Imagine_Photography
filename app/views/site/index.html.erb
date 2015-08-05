@@ -1,81 +1,85 @@
+<!-- Jumbotron Header -->
+<header class="jumbotron hero-spacer">
+  <h1>Dinner's Ready 4 U</h1>
 
-  <!-- Jumbotron Header -->
-  <header class="jumbotron hero-spacer">
-    <h1>A Warm Welcome!</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
-    <p><a class="btn btn-primary btn-large">Call to action!</a>
-    </p>
-  </header>
+  <p>Welcome to the easiest homemade cooking you ever had! You place an order for the week. We prepare, cook, and
+    deliver your meals packaged and ready to go in the oven or freezer. After a hard day on the job you have a home
+    cooked meal on the table in less than 15 minutes with no mess to clean up. It's that simple.</p>
 
-  <hr>
+  <p>
+    <!--<a class="btn btn-primary btn-large">Call to action!</a>-->
+    <%= button_to "Lets Find A Meal", menu_path, html_options = { class: "btn btn-primary btn-large" } %>
+  </p>
+</header>
 
-  <!-- Title -->
-  <div class="row">
-    <div class="col-lg-12">
-      <h3>Latest Features</h3>
+<hr>
+
+<!-- Title -->
+<div class="row">
+  <div class="col-lg-12">
+    <h3>Home Cooked Meals</h3>
+  </div>
+</div>
+<!-- /.row -->
+
+<!-- Page Features -->
+<div class="row text-center">
+
+  <div class="col-md-3 col-sm-6 hero-feature" id="category-feature">
+    <div class="thumbnail">
+      <!--<img src="http://placehold.it/800x500" alt="">-->
+      <%= link_to image_tag("dinner_served.jpg"), menu_path %>
+      <div class="caption">
+        <h3>Full Menu</h3>
+
+        <p>Browse all the meals!</p>
+      </div>
     </div>
   </div>
-  <!-- /.row -->
 
-  <!-- Page Features -->
-  <div class="row text-center">
+  <div class="col-md-3 col-sm-6 hero-feature" id="category-feature">
+    <div class="thumbnail">
+      <!--<img src="http://placehold.it/800x500" alt="">-->
+      <%= link_to image_tag("breakfast.jpg"), "/menu/breakfast" %>
+      <div class="caption">
+        <h3>Breakfast</h3>
 
-    <div class="col-md-3 col-sm-6 hero-feature">
-      <div class="thumbnail">
-        <img src="http://placehold.it/800x500" alt="">
-        <div class="caption">
-          <h3>Feature Label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p>
-            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-          </p>
-        </div>
+        <p>Get the day started right!</p>
       </div>
     </div>
-
-    <div class="col-md-3 col-sm-6 hero-feature">
-      <div class="thumbnail">
-        <img src="http://placehold.it/800x500" alt="">
-        <div class="caption">
-          <h3>Feature Label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p>
-            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 col-sm-6 hero-feature">
-      <div class="thumbnail">
-        <img src="http://placehold.it/800x500" alt="">
-        <div class="caption">
-          <h3>Feature Label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p>
-            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-3 col-sm-6 hero-feature">
-      <div class="thumbnail">
-        <img src="http://placehold.it/800x500" alt="">
-        <div class="caption">
-          <h3>Feature Label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-          <p>
-            <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-          </p>
-        </div>
-      </div>
-    </div>
-
   </div>
-  <!-- /.row -->
 
-  <hr>
+  <div class="col-md-3 col-sm-6 hero-feature" id="category-feature">
+    <div class="thumbnail">
+      <!--<img src="http://placehold.it/800x500" alt="">-->
+      <%= link_to image_tag("lunch.jpg"), "menu/lunch" %>
 
-  <!-- Footer -->
+      <div class="caption">
+        <h3>Lunch</h3>
+
+        <p>Fast and Filling!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 col-sm-6 hero-feature" id="category-feature">
+    <div class="thumbnail">
+      <!--<img src="http://placehold.it/800x500" alt="">-->
+      <%= link_to image_tag("dinner.jpg"), "menu/dinner" %>
+
+      <div class="caption">
+        <h3>Dinner</h3>
+
+        <p>It's time for some Home Cooking!</p>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- /.row -->
+
+<hr>
+
+<!-- Footer -->
 
