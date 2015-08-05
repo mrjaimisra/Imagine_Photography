@@ -8,8 +8,8 @@ RSpec.describe "a user adds and item to their cart" do
                               image_url: test_image_url,
                               category_id: 2) }
 
-    it "lets a user add an item" do
-      visit item_path(item)
+    xit "lets a user add an item" do
+      visit menu_path
       click_button "Add to Cart"
       expect(current_path).to eq(menu_path)
 
