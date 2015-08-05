@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   root to: "site#index"
 
-  get "/login", to: "users#new", as: :login
-  post "/login", to: "users#create"
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
+
+  get "/sign_up", to: "users#new"
+  post "/sign_up", to: "users#create"
+
   # resources :users, only: [:index]
 
   get "/menu", to: "items#index", as: :menu

@@ -6,6 +6,8 @@ RSpec.describe "a user", type: :feature do
       visit root_path
       click_link "Sign In"
       expect(current_path).to eq(login_path)
+      click_link "Sign Up"
+      expect(current_path).to eq(sign_up_path)
 
       within(".create-user-form") do
         fill_in "Username", with: "Lovisa"
@@ -21,7 +23,7 @@ RSpec.describe "a user", type: :feature do
       end
     end
 
-    xit "cannot login without an account" do
+    it "cannot login without an account" do
       visit root_path
       click_link "Sign In"
 
@@ -30,6 +32,9 @@ RSpec.describe "a user", type: :feature do
         fill_in "Password", with: "Noob"
         click_button "Sign In"
       end
+
+      expect(current_path).to eq(login_path)
+      expect(page).to have_content("Sorry m'friend. You go HUNGRY!")
     end
   end
 end
