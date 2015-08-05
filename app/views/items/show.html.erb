@@ -1,5 +1,5 @@
 <div class="row item-show">
-  <div class="col-md-3">
+  <div class="col-md-3 item-info">
     <p class="lead"><%= @item.name %>
 
       <p><strong>Description</strong><br><%= @item.description %></p>
@@ -9,7 +9,7 @@
 
   <div class="col-md-9">
 
-    <div class="thumbnail item-info">
+    <div class="thumbnail">
       <%= image_tag @item.image_url, class: "img-responsive" %>
       <div class="caption-full">
       </div>

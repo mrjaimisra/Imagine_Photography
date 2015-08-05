@@ -21,6 +21,9 @@ RSpec.describe "the item view", type: :feature do
           expect(page).to have_content "Hamburger and fries"
           expect(page).to have_content "delicious"
           expect(page).to have_content "12"
+        end
+
+        within(".thumbnail") do
           expect(page).to have_css("img[src*='#{item.image_url}']")
         end
       end
