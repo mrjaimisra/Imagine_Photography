@@ -10,10 +10,8 @@ RSpec.describe "the item view", type: :feature do
                         category_id: 1)
       visit menu_path
 
-      within(".items-list") do
-        within("#item-box") do
+        within(".item-box") do
           click_link "Hamburger and fries"
-        end
       end
 
       expect(current_path).to eq item_path(item)
