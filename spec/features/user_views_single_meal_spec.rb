@@ -16,7 +16,8 @@ RSpec.describe "the item view", type: :feature do
         end
       end
 
-      # expect(current_path).to eq meal_path(item.id)
+      expect(current_path).to eq meal_path(item.id)
+
       within(".item-show") do
         within(".item-info") do
           expect(page).to have_content "Hamburger and fries"
