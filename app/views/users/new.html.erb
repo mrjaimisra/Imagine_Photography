@@ -1,11 +1,11 @@
-<div class="login-form">
-  <%= form_for(@user) do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+<div class="create-user-form">
+  <%= form_for(@user, url: login_path) do |f| %>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
       <br/>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
       <br/>
-  <%= f.submit "Sign Up" %>
+      <%= f.submit "Sign Up" %>
   <% end %>
 </div>

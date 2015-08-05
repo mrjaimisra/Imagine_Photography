@@ -1,0 +1,36 @@
+require "rails_helper"
+
+RSpec.describe "a user", type: :feature do
+  context "who is unregistered" do
+    it "is logged in when they create an account" do
+      visit root_path
+      click_link "Sign In"
+      expect(current_path).to eq(login_path)
+
+      within(".create-user-form") do
+        fill_in "Username", with: "Lovisa"
+        fill_in "Password", with: "Sweden"
+        click_button "Sign Up"
+      end
+
+      expect(current_path).to eq(menu_path)
+      within(".navbar-nav") do
+        expect(page).to have_content("Sign Out")
+        expect(page).to_not have_content("Sign In")
+        expect(page).to have_content("Lovisa")
+      end
+    end
+
+    xit "cannot login without an account" do
+      visit root_path
+      click_link "Sign In"
+
+      within(".login-form") do
+        fill_in "Username", with: "Jason"
+        fill_in "Password", with: "Noob"
+        click_button "Sign In"
+      end
+    end
+  end
+end
+
