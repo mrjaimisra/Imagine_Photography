@@ -3,17 +3,15 @@ require "rails_helper"
 RSpec.describe "the item view", type: :feature do
   context "an existing item" do
     it "views a single item" do
-      item = Item.create(name: "Hamburger and fries",
-                        description: "delicious",
-                        price: 12,
-                        image_url: test_image_url,
-                        category_id: 1)
+      item = Item.create(name:        "Hamburger and fries",
+                         description: "delicious",
+                         price:       12,
+                         image_url:   test_image_url,
+                         category_id: 1)
       visit menu_path
 
-      within(".items-list") do
-        within("#item-box") do
-          click_link "Hamburger and fries"
-        end
+      within(".item-box") do
+        click_link "Hamburger and fries"
       end
 
       expect(current_path).to eq meal_path(item.id)
