@@ -6,27 +6,28 @@
   <h2>Order Details:</h2>
 </div>
 
-<table>
-  <tr>
-    <th>Item</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Image URL</th>
-    <th>Quantity</th>
-  </tr>
-  <% @items.each do |item| %>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <tr>
+      <th>Item</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Image URL</th>
+      <th>Quantity</th>
+    </tr>
+    <% @items.each do |item| %>
       <td><%= item.name %></td>
       <td><%= item.description %></td>
       <td><%= item.price %></td>
       <td><%= item.image_url %></td>
-      <td><%= button_to  "-", cart_items_path %><!--cart_item_path(item, quantity: "decrease"), method: :put-->
+      <td><%= button_to "-", cart_items_path %><!--cart_item_path(item, quantity: "decrease"), method: :put-->
         <%= "item.quantity => 1" %>
-        <%= button_to  "+", cart_items_path %> <!--cart_item_path(item, quantity: "increase"), method: :put-->
+        <%= button_to "+", cart_items_path %> <!--cart_item_path(item, quantity: "increase"), method: :put-->
       </td>
       </tr>
-  <% end %>
-</table>
-
+    <% end %>
+  </table>
+</div>
 <div>
   <h3>Quantity: Total Quantity => 2</h3>
 
@@ -34,7 +35,7 @@
 <div>
   <h3>Subtotal:
     <% total_price = @items.map do |item| %>
-        <% item.price %>
+      <% item.price %>
     <% end %>
     <%= total_price.reduce(:+) %></h3>
 
