@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: "site#index"
 
+  get "/login", to: "users#new", as: :login
+
   get "/menu", to: "items#index", as: :menu
 
   namespace :menu do
