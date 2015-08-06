@@ -8,6 +8,11 @@ The Little Shop of Orders is the final project in Module 2 at the [Turing School
 build an online store where a user can browse and order products and the admin can manage the products and view
 user info. 
 
+### Instructions 
+- run `git clone git@github.com:applegrain/dinners_ready.git`
+- run `rails s`, access `http://localhost:3000` in your browser 
+- to run the tests, run `bundle exec rspec`  
+
 [Project Outline](https://github.com/turingschool/curriculum/blob/master/source/projects/little_shop.markdown) | [Heroku](https://dinners-ready.herokuapp.com/)
 
 ### Areas of focus
