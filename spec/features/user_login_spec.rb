@@ -10,8 +10,7 @@ RSpec.describe "a user", type: :feature do
       expect(current_path).to eq(sign_up_path)
 
       within(".create-user-form") do
-        fill_in "Username", with: "Lovisa"
-        fill_in "Password", with: "Sweden"
+        fill_in_form
         click_button "Sign Up"
       end
 
@@ -19,7 +18,7 @@ RSpec.describe "a user", type: :feature do
       within(".navbar-nav") do
         expect(page).to have_content("Sign Out")
         expect(page).to_not have_content("Sign In")
-        expect(page).to have_content("Lovisa")
+        expect(page).to have_content("Jason")
       end
     end
 
@@ -28,8 +27,7 @@ RSpec.describe "a user", type: :feature do
       click_link "Sign In"
 
       within(".login-form") do
-        fill_in "Username", with: "Jason"
-        fill_in "Password", with: "Noob"
+        fill_in_form
         click_button "Sign In"
       end
 
@@ -42,8 +40,7 @@ RSpec.describe "a user", type: :feature do
       click_link "Sign Up"
 
       within(".create-user-form") do
-        fill_in "Username", with: "Jason"
-        fill_in "Password", with: "Noob"
+        fill_in_form
         click_button "Sign Up"
       end
 
@@ -60,18 +57,38 @@ RSpec.describe "a user", type: :feature do
   context "a registered user" do
     it "can log in" do
       register_user
-      visit menu_path
-      click_link "Sign In"
-
-      fill_in "Username", with: "Jason"
-      fill_in "Password", with: "Noob"
-      click_button "Sign In"
-
+      sign_in
       within(".navbar-nav") do
         expect(page).to have_content("Jason")
         expect(page).to have_content("Sign Out")
       end
     end
+
+    it "can sign out and sign in" do
+      register_user
+      sign_in
+
+      click_link "Sign Out"
+      click_link "Sign In"
+      expect(page).to_not have_content("YeeHaw, you fat cow! Jason is logged in")
+
+      sign_in
+      expect(page).to have_content("Jason")
+      expect(page).to have_content("Sign Out")
+    end
+  end
+
+  def fill_in_form
+    fill_in "Username", with: "Jason"
+    fill_in "Password", with: "Noob"
+  end
+
+  def sign_in
+    visit root_path
+    click_link "Sign In"
+    fill_in "Username", with: "Jason"
+    fill_in "Password", with: "Noob"
+    click_button "Sign In"
   end
 
   def register_user
@@ -79,8 +96,7 @@ RSpec.describe "a user", type: :feature do
     click_link "Sign Up"
 
     within(".create-user-form") do
-      fill_in "Username", with: "Jason"
-      fill_in "Password", with: "Noob"
+      fill_in_form
       click_button("Sign Up")
     end
     click_link "Sign Out"
