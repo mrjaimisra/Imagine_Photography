@@ -36,6 +36,25 @@ RSpec.describe "a user", type: :feature do
       expect(current_path).to eq(login_path)
       expect(page).to have_content("Sorry m'friend. You go HUNGRY!")
     end
+
+    it "can log out" do
+      visit login_path
+      click_link "Sign Up"
+
+      within(".create-user-form") do
+        fill_in "Username", with: "Jason"
+        fill_in "Password", with: "Noob"
+        click_button "Sign Up"
+      end
+
+      visit root_path
+      within(".navbar-nav") do
+        click_link("Sign Out")
+      end
+
+      expect(current_path).to eq(root_path)
+      expect(page).to have_content("Sign In")
+    end
   end
 end
 

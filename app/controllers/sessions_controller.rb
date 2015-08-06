@@ -14,4 +14,9 @@ class SessionsController < ApplicationController
       flash[:error] = "Sorry m'friend. You go HUNGRY!"
     end
   end
+
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_path
+  end
 end
