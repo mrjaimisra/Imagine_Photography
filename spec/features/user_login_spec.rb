@@ -10,7 +10,7 @@ RSpec.describe "a user", type: :feature do
       expect(current_path).to eq(sign_up_path)
 
       within(".create-user-form") do
-        fill_form
+        fill_in_form
         click_button "Sign Up"
       end
 
@@ -27,7 +27,7 @@ RSpec.describe "a user", type: :feature do
       click_link "Sign In"
 
       within(".login-form") do
-        fill_form
+        fill_in_form
         click_button "Sign In"
       end
 
@@ -40,7 +40,7 @@ RSpec.describe "a user", type: :feature do
       click_link "Sign Up"
 
       within(".create-user-form") do
-      fill_form
+        fill_in_form
         click_button "Sign Up"
       end
 
@@ -76,10 +76,9 @@ RSpec.describe "a user", type: :feature do
       expect(page).to have_content("Jason")
       expect(page).to have_content("Sign Out")
     end
-
   end
 
-  def fill_form
+  def fill_in_form
     fill_in "Username", with: "Jason"
     fill_in "Password", with: "Noob"
   end
@@ -97,7 +96,7 @@ RSpec.describe "a user", type: :feature do
     click_link "Sign Up"
 
     within(".create-user-form") do
-      fill_form
+      fill_in_form
       click_button("Sign Up")
     end
     click_link "Sign Out"
