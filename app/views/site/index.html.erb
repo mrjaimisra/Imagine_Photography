@@ -1,15 +1,16 @@
 <!-- Jumbotron Header -->
 <header class="jumbotron hero-spacer">
-  <h1>Dinner's Ready 4 U</h1>
+  <%= image_tag "DINNERS-READY-LOGO-Transparent6.png", html_option = {class: "img-responsive"} %>
+  <!--<h1>Dinner's Ready 4 U</h1>-->
 
-  <p>Welcome to the easiest homemade cooking you ever had! You place an order for the week. We prepare, cook, and
-    deliver your meals packaged and ready to go in the oven or freezer. After a hard day on the job you have a home
-    cooked meal on the table in less than 15 minutes with no mess to clean up. It's that simple.</p>
+  <!--<p>Welcome to the easiest homemade cooking you ever had! You place an order for the week. We prepare, cook, and-->
+    <!--deliver your meals packaged and ready to go in the oven or freezer. After a hard day on the job you have a home-->
+    <!--cooked meal on the table in less than 15 minutes with no mess to clean up. It's that simple.</p>-->
 
-  <p>
-    <!--<a class="btn btn-primary btn-large">Call to action!</a>-->
-    <%= button_to "Lets Find A Meal", menu_path, html_options = { class: "btn btn-primary btn-large" } %>
-  </p>
+  <!--<p>-->
+    <!--&lt;!&ndash;<a class="btn btn-primary btn-large">Call to action!</a>&ndash;&gt;-->
+    <!--<%#= button_to "Lets Find A Meal", menu_path, html_options = { class: "btn btn-primary btn-large" } %>-->
+  <!--</p>-->
 </header>
 
 <hr>
@@ -27,7 +28,6 @@
 
   <div class="col-md-3 col-sm-6 hero-feature category-feature">
     <div class="thumbnail">
-      <!--<img src="http://placehold.it/800x500" alt="">-->
       <%= link_to image_tag("dinner_served.jpg"), menu_path %>
       <div class="caption">
         <h3><%= link_to "Full Menu", "/menu" %></h3>
