@@ -56,5 +56,35 @@ RSpec.describe "a user", type: :feature do
       expect(page).to have_content("Sign In")
     end
   end
+
+  context "a registered user" do
+    it "can log in" do
+      register_user
+      visit menu_path
+      click_link "Sign In"
+
+      fill_in "Username", with: "Jason"
+      fill_in "Password", with: "Noob"
+      click_button "Sign In"
+
+      within(".navbar-nav") do
+        expect(page).to have_content("Jason")
+        expect(page).to have_content("Sign Out")
+      end
+    end
+  end
+
+  def register_user
+    visit login_path
+    click_link "Sign Up"
+
+    within(".create-user-form") do
+      fill_in "Username", with: "Jason"
+      fill_in "Password", with: "Noob"
+      click_button("Sign Up")
+    end
+    click_link "Sign Out"
+    expect(page).to have_content("Sign In")
+  end
 end
 
