@@ -1,15 +1,26 @@
 <%= render partial: "layouts/flash_message" %>
 
-<div class="login-form">
-  <%= form_for(:session, url: login_path) do |f| %>
-      <%= f.label :username %>
-      <%= f.text_field :username %>
-      <br/>
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-      <br/>
-      <%= f.submit "Sign In" %>
-  <% end %>
+<div class="row">
+  <div class="col-lg-12">
+    <h3>Sign In</h3>
+  </div>
+</div>
 
-  <%= link_to "Sign Up", sign_up_path %>
+<div class="row">
+  <div class=col-lg-12">
+    <div class="login-form">
+      <%= form_for(:session, url: login_path) do |f| %>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+        <br/>
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+        <br/>
+        <%= f.submit "Sign In" %>
+      <% end %>
+
+      <%= link_to "Sign Up", sign_up_path %>
+    </div>
+
+  </div>
 </div>
