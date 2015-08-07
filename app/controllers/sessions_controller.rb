@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
       redirect_to menu_path
-      flash[:success] = "YeeHaw! #{@user.username} are signed in"
+      flash[:success] = "YeeHaw! #{@user.username} is signed in!"
     else
       redirect_to login_path
       flash[:danger] = "Sorry m'friend. You go HUNGRY!"
