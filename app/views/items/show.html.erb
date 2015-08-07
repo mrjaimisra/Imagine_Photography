@@ -4,7 +4,7 @@
 
       <p><strong>Description</strong><br><%= @item.description %></p>
       <h4>$<%= @item.price %></h4>
-      <%= button_to "Add to Cart", cart_items_path %></p>
+      <%= button_to "Add to Cart", cart_items_path(item_id: @item.id) %></p>
   </div>
 
   <div class="col-md-9">
