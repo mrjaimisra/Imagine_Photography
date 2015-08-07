@@ -1,41 +1,48 @@
 <div>
-  <h1>Guest's Shopping Cart</h1>
+  <h1><span class="glyphicon glyphicon-shopping-cart", aria-hidden="true"></span> Guest's Shopping Cart</h1>
 </div>
 
 <div>
-  <h2>Order Details:</h2>
+  <div class="row">
+  <div class="col-md-3"><h2>Order Details:</h2></div>
+    <div class="col-md-6"></div>
+    <div class="col-md-3">
+      <div class="btn-group" role="group" aria-label="...">
+        <button class="btn btn-warning" href="<%= root_path %>">Keep Shopping</button>
+        <button class="btn btn-info" href="<%= root_path %>">Checkout</button>
+      </div>
+    </div>
 </div>
 
 <div class="table-responsive">
   <table class="table table-striped">
     <tr>
+      <th></th>
       <th>Item</th>
       <th>Description</th>
       <th>Price</th>
       <th>Quantity</th>
     </tr>
     <% @cart_items.each do |cart_item| %>
+      <td><%= image_tag(cart_item.image_url, height: 80, width:80, class: "img-circle") %></td>
       <td><%= cart_item.name %></td>
       <td><%= cart_item.description %></td>
-      <td><%= cart_item.price %></td>
-      <td><%= image_tag cart_item.image_url %></td>
-      <td><%= button_to "-", cart_items_path %>
-        <%= cart_item.quantity %>
-        <%= button_to "+", cart_items_path %>
-      </td>
+      <td>$<%= cart_item.price %></td>
+       <td><button class="btn btn-default" href="<%= cart_items_path %>">-</button>
+            <%= cart_item.quantity %>
+            <button class="btn btn-default" href="<%= cart_items_path %>">+</button>
+          </td>
       </tr>
     <% end %>
+    </tbody>
   </table>
 </div>
-<div>
 
-</div>
 <div>
   <h3>Subtotal:
     <% total_price = @cart_items.map do |cart_item| %>
       <% cart_item.price %>
     <% end %>
-    <%= total_price.reduce(:+) %></h3>
-
+    <%= total_price.reduce(:+) %>
 </div>
-<%= button_to "Checkout", root_path %>
+<hr/>

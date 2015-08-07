@@ -1,7 +1,26 @@
 
+$text-highlight: #09afa9
+
 body
   /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of
   padding-top: 70px
+
+.navbar-inverse .navbar-nav > li > a
+  color: $text-highlight
+  font-size: 1.5em
+  //hack to center vertically
+  padding-top: 1.5em
+
+.navbar-header .navbar-brand
+  height: 100%
+  width: 60%
+
+.jumbotron
+  background-image: image-url('Family-eating.jpg')
+  background-repeat: no-repeat
+  height: 390px
+  background-size: cover
+  background-position: center center
 
 .hero-spacer
   margin-top: 50px
@@ -18,14 +37,11 @@ footer
   .slide-image
     width: 100%
 
-
 .carousel-holder
   margin-bottom: 30px
 
-
 .carousel-control .item
   border-radius: 4px
-
 
 .caption
   height: 130px
@@ -53,5 +69,5 @@ footer
     height: 90px
 
 .carousel-inner > .item > img.slide-image
-  width:  800px
+  width: 800px
   height: 300px
