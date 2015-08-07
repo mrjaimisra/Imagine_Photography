@@ -15,27 +15,27 @@
       <th>Image URL</th>
       <th>Quantity</th>
     </tr>
-    <% @items.each do |item| %>
-      <td><%= item.name %></td>
-      <td><%= item.description %></td>
-      <td><%= item.price %></td>
-      <td><%= item.image_url %></td>
-      <td><%= button_to "-", cart_items_path %><!--cart_item_path(item, quantity: "decrease"), method: :put-->
+    <% @cart_items.each do |cart_item| %>
+      <td><%= cart_item.name %></td>
+      <td><%= cart_item.description %></td>
+      <td><%= cart_item.price %></td>
+      <td><%= cart_item.quantity %></td>
+      <td><%= cart_item.image_url %></td>
+      <td><%= button_to "-", cart_items_path %>\
         <%= "item.quantity => 1" %>
-        <%= button_to "+", cart_items_path %> <!--cart_item_path(item, quantity: "increase"), method: :put-->
+        <%= button_to "+", cart_items_path %>
       </td>
       </tr>
     <% end %>
   </table>
 </div>
 <div>
-  <h3>Quantity: Total Quantity => 2</h3>
 
 </div>
 <div>
   <h3>Subtotal:
-    <% total_price = @items.map do |item| %>
-      <% item.price %>
+    <% total_price = @cart_items.map do |cart_item| %>
+      <% cart_item.price %>
     <% end %>
     <%= total_price.reduce(:+) %></h3>
 
