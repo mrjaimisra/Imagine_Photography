@@ -15,50 +15,34 @@
 </div>
 
 <div class="table-responsive">
-  <table class="table table-striped table-hover">
-    <thead>
-    <th>Item</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Quantity</th>
-    <td align="right"><strong>Subtotal</strong></td>
-    </thead>
-    <tbody>
-    <% @items.each do |item| %>
-        <tr>
-          <td><%= image_tag(item.image_url, height: 80, width:80, class: "img-circle") %></td>
-          <td><%= item.name %></td>
-          <td><%= item.description %></td>
-          <td><%= item.price %></td>
-          <td><button class="btn btn-default" href="<%= cart_items_path %>">-</button><!--cart_item_path(item, quantity: "decrease"), method: :put-->
-            <%= "1" %>
-            <button class="btn btn-default" href="<%= cart_items_path %>">+</button><!--cart_item_path(item, quantity: "increase"), method: :put-->
+  <table class="table table-striped">
+    <tr>
+      <th></th>
+      <th>Item</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Quantity</th>
+    </tr>
+    <% @cart_items.each do |cart_item| %>
+      <td><%= image_tag(cart_item.image_url, height: 80, width:80, class: "img-circle") %></td>
+      <td><%= cart_item.name %></td>
+      <td><%= cart_item.description %></td>
+      <td>$<%= cart_item.price %></td>
+       <td><button class="btn btn-default" href="<%= cart_items_path %>">-</button>
+            <%= cart_item.quantity %>
+            <button class="btn btn-default" href="<%= cart_items_path %>">+</button>
           </td>
-          <td align="right">$</td>
-        </tr>
+      </tr>
     <% end %>
     </tbody>
   </table>
 </div>
-<hr/>
 
-  <div class="row">
-    <div class="col-md-6"></div>
-    <div class="col-md-3"><h4>Quantity: Total Quantity => 2</h4></div>
-    <div class="col-md-3">
-      <div class="btn-group" role="group" aria-label="...">
-        <button class="btn btn-warning" href="<%= root_path %>">Keep Shopping</button>
-        <button class="btn btn-info" href="<%= root_path %>">Checkout</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-md-6"></div>
-  <div class="col-md-6"><h4>Subtotal:
-    <% total_price = @items.map do |item| %>
-        <% item.price %>
+<div>
+  <h3>Subtotal:
+    <% total_price = @cart_items.map do |cart_item| %>
+      <% cart_item.price %>
     <% end %>
-    <%= total_price.reduce(:+) %></h4></div>
+    <%= total_price.reduce(:+) %>
 </div>
-</div>
+<hr/>

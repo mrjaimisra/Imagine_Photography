@@ -9,19 +9,15 @@
       </button>
       <%= link_to image_tag("Logo-Plate-2.png", html_option = { class: "img-responsive img-circle navbar-brand" }), root_path %>
     </div>
-    <!--1 Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <!--<a href="#">Menu</a>-->
           <%= link_to "Menu", menu_path %>
         </li>
         <li>
-          <!--<a href="#">About</a>-->
           <%= link_to "Cart", cart_path %>
         </li>
         <li>
-          <!--<a href="#">Cart</a>-->
           <% if current_user %>
             <%= link_to "Sign Out", logout_path, method: :delete %>
           <% else %>
@@ -32,7 +28,6 @@
           <%= current_user.username if current_user %>
         </li>
       </ul>
-
     </div>
   </div>
 </nav>
