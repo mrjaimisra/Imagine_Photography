@@ -10,7 +10,6 @@ RSpec.describe "the category view", type: :feature do
     let!(:category) { Category.create(name: "breakfast") }
     let!(:other_category) { Category.create(name: "lunch") }
 
-
     it "displays the correct path in the address bar" do
       visit "menu/#{category.name}"
       expect(current_path).to eq("/menu/breakfast")

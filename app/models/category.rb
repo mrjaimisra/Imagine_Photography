@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
   has_many :items
-  validate :check_for_spaces
+  validate :check_for_spaces, :check_for_special_characters
   validates :name, presence: true, uniqueness: true
 
   def to_param
@@ -11,9 +11,9 @@ class Category < ActiveRecord::Base
     if name.to_s.include?(" ")
       errors.add(:invalid, "cannot have spaces")
     end
-    end
+  end
 
-  def check_for_spaces
+  def check_for_special_characters
     if name.to_s.match(/[^a-zA-Z0-9]+/)
       errors.add(:chars, "cannot have special characters")
     end
