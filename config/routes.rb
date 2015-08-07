@@ -9,12 +9,9 @@ Rails.application.routes.draw do
   get "/sign_up", to: "users#new"
   post "/sign_up", to: "users#create"
 
-  # resources :users, only: [:index]
+    get "menu/:id", to: "menu/categories#show"
 
   get "/menu", to: "items#index", as: :menu
-  namespace :menu do
-    resources :categories, only: [:show]
-  end
 
   get "meals/:id", to: "items#show", as: :meal
 

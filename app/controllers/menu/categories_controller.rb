@@ -1,5 +1,6 @@
 class Menu::CategoriesController < Menu::BaseController
+
   def show
-    @category = Category.find_by(id: params[:id])
+    @category = Category.find_by(name: params[:id])
   end
 end
