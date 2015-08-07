@@ -12,17 +12,15 @@
       <th>Item</th>
       <th>Description</th>
       <th>Price</th>
-      <th>Image URL</th>
       <th>Quantity</th>
     </tr>
     <% @cart_items.each do |cart_item| %>
       <td><%= cart_item.name %></td>
       <td><%= cart_item.description %></td>
       <td><%= cart_item.price %></td>
-      <td><%= cart_item.quantity %></td>
-      <td><%= cart_item.image_url %></td>
-      <td><%= button_to "-", cart_items_path %>\
-        <%= "item.quantity => 1" %>
+      <td><%= image_tag cart_item.image_url %></td>
+      <td><%= button_to "-", cart_items_path %>
+        <%= cart_item.quantity %>
         <%= button_to "+", cart_items_path %>
       </td>
       </tr>
