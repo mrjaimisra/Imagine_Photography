@@ -4,8 +4,10 @@ RSpec.describe "a user", type: :feature do
   context "who is unregistered" do
     it "is logged in when they create an account" do
       visit root_path
+
       click_link "Sign In"
       expect(current_path).to eq(login_path)
+
       click_link "Sign Up"
       expect(current_path).to eq(sign_up_path)
 
@@ -76,30 +78,5 @@ RSpec.describe "a user", type: :feature do
       expect(page).to have_content("Jason")
       expect(page).to have_content("Sign Out")
     end
-  end
-
-  def fill_in_form
-    fill_in "Username", with: "Jason"
-    fill_in "Password", with: "Noob"
-  end
-
-  def sign_in
-    visit root_path
-    click_link "Sign In"
-    fill_in "Username", with: "Jason"
-    fill_in "Password", with: "Noob"
-    click_button "Sign In"
-  end
-
-  def register_user
-    visit login_path
-    click_link "Sign Up"
-
-    within(".create-user-form") do
-      fill_in_form
-      click_button("Sign Up")
-    end
-    click_link "Sign Out"
-    expect(page).to have_content("Sign In")
   end
 end
