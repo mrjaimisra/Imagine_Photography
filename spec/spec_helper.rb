@@ -20,4 +20,8 @@ RSpec.configure do |config|
   def test_image_url
     "http://i.livescience.com/images/i/000/048/850/i02/capybara-02.jpg?1324347800"
   end
+
+  def create_item
+    @item = Item.create(name: "Hamburger", description: "So delicious.", price: 12, image_url: test_image_url, category_id: 2)
+  end
 end
