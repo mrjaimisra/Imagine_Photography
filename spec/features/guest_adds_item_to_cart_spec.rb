@@ -7,7 +7,7 @@ RSpec.describe "the cart", type: :feature do
       visit menu_path
 
       within(".item-info") do
-        expect(page).to have_content("Hamburger")
+        expect(page).to have_content item.name
         3.times { click_button "Add to Cart" }
         expect(current_path).to eq menu_path
       end
@@ -16,8 +16,8 @@ RSpec.describe "the cart", type: :feature do
       expect(current_path).to eq cart_path
 
       within(".table-striped") do
-        expect(page).to have_content("Hamburger")
-        expect(page).to have_content("3")
+        expect(page).to have_content item.name
+        expect(page).to have_content "3"
       end
     end
 
@@ -26,7 +26,7 @@ RSpec.describe "the cart", type: :feature do
       visit menu_path
 
       within(".item-info") do
-        expect(page).to have_content("Hamburger")
+        expect(page).to have_content item.name
         3.times { click_button "Add to Cart" }
         expect(current_path).to eq menu_path
       end
@@ -38,8 +38,8 @@ RSpec.describe "the cart", type: :feature do
       click_link "Cart"
 
       within(".table-striped") do
-        expect(page).to have_content("Hamburger")
-        expect(page).to have_content("3")
+        expect(page).to have_content item.name
+        expect(page).to have_content "3"
       end
     end
   end
@@ -51,7 +51,7 @@ RSpec.describe "the cart", type: :feature do
       visit menu_path
 
       within(".item-info") do
-        expect(page).to have_content("Hamburger")
+        expect(page).to have_content item.name
         2.times { click_button "Add to Cart" }
         expect(current_path).to eq menu_path
       end
@@ -59,8 +59,8 @@ RSpec.describe "the cart", type: :feature do
       click_link "Cart"
 
       within(".table-striped") do
-        expect(page).to have_content("Hamburger")
-        expect(page).to have_content("2")
+        expect(page).to have_content item.name
+        expect(page).to have_content "2"
       end
     end
   end
@@ -72,7 +72,7 @@ RSpec.describe "the cart", type: :feature do
       visit menu_path
 
       within(".item-info") do
-        expect(page).to have_content("Hamburger")
+        expect(page).to have_content item.name
         2.times { click_button "Add to Cart" }
         expect(current_path).to eq menu_path
       end
@@ -80,8 +80,8 @@ RSpec.describe "the cart", type: :feature do
       click_link "Cart"
 
       within(".table-striped") do
-        expect(page).to have_content("Hamburger")
-        expect(page).to have_content("2")
+        expect(page).to have_content item.name
+        expect(page).to have_content "2"
       end
     end
   end

@@ -22,7 +22,8 @@ RSpec.configure do |config|
   end
 
   def create_item
-    @item = Item.create(name: "Hamburger", description: "So delicious.", price: 12, image_url: test_image_url, category_id: 2)
+    @item = Item.create(name: "Hamburger", description: "So delicious.",
+      price: 12, image_url: test_image_url, category_id: 2)
   end
 
   def fill_in_form
