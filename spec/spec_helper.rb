@@ -51,4 +51,15 @@ RSpec.configure do |config|
     click_link "Sign Out"
     expect(page).to have_content("Sign In")
   end
+
+  # Test Coverage tools
+  # https://github.com/codeclimate/ruby-test-reporter/issues/61
+  # http://docs.travis-ci.com/user/environment-variables/
+  if ENV['CI']
+    require 'codeclimate-test-reporter'
+    CodeClimate::TestReporter.start
+  else
+    require 'simplecov'
+    SimpleCov.start
+  end
 end
