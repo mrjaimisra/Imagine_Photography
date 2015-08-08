@@ -17,7 +17,7 @@ class CartItemsController < ApplicationController
 
   def destroy
     item = Item.find_by(id: params[:id])
-    flash[:success] = "Successfully removed #{item.name} from your cart."
+    flash[:success] = %Q[Successfully removed <a href="/meals/#{params[:id]}">#{item.name}</a> from your cart.]
     cart.remove_from_cart(item)
     redirect_to :back
   end
