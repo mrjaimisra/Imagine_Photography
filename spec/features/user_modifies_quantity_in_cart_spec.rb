@@ -59,4 +59,17 @@ RSpec.describe "the cart quantity", type: :feature do
       expect(page).to have_content "Total: 24$"
     end
   end
+
+  it "displays the subtotal" do
+    item = create_item
+    sign_in
+    visit menu_path
+
+    4.times { click_button "Add to Cart" }
+    click_link "Cart"
+
+    within(".subtotal") do
+      expect(page).to have_content "48$"
+    end
+  end
 end
