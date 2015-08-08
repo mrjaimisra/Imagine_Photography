@@ -89,5 +89,19 @@ RSpec.describe "the cart quantity", type: :feature do
       click_link "#{item.name}"
       expect(current_path).to eq meal_path(item)
     end
+
+    it "removes the item if the quantity is zero" do
+      item = create_item
+      sign_in
+      visit menu_path
+      2.times { click_button "Add to Cart" }
+      click_link "Cart"
+
+      2.times { click_button "-" }
+
+      within(".table-striped") do
+        expect(page).to_not have_content item.name
+      end
+    end
   end
 end

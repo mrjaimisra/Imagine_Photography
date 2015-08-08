@@ -1,4 +1,5 @@
 <!-- This is the only title not using the partial, need to figure out how to position the shopping cart with sass -->
+<%= render partial: "layouts/flash_message" %>
 <div class="row">
   <div class="col-lg-12">
     <h3><span class="glyphicon glyphicon-shopping-cart" , aria-hidden="true"></span>Shopping Cart</h3>
@@ -27,6 +28,7 @@
       <th>Price</th>
       <th>Quantity</th>
       <th>Subtotal</th>
+      <th></th>
     </tr>
     <tr>
     <% @cart_items.each do |cart_item| %>
@@ -41,11 +43,12 @@
       <div class="subtotal">
         <td>$<%= cart_item.subtotal %></td>
       </div>
+      <td><%= link_to "Remove", cart_items_path(id: cart_item), method: :delete %></td>
     </tr>
     <% end %>
   </table>
 </div>
 
 <div class="total">
-  <h3>Total: $<%= cart.total %>$</h3>
+  <h3>Total: $<%= cart.total %></h3>
 </div>
