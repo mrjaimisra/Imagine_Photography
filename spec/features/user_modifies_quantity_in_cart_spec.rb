@@ -23,53 +23,85 @@ RSpec.describe "the cart quantity", type: :feature do
 
       expect(page).to have_content "3"
     end
-  end
 
-  it "removes items from the cart" do
-    item = create_item
-    sign_in
-    visit menu_path
+    it "decreases quantity of items from the cart" do
+      item = create_item
+      sign_in
+      visit menu_path
 
-    within(".item-info") do
-      expect(page).to have_content item.name
+      within(".item-info") do
+        expect(page).to have_content item.name
+        2.times { click_button "Add to Cart" }
+        expect(current_path).to eq menu_path
+      end
+
+      click_link "Cart"
+
+      within(".table-striped") do
+        expect(page).to have_content item.name
+        expect(page).to have_content "2"
+        click_button "-"
+      end
+
+      expect(page).to have_content "1"
+    end
+
+    it "displays total cost" do
+      create_item
+      sign_in
+      visit menu_path
+
       2.times { click_button "Add to Cart" }
-      expect(current_path).to eq menu_path
+      click_link "Cart"
+
+      within(".total") do
+        expect(page).to have_content "Total: $24"
+      end
     end
 
-    click_link "Cart"
+    it "displays the subtotal" do
+      create_item
+      sign_in
+      visit menu_path
 
-    within(".table-striped") do
-      expect(page).to have_content item.name
-      expect(page).to have_content "2"
-      click_button "-"
+      4.times { click_button "Add to Cart" }
+      click_link "Cart"
+
+      within(".subtotal") do
+        expect(page).to have_content "$48"
+      end
     end
 
-    expect(page).to have_content "1"
-  end
+    it "removes items from the cart" do
+      item = create_item
+      sign_in
+      visit menu_path
+      2.times { click_button "Add to Cart" }
+      click_link "Cart"
 
-  it "displays total cost" do
-    create_item
-    sign_in
-    visit menu_path
+      click_link "Remove"
+      expect(page).to have_content "Successfully removed #{item.name} from your cart."
 
-    2.times { click_button "Add to Cart" }
-    click_link "Cart"
+      within(".table-striped") do
+        expect(page).to_not have_content item.name
+      end
 
-    within(".total") do
-      expect(page).to have_content "Total: 24$"
+      click_link "#{item.name}"
+      expect(current_path).to eq meal_path(item)
     end
-  end
 
-  it "displays the subtotal" do
-    create_item
-    sign_in
-    visit menu_path
+    it "removes the item if the quantity is zero" do
+      item = create_item
+      sign_in
+      visit menu_path
+      2.times { click_button "Add to Cart" }
+      click_link "Cart"
 
-    4.times { click_button "Add to Cart" }
-    click_link "Cart"
+      2.times { click_button "-" }
 
-    within(".subtotal") do
-      expect(page).to have_content "48$"
+      within(".table-striped") do
+        expect(page).to_not have_content item.name
+      end
     end
   end
 end
