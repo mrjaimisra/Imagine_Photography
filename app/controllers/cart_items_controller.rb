@@ -14,4 +14,11 @@ class CartItemsController < ApplicationController
     cart.update_quantity(params[:id], params[:quantity])
     redirect_to :back
   end
+
+  def destroy
+    item = Item.find_by(id: params[:id])
+    flash[:success] = "Successfully removed #{item.name} from your cart."
+    cart.remove_from_cart(item)
+    redirect_to :back
+  end
 end
