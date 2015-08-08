@@ -26,7 +26,7 @@ RSpec.describe "a user with a non empty cart", type: :feature do
         @item = create_item
       end
 
-      xit "required to login before checking out" do
+      it "required to login before checking out" do
         visit menu_path
 
         # add an item to cart
@@ -36,10 +36,16 @@ RSpec.describe "a user with a non empty cart", type: :feature do
         end
 
         visit cart_path
-        click_button "Checkout"
+        click_link "Check Out"
 
-        expect(page).to have_content("Sign In to complete your order, Dinners almost ready!")
-        expect(page).to have_button("Sign In")
+        expect(current_path).to eq(login_path)
+
+        within(".alert") do
+          expect(page).to have_content("Sign In to complete your order, Dinners almost ready!")
+        end
+        within(".login-form") do
+          expect(page).to have_button("Sign In")
+        end
       end
 
     end

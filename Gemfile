@@ -18,6 +18,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'capybara'
+  gem 'shoulda-matchers'
   gem 'launchy'
   gem 'pry-rails'
   gem 'selenium-webdriver'
