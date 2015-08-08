@@ -1,9 +1,12 @@
 class CartItemsController < ApplicationController
   def index
-    @items = Item.all
+    @cart_items = cart.items
   end
 
   def create
+    item = Item.find(params[:item_id])
+    cart.add_item(item)
+    session[:cart] = cart.data
     redirect_to menu_path
   end
 end
