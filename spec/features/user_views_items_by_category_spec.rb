@@ -3,11 +3,15 @@ require "rails_helper"
 RSpec.describe "the category view", type: :feature do
   context "user visits a category page" do
     let!(:category) { Category.create(name: "breakfast") }
-    let!(:item) { Item.create(name:        "Breakfast burrito",
-                              description: "delicious",
-                              price:       5,
-                              image_url: test_image_url,
-                              category_id: category.id) }
+    let!(:item) {
+      Item.create(
+        name:        "Breakfast burrito",
+        description: "delicious",
+        price:       5,
+        image_url:   test_image_url,
+        category_id: category.id
+      )
+    }
 
     let!(:other_category) { Category.create(name: "lunch") }
     let!(:other_item) {
