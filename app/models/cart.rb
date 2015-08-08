@@ -20,4 +20,12 @@ class Cart
     hash = {"increase" => 1, "decrease" => -1}
     data[id] += hash[quantity]
   end
+
+  def total
+    total = 0
+    data.each do |k, v|
+      total += Item.find_by(id: k).price * v
+    end
+    total
+  end
 end

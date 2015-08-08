@@ -27,7 +27,7 @@
       <td><%= image_tag(cart_item.image_url, height: 80, width:80, class: "img-circle") %></td>
       <td><%= cart_item.name %></td>
       <td><%= cart_item.description %></td>
-      <td>$<%= cart_item.price %></td>
+      <td><%= cart_item.price %>$</td>
       <td><%= button_to "-", cart_items_path(id: "#{cart_item.id}", quantity: "decrease"), method: :put %>
       <%= cart_item.quantity %>
       <%= button_to "+", cart_items_path(id: "#{cart_item.id}", quantity: "increase"), method: :put %></td>
@@ -36,11 +36,8 @@
     </tbody>
   </table>
 </div>
-<div>
-  <h3>Subtotal:
-    <% total_price = @cart_items.map do |cart_item| %>
-      <% cart_item.price %>
-    <% end %>
-    <%= total_price.reduce(:+) %>
+
+<div class="total">
+  <h3>Total: <%= cart.total %>$</h3>
 </div>
 <hr/>
