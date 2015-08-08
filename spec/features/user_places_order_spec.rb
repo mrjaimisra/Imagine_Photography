@@ -16,35 +16,63 @@ require "rails_helper"
 # And I should see the order I just placed in a table
 
 RSpec.describe "a user with a non empty cart", type: :feature do
+
+  before do
+    item = create_item
+    visit menu_path
+
+    # add an item to cart
+    within(".item-info") do
+      expect(page).to have_content item.name
+      click_button "Add to Cart"
+    end
+  end
+
+
   context "who has an account" do
+
+    before do
+      register_user
+    end
+
     context "and is not signed in" do
 
-      attr_reader :item
+      context "and checks out" do
 
-      before do
-        register_user
-        @item = create_item
+        before do
+          visit cart_path
+          click_link "Check Out"
+        end
+
+        it "is required to login" do
+          expect(current_path).to eq(login_path)
+
+          within(".alert") do
+            expect(page).to have_content("Sign In to complete your order, Dinners almost ready!")
+          end
+          within(".login-form") do
+            expect(page).to have_button("Sign In")
+          end
+        end
+
       end
 
-      it "required to login before checking out" do
-        visit menu_path
+      context "and is signed in" do
 
-        # add an item to cart
-        within(".item-info") do
-          expect(page).to have_content item.name
-          click_button "Add to Cart"
+        before do
+          sign_in
         end
 
-        visit cart_path
-        click_link "Check Out"
+        context "and checks out" do
 
-        expect(current_path).to eq(login_path)
+          before do
+            visit cart_path
+            click_link "Check Out"
+          end
 
-        within(".alert") do
-          expect(page).to have_content("Sign In to complete your order, Dinners almost ready!")
-        end
-        within(".login-form") do
-          expect(page).to have_button("Sign In")
+          it "go to the orders page" do
+            expect(current_path).to eq(orders_path)
+          end
         end
       end
 

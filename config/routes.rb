@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   put "/cart_items", to: "cart_items#update"
   get "/cart", to: "cart_items#index"
 
+  get "/orders", to: "orders#show"
   post "/orders", to: "orders#create"
 end
