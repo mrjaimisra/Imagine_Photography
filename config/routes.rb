@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   get "/sign_up", to: "users#new"
   post "/sign_up", to: "users#create"
 
+  get "/admin", to: "admin#index"
+
+  scope :admin do
+    resources :users, only: [:index]
+  end
+
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
