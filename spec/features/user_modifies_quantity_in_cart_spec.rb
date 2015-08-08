@@ -48,7 +48,7 @@ RSpec.describe "the cart quantity", type: :feature do
   end
 
   it "displays total cost" do
-    item = create_item
+    create_item
     sign_in
     visit menu_path
 
@@ -61,7 +61,7 @@ RSpec.describe "the cart quantity", type: :feature do
   end
 
   it "displays the subtotal" do
-    item = create_item
+    create_item
     sign_in
     visit menu_path
 
