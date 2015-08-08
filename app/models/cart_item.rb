@@ -5,4 +5,8 @@ class CartItem < SimpleDelegator
     @item = item
     @quantity = quantity
   end
+
+  def subtotal
+    @item.price * quantity
+  end
 end
