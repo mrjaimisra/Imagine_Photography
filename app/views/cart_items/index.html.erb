@@ -28,16 +28,14 @@
       <td><%= cart_item.name %></td>
       <td><%= cart_item.description %></td>
       <td>$<%= cart_item.price %></td>
-       <td><button class="btn btn-default" href="<%= cart_items_path %>">-</button>
-            <%= cart_item.quantity %>
-            <button class="btn btn-default" href="<%= cart_items_path %>">+</button>
-          </td>
+      <td><%= button_to "-", cart_items_path(id: "#{cart_item.id}", quantity: "decrease"), method: :put %>
+      <%= cart_item.quantity %>
+      <%= button_to "+", cart_items_path(id: "#{cart_item.id}", quantity: "increase"), method: :put %></td>
       </tr>
     <% end %>
     </tbody>
   </table>
 </div>
-
 <div>
   <h3>Subtotal:
     <% total_price = @cart_items.map do |cart_item| %>
