@@ -1,6 +1,3 @@
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
-
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -53,5 +50,16 @@ RSpec.configure do |config|
 
     click_link "Sign Out"
     expect(page).to have_content("Sign In")
+  end
+
+  # Test Coverage tools
+  # https://github.com/codeclimate/ruby-test-reporter/issues/61
+  # http://docs.travis-ci.com/user/environment-variables/
+  if ENV['CI']
+    require 'codeclimate-test-reporter'
+    CodeClimate::TestReporter.start
+  else
+    require 'simplecov'
+    SimpleCov.start
   end
 end

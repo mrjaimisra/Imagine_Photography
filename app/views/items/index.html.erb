@@ -1,10 +1,8 @@
+<%= render partial: "layouts/page_title", locals: { page_title: "All Meals" } %>
 <%= render partial: "layouts/flash_message" %>
 
 <div class="items-list">
-  <h1>All Meals</h1>
-
   <div class="row">
-
     <div class="col-md-3">
       <div class="list-group">
         <%= link_to "Breakfast", "menu/breakfast", html_options = { class: "list-group-item" } %>
