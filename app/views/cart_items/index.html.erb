@@ -22,6 +22,7 @@
       <th>Description</th>
       <th>Price</th>
       <th>Quantity</th>
+      <th>Subtotal</th>
     </tr>
     <% @cart_items.each do |cart_item| %>
       <td><%= image_tag(cart_item.image_url, height: 80, width:80, class: "img-circle") %></td>
@@ -31,6 +32,9 @@
       <td><%= button_to "-", cart_items_path(id: "#{cart_item.id}", quantity: "decrease"), method: :put %>
       <%= cart_item.quantity %>
       <%= button_to "+", cart_items_path(id: "#{cart_item.id}", quantity: "increase"), method: :put %></td>
+      <div class="subtotal">
+        <td><%= cart_item.subtotal %>$</td>
+      </div>
       </tr>
     <% end %>
     </tbody>
