@@ -21,6 +21,10 @@ class Cart
     data[id] += hash[quantity]
   end
 
+  def remove_from_cart(item)
+    data.delete(item.id.to_s)
+  end
+
   def total
     data.reduce(0) { |total, (id, quantity)|
       total += Item.find_by(id: id).price * quantity }
