@@ -33,5 +33,5 @@ RSpec.describe "a user who signs up", type: :feature do
     end
 
   end
-  
+
 end

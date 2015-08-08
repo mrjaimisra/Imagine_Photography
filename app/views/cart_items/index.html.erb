@@ -46,7 +46,6 @@
     <h3>Subtotal:</h3>
       <% total_price = @cart_items.map do |cart_item| %>
         <% cart_item.price %>
-        >>>>>>> master
       <% end %>
       <%= total_price.reduce(:+) %>
   </div>
