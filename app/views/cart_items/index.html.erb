@@ -1,10 +1,13 @@
-<div>
-  <h1><span class="glyphicon glyphicon-shopping-cart", aria-hidden="true"></span> Guest's Shopping Cart</h1>
+<!-- This is the only title not using the partial, need to figure out how to position the shopping cart with sass -->
+<div class="row">
+  <div class="col-lg-12">
+    <h3><span class="glyphicon glyphicon-shopping-cart" , aria-hidden="true"></span>Shopping Cart</h3>
+  </div>
 </div>
 
 <div>
   <div class="row">
-  <div class="col-md-3"><h2>Order Details:</h2></div>
+    <div class="col-md-3"><h4>Order Details:</h4></div>
     <div class="col-md-6"></div>
     <div class="col-md-3">
       <div class="btn-group" role="group" aria-label="...">
@@ -12,37 +15,38 @@
         <button class="btn btn-info" href="<%= root_path %>">Checkout</button>
       </div>
     </div>
-</div>
+  </div>
 
-<div class="table-responsive">
-  <table class="table table-striped">
-    <tr>
-      <th></th>
-      <th>Item</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Quantity</th>
-    </tr>
-    <% @cart_items.each do |cart_item| %>
-      <td><%= image_tag(cart_item.image_url, height: 80, width:80, class: "img-circle") %></td>
-      <td><%= cart_item.name %></td>
-      <td><%= cart_item.description %></td>
-      <td>$<%= cart_item.price %></td>
-       <td><button class="btn btn-default" href="<%= cart_items_path %>">-</button>
-            <%= cart_item.quantity %>
-            <button class="btn btn-default" href="<%= cart_items_path %>">+</button>
-          </td>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <tr>
+        <th></th>
+        <th>Item</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
       </tr>
-    <% end %>
-    </tbody>
-  </table>
-</div>
+      <% @cart_items.each do |cart_item| %>
+        <td><%= image_tag(cart_item.image_url, height: 80, width: 80, class: "img-circle") %></td>
+        <td><%= cart_item.name %></td>
+        <td><%= cart_item.description %></td>
+        <td>$<%= cart_item.price %></td>
+        <td>
+          <button class="btn btn-default" href="<%= cart_items_path %>">-</button>
+          <%= cart_item.quantity %>
+          <button class="btn btn-default" href="<%= cart_items_path %>">+</button>
+        </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 
-<div>
-  <h3>Subtotal:
-    <% total_price = @cart_items.map do |cart_item| %>
-      <% cart_item.price %>
-    <% end %>
-    <%= total_price.reduce(:+) %>
+  <div>
+    <h3>Subtotal:</h3>
+      <% total_price = @cart_items.map do |cart_item| %>
+        <% cart_item.price %>
+      <% end %>
+      <%= total_price.reduce(:+) %>
+  </div>
 </div>
-<hr/>

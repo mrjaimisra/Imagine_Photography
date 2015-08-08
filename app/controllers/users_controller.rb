@@ -9,7 +9,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to menu_path
     else
-      redirect_to login_path
+      flash[:danger] = "Ya screwed something up parter, try again!"
+      redirect_to sign_up_path
     end
   end
 
