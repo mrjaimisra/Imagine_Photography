@@ -12,13 +12,20 @@ class CartItemsController < ApplicationController
 
   def update
     cart.update_quantity(params[:id], params[:quantity])
+    remove_and_render_flash(params[:id]) if cart.data[params[:id]] == 0
     redirect_to :back
   end
 
   def destroy
-    item = Item.find_by(id: params[:id])
+    remove_and_render_flash(params[:id])
+    redirect_to :back
+  end
+
+  private
+
+  def remove_and_render_flash(id)
+    item = Item.find_by(id: id)
     flash[:success] = %Q[Successfully removed <a href="/meals/#{params[:id]}">#{item.name}</a> from your cart.]
     cart.remove_from_cart(item)
-    redirect_to :back
   end
 end
