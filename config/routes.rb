@@ -22,6 +22,6 @@ Rails.application.routes.draw do
 
   delete "/cart_items", to: "cart_items#destroy"
 
-  get "/orders", to: "orders#show"
+  get "/orders", to: "orders#index"
   post "/orders", to: "orders#create"
 end
