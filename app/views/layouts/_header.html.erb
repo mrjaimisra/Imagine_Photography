@@ -11,7 +11,9 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
       <li>
-        <%= link_to "Profile", profile_path %>
+        <% if current_user %>
+          <%= link_to "Profile", profile_path %>
+        <% end %>
       </li>
       <li>
         <%= link_to "Menu", menu_path %>

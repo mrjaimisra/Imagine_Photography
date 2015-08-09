@@ -24,6 +24,7 @@ RSpec.describe "the profile view", type: :feature do
 
   context "user that's not logged in" do
     it "can't visit the profile page" do
+      visit menu_path
       expect(page).to_not have_link "Profile"
 
       visit "/profile"
