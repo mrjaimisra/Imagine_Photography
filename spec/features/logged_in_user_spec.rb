@@ -31,4 +31,15 @@ RSpec.describe "the profile view", type: :feature do
       expect(current_path).to eq "/404"
     end
   end
+
+  context "a registered user that's not logged in" do
+    it "can't visit the profile page" do
+      register_user
+      visit menu_path
+      expect(page).to_not have_link "Profile"
+
+      visit "/profile"
+      expect(current_path).to eq "/404"
+    end
+  end
 end
