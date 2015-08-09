@@ -28,7 +28,6 @@ RSpec.describe "a user with a non empty cart", type: :feature do
     end
   end
 
-
   context "who has an account" do
 
     before do
@@ -72,6 +71,12 @@ RSpec.describe "a user with a non empty cart", type: :feature do
 
           it "go to the orders page" do
             expect(current_path).to eq(orders_path)
+          end
+
+          it "sees order confirmation message" do
+            within(".alert") do
+              expect(page).to have_content("Order placed! Dinners on the way!")
+            end
           end
         end
       end
