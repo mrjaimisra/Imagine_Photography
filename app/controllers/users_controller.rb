@@ -14,6 +14,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    redirect_to "/404" unless current_user
+  end
+
   private
 
   def user_params
