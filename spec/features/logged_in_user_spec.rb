@@ -21,4 +21,13 @@ RSpec.describe "the profile view", type: :feature do
       expect(page).to have_content "Jason's Profile"
     end
   end
+
+  context "user that's not logged in" do
+    it "can't visit the profile page" do
+      expect(page).to_not have_link "Profile"
+
+      visit "/profile"
+      expect(current_path).to eq "/404"
+    end
+  end
 end
