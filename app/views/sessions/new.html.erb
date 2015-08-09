@@ -1,11 +1,5 @@
 <%= render partial: "layouts/page_title", locals: { page_title: "Sign In" } %>
-
-<div class="row">
-  <div class="col-lg-12">
-    <%= render partial: "layouts/flash_message" %>
-  </div>
-</div>
-
+<%= render partial: "layouts/flash_message" %>
 
 <div class="row">
 
@@ -25,7 +19,7 @@
         </div>
 
         <div class="form-group">
-        <%= f.submit "Sign In", class: "btn btn-default" %>
+          <%= f.submit "Sign In", class: "btn btn-default" %>
         </div>
 
       <% end %>
