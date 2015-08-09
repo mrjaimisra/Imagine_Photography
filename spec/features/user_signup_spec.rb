@@ -31,7 +31,5 @@ RSpec.describe "a user who signs up", type: :feature do
       expect(current_path).to eq(sign_up_path)
       expect(page).to have_content("Ya screwed something up parter, try again!")
     end
-
   end
-
 end

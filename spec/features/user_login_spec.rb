@@ -58,8 +58,7 @@ RSpec.describe "a user", type: :feature do
 
   context "a registered user" do
     it "can log in" do
-      register_user
-      sign_in
+      register_and_sign_in_user
       within(".navbar-nav") do
         expect(page).to have_content("Jason")
         expect(page).to have_content("Sign Out")
@@ -67,8 +66,7 @@ RSpec.describe "a user", type: :feature do
     end
 
     it "can sign out and sign in" do
-      register_user
-      sign_in
+      register_and_sign_in_user
 
       click_link "Sign Out"
       click_link "Sign In"

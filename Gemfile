@@ -16,6 +16,7 @@ gem 'autoprefixer-rails'
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
+  gem 'rspec-mocks'
   gem 'guard-rspec'
   gem 'capybara'
   gem 'launchy'
