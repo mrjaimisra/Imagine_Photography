@@ -40,11 +40,11 @@ RSpec.describe "a user", type: :feature do
   context "a registered user" do
     it "can log in" do
       register_and_sign_in_user
+
       within(".navbar-nav") do
         expect(page).to have_content("Sign Out")
+        expect(page).to have_link("Profile")
       end
-
-      expect(page).to have_content ("YeeHaw! Jason is signed in!")
     end
 
     it "can sign out and sign in" do
