@@ -20,7 +20,6 @@ RSpec.describe "a user", type: :feature do
       within(".navbar-nav") do
         expect(page).to have_content("Sign Out")
         expect(page).to_not have_content("Sign In")
-        expect(page).to have_content("Jason")
       end
     end
 
@@ -35,6 +34,29 @@ RSpec.describe "a user", type: :feature do
 
       expect(current_path).to eq(login_path)
       expect(page).to have_content("Sorry m'friend. You go HUNGRY!")
+    end
+  end
+
+  context "a registered user" do
+    it "can log in" do
+      register_and_sign_in_user
+      within(".navbar-nav") do
+        expect(page).to have_content("Sign Out")
+      end
+
+      expect(page).to have_content ("YeeHaw! Jason is signed in!")
+    end
+
+    it "can sign out and sign in" do
+      register_and_sign_in_user
+
+      click_link "Sign Out"
+      click_link "Sign In"
+      expect(page).to_not have_content("YeeHaw! Jason is signed in!")
+
+      sign_in
+      expect(page).to have_content ("YeeHaw! Jason is signed in!")
+      expect(page).to have_content("Sign Out")
     end
 
     it "can log out" do
@@ -53,28 +75,6 @@ RSpec.describe "a user", type: :feature do
 
       expect(current_path).to eq(root_path)
       expect(page).to have_content("Sign In")
-    end
-  end
-
-  context "a registered user" do
-    it "can log in" do
-      register_and_sign_in_user
-      within(".navbar-nav") do
-        expect(page).to have_content("Jason")
-        expect(page).to have_content("Sign Out")
-      end
-    end
-
-    it "can sign out and sign in" do
-      register_and_sign_in_user
-
-      click_link "Sign Out"
-      click_link "Sign In"
-      expect(page).to_not have_content("YeeHaw, you fat cow! Jason is logged in")
-
-      sign_in
-      expect(page).to have_content("Jason")
-      expect(page).to have_content("Sign Out")
     end
   end
 end
