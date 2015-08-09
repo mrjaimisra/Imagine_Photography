@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::BaseController
-  def create
-    redirect_to admin_path
+  def index
+
   end
 end
