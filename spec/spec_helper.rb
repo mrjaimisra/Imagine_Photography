@@ -39,6 +39,18 @@ RSpec.configure do |config|
     click_button "Sign In"
   end
 
+  def register_and_sign_in_user
+    visit login_path
+    click_link "Sign Up"
+
+    within(".create-user-form") do
+      fill_in_form
+      click_button("Sign Up")
+    end
+
+    expect(page).to have_content("Sign Out")
+  end
+
   def register_user
     visit login_path
     click_link "Sign Up"
@@ -48,8 +60,9 @@ RSpec.configure do |config|
       click_button("Sign Up")
     end
 
+    expect(current_path).to eq menu_path
     click_link "Sign Out"
-    expect(page).to have_content("Sign In")
+    expect(page).to have_content "Sign In"
   end
 
   # Test Coverage tools

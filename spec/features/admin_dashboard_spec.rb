@@ -16,9 +16,9 @@ RSpec.describe "an admin" do
       end
 
       expect(current_path).to eq menu_path
-      visit "/admin/users"
+      visit "/admin/dashboard"
 
-      expect(page).to eq admin_dashboard_index_path
+      expect(current_path).to eq admin_dashboard_path
 
       within(".nav-header") do
         expect(page).to have_content "Admin Dashboard"
@@ -28,18 +28,17 @@ RSpec.describe "an admin" do
 
   context "a registered user" do
     it "can not access the admin dashboard" do
-      register_user
-      sign_in
+      register_and_sign_in_user
 
       visit "/admin/dashboard"
-      expect(current_path).to eq "/404"
+      expect(page).to have_content "The page you were looking for doesn't exist."
     end
   end
 
   context "an unregistered user" do
     it "can not access the admin dashboard" do
       visit "/admin/dashboard"
-      expect(current_path).to eq "/404"
+      expect(page).to have_content "The page you were looking for doesn't exist."
     end
   end
 end

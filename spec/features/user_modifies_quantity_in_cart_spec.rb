@@ -4,7 +4,6 @@ RSpec.describe "the cart quantity", type: :feature do
   context "a user with items in the cart" do
     it "adds items to the cart" do
       item = create_item
-      sign_in
       visit menu_path
 
       within(".item-info") do
@@ -26,7 +25,7 @@ RSpec.describe "the cart quantity", type: :feature do
 
     it "decreases quantity of items from the cart" do
       item = create_item
-      sign_in
+      register_and_sign_in_user
       visit menu_path
 
       within(".item-info") do
@@ -48,7 +47,7 @@ RSpec.describe "the cart quantity", type: :feature do
 
     it "displays total cost" do
       create_item
-      sign_in
+      register_and_sign_in_user
       visit menu_path
 
       2.times { click_button "Add to Cart" }
@@ -61,7 +60,7 @@ RSpec.describe "the cart quantity", type: :feature do
 
     it "displays the subtotal" do
       create_item
-      sign_in
+      register_and_sign_in_user
       visit menu_path
 
       4.times { click_button "Add to Cart" }
@@ -74,7 +73,7 @@ RSpec.describe "the cart quantity", type: :feature do
 
     it "removes items from the cart" do
       item = create_item
-      sign_in
+      register_and_sign_in_user
       visit menu_path
       2.times { click_button "Add to Cart" }
       click_link "Cart"
@@ -92,7 +91,7 @@ RSpec.describe "the cart quantity", type: :feature do
 
     it "removes the item if the quantity is zero" do
       item = create_item
-      sign_in
+      register_and_sign_in_user
       visit menu_path
       2.times { click_button "Add to Cart" }
       click_link "Cart"
