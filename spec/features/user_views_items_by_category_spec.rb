@@ -33,7 +33,7 @@ RSpec.describe "the category view", type: :feature do
       visit "menu/#{category.name}"
 
       within(".page-title") do
-        expect(page).to have_content("#{category.name}")
+        expect(page).to have_content("#{category.name.capitalize}")
       end
 
       within(".item-box") do

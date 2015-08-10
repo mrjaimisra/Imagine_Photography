@@ -31,8 +31,7 @@ RSpec.describe "the cart", type: :feature do
         expect(current_path).to eq menu_path
       end
 
-      register_user
-      sign_in
+      register_and_sign_in_user
       expect(current_path).to eq menu_path
 
       click_link "Cart"
@@ -47,7 +46,7 @@ RSpec.describe "the cart", type: :feature do
   context "a user that's logged in" do
     it "can add items to the cart" do
       item = create_item
-      sign_in
+      register_and_sign_in_user
       visit menu_path
 
       within(".item-info") do
@@ -68,7 +67,7 @@ RSpec.describe "the cart", type: :feature do
   context "a user that's logged in" do
     it "can add items to the cart" do
       item = create_item
-      sign_in
+      register_and_sign_in_user
       visit menu_path
 
       within(".item-info") do
