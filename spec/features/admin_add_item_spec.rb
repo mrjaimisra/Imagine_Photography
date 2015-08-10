@@ -15,7 +15,7 @@ RSpec.describe "an admin on their dashboards" do
     expect(page).to have_content("Category")
   end
 
-  xit "can submit a new item to the menu" do
+  it "can submit a new item to the menu" do
     register_admin
     sign_in
 
@@ -23,6 +23,14 @@ RSpec.describe "an admin on their dashboards" do
     click_link "Add New Meal"
 
     expect(current_path).to eq("/admin/items/new")
+
+    fill_in "Name", with: "Chicken Fingers"
+    fill_in "Description", with: "Golden fried crispy battered chicken breast"
+    fill_in "Price", with: "Priceless"
+    fill_in "Image_URL", with: "Priceless"
+    fill_in "Category", with: "Lunch"
+    fill_in "Image URL", with: "http://thumb7.shutterstock.com/display_pic_with_logo/847900/156385361/stock-photo-breaded-chicken-fingers-156385361.jpg"
+    click_button "Add Meal"
 
     visit menu_path
     expect(page).to have_content("Chicken Fingers")
