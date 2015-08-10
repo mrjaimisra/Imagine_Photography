@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   get "/menu", to: "items#index", as: :menu
+  post "/menu", to: "location#check_zipcode", as: :zipcode
   get "meals/:id", to: "items#show", as: :meal
   get "menu/:id", to: "menu/categories#show"
 
