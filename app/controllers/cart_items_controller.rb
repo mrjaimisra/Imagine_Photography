@@ -25,8 +25,10 @@ class CartItemsController < ApplicationController
 
   def remove_and_render_flash(id)
     item = Item.find_by(id: id)
-    flash[:success] = %[Successfully removed <a href="/meals/#{params[:id]}">
-    #{item.name}</a> from your cart.]
+    link = "<a href='/meals/#{params[:id]}'>#{item.name}</a>"
+    flash[:success] =
+      %[Successfully removed #{link} from your cart.]
+
     cart.remove_from_cart(item)
   end
 end
