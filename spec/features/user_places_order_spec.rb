@@ -1,20 +1,5 @@
 require "rails_helper"
 
-# Background: An existing user and a cart with items
-#
-# As a visitor
-# When I visit "/cart"
-# And I click "Checkout"
-# Then I should be required to login
-#
-# When I am logged in
-# And I visit "/cart"
-# And I click "Checkout"
-# Then the order should be placed
-# And my current page should be "/orders"
-# And I should see a message "Order was successfully placed"
-# And I should see the order I just placed in a table
-
 RSpec.describe "a user with a non empty cart", type: :feature do
   let!(:item) { create_item }
 
