@@ -38,9 +38,9 @@ class CartItemsController < ApplicationController
     uri = URI("https://www.zipcodeapi.com/rest/0B3bMb02Ei5MI1SgnRzXhOJPZkY9V7kWIo7uz8xdqC09DTp1KZZ1NIRN2QXYXiVG/distance.json/80303/#{current_user.zipcode}/mile")
     distance = Net::HTTP.get(uri)
     if Location.success_or_fail(distance)
-      flash.now[:success] = "We deliver in your area!"
+      flash[:success] = "We deliver in your area!"
     else
-      flash.now[:warning] = "We unfortunately do not deliver in your area."
+      flash[:warning] = "We unfortunately do not deliver in your area."
     end
   end
 end

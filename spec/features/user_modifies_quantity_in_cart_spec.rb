@@ -79,7 +79,9 @@ RSpec.describe "the cart quantity", type: :feature do
       click_link "Cart"
 
       click_link "Remove"
-      expect(page).to have_content "Successfully removed #{item.name} from your cart."
+      within(".alert-success") do
+        expect(page).to have_content "Successfully removed #{item.name} from your cart."
+      end
 
       within(".table-striped") do
         expect(page).to_not have_content item.name
