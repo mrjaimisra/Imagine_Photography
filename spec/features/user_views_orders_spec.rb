@@ -8,6 +8,7 @@
 # And when I click that link
 # Then I should see each item that was ordered with the quantity and line-item subtotals
 # And I should see links to each item's show page
+
 # And I should see the current status of the order (ordered, paid, cancelled, completed)
 # And I should see the total price for the order
 # And I should see the date/time that the order was submitted
@@ -31,6 +32,8 @@ RSpec.describe "a user with one previous order", type: :feature do
     # add an item to cart
     within(".item-info") do
       expect(page).to have_content item.name
+      click_button "Add to Cart"
+      click_button "Add to Cart"
       click_button "Add to Cart"
     end
 
@@ -82,15 +85,44 @@ RSpec.describe "a user with one previous order", type: :feature do
           expect(current_path).to eq("/users/#{default_user.id}/orders/1")
         end
 
-        it "and sees the order" do
+        it "and sees the order number" do
           within(".page-title") do
             expect(page).to have_content("Order Number: 1")
           end
         end
 
-        
-      end
+        it "and sees the order item" do
+          within(".order") do
+            expect(page).to have_content(item.name)
+            expect(page).to have_content(item.price)
+            #subtotal
+            expect(page).to have_content((item.price * 3).to_s)
+            expect(page).to have_content("3")
+            expect(page).to have_link("View")
+          end
+        end
 
+        it "and sees the order total" do
+          within(".total") do
+            expect(page).to have_content((item.price * 3).to_s)
+          end
+        end
+
+        it "and sees the date and time order was placed" do
+          within(".order") do
+            expect(page).to have_content("Last Updated")
+          end
+        end
+
+        xit "and sees the current status" do
+          within(".order") do
+            expect(page).to have_content("Status")
+            expect(page).to have_content("Completed")
+          end
+        end
+
+      end
     end
   end
 end
+

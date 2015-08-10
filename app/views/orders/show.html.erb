@@ -1,1 +1,49 @@
 <%= render partial: "layouts/page_title", locals: { page_title: "Order Number: #{@order.id}" } %>
+
+<div class="row">
+  <!-- Grid being used for spacing maybe try to do it with sass in view refactor -->
+  <div class="col-md-3"><h4>Details:</h4></div>
+  <div class="col-md-9"></div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped order">
+
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+      <th>Status</th>
+      <th>Last Updated</th>
+      <th></th>
+    </tr>
+
+    <% @order.order_items.each do |order_item| %>
+      <tr>
+        <td><%= link_to image_tag(
+                          order_item.image_url,
+                          height: 80,
+                          width: 80,
+                          class: "img-circle"
+                        ),
+                        meal_path(id: order_item.item_id) %></td>
+        <td><%= order_item.name %></td>
+        <td>$<%= order_item.price %></td>
+        <td><%= order_item.quantity %></td>
+        <div class="subtotal">
+          <td>$<%= order_item.subtotal %></td>
+        </div>
+        <!--<td>$<%#= order_item.status %></td>-->
+        <td>$<%= order_item.updated_at %></td>
+        <td><%= link_to "View", meal_path(id: order_item.id)%></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <div class="total">
+    <h3>Total: $<%= @order.total %></h3>
+  </div>
+
+</div>
