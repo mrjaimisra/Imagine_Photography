@@ -9,11 +9,18 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
-  # namespace :admin do
+  # namespace "admin/dashboards" do
   #   resources :users, only: [:index]
   # end
 
-  get "/admin/dashboard", to: "admin/dashboard#index"
+  namespace "admin" do
+    resources :items, only: [:new, :create, :edit, :destroy]
+
+    # get 'dashboards', to: "dashboards#show"
+    resource :dashboard, only: [:show]
+  end
+
+
 
   namespace :menu do
     resources :categories, only: [:show]
@@ -21,6 +28,8 @@ Rails.application.routes.draw do
 
   get "/menu", to: "items#index", as: :menu
   get "meals/:id", to: "items#show", as: :meal
+
+
   get "menu/:id", to: "menu/categories#show"
 
   post "/cart_items", to: "cart_items#create"
@@ -28,3 +37,5 @@ Rails.application.routes.draw do
   get "/cart", to: "cart_items#index"
   delete "/cart_items", to: "cart_items#destroy"
 end
+
+

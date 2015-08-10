@@ -1,0 +1,25 @@
+<br/>
+<br/>
+
+<% @item.errors.full_messages.each do |message| %>
+    <%= message %>
+<% end %>
+
+<%= form_for [:admin, @item] do |f| %>
+    <%= f.label :name %>
+    <br/>
+    <%= f.text_field :name %>
+    <br/>
+    <%= f.label :description %>
+    <br/>
+    <%= f.text_area :description %>
+    <br/>
+    <%= f.label :price %>
+    <br/>
+    <%= f.text_field :price %>
+    <br/>
+    <%= f.label :category %>
+    <%= f.collection_select(:category, Category.all, :id, :name) %>
+    <br/>
+    <%= f.submit "Add Meal" %>
+<% end %>
