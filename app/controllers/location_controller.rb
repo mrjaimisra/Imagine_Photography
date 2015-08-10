@@ -1,4 +1,4 @@
-require 'net/http'
+require "net/http"
 class LocationController < ApplicationController
   def check_zipcode
     uri = URI("https://www.zipcodeapi.com/rest/q4wC4x8EnBskPuMTz2qrSYKvOG64nnaNsGpwexaB9CWY7JSGLi7EgS95zf9WDkJ5/distance.json/80304/#{params[:location][:ZipCode]}/mile")
