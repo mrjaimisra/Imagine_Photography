@@ -66,7 +66,7 @@ RSpec.describe "a user with a non empty cart", type: :feature do
 
         it "sees order" do
           within(".page-title") do
-            expect(page).to have_content("#{default_user.username}'s Order")
+            expect(page).to have_content("#{default_user.username}'s Order's")
           end
 
           within(".orders") do

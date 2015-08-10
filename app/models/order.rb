@@ -12,4 +12,8 @@ class Order < ActiveRecord::Base
       total += order_item.quantity * Item.find(order_item.item_id).price
     end
   end
+
+  def status
+    Status.find(status_id).name
+  end
 end

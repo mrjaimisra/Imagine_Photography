@@ -1,4 +1,4 @@
-<%= render partial: "layouts/page_title", locals: { page_title: "#{@order.first.customer_name}'s Order" } %>
+<%= render partial: "layouts/page_title", locals: { page_title: "#{@orders.first.customer_name}'s Order's" } %>
 <%= render partial: "layouts/flash_message" %>
 
 <div class="row">
@@ -14,13 +14,17 @@
       <th>Order Number</th>
       <th>Total</th>
       <th>Order Completed</th>
+      <th></th>
     </tr>
 
-    <% @order.each do |order| %>
+    <% @orders.each do |order| %>
       <tr>
-        <td><%= order.id %></td>
+        <!--<td><%#= link_to order.id, user_orders_path(user_id: @orders.first.user_id, id: order.id) %></td>-->
+        <td><%= link_to order.id, "/users/#{order.user_id}/orders/#{order.id}" %></td>
         <td><%= order.total %></td>
         <td><%= order.created_at.strftime("%A, %d %b %Y %l:%M %p") %></td>
+        <!--<td><%#= link_to "View", user_orders_path(user_id: order.user_id, id: order.id) %></td>-->
+        <td><%= link_to "View", "/users/#{order.user_id}/orders/#{order.id}" %></td>
       </tr>
     <% end %>
   </table>

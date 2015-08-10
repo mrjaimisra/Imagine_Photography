@@ -6,6 +6,8 @@ class OrdersController < ApplicationController
     if user
       order = current_user.orders.new
       add_order_items(order)
+      # default status to completed for now
+      order.status_id = 1
       order.save
 
       flash[:success] = "Order placed! Dinners on the way!"
@@ -17,7 +19,11 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @order = Order.all
+    @orders = current_user.orders
+  end
+
+  def show
+    @order = Order.find(params[:id])
   end
 
   private
