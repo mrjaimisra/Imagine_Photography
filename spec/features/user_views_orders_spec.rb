@@ -8,7 +8,7 @@ RSpec.describe "a user with one previous order", type: :feature do
     register_user
 
     visit menu_path
-    
+
     within(".item-info") do
       expect(page).to have_content item.name
       click_button "Add to Cart"
@@ -74,7 +74,6 @@ RSpec.describe "a user with one previous order", type: :feature do
           within(".order") do
             expect(page).to have_content(item.name)
             expect(page).to have_content(item.price)
-            #subtotal
             expect(page).to have_content((item.price * 3).to_s)
             expect(page).to have_content("3")
             expect(page).to have_link("View")
@@ -104,4 +103,3 @@ RSpec.describe "a user with one previous order", type: :feature do
     end
   end
 end
-
