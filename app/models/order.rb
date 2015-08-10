@@ -8,7 +8,7 @@ class Order < ActiveRecord::Base
   end
 
   def total
-    self.order_items.reduce(0) do |total, order_item|
+    order_items.inject(0) do |total, order_item|
       total += order_item.quantity * Item.find(order_item.item_id).price
     end
   end
@@ -16,5 +16,4 @@ class Order < ActiveRecord::Base
   def status
     Status.find(status_id).name
   end
-
 end

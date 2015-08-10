@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
     user = current_user
 
     if user
-      order = current_user.orders.new()
+      order = current_user.orders.new
       add_order_items(order)
       # default status to completed for now
       order.status_id = 1
@@ -25,7 +25,6 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
   end
-
 
   private
 
