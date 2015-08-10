@@ -8,7 +8,7 @@ RSpec.describe "a user with one previous order", type: :feature do
     register_user
 
     visit menu_path
-    # add an item to cart
+    
     within(".item-info") do
       expect(page).to have_content item.name
       click_button "Add to Cart"
