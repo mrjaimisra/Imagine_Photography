@@ -24,6 +24,7 @@ require "rails_helper"
 
 RSpec.describe "a user with one previous order", type: :feature do
   let!(:item) { create_item }
+  let!(:status) { Status.create(name: "Completed") }
 
   before do
     register_user
@@ -114,7 +115,7 @@ RSpec.describe "a user with one previous order", type: :feature do
           end
         end
 
-        xit "and sees the current status" do
+        it "and sees the current status" do
           within(".order") do
             expect(page).to have_content("Status")
             expect(page).to have_content("Completed")

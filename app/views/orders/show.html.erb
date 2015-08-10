@@ -35,8 +35,8 @@
         <div class="subtotal">
           <td>$<%= order_item.subtotal %></td>
         </div>
-        <!--<td>$<%#= order_item.status %></td>-->
-        <td>$<%= order_item.updated_at %></td>
+        <td><%= @order.status %></td>
+        <td><%= order_item.updated_at %></td>
         <td><%= link_to "View", meal_path(id: order_item.id)%></td>
       </tr>
     <% end %>

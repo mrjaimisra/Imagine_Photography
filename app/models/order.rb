@@ -13,4 +13,8 @@ class Order < ActiveRecord::Base
     end
   end
 
+  def status
+    Status.find(status_id).name
+  end
+
 end
