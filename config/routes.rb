@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [] do
     get "/orders", to: "orders#index"
+    get "/orders/:id", to: "orders#show"
   end
 
 end
