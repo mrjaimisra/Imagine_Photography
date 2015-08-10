@@ -7,12 +7,20 @@ class Seed
   def run
     create_categories
     create_items
+    create_statuses
   end
 
   def create_categories
     names = %w(breakfast lunch dinner)
     [*0..2].each do |num|
       Category.create(name: names[num])
+    end
+  end
+
+  def create_statuses
+    names = %w(ordered paid cancelled completed)
+    [*0..3].each do |num|
+      Status.create(name: names[num])
     end
   end
 

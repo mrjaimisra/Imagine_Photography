@@ -15,18 +15,19 @@ gem "bootstrap-sass"
 gem "autoprefixer-rails"
 
 group :development, :test do
-  gem "byebug"
-  gem "rspec-rails"
-  gem "rspec-mocks"
-  gem "guard-rspec"
-  gem "capybara"
-  gem "launchy"
-  gem "pry-rails"
-  gem "selenium-webdriver"
-  gem "chromedriver-helper"
-  gem "database_cleaner"
-  gem "simplecov", require: false
-  gem "codeclimate-test-reporter", require: nil
-  gem "web-console", "~> 2.0"
+  gem 'byebug'
+  gem 'rspec-rails'
+  gem 'rspec-mocks'
+  gem 'guard-rspec'
+  gem 'capybara'
+  gem 'shoulda-matchers'
+  gem 'launchy'
+  gem 'pry-rails'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
+  gem 'database_cleaner'
+  gem 'simplecov', require: false
+  gem 'codeclimate-test-reporter', require: nil
+  gem 'web-console', '~> 2.0'
 end
 
