@@ -31,6 +31,18 @@ RSpec.configure do |config|
     fill_in "Password", with: "Noob"
   end
 
+  def default_user
+    User.find_by(username: default_username)
+  end
+
+  def default_username
+    "Jason"
+  end
+
+  def default_password
+    "Noob"
+  end
+
   def sign_in
     visit root_path
     click_link "Sign In"
@@ -52,14 +64,5 @@ RSpec.configure do |config|
     expect(page).to have_content("Sign In")
   end
 
-  # Test Coverage tools
-  # https://github.com/codeclimate/ruby-test-reporter/issues/61
-  # http://docs.travis-ci.com/user/environment-variables/
-  if ENV['CI']
-    require 'codeclimate-test-reporter'
-    CodeClimate::TestReporter.start
-  else
-    require 'simplecov'
-    SimpleCov.start
-  end
+
 end
