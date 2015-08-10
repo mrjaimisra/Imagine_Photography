@@ -6,7 +6,6 @@ RSpec.describe "a user with a non empty cart", type: :feature do
   before do
     visit menu_path
 
-    # add an item to cart
     within(".item-info") do
       expect(page).to have_content item.name
       click_button "Add to Cart"
@@ -32,7 +31,10 @@ RSpec.describe "a user with a non empty cart", type: :feature do
           expect(current_path).to eq(login_path)
 
           within(".alert") do
-            expect(page).to have_content("Sign In to complete your order, Dinners almost ready!")
+            expect(page)
+              .to have_content(
+                    "Sign In to complete your order, Dinners almost ready!"
+                  )
           end
           within(".login-form") do
             expect(page).to have_button("Sign In")
@@ -74,7 +76,6 @@ RSpec.describe "a user with a non empty cart", type: :feature do
             expect(page).to have_content((item.price * 3).to_s)
           end
         end
-
       end
     end
   end

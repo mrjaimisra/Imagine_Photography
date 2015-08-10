@@ -22,8 +22,8 @@ RSpec.configure do |config|
   end
 
   def create_item
-    @item = Item.create(name: "Hamburger", description: "So delicious.",
-      price: 12, image_url: test_image_url, category_id: 2)
+    @item = Item.create(name:  "Hamburger", description: "So delicious.",
+                        price: 12, image_url: test_image_url, category_id: 2)
   end
 
   def fill_in_form
@@ -77,5 +77,12 @@ RSpec.configure do |config|
     expect(page).to have_content "Sign In"
   end
 
+  if ENV['CI']
+    require 'codeclimate-test-reporter'
+    CodeClimate::TestReporter.start
+  else
+    require 'simplecov'
+    SimpleCov.start
+  end
 
 end

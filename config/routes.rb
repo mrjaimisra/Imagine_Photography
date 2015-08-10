@@ -35,5 +35,4 @@ Rails.application.routes.draw do
   resources :users, only: [] do
     get "/orders", to: "orders#index"
   end
-
 end

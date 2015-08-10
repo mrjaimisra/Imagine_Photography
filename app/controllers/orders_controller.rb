@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
     user = current_user
 
     if user
-      order = current_user.orders.new()
+      order = current_user.orders.new
       add_order_items(order)
       order.save
 
@@ -19,7 +19,6 @@ class OrdersController < ApplicationController
   def index
     @order = Order.all
   end
-
 
   private
 
