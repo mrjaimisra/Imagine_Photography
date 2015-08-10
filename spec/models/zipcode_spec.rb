@@ -10,7 +10,14 @@ RSpec.describe "the zipcode filter" do
   end
 
   it "returns true for allowed zipcodes" do
-    zipcode = "12345"
     expect(Zipcode.new("12345").allowed?).to eq true
+  end
+
+  it "returns false for unallowed zipcodes" do
+    expect(Zipcode.new("54321").allowed?).to eq false
+  end
+
+  it "returns false for invalid zipcodes" do
+    expect(Zipcode.new("5&% :)").allowed?).to eq false
   end
 end

@@ -5,7 +5,7 @@ class Zipcode
   end
 
   def allowed?
-    true if zipcodes.include?(code)
+    zipcodes.include?(code)
   end
 
   def zipcodes
