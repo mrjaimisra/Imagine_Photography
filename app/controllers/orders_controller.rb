@@ -39,9 +39,9 @@ class OrdersController < ApplicationController
     @twilio_client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
 
     @twilio_client.account.messages.create(
-      :from => "+1#{twilio_phone_number}",
-      :to => "+1#{send_to}",
-      :body => "Your order is on it's way! - Dinner's Ready"
+      from: "+1#{twilio_phone_number}",
+      to: "+1#{send_to}",
+      body: "Your order is on it's way! - Dinner's Ready"
     )
   end
 end
