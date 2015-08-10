@@ -12,17 +12,6 @@
     </div>
 
     <div class="col-md-9">
-      <div class="row carousel-holder">
-        <div class="text-box">
-          <h1>Enter ZipCode to see if we deliver in your area</h1>
-          <%= form_for(:location, url: zipcode_path) do |f| %>
-            <%= f.label "ZipCode" %>
-            <%= f.text_field "ZipCode" %>
-            <%= f.submit "Submit" %>
-          <% end %>
-        </div>
-      </div>
-
       <div class="row item-info">
 
         <% @items.each do |item| %>
