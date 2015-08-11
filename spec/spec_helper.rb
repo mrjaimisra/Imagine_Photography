@@ -57,7 +57,7 @@ RSpec.configure do |config|
 
     within(".create-user-form") do
       fill_in_form
-      fill_in "Zipcode", with: "80303"
+      fill_in "Zipcode", with: "22630"
       fill_in "Phone number", with: "7203817045"
       click_button("Sign Up")
     end

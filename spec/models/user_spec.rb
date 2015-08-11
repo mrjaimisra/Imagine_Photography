@@ -4,7 +4,7 @@ RSpec.describe "the user", type: :model do
   let(:user) {
     User.create(username: "Ronda",
                 password: "Rousey",
-                zipcode: 12345,
+                zipcode: 80304,
                 phone_number: "7203817045")
   }
 
@@ -28,7 +28,7 @@ RSpec.describe "the user", type: :model do
     end
 
     it "has an associated zipcode" do
-      expect(user.zipcode).to eq 12345
+      expect(user.zipcode).to eq 80304
     end
 
     it "has an associated phone number" do
