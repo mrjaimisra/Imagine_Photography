@@ -27,7 +27,7 @@ RSpec.describe "an admin on their dashboards" do
     fill_in "Name", with: "Chicken Fingers"
     fill_in "Description", with: "Golden fried crispy battered chicken breast"
     fill_in "Price", with: "14"
-    fill_in "Image", with: "http://thumb7.shutterstock.com/display_pic_with_logo/847900/156385361/stock-photo-breaded-chicken-fingers-156385361.jpg"
+    fill_in "Image", with: test_image_url
     click_button "Add Meal"
 
     visit menu_path

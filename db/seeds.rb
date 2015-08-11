@@ -28,7 +28,11 @@ class Seed
     id = %w(1 2 3)
     price = %w(3 5 7 9 11 13 15)
     [*1...15].each do |num|
-      Item.create(name: name.rotate(num).first, description: description, price: price.rotate(num).first, image_url: image_url, category_id: id.rotate(num).first)
+      Item.create(name: name.rotate(num).first,
+                  description: description,
+                  price: price.rotate(num).first,
+                  image_url: image_url,
+                  category_id: id.rotate(num).first)
     end
   end
 
