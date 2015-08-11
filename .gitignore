@@ -12,8 +12,7 @@
 !/log/.keep
 /tmp
 Gemfile.lock
+config/secrets.yml
 
 # Ignore SimpleCov coverage folder
 coverage/
-
-

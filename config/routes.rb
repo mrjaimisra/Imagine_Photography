@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post "/sign_up", to: "users#create"
   get "/profile", to: "users#show"
 
+
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
   end
 
   get "/menu", to: "items#index", as: :menu
+  post "/menu", to: "location#check_zipcode", as: :zipcode
   get "meals/:id", to: "items#show", as: :meal
 
 
@@ -35,7 +37,15 @@ Rails.application.routes.draw do
   post "/cart_items", to: "cart_items#create"
   put "/cart_items", to: "cart_items#update"
   get "/cart", to: "cart_items#index"
+
   delete "/cart_items", to: "cart_items#destroy"
+
+  post "/orders", to: "orders#create"
+
+  resources :users, only: [] do
+    get "/orders", to: "orders#index"
+    get "/orders/:id", to: "orders#show"
+  end
 end
 
 

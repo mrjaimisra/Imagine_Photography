@@ -22,13 +22,25 @@ RSpec.configure do |config|
   end
 
   def create_item
-    @item = Item.create(name: "Hamburger", description: "So delicious.",
-      price: 12, image_url: test_image_url, category_id: 2)
+    @item = Item.create(name:  "Hamburger", description: "So delicious.",
+                        price: 12, image_url: test_image_url, category_id: 2)
   end
 
   def fill_in_form
     fill_in "Username", with: "Jason"
     fill_in "Password", with: "Noob"
+  end
+
+  def default_user
+    User.find_by(username: default_username)
+  end
+
+  def default_username
+    "Jason"
+  end
+
+  def default_password
+    "Noob"
   end
 
   def sign_in
@@ -45,6 +57,8 @@ RSpec.configure do |config|
 
     within(".create-user-form") do
       fill_in_form
+      fill_in "Zipcode", with: "80303"
+      fill_in "Phone number", with: "7203817045"
       click_button("Sign Up")
     end
 
@@ -65,9 +79,6 @@ RSpec.configure do |config|
     expect(page).to have_content "Sign In"
   end
 
-  # Test Coverage tools
-  # https://github.com/codeclimate/ruby-test-reporter/issues/61
-  # http://docs.travis-ci.com/user/environment-variables/
   if ENV['CI']
     require 'codeclimate-test-reporter'
     CodeClimate::TestReporter.start
@@ -75,4 +86,5 @@ RSpec.configure do |config|
     require 'simplecov'
     SimpleCov.start
   end
+
 end
