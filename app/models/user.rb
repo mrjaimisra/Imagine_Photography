@@ -1,7 +1,18 @@
 class User < ActiveRecord::Base
-  validates :username, presence: true, uniqueness: true
   has_secure_password
   has_many :orders
+  validates :username, presence: true, uniqueness: true
 
   enum role: %w(default admin)
+
+  def valid_delivery?
+    destination = "#{street_name}, #{zipcode}"
+    check_validity(destination) < 50
+  end
+
+  def check_validity(destination)
+    origin = "1510 Blake Street, Denver"
+    directions = GoogleDirections.new(origin, destination)
+    directions.distance_in_miles
+  end
 end
