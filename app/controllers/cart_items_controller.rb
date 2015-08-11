@@ -1,6 +1,10 @@
 class CartItemsController < ApplicationController
   def index
     @cart_items = cart.items
+    # will delete in fabrication implementation
+    # current_user.zipcode = "22630" if current_user
+    # current_user.street_name = "2717 Glenwood Drive" if current_user
+    current_user.valid_delivery? if current_user
   end
 
   def create
