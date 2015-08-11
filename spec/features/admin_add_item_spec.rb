@@ -26,18 +26,15 @@ RSpec.describe "an admin on their dashboards" do
 
     fill_in "Name", with: "Chicken Fingers"
     fill_in "Description", with: "Golden fried crispy battered chicken breast"
-    fill_in "Price", with: "Priceless"
-    fill_in "Image_URL", with: "Priceless"
-    fill_in "Category", with: "Lunch"
-    fill_in "Image URL", with: "http://thumb7.shutterstock.com/display_pic_with_logo/847900/156385361/stock-photo-breaded-chicken-fingers-156385361.jpg"
+    fill_in "Price", with: "14"
+    fill_in "Image", with: "http://thumb7.shutterstock.com/display_pic_with_logo/847900/156385361/stock-photo-breaded-chicken-fingers-156385361.jpg"
     click_button "Add Meal"
 
     visit menu_path
+
     expect(page).to have_content("Chicken Fingers")
     expect(page).to have_content("Golden fried crispy battered chicken breast")
-    expect(page).to have_content("Priceless")
-    expect(page).to have_content("Lunch")
-    expect(page).to have_content("http://thumb7.shutterstock.com/display_pic_with_logo/847900/156385361/stock-photo-breaded-chicken-fingers-156385361.jpg")
+    expect(page).to have_content("14")
   end
 
   private

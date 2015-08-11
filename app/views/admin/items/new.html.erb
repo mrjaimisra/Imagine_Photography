@@ -19,7 +19,11 @@
     <%= f.text_field :price %>
     <br/>
     <%= f.label :category %>
-    <%= f.collection_select(:category, Category.all, :id, :name) %>
+    <br/>
+    <%= f.collection_select(:category, Category.all, :id, :name, include_blank: "Please Select") %>
+    <br/>
+    <%= f.label :image_url %>
+    <%= f.text_field :image_url %>
     <br/>
     <%= f.submit "Add Meal" %>
 <% end %>

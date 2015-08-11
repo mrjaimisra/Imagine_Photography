@@ -5,9 +5,9 @@ class Admin::ItemsController < Admin::BaseController
 
   def create
     @item = Item.new(item_params)
-
+    @item.category_id = params[:item][:category].to_i
     if @item.save
-      redirect_to admin_dashboard_path, notice: "#{@item.name} created"
+      redirect_to meal_path(@item), notice: "#{@item.name} created"
     else
       render :new
     end
@@ -15,6 +15,6 @@ class Admin::ItemsController < Admin::BaseController
 
   private
   def item_params
-    params.require(:item).permit(:name, :description, :price)
+    params.require(:item).permit(:name, :description, :price, :image_url)
   end
 end
