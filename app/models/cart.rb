@@ -29,4 +29,8 @@ class Cart
     data.reduce(0) { |total, (id, quantity)|
       total += Item.find_by(id: id).price * quantity }
   end
+
+  def empty
+    @data = Hash.new
+  end
 end

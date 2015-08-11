@@ -76,6 +76,16 @@ RSpec.describe "a user with a non empty cart", type: :feature do
             expect(page).to have_content((item.price * 3).to_s)
           end
         end
+
+        it "sees no items in cart" do
+          visit cart_path
+
+          within(".total") do
+            expect(page).to have_content("Total")
+            expect(page).to have_content("0")
+          end
+        end
+
       end
     end
   end

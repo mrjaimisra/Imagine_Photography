@@ -6,9 +6,11 @@ class OrdersController < ApplicationController
     if user
       order = current_user.orders.new
       add_order_items(order)
-      # default status to completed for now
       order.status_id = 1
       order.save
+
+      session[:cart] = {}
+      cart.empty
 
       flash[:success] = "Order placed! Dinners on the way!"
       redirect_to user_orders_path(user_id: current_user.id)
