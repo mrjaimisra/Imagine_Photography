@@ -20,7 +20,11 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_user.orders
+    if current_user
+      @orders = current_user.orders
+    else
+      authorization_error
+    end
   end
 
   def show
