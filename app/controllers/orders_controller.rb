@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
       send_text_message if current_user.phone_number
       order.save
 
-      session[:cart] = {}
+      session[:cart].clear
       cart.empty
 
       flash[:success] = "Order placed! Dinners on the way!"
@@ -47,7 +47,11 @@ class OrdersController < ApplicationController
     @twilio_client.account.messages.create(
       from: "+1#{twilio_phone_number}",
       to: "+1#{send_to}",
-      body: "Your order is on it's way! - Dinner's Ready"
+      body: "Your order is on it's way! Dinner will arrive in #{estimated_delivery_time} minutes. - Dinner's Ready"
     )
+  end
+
+  def estimated_delivery_time
+    current_user.delivery_time
   end
 end

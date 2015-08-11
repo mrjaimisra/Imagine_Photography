@@ -52,5 +52,9 @@ RSpec.describe "the user", type: :model do
     it "can get deliver if they live within 50 miles of the store" do
       expect(user.valid_delivery?).to eq true
     end
+
+    it "can get estimated delivery time" do
+      expect(user.delivery_time).to eq 7
+    end
   end
 end

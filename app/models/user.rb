@@ -6,14 +6,27 @@ class User < ActiveRecord::Base
 
   enum role: %w(default admin)
 
+  def destination
+    "#{street_name}, #{zipcode}"
+  end
+
+  def origin
+    "Union Station, Denver"
+  end
+
+  def directions
+    GoogleDirections.new(origin, destination)
+  end
+
   def valid_delivery?
-    destination = "#{street_name}, #{zipcode}"
     check_validity(destination) < 50
   end
 
   def check_validity(destination)
-    origin = "1510 Blake Street, Denver"
-    directions = GoogleDirections.new(origin, destination)
     directions.distance_in_miles
+  end
+
+  def delivery_time
+    directions.drive_time_in_minutes
   end
 end
