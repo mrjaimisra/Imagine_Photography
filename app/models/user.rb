@@ -19,11 +19,7 @@ class User < ActiveRecord::Base
   end
 
   def valid_delivery?
-    check_validity(destination) < 50
-  end
-
-  def check_validity(destination)
-    directions.distance_in_miles
+    directions.distance_in_miles < 50
   end
 
   def delivery_time
