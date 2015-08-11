@@ -7,7 +7,6 @@ RSpec.describe "a user with past orders", type: :feature do
     register_and_sign_in_user
 
     visit menu_path
-    # creating 2 orders will refactor this to spec helper
     within(".item-info") do
       expect(page).to have_content item.name
       click_button "Add to Cart"
@@ -35,7 +34,7 @@ RSpec.describe "a user with past orders", type: :feature do
 
     context "goes to the orders page" do
       before do
-        visit user_orders_path(user_id: default_user.id)
+        visit orders_path
       end
 
       it "can see past orders" do
@@ -57,7 +56,7 @@ RSpec.describe "a user with past orders", type: :feature do
 
     context "goes to the orders page" do
       before do
-        visit user_orders_path(user_id: default_user.id)
+        visit orders_path
       end
 
       it "sees 404 page" do
