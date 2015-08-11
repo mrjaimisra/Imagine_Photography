@@ -36,7 +36,7 @@ class CartItemsController < ApplicationController
 
   def delivery_flash?
     unless current_user.valid_delivery?
-        flash.now[:warning] = "We unfortunately do not deliver in your area."
+      flash.now[:warning] = "We unfortunately do not deliver in your area."
     end
   end
 end

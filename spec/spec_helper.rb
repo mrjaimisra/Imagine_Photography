@@ -56,8 +56,10 @@ RSpec.configure do |config|
     click_link "Sign Up"
 
     within(".create-user-form") do
-      fill_in_form
+      fill_in "Username", with: "Jason"
+      fill_in "Password", with: "Noob"
       fill_in "Zipcode", with: "22630"
+      fill_in "Street Name & Number", with: "2717 Glenwood Drive"
       fill_in "Phone number", with: "7203817045"
       click_button("Sign Up")
     end

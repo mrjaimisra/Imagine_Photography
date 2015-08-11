@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
   def check_validity(destination)
     origin = "1510 Blake Street, Denver"
     directions = GoogleDirections.new(origin, destination)
-    distance = directions.distance_in_miles
+    directions.distance_in_miles
   end
 end
-
