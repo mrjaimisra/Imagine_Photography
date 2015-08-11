@@ -27,6 +27,6 @@ class Cart
 
   def total
     data.reduce(0) { |total, (id, quantity)|
-      total += Item.find_by(id: id).price * quantity }
+      total += Item.find(id).price * quantity }
   end
 end
