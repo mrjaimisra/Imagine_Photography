@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "the user", type: :model do
-  let(:user) {
+  let!(:user) {
     User.create(username: "Ronda",
                 password: "Rousey",
                 zipcode: 80202,
