@@ -19,11 +19,9 @@
 
     <% @orders.each do |order| %>
       <tr>
-        <!--<td><%#= link_to order.id, orders_path(order) %></td>-->
         <td><%= link_to order.id, "/orders/#{order.id}" %></td>
         <td><%= order.total %></td>
         <td><%= order.created_at.strftime("%A, %d %b %Y %l:%M %p") %></td>
-        <!--<td><%#= link_to "View", orders_path(order) %></td>-->
         <td><%= link_to "View", "/orders/#{order.id}" %></td>
       </tr>
     <% end %>
