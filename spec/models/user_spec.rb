@@ -45,19 +45,12 @@ RSpec.describe "the user", type: :model do
       expect(user.valid_delivery?).to eq true
     end
 
-
     it "has an associated phone number" do
       expect(user.phone_number).to eq "7203817045"
     end
-  end
 
-  context "an invalid user" do
-    let(:user) { Fabricate(:user) }
-
-    it "can not get deliver if they live too far away" do
-      user.street_name = "212 West 1st Street"
-      user.zipcode = 22630
-      expect(user.valid_delivery?).to eq false
+    it "can get deliver if they live within 50 miles of the store" do
+      expect(user.valid_delivery?).to eq true
     end
   end
 end
