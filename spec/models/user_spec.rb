@@ -24,7 +24,7 @@ RSpec.describe "the user", type: :model do
       expect(user).to_not be_valid
     end
 
-    xit "has a default role of 'default'" do
+    it "has a default role of 'default'" do
       expect(user.role).to eq "default"
     end
 
