@@ -7,6 +7,7 @@ RSpec.describe "an admin" do
     it "can visit the admin dashboard" do
       sign_in(admin)
       admin.role = 1
+
       allow_any_instance_of(ApplicationController).to receive(:current_user)
         .and_return(admin)
 
