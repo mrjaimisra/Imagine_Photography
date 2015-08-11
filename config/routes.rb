@@ -34,10 +34,8 @@ Rails.application.routes.draw do
 
   post "/orders", to: "orders#create"
 
-  resources :users, only: [] do
-    get "/orders", to: "orders#index"
-    get "/orders/:id", to: "orders#show"
-  end
+  get "/orders", to: "orders#index"
+  get "/orders/:id", to: "orders#show"
 end
 
 

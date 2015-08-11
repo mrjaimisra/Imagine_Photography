@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
       cart.empty
 
       flash[:success] = "Order placed! Dinners on the way!"
-      redirect_to user_orders_path(user_id: current_user.id)
+      redirect_to orders_path
     else
       flash[:warning] = "Sign In to complete your order, Dinners almost ready!"
       redirect_to login_path

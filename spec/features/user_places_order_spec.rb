@@ -55,7 +55,7 @@ RSpec.describe "a user with a non empty cart", type: :feature do
         end
 
         it "go to the orders page" do
-          expect(current_path).to eq(user_orders_path(user_id: default_user.id))
+          expect(current_path).to eq(orders_path)
         end
 
         it "sees order confirmation message" do
