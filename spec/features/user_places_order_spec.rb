@@ -55,7 +55,7 @@ RSpec.describe "a user with a non empty cart", type: :feature do
         end
 
         it "go to the orders page" do
-          expect(current_path).to eq(user_orders_path(user_id: default_user.id))
+          expect(current_path).to eq(orders_path)
         end
 
         it "sees order confirmation message" do
@@ -76,6 +76,16 @@ RSpec.describe "a user with a non empty cart", type: :feature do
             expect(page).to have_content((item.price * 3).to_s)
           end
         end
+
+        it "sees no items in cart" do
+          visit cart_path
+
+          within(".total") do
+            expect(page).to have_content("Total")
+            expect(page).to have_content("0")
+          end
+        end
+
       end
     end
   end
