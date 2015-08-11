@@ -2,8 +2,10 @@ require "rails_helper"
 
 RSpec.describe "the cart", type: :feature do
   context "a user that's not logged in" do
+    let!(:item) { Fabricate(:item) }
+    let!(:user) { Fabricate(:user) }
+
     it "can add items to the cart" do
-      item = create_item
       visit menu_path
 
       within(".item-info") do
@@ -22,7 +24,6 @@ RSpec.describe "the cart", type: :feature do
     end
 
     it "can login and his/her items persist in the cart" do
-      item = create_item
       visit menu_path
 
       within(".item-info") do
@@ -31,7 +32,7 @@ RSpec.describe "the cart", type: :feature do
         expect(current_path).to eq menu_path
       end
 
-      register_and_sign_in_user
+      sign_in(user)
       expect(current_path).to eq menu_path
 
       click_link "Cart"
@@ -44,9 +45,11 @@ RSpec.describe "the cart", type: :feature do
   end
 
   context "a user that's logged in" do
+    let!(:item) { Fabricate(:item) }
+    let!(:user) { Fabricate(:user) }
+
     it "can add items to the cart" do
-      item = create_item
-      register_and_sign_in_user
+      sign_in(user)
       visit menu_path
 
       within(".item-info") do
@@ -65,9 +68,11 @@ RSpec.describe "the cart", type: :feature do
   end
 
   context "a user that's logged in" do
+    let!(:item) { Fabricate(:item) }
+    let!(:user) { Fabricate(:user) }
+
     it "can add items to the cart" do
-      item = create_item
-      register_and_sign_in_user
+      sign_in(user)
       visit menu_path
 
       within(".item-info") do

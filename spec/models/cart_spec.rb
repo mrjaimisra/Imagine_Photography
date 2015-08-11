@@ -6,8 +6,9 @@ RSpec.describe "the cart", type: :model do
   end
 
   context "method items" do
+    let(:item) { Fabricate(:item) }
+
     it "returns an array of cart items" do
-      item = create_item
       data = Hash.new(0)
       data[item.id] = 2
       cart = Cart.new(data)
@@ -17,8 +18,9 @@ RSpec.describe "the cart", type: :model do
   end
 
   context "method data" do
+    let(:item) { Fabricate(:item) }
+
     it "returns a hash with the item id and quantity" do
-      item = create_item
       id = item.id.to_s
       input_data = {}
       input_data[id] = 2
@@ -28,8 +30,9 @@ RSpec.describe "the cart", type: :model do
   end
 
   context "method add item" do
+    let(:item) { Fabricate(:item) }
+
     it "updates the data when an item is added" do
-      item = create_item
       id = item.id.to_s
       cart = Cart.new(nil)
 

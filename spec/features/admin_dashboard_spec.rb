@@ -1,19 +1,14 @@
 require "rails_helper"
 
 RSpec.describe "an admin" do
+  let!(:admin) { Fabricate(:user) }
+
   context "an admin" do
     it "can visit the admin dashboard" do
-      register_user
-      admin = User.create(username: "Admin", password: "admin", role: 1)
+      sign_in(admin)
+      admin.role = 1
       allow_any_instance_of(ApplicationController).to receive(:current_user)
         .and_return(admin)
-
-      click_link "Sign In"
-      within(".login-form") do
-        fill_in "Username", with: admin.username
-        fill_in "Password", with: "admin"
-        click_button "Sign In"
-      end
 
       expect(current_path).to eq menu_path
       visit "/admin/dashboard"
@@ -28,7 +23,8 @@ RSpec.describe "an admin" do
 
   context "a registered user" do
     it "can not access the admin dashboard" do
-      register_and_sign_in_user
+      sign_in(admin)
+      admin.role = 1
 
       visit "/admin/dashboard"
       expect(page).to have_content "The page you were looking for doesn't exist."
