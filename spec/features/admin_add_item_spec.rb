@@ -1,9 +1,15 @@
 require "rails_helper"
 
 RSpec.describe "an admin on their dashboards" do
+  let!(:user) { Fabricate(:user) }
+
+  before(:each) do
+    sign_in(user)
+    user.update_attribute("role", 1)
+  end
+
   it "can access the form to add a new item" do
-    register_admin
-    sign_in
+    expect(current_path).to eq menu_path
 
     visit "/admin/dashboard"
     click_link "Add New Meal"
@@ -16,9 +22,6 @@ RSpec.describe "an admin on their dashboards" do
   end
 
   it "can submit a new item to the menu" do
-    register_admin
-    sign_in
-
     visit "/admin/dashboard"
     click_link "Add New Meal"
 
@@ -35,13 +38,5 @@ RSpec.describe "an admin on their dashboards" do
     expect(page).to have_content("Chicken Fingers")
     expect(page).to have_content("Golden fried crispy battered chicken breast")
     expect(page).to have_content("14")
-  end
-
-  private
-
-  def register_admin
-    register_user
-    user = User.find_by(username: "Jason")
-    user.update_attributes(role: 1)
   end
 end

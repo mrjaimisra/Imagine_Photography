@@ -1,17 +1,16 @@
 require "rails_helper"
 
 RSpec.describe "a user with past orders", type: :feature do
-  let!(:item) { create_item }
+  let!(:item) { Fabricate(:item) }
+  let!(:user) { Fabricate(:user) }
 
   before do
-    register_and_sign_in_user
+    sign_in(user)
 
     visit menu_path
     within(".item-info") do
       expect(page).to have_content item.name
-      click_button "Add to Cart"
-      click_button "Add to Cart"
-      click_button "Add to Cart"
+      3.times { click_button "Add to Cart" }
     end
     visit cart_path
     click_link "Check Out"
@@ -29,7 +28,7 @@ RSpec.describe "a user with past orders", type: :feature do
 
   context "and is logged in" do
     before do
-      sign_in
+      sign_in(user)
     end
 
     context "goes to the orders page" do
@@ -53,7 +52,6 @@ RSpec.describe "a user with past orders", type: :feature do
   end
 
   context "who is not signed in" do
-
     context "goes to the orders page" do
       before do
         visit orders_path

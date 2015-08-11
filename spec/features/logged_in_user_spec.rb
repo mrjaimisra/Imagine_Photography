@@ -1,16 +1,16 @@
 require "rails_helper"
 
 RSpec.describe "the profile view", type: :feature do
+  let!(:user) { Fabricate(:user) }
+
   context "a logged in user" do
-    before(:each) do
-      register_user
-      sign_in
-      # register_and_sign_in_user
+    before do
+      sign_in(user)
     end
 
     it "views profile info in navbar" do
       expect(current_path).to eq menu_path
-      expect(page).to have_content "YeeHaw! Jason is signed in!"
+      expect(page).to have_content "YeeHaw! #{user.username} is signed in!"
       expect(page).to have_link "Profile"
 
       within(".navbar-nav") do
@@ -18,7 +18,7 @@ RSpec.describe "the profile view", type: :feature do
       end
 
       expect(current_path).to eq profile_path
-      expect(page).to have_content "Jason's Profile"
+      expect(page).to have_content "#{user.username}'s Profile"
     end
   end
 
@@ -34,7 +34,6 @@ RSpec.describe "the profile view", type: :feature do
 
   context "a registered user that's not logged in" do
     it "can't visit the profile page" do
-      register_user
       visit menu_path
       expect(page).to_not have_link "Profile"
 

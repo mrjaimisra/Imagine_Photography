@@ -2,8 +2,10 @@ require "rails_helper"
 
 RSpec.describe "the cart quantity", type: :feature do
   context "a user with items in the cart" do
+    let!(:item) { Fabricate(:item) }
+    let!(:user) { Fabricate(:user) }
+
     it "adds items to the cart" do
-      item = create_item
       visit menu_path
 
       within(".item-info") do
@@ -24,8 +26,7 @@ RSpec.describe "the cart quantity", type: :feature do
     end
 
     it "decreases quantity of items from the cart" do
-      item = create_item
-      register_and_sign_in_user
+      sign_in(user)
       visit menu_path
 
       within(".item-info") do
@@ -46,8 +47,7 @@ RSpec.describe "the cart quantity", type: :feature do
     end
 
     it "displays total cost" do
-      create_item
-      register_and_sign_in_user
+      sign_in(user)
       visit menu_path
 
       2.times { click_button "Add to Cart" }
@@ -59,8 +59,7 @@ RSpec.describe "the cart quantity", type: :feature do
     end
 
     it "displays the subtotal" do
-      create_item
-      register_and_sign_in_user
+      sign_in(user)
       visit menu_path
 
       4.times { click_button "Add to Cart" }
@@ -72,8 +71,7 @@ RSpec.describe "the cart quantity", type: :feature do
     end
 
     it "removes items from the cart" do
-      item = create_item
-      register_and_sign_in_user
+      sign_in(user)
       visit menu_path
       2.times { click_button "Add to Cart" }
       click_link "Cart"
@@ -92,8 +90,7 @@ RSpec.describe "the cart quantity", type: :feature do
     end
 
     it "removes the item if the quantity is zero" do
-      item = create_item
-      register_and_sign_in_user
+      sign_in(user)
       visit menu_path
       2.times { click_button "Add to Cart" }
       click_link "Cart"

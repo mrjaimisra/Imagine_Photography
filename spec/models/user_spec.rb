@@ -1,15 +1,9 @@
 require "rails_helper"
 
 RSpec.describe "the user", type: :model do
-  let!(:user) {
-    User.create(username: "Ronda",
-                password: "Rousey",
-                zipcode: 80202,
-                street_name: "1500 Blake Street",
-                phone_number: "7203817045")
-  }
-
   context "a user" do
+    let(:user) { Fabricate(:user) }
+
     it "is valid" do
       expect(user).to be_valid
     end
@@ -21,6 +15,21 @@ RSpec.describe "the user", type: :model do
 
     it "is invalid without a password" do
       user.password = nil
+      expect(user).to_not be_valid
+    end
+
+    it "is invalid without a street name" do
+      user.street_name = nil
+      expect(user).to_not be_valid
+    end
+
+    it "is invalid without a zipcode" do
+      user.zipcode = nil
+      expect(user).to_not be_valid
+    end
+
+    it "is invalid without a phone number" do
+      user.phone_number = nil
       expect(user).to_not be_valid
     end
 
@@ -36,14 +45,12 @@ RSpec.describe "the user", type: :model do
       expect(user.valid_delivery?).to eq true
     end
 
-    it "can not get deliver if they live too far away" do
-      user.zipcode = 22630
-      user.street_name = "Front Royal"
-      expect(user.valid_delivery?).to eq false
-    end
-
     it "has an associated phone number" do
       expect(user.phone_number).to eq "7203817045"
+    end
+
+    it "can get deliver if they live within 50 miles of the store" do
+      expect(user.valid_delivery?).to eq true
     end
   end
 end

@@ -21,64 +21,13 @@ RSpec.configure do |config|
     "http://i.livescience.com/images/i/000/048/850/i02/capybara-02.jpg?1324347800"
   end
 
-  def create_item
-    @item = Item.create(name:  "Hamburger", description: "So delicious.",
-                        price: 12, image_url: test_image_url, category_id: 2)
-  end
-
-  def fill_in_form
-    fill_in "Username", with: "Jason"
-    fill_in "Password", with: "Noob"
-  end
-
-  def default_user
-    User.find_by(username: default_username)
-  end
-
-  def default_username
-    "Jason"
-  end
-
-  def default_password
-    "Noob"
-  end
-
-  def sign_in
+  def sign_in(user)
     visit root_path
+
     click_link "Sign In"
-    fill_in "Username", with: "Jason"
-    fill_in "Password", with: "Noob"
+    fill_in "Username", with: user.username
+    fill_in "Password", with: user.password
     click_button "Sign In"
-  end
-
-  def register_and_sign_in_user
-    visit login_path
-    click_link "Sign Up"
-
-    within(".create-user-form") do
-      fill_in "Username", with: "Jason"
-      fill_in "Password", with: "Noob"
-      fill_in "Zipcode", with: "22630"
-      fill_in "Street Name & Number", with: "2717 Glenwood Drive"
-      fill_in "Phone number", with: "7203817045"
-      click_button("Sign Up")
-    end
-
-    expect(page).to have_content("Sign Out")
-  end
-
-  def register_user
-    visit login_path
-    click_link "Sign Up"
-
-    within(".create-user-form") do
-      fill_in_form
-      click_button("Sign Up")
-    end
-
-    expect(current_path).to eq menu_path
-    click_link "Sign Out"
-    expect(page).to have_content "Sign In"
   end
 
   if ENV['CI']
@@ -88,5 +37,4 @@ RSpec.configure do |config|
     require 'simplecov'
     SimpleCov.start
   end
-
 end

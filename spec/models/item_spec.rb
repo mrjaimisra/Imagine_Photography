@@ -1,13 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "the item", type: :model do
-  let(:item) {
-    Item.create(name: "Hamburger",
-                description: "Nice and juicy.",
-                price: 12,
-                image_url: "hello.lpg",
-                category_id: 1)
-  }
+  let(:item) { Fabricate(:item) }
 
   context "an item" do
     it "is valid" do
