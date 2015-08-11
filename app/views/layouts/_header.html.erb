@@ -18,7 +18,7 @@
       </li>
       <li>
         <% if current_user %>
-          <li><%= link_to "Orders", user_orders_path(user_id: current_user.id) %></li>
+          <li><%= link_to "Orders", orders_path %></li>
           <li><%= link_to "Profile", profile_path %></li>
         <% end %>
       </li>

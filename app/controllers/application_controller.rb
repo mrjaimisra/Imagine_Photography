@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
   def current_admin?
     current_user && current_user.admin?
   end
+
+  def authorization_error
+    render file: "/public/404_authorization.html", layout: false, status: 404
+  end
 end

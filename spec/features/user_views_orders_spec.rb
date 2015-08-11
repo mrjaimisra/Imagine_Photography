@@ -24,7 +24,7 @@ RSpec.describe "a user with one previous order", type: :feature do
       end
 
       it "views the order" do
-        expect(current_path).to eq user_orders_path(user_id: user.id)
+        expect(current_path).to eq orders_path
 
         within(".orders") do
           expect(page).to have_content "Order Number"
@@ -47,7 +47,7 @@ RSpec.describe "a user with one previous order", type: :feature do
         end
 
         it "goes to the view single order page" do
-          expect(current_path).to eq "/users/#{user.id}/orders/1"
+          expect(current_path).to eq "#{orders_path}/1"
         end
 
         it "views the order number" do

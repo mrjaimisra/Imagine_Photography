@@ -4,13 +4,15 @@ class OrdersController < ApplicationController
     if current_user
       order = current_user.orders.new
       add_order_items(order)
-      # default status to completed for now
       order.status_id = 1
       send_text_message if current_user.phone_number
       order.save
 
+      session[:cart] = {}
+      cart.empty
+
       flash[:success] = "Order placed! Dinners on the way!"
-      redirect_to user_orders_path(user_id: current_user.id)
+      redirect_to orders_path
     else
       flash[:warning] = "Sign In to complete your order, Dinners almost ready!"
       redirect_to login_path
@@ -18,7 +20,11 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_user.orders
+    if current_user
+      @orders = current_user.orders
+    else
+      authorization_error
+    end
   end
 
   def show
