@@ -1,10 +1,7 @@
 class CartItemsController < ApplicationController
   def index
     @cart_items = cart.items
-    # will delete in fabrication implementation
-    # current_user.zipcode = "22630" if current_user
-    # current_user.street_name = "2717 Glenwood Drive" if current_user
-    current_user.valid_delivery? if current_user
+    delivery_flash? if current_user
   end
 
   def create
@@ -35,5 +32,11 @@ class CartItemsController < ApplicationController
       %[Successfully removed #{link} from your cart.]
 
     cart.remove_from_cart(item)
+  end
+
+  def delivery_flash?
+    unless current_user.valid_delivery?
+        flash.now[:warning] = "We unfortunately do not deliver in your area."
+    end
   end
 end

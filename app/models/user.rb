@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   def valid_delivery?
     destination = "#{street_name}, #{zipcode}"
-    check_validity(destination) < 20
+    check_validity(destination) < 50
   end
 
   def check_validity(destination)
