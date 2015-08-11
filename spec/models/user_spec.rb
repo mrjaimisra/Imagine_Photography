@@ -4,7 +4,8 @@ RSpec.describe "the user", type: :model do
   let(:user) {
     User.create(username: "Ronda",
                 password: "Rousey",
-                zipcode: 80304,
+                zipcode: 80202,
+                street_name: "1500 Blake Street",
                 phone_number: "7203817045")
   }
 
@@ -28,7 +29,17 @@ RSpec.describe "the user", type: :model do
     end
 
     it "has an associated zipcode" do
-      expect(user.zipcode).to eq 80304
+      expect(user.zipcode).to eq 80202
+    end
+
+    it "can get delivery" do
+      expect(user.valid_delivery?).to eq true
+    end
+
+    it "can not get deliver if they live too far away" do
+      user.zipcode = 22630
+      user.street_name = "Front Royal"
+      expect(user.valid_delivery?).to eq false
     end
 
     it "has an associated phone number" do
