@@ -1,0 +1,24 @@
+<%= render partial: "layouts/page_title", locals: { page_title: "All Items" } %>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+
+    <tr>
+      <th></th>
+      <th>Item</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Status</th>
+      <th>Edit Item</th>
+    </tr>
+    <tr>
+      <% @items.each do |item| %>
+        <td><%= image_tag(item.image_url, height: 80, width: 80, class: "img-circle") %></td>
+        <td><%= item.name %></td>
+        <td><%= item.description %></td>
+        <td>$<%= item.price %></td>
+        <td><%= item.status %></td>
+        <td><%= link_to "Edit", edit_admin_item_path(item) %></td>
+        </tr>
+      <% end %>
+      </table>
