@@ -15,7 +15,7 @@ class Category < ActiveRecord::Base
 
   def check_for_special_characters
     if name.to_s.match(/[^a-zA-Z0-9]+/)
-      errors.add(:chars, "cannot have special characters")
+      errors.add(:alphanumeric, "cannot have special characters")
     end
   end
 end

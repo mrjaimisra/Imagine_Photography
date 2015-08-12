@@ -23,9 +23,9 @@ RSpec.describe "the item", type: :model do
       expect(item).to_not be_valid
     end
 
-    it "is invalid without an image url" do
-      item.image_url = nil
-      expect(item).to_not be_valid
+    it "defaults to an image url when none provided" do
+      item.update_attributes(image_url: nil)
+      expect(item.image_url).to eq("Family-eating.jpg")
     end
 
     it "is invalid without a category id" do
