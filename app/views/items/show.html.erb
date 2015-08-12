@@ -6,7 +6,6 @@
 
       <p><strong>Description</strong><br><%= @item.description %></p>
       <h4>$<%= @item.price %></h4>
-      <h4>###############$<%= @item.status %></h4>
       <%= button_to "Add to Cart", cart_items_path(item_id: @item.id) unless @item.retired? %>
   </div>
 
