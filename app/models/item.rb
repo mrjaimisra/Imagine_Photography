@@ -25,7 +25,7 @@ class Item < ActiveRecord::Base
 
   def price_greater_than_zero
     if price.to_i <= 0
-    errors.add(:price, "must be greater than zero.")
+      errors.add(:price, "must be greater than zero.")
     end
   end
 
