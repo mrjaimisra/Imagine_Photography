@@ -28,14 +28,14 @@ RSpec.describe "an admin" do
       admin.role = 1
 
       visit "/admin/dashboard"
-      expect(page).to have_content "The page you were looking for doesn't exist."
+      expect(page).to have_content "Sorry but Dinner is not here! But I know where to get it!"
     end
   end
 
   context "an unregistered user" do
     it "can not access the admin dashboard" do
       visit "/admin/dashboard"
-      expect(page).to have_content "The page you were looking for doesn't exist."
+      expect(page).to have_content "Sorry but Dinner is not here! But I know where to get it!"
     end
   end
 end
