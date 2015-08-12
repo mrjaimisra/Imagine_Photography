@@ -2,16 +2,9 @@ class OrdersController < ApplicationController
 
   def create
     if current_user
-      order = current_user.orders.new
-      add_order_items(order)
-      order.status_id = 1
-      send_text_message if current_user.phone_number
-      order.save
-
-      session[:cart] = {}
-      cart.empty
-
-      flash[:success] = "Order placed! Dinners on the way!"
+      create_order
+      empty_cart
+      notify_user
       redirect_to orders_path
     else
       flash[:warning] = "Sign In to complete your order, Dinners almost ready!"
@@ -20,11 +13,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    if current_user
-      @orders = current_user.orders
-    else
-      authorization_error
-    end
+    current_user ? @orders = current_user.orders : authorization_error
   end
 
   def show
@@ -47,7 +36,28 @@ class OrdersController < ApplicationController
     @twilio_client.account.messages.create(
       from: "+1#{twilio_phone_number}",
       to: "+1#{send_to}",
-      body: "Your order is on it's way! - Dinner's Ready"
+      body: "Your order is on it's way! Dinner will arrive in #{estimated_delivery_time} minutes. - Dinner's Ready"
     )
+  end
+
+  def estimated_delivery_time
+    current_user.delivery_time
+  end
+
+  def create_order
+    order = current_user.orders.new
+    add_order_items(order)
+    order.status_id = 1
+    order.save
+  end
+
+  def empty_cart
+    session[:cart] = {}
+    cart.empty
+  end
+
+  def notify_user
+    send_text_message if current_user.phone_number
+    flash[:success] = "Order placed! Dinners on the way!"
   end
 end
