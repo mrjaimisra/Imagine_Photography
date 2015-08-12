@@ -1,15 +1,5 @@
 <%= render partial: "layouts/page_title", locals: { page_title: "Add New Meal" } %>
-
-<div class="row">
-  <div class="col-lg-12">
-    <% @item.errors.full_messages.each do |message| %>
-      <div class="alert alert-danger" role="alert">
-        <%= message %>
-      </div>
-    <% end %>
-  </div>
-</div>
-
+<%= render partial: "layouts/errors" %>
 <div class="row">
 
   <div class=col-lg-12">
