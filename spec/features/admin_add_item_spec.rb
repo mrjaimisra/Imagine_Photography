@@ -35,13 +35,7 @@ RSpec.describe "an admin on their dashboards" do
     fill_in "Description", with: "Golden fried crispy battered chicken breast"
     fill_in "Price", with: "14"
     fill_in "Image", with: test_image_url
-    # expect(page).to have_content("Please Select")
     select "lunch", from: "item[category]"
-    # within("#item_category") do
-    #   select "lunch", from: "item[category]"
-    # end
-    # select option[2], from: "item[category]"
-    # find('#item_category').find(:xpath, "breakfast").select_option
     click_button "Add Meal"
 
     visit menu_path
@@ -61,7 +55,6 @@ RSpec.describe "an admin on their dashboards" do
     fill_in "Description", with: "Golden fried crispy battered chicken breast"
     fill_in "Price", with: "14"
     fill_in "Image", with: test_image_url
-    # select "lunch", from: "Category"
     click_button "Add Meal"
 
     expect(current_path).to eq("/admin/items")
