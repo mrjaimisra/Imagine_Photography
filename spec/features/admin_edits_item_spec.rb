@@ -53,7 +53,7 @@ RSpec.describe "an admin" do
         click_button "Update Meal"
 
         expect(page).to have_css("img[src*='images/new_image_url']")
-        end
+      end
 
       it "updates the status" do
         fill_in "Status", with: "retired"
