@@ -13,6 +13,9 @@ class Item < ActiveRecord::Base
 
   validates :name, uniqueness: true
 
+  enum role: %w(default admin)
+
+
   def default_image
     if self.image_url.nil? || self.image_url.empty?
       self.image_url = "Family-eating.jpg"
