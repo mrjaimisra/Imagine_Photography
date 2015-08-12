@@ -6,9 +6,6 @@ RSpec.describe "a user with past orders", type: :feature do
   let!(:status) { Status.create(name: "pending") }
   let!(:order) { Order.create(user_id: user.id, status_id: status.id) }
 
-  before(:each) do
-
-  end
   before do
     sign_in(user)
 
@@ -46,10 +43,10 @@ RSpec.describe "a user with past orders", type: :feature do
           expect(page).to have_content("Order Number")
           expect(page).to have_content("Total")
           expect(page).to have_content("Order Updated Date")
-          expect(page).to have_link("1")
-          expect(page).to have_link("2")
-          expect(page).to have_content("36")
-          expect(page).to have_content("12")
+          expect(page).to have_link(item.id)
+          expect(page).to have_link(item.id)
+          expect(page).to have_content((item.price * 3).to_s)
+          expect(page).to have_content(item.price)
         end
       end
 

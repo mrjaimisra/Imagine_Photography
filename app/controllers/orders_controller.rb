@@ -13,8 +13,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_user.orders if current_user
-    authorization_error unless current_user
+    current_user ? @orders = current_user.orders : authorization_error
   end
 
   def show
