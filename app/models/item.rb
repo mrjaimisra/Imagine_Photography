@@ -19,7 +19,7 @@ class Item < ActiveRecord::Base
 
   def default_image
     if image_url.nil? || image_url.empty?
-      image_url = "Family-eating.jpg"
+      self.image_url = "Family-eating.jpg"
     end
   end
 
