@@ -1,11 +1,5 @@
 require "rails_helper"
 
-# As an admin
-# When I visit "admin/items"
-# And I click "Edit"
-# Then my current path should be
-# And I should be able to upate title, description, image, and status
-
 RSpec.describe "an admin" do
   let!(:admin) { Fabricate(:user) }
   let!(:item) { Fabricate(:item) }
