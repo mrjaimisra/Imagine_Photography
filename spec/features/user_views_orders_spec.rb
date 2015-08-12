@@ -84,6 +84,19 @@ RSpec.describe "a user with one previous order", type: :feature do
             expect(page).to have_content status.name
           end
         end
+
+        context "views item details" do
+          before do
+            item.update_attribute(:status, 1)
+            click_link("View")
+          end
+
+          it "retired item does not have add to cart" do
+            expect(current_path).to eq(meal_path(item))
+            expect(page).to have_content(item.name)
+            expect(page).not_to have_button("Add to Cart")
+          end
+        end
       end
     end
   end
