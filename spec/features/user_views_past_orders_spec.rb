@@ -54,13 +54,13 @@ RSpec.describe "a user with past orders", type: :feature do
       end
 
       it "can see the date the order status changed" do
-         todays_date = Order.create(user_id: user.id, status_id: status.id)
-                         .updated_at
-                         .strftime("%A, %b %d %Y %l:%M %p")
+        todays_date = Order.create(user_id: user.id, status_id: status.id)
+                        .updated_at
+                        .strftime("%A, %b %d %Y %l:%M %p")
 
-         order.update_attribute('status_id', 2)
+        order.update_attribute("status_id", 2)
 
-         within('.orders') do
+        within(".orders") do
           expect(page).to have_content(todays_date)
         end
       end
