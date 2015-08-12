@@ -15,7 +15,7 @@ class Item < ActiveRecord::Base
 
   validates :name, uniqueness: true
 
-  enum role: %w(default admin)
+  enum status: %w(active retired)
 
   def default_image
     if image_url.nil? || image_url.empty?
