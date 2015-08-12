@@ -1,11 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "an admin on their dashboards" do
-  let!(:user) { Fabricate(:user) }
+  let!(:user) { Fabricate(:user, role: 1) }
 
   before(:each) do
     sign_in(user)
-    user.update_attribute("role", 1)
   end
 
   it "can access the form to add a new item" do
