@@ -21,7 +21,7 @@ RSpec.describe "an admin on their dashboards" do
     expect(page).to have_content("Category")
   end
 
-  it "can submit a new item to the menu" do
+  xit "can submit a new item to the menu" do
     visit "/admin/dashboard"
     click_link "Add New Meal"
 
@@ -31,6 +31,7 @@ RSpec.describe "an admin on their dashboards" do
     fill_in "Description", with: "Golden fried crispy battered chicken breast"
     fill_in "Price", with: "14"
     fill_in "Image", with: test_image_url
+    # select "lunch", from: "Category"
     click_button "Add Meal"
 
     visit menu_path
@@ -38,5 +39,56 @@ RSpec.describe "an admin on their dashboards" do
     expect(page).to have_content("Chicken Fingers")
     expect(page).to have_content("Golden fried crispy battered chicken breast")
     expect(page).to have_content("14")
+  end
+
+  it "cannot submit an order without a name" do
+    visit "/admin/dashboard"
+    click_link "Add New Meal"
+
+    expect(current_path).to eq("/admin/items/new")
+
+    fill_in "Name", with: ""
+    fill_in "Description", with: "Golden fried crispy battered chicken breast"
+    fill_in "Price", with: "14"
+    fill_in "Image", with: test_image_url
+    # select "lunch", from: "Category"
+    click_button "Add Meal"
+
+    expect(current_path).to eq("/admin/items")
+    expect(page).to have_content("Name can't be blank")
+  end
+
+  it "cannot submit an order without a description" do
+    visit "/admin/dashboard"
+    click_link "Add New Meal"
+
+    expect(current_path).to eq("/admin/items/new")
+
+    fill_in "Name", with: "Chicken Fingers"
+    fill_in "Description", with: ""
+    fill_in "Price", with: "14"
+    fill_in "Image", with: test_image_url
+    # select "lunch", from: "Category"
+    click_button "Add Meal"
+
+    expect(current_path).to eq("/admin/items")
+    expect(page).to have_content("Description can't be blank")
+  end
+
+  it "cannot submit an order without selecting a category" do
+    visit "/admin/dashboard"
+    click_link "Add New Meal"
+
+    expect(current_path).to eq("/admin/items/new")
+
+    fill_in "Name", with: "Chicken Fingers"
+    fill_in "Description", with: "Golden fried crispy battered chicken breast"
+    fill_in "Price", with: "14"
+    fill_in "Image", with: ""
+    # select "lunch", from: "Category"
+    click_button "Add Meal"
+
+    expect(current_path).to eq("/admin/items")
+    expect(page).to have_content("Category must be selected")
   end
 end
