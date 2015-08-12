@@ -32,6 +32,16 @@ RSpec.describe "the item", type: :model do
       item.category_id = nil
       expect(item).to_not be_valid
     end
+
+    it "knows if item was retired" do
+      item.status = 1
+      expect(item.retired?).to be true
+    end
+
+    it "knows if item was active" do
+      item.status = 0
+      expect(item.active?).to be true
+    end
   end
 end
 
