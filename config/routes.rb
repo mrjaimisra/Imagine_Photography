@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   namespace "admin" do
     resources :items, except: [:show]
     resource :dashboard, only: [:show]
-    resources :orders, only: [:index]
+    resources :orders, only: [:index, :show] do
+    end
   end
 
   namespace :menu do
