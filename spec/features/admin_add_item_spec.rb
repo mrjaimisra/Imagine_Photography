@@ -5,6 +5,10 @@ RSpec.describe "an admin on their dashboards" do
 
   before(:each) do
     sign_in(user)
+
+    Category.create(name: "breakfast")
+    Category.create(name: "lunch")
+    Category.create(name: "dinner")
   end
 
   it "can access the form to add a new item" do
@@ -21,9 +25,6 @@ RSpec.describe "an admin on their dashboards" do
   end
 
   it "can submit a new item to the menu" do
-    Category.create(name: "breakfast")
-    Category.create(name: "lunch")
-    Category.create(name: "dinner")
 
     visit "/admin/dashboard"
     click_link "Add New Meal"
@@ -54,6 +55,7 @@ RSpec.describe "an admin on their dashboards" do
     fill_in "Description", with: "Golden fried crispy battered chicken breast"
     fill_in "Price", with: "14"
     fill_in "Image", with: test_image_url
+    select "lunch", from: "item[category]"
     click_button "Add Meal"
 
     expect(current_path).to eq("/admin/items")
@@ -70,7 +72,7 @@ RSpec.describe "an admin on their dashboards" do
     fill_in "Description", with: ""
     fill_in "Price", with: "14"
     fill_in "Image", with: test_image_url
-    # select "lunch", from: "Category"
+    select "lunch", from: "item[category]"
     click_button "Add Meal"
 
     expect(current_path).to eq("/admin/items")
@@ -87,7 +89,6 @@ RSpec.describe "an admin on their dashboards" do
     fill_in "Description", with: "Golden fried crispy battered chicken breast"
     fill_in "Price", with: "14"
     fill_in "Image", with: ""
-    # select "lunch", from: "Category"
     click_button "Add Meal"
 
     expect(current_path).to eq("/admin/items")

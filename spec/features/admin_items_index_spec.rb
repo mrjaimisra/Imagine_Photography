@@ -18,8 +18,8 @@ RSpec.describe "an admin on their dashboards" do
     expect(page).to have_content("Description")
     expect(page).to have_content("Price")
     expect(page).to have_content("Status")
-    expect(page).to have_content("Hamburger")
-    expect(page).to have_content("Nice and juicy")
-    expect(page).to have_content("12")
+    expect(page).to have_content(item.name)
+    expect(page).to have_content(item.description)
+    expect(page).to have_content(item.price.to_s)
   end
 end
