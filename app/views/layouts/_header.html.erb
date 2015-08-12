@@ -17,9 +17,13 @@
         <%= link_to "Cart", cart_path %>
       </li>
       <li>
-        <% if current_user %>
-          <li><%= link_to "Orders", orders_path %></li>
-          <li><%= link_to "Profile", profile_path %></li>
+        <% if current_user  %>
+          <% if current_user && current_user.admin? %>
+            <li><%= link_to "Dashboard", admin_dashboard_path %></li>
+          <% else %>
+            <li><%= link_to "Orders", orders_path %></li>
+            <li><%= link_to "Profile", profile_path %></li>
+          <% end %>
         <% end %>
       </li>
       <li>

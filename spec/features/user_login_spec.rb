@@ -75,4 +75,19 @@ RSpec.describe "a user", type: :feature do
       expect(page).to have_content "Sign In"
     end
   end
+
+  context "an admin" do
+    let!(:user) { Fabricate(:user, role: 1) }
+
+    it "is an admin" do
+      expect(user.admin?).to eq true
+    end
+
+    it "has a link to admin dashboard in show page" do
+      sign_in(user)
+      expect(current_path).to eq menu_path
+      expect(page).to have_content "Dashboard"
+      expect(page).to_not have_content "Profile"
+    end
+  end
 end
