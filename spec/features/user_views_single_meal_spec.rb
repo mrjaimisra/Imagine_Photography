@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe "the item view", type: :feature do
   context "an existing item" do
     let!(:item) { Fabricate(:item) }
+    let!(:category) { Category.create(name: "lunch") }
 
     it "views a single item" do
       visit menu_path
