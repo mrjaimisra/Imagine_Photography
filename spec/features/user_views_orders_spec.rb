@@ -6,7 +6,8 @@ RSpec.describe "a user with one previous order", type: :feature do
   let!(:status) { Status.create(name: "Completed") }
 
   before do
-    allow_any_instance_of(OrdersController).to receive(:send_text_message).and_return(true)
+    allow_any_instance_of(OrdersController)
+      .to receive(:send_text_message).and_return(true)
     sign_in(user)
 
     within(".item-info") do

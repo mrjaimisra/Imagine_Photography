@@ -7,7 +7,8 @@ RSpec.describe "a user with past orders", type: :feature do
   let!(:order) { Order.create(user_id: user.id, status_id: status.id) }
 
   before do
-    allow_any_instance_of(OrdersController).to receive(:send_text_message).and_return(true)
+    allow_any_instance_of(OrdersController)
+      .to receive(:send_text_message).and_return(true)
     sign_in(user)
 
     visit menu_path
