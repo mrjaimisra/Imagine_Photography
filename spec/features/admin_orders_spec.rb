@@ -110,7 +110,7 @@ RSpec.describe "an admin" do
       expect(page).to have_content(completed_status.name)
     end
 
-    it "can change the status for an individual order if the status is ordered" do
+    it "can change the status for an individual order if status is ordered" do
       order.update_attributes(status_id: ordered_status.id)
       click_link "View"
 

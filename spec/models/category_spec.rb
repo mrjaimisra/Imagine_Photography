@@ -28,7 +28,8 @@ RSpec.describe "a category" do
   end
 
   it "capitalizes the name before saving it to the database" do
-      status = Category.create(name: "HELLO")
-      expect(status.name).to eq("Hello")
+    status = Category.create(name: "HELLO")
+    expect(status.name).to eq("Hello")
   end
 end
+
