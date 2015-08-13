@@ -29,7 +29,7 @@
                           class: "img-circle"
                         ),
                         meal_path(id: order_item.item_id) %></td>
-        <td><%= order_item.name %></td>
+        <td><%= link_to order_item.name, meal_path(order_item) %></td>
         <td>$<%= order_item.price %></td>
         <td><%= order_item.quantity %></td>
         <div class="subtotal">

@@ -15,8 +15,6 @@ gem "bootstrap-sass"
 gem "autoprefixer-rails"
 gem "google_directions"
 
-gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
-
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
@@ -33,6 +31,5 @@ group :development, :test do
   gem 'simplecov', require: false
   gem 'codeclimate-test-reporter', require: nil
   gem 'web-console', '~> 2.0'
-  gem 'webmock'
 end
 
