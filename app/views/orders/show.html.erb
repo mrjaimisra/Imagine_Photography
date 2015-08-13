@@ -1,25 +1,23 @@
-<%= render partial: "layouts/page_title", locals: {page_title: "Order Number: #{@order.id}"} %>
-
-<div class="col-md-10"></div>
-<div class="col-md-2 status">
-  <div>
-    <% if current_user.role.eql?("admin") && @order.status == "Ordered" || @order.status == "Paid" %>
-      Change Status:
-      <%= form_for [:admin, @order] do |f| %>
-        <%= f.collection_select(:status, Status.all, :id, :name, {selected: @order.status_id}) %>
-        <%= f.submit "Update Order Status" %>
-      <% end %>
-    <% else %>
-      <strong>Status:</strong>
-      <%= @order.status %> <br/>
-      <%= link_to "Your Orders", orders_path(current_user) %>
-    <% end %>
-  </div>
-</div>
+<%= render partial: "layouts/page_title", locals: { page_title: "Order Number: #{@order.id}" } %>
 
 <div class="row">
   <div class="col-md-3"><h4>Details:</h4></div>
-  <div class="col-md-9"></div>
+  <div class="col-md-6"></div>
+  <div class="col-md-3 status pull-right">
+    <div>
+      <% if current_user.role.eql?("admin") && @order.status == "Ordered" || @order.status == "Paid" %>
+        Change Status:
+        <%= form_for [:admin, @order] do |f| %>
+          <%= f.collection_select(:status, Status.all, :id, :name, { selected: @order.status_id }) %>
+          <%= f.submit "Update Order Status" %>
+        <% end %>
+      <% else %>
+        <strong>Status:</strong>
+        <%= @order.status %> <br/>
+        <%= link_to "Your Orders", orders_path(current_user) %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 <div class="table-responsive">
@@ -39,10 +37,10 @@
     <% @order.order_items.each do |order_item| %>
       <tr>
         <td><%= link_to image_tag(
-                            order_item.image_url,
-                            height: 80,
-                            width: 80,
-                            class: "img-circle"
+                          order_item.image_url,
+                          height: 80,
+                          width:  80,
+                          class:  "img-circle"
                         ),
                         meal_path(id: order_item.item_id) %></td>
         <td><%= link_to order_item.name, meal_path(order_item) %></td>
