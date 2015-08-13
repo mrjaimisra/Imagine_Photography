@@ -1,16 +1,26 @@
-
 $text-highlight: #09afa9
 
 body
   /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of
-  padding-top: 70px
+  padding-top: 100px
+  background-image: image-url('background-img-wood.png')
 
   .container .row:first-child
     margin-top: 1em
 
+.vertical-center
+  display: flex
+  align-items: flex-start
 
 .glyphicon-shopping-cart
   margin-right: .5em
+
+.navbar
+  max-height: 100px
+  background-color: rgba(9, 9, 9, .5)
+
+  .navbar-nav
+    padding-right: 1em
 
 .navbar-inverse .navbar-nav > li > a
   color: $text-highlight
@@ -24,17 +34,17 @@ body
   width: 60%
 
 .jumbotron
-  background-image: image-url('Family-eating.jpg')
-  background-repeat: no-repeat
-  height: 390px
-  background-size: cover
-  background-position: center center
+  background-color: transparent
+  padding-top: 20px
+  padding-bottom: 20px
+  div
+    background-image: image-url('plate-3.png')
+    background-size: cover
+    background-repeat: no-repeat
+    height: 490px
+    background-size: cover
+    background-position: center center
 
-.hero-spacer
-  margin-top: 50px
-
-.hero-feature
-  margin-bottom: 30px
 
 .category-feature .thumbnail img
   height: 230px
