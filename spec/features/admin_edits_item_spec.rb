@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "an admin" do
   let!(:admin) { Fabricate(:user) }
   let!(:item) { Fabricate(:item) }
-  let!(:category) { Category.create(name: "lunch") }
+  let!(:category) { Category.create(name: "Lunch") }
 
   context "visits admin/items" do
     before do
