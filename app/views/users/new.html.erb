@@ -1,4 +1,4 @@
-<%= render partial: "layouts/page_title", locals: { page_title: "Sign Up"} %>
+<%= render partial: "layouts/page_title", locals: { page_title: "Sign Up" } %>
 <%= render partial: "layouts/flash_message" %>
 
 <div class="row">
@@ -36,9 +36,12 @@
 
       <% end %>
       <hr/>
-      <h5>Already have an account?</h5>
-      <%= link_to "Sign In", login_path, class: "btn btn-primary" %>
+      <div class="lone-button-container">
+        <div class="lone-button-container">
+          <h5>Already have an account?</h5>
+          <%= link_to "Sign In", login_path, class: "btn btn-primary" %>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 

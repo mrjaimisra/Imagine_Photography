@@ -1,4 +1,5 @@
 $text-highlight: #09afa9
+$transparent-background: rgba(254, 254, 254, .75)
 
 body
   /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of
@@ -46,15 +47,18 @@ body
     background-position: center center
 
 form
-  background-color: rgba(254, 254, 254, .75)
+  background-color: $transparent-background
   padding: 10px
   width: 50%
 
-  .form-group
+.lone-button-container
+  background-color: $transparent-background
+  width: 50%
+  padding: 10px
 
 .item-box .thumbnail
   box-shadow: 0 0 10px black
-  background-color: rgba(254, 254, 254, .75)
+  background-color: $transparent-background
 
 .category-feature .thumbnail img
   height: 230px
