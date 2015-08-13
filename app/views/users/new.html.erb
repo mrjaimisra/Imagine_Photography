@@ -2,13 +2,9 @@
 <%= render partial: "layouts/flash_message" %>
 
 <div class="row">
-
   <div class="col-lg-12">
-
     <div class="create-user-form">
-
       <%= form_for(@user, url: sign_up_path) do |f| %>
-
         <div class="form-group">
           <%= f.label :username %>
           <%= f.text_field :username, class: "form-control", placeholder: "Username" %>
@@ -39,15 +35,10 @@
         </div>
 
       <% end %>
-
       <hr/>
-
       <h5>Already have an account?</h5>
       <%= link_to "Sign In", login_path, class: "btn btn-default" %>
-
     </div>
-
   </div>
-
 </div>
 
