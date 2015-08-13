@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe "an admin" do
   let!(:admin) { Fabricate(:user) }
   let!(:item) { Fabricate(:item) }
+  let!(:category) { Category.create(name: "lunch") }
 
   context "visits admin/items" do
     before do
@@ -50,7 +51,7 @@ RSpec.describe "an admin" do
       end
 
       it "updates the status" do
-        fill_in "Status", with: "retired"
+        select "Retired", from: "item[status]"
         click_button "Update Meal"
 
         expect(page).to have_content("retired")

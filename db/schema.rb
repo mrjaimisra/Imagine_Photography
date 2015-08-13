@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 20150812180808) do
     t.string   "name"
     t.string   "description"
     t.decimal  "price",       precision: 10, scale: 2
-    t.string   "image_url"
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
+    t.string   "image_url"
     t.integer  "category_id"
     t.integer  "status",                               default: 0
   end

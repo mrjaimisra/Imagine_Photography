@@ -31,7 +31,7 @@
 
         <div class="form-group btn btn-default dropdown-toggle">
           <%= f.label :status %>
-           <%= f.collection_select(:status, Status.all, :id, :name, include_blank: "Please Select") %>
+            <%= f.select(:status, Item.statuses.keys.map {|status| [status.titleize,status]}) %>
         </div><br><br>
         <%= f.submit "Update Meal", class: "btn btn-default" %>
       <% end %>
