@@ -4,6 +4,7 @@ RSpec.describe "a user with one previous order", type: :feature do
   let!(:item) { Fabricate(:item) }
   let!(:user) { Fabricate(:user) }
   let!(:status) { Status.create(name: "Completed") }
+  let!(:category) { Category.create(name: "lunch") }
 
   before do
     allow_any_instance_of(OrdersController)

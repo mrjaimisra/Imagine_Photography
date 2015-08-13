@@ -20,7 +20,7 @@
             <div class="thumbnail">
               <%= link_to image_tag(item.image_url, alt: "image url", class: "item-image"), meal_path(item) %>
               <div class="caption">
-                <h4 class="pull-right">$ <%= item.price %></h4>
+                <h4 class="pull-right"><%= number_to_currency(item.price) %></h4>
                 <h4>
                   <%= link_to item.name, meal_path(item) %>
                 </h4>
