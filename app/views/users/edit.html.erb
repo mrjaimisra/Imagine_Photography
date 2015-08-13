@@ -1,0 +1,40 @@
+<%= render partial: "layouts/page_title", locals: { page_title: "Edit Profile Info"} %>
+<%= render partial: "layouts/flash_message" %>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="create-user-form">
+      <%= form_for(@user, url: profile_path) do |f| %>
+        <div class="form-group">
+          <%= f.label :username %>
+          <%= f.text_field :username, class: "form-control", placeholder: "Username" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :street_name %>
+          <%= f.text_field :street_name, class: "form-control", placeholder: "Street Name & Number" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :zipcode %>
+          <%= f.text_field :zipcode, class: "form-control", placeholder: "Zipcode" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :phone_number %>
+          <%= f.text_field :phone_number, class: "form-control", placeholder: "Phone number" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: "form-control", placeholder: "Please enter your current password" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Update Info", class: "btn btn-default" %>
+        </div>
+      <% end %>
+      <hr/>
+    </div>
+  </div>
+</div>

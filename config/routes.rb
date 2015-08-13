@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get "/sign_up", to: "users#new"
   post "/sign_up", to: "users#create"
   get "/profile", to: "users#show"
+  patch "/profile", to: "users#update"
+  get "/profile/edit", to: "users#edit"
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
@@ -32,10 +34,7 @@ Rails.application.routes.draw do
 
   delete "/cart_items", to: "cart_items#destroy"
 
-  post "/orders", to: "orders#create"
-
-  get "/orders", to: "orders#index"
-  get "/orders/:id", to: "orders#show"
+  resources :orders, only: [:create, :index, :show]
 end
 
 
