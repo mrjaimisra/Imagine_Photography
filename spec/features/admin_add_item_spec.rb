@@ -35,7 +35,7 @@ RSpec.describe "an admin on their dashboards" do
     fill_in "Description", with: "Golden fried crispy battered chicken breast"
     fill_in "Price", with: "14"
     fill_in "Image", with: test_image_url
-    select "lunch", from: "item[category]"
+    select "Lunch", from: "item[category]"
     click_button "Add Meal"
 
     visit menu_path
@@ -55,7 +55,7 @@ RSpec.describe "an admin on their dashboards" do
     fill_in "Description", with: "Golden fried crispy battered chicken breast"
     fill_in "Price", with: "14"
     fill_in "Image", with: test_image_url
-    select "lunch", from: "item[category]"
+    select "Lunch", from: "item[category]"
     click_button "Add Meal"
 
     expect(current_path).to eq("/admin/items")
@@ -72,7 +72,7 @@ RSpec.describe "an admin on their dashboards" do
     fill_in "Description", with: ""
     fill_in "Price", with: "14"
     fill_in "Image", with: test_image_url
-    select "lunch", from: "item[category]"
+    select "Lunch", from: "item[category]"
     click_button "Add Meal"
 
     expect(current_path).to eq("/admin/items")

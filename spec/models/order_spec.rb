@@ -13,7 +13,7 @@ RSpec.describe Order, type: :model do
     end
 
     it "has a status" do
-      expect(order.status).to eq "ordered"
+      expect(order.status).to eq "Ordered"
     end
 
     it "has a total" do
