@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   post "/sign_up", to: "users#create"
   get "/profile", to: "users#show"
 
-
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
@@ -13,7 +12,7 @@ Rails.application.routes.draw do
   namespace "admin" do
     resources :items, except: [:show]
     resource :dashboard, only: [:show]
-    resources :orders, only: [:index, :show]
+    resources :orders, only: [:index, :show, :update]
   end
 
   namespace :menu do

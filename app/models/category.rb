@@ -3,6 +3,8 @@ class Category < ActiveRecord::Base
   validate :check_for_spaces, :check_for_special_characters
   validates :name, presence: true, uniqueness: true
 
+  before_save :capitalize_name
+
   def to_param
     name
   end
@@ -17,5 +19,9 @@ class Category < ActiveRecord::Base
     if name.to_s.match(/[^a-zA-Z0-9]+/)
       errors.add(:alphanumeric, "cannot have special characters")
     end
+  end
+
+  def capitalize_name
+    name.capitalize!
   end
 end
