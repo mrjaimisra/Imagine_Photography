@@ -4,7 +4,7 @@
   <div class="col-md-3 item-info">
     <p class="lead">
       <%= @item.name %>
-      <%= link_to @item.category.name, menu_category_path(@item.category_id) %>
+      (<%= link_to @item.category.name, menu_category_path(@item.category_id) %>)
     </p>
       <p><strong>Description:</strong><br>
         <%= @item.description %>
