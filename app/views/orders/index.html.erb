@@ -20,7 +20,7 @@
     <% @orders.each do |order| %>
       <tr>
         <td><%= link_to order.id, "/orders/#{order.id}" %></td>
-        <td><%= order.total %></td>
+        <td><%= number_to_currency(order.total) %></td>
         <td><%= order.updated_at.strftime("%A, %b %d %Y %l:%M %p") %></td>
         <td><%= link_to "View", "/orders/#{order.id}" %></td>
       </tr>
