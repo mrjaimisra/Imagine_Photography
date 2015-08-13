@@ -98,5 +98,38 @@ RSpec.describe "an admin" do
 
       expect(page).to have_content(orders.count)
     end
+
+    it "can change the status for an individual order if the status is paid" do
+      order.update_attributes(status_id: paid_status.id)
+      click_link "View"
+
+      expect(page).to have_content(paid_status.name)
+      select "Completed", from: "order[status]"
+      click_button "Update Order Status"
+      expect(current_path).to eq(admin_orders_path)
+      expect(page).to have_content(completed_status.name)
+    end
+
+    it "can change the status for an individual order if the status is ordered" do
+      order.update_attributes(status_id: ordered_status.id)
+      click_link "View"
+
+      expect(page).to have_content(ordered_status.name)
+      select "Paid", from: "order[status]"
+      click_button "Update Order Status"
+      expect(current_path).to eq(admin_orders_path)
+      expect(page).to have_content(paid_status.name)
+    end
+
+    it "updating the status changes the status attribute in the database" do
+      order.update_attributes(status_id: ordered_status.id)
+      click_link "View"
+
+      select "Paid", from: "order[status]"
+      click_button "Update Order Status"
+
+      expect(current_path).to eq(admin_orders_path)
+      expect(page).to have_content "Paid Total: 1"
+    end
   end
 end
