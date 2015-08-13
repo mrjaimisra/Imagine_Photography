@@ -15,8 +15,6 @@ user info.
 
 [Project Outline](https://github.com/turingschool/curriculum/blob/master/source/projects/little_shop.markdown) | [Heroku](https://dinners-ready.herokuapp.com/)
 
-[Project Post Mortem](https://gist.github.com/applegrain/b99600c4c34e496636b6)
-
 ### Areas of focus
 - Use TDD to drive all layers of Rails development including unit, integration, and user acceptance tests
 - Design a system of models which use one-to-one, one-to-many, and many-to-many relationships
