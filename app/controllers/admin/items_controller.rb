@@ -12,7 +12,7 @@ class Admin::ItemsController < Admin::BaseController
     @item.category_id = params[:item][:category].to_i
     if @item.save
       redirect_to meal_path(@item)
-      flash[:notice] = "#{@item.name} created"
+      flash.now[:notice] = "#{@item.name} created"
     else
       render :new
     end

@@ -4,6 +4,7 @@ RSpec.describe "the cart quantity", type: :feature do
   context "a user with items in the cart" do
     let!(:item) { Fabricate(:item) }
     let!(:user) { Fabricate(:user) }
+    let!(:category) { Category.create(name: "lunch") }
 
     it "adds items to the cart" do
       visit menu_path
@@ -85,7 +86,10 @@ RSpec.describe "the cart quantity", type: :feature do
         expect(page).to_not have_content item.name
       end
 
-      click_link "#{item.name}"
+      within(".alert-success") do
+        click_link item.name
+      end
+
       expect(current_path).to eq meal_path(item)
     end
 

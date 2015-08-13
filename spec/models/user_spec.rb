@@ -46,7 +46,7 @@ RSpec.describe "the user", type: :model do
     end
 
     it "has an associated phone number" do
-      expect(user.phone_number).to eq "7203817045"
+      expect(user.phone_number).to eq "5732681897"
     end
 
     it "can get delivery if they live within 50 miles of the store" do

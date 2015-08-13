@@ -35,13 +35,13 @@
         <td><%= image_tag(cart_item.image_url, height: 80, width: 80, class: "img-circle") %></td>
         <td><%= cart_item.name %></td>
         <td><%= cart_item.description %></td>
-        <td>$<%= cart_item.price %></td>
+        <td><%= number_to_currency(cart_item.price) %></td>
         <td><%= button_to "-", cart_items_path(id: "#{cart_item.id}", quantity: "decrease"), method: :put %>
           <%= cart_item.quantity %>
           <%= button_to "+", cart_items_path(id: "#{cart_item.id}", quantity: "increase"), method: :put %></td>
 
         <div class="subtotal">
-          <td>$<%= cart_item.subtotal %></td>
+          <td><%= number_to_currency(cart_item.subtotal) %></td>
         </div>
         <td><%= link_to "Remove", cart_items_path(id: cart_item), method: :delete %></td>
         </tr>

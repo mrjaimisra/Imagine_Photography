@@ -4,4 +4,5 @@ Fabricator(:item) do
   price 12
   image_url "hello.lpg"
   category_id 1
+  status 1
 end

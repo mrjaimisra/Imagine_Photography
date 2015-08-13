@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
 
   def send_text_message
     send_to = current_user.phone_number
-    twilio_phone_number = "7205063562"
+    twilio_phone_number = "5733033256"
     @twilio_client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
 
     @twilio_client.account.messages.create(

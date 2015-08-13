@@ -10,7 +10,7 @@ RSpec.configure do |config|
   config.disable_monkey_patching!
 
   if config.files_to_run.one?
-    config.default_formatter = 'doc'
+    config.default_formatter = "doc"
   end
 
   config.order = :random
@@ -30,11 +30,12 @@ RSpec.configure do |config|
     click_button "Sign In"
   end
 
-  if ENV['CI']
-    require 'codeclimate-test-reporter'
+  if ENV["CI"]
+    require "codeclimate-test-reporter"
     CodeClimate::TestReporter.start
   else
-    require 'simplecov'
+    require "simplecov"
     SimpleCov.start
   end
+
 end
