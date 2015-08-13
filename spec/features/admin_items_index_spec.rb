@@ -14,20 +14,20 @@ RSpec.describe "an admin on their dashboards" do
     second_item.update_attributes(name: "Burger", status: 1)
 
     visit "/admin/dashboard"
-    click_link "View All Items"
+    click_link "View All Meals"
 
-    expect(current_path).to eq("/admin/items")
-    expect(page).to have_content("Item")
-    expect(page).to have_content("Description")
-    expect(page).to have_content("Price")
-    expect(page).to have_content("Status")
+    expect(current_path).to eq "/admin/items"
+    expect(page).to have_content "Meal"
+    expect(page).to have_content "Description"
+    expect(page).to have_content "Price"
+    expect(page).to have_content "Status"
 
-    expect(page).to have_content(item.name)
-    expect(page).to have_content(item.description)
-    expect(page).to have_content(item.price.to_s)
-    expect(page).to have_content(item.status)
+    expect(page).to have_content item.name
+    expect(page).to have_content item.description
+    expect(page).to have_content item.price.to_s
+    expect(page).to have_content item.status
 
-    expect(page).to have_content(second_item.name)
-    expect(page).to have_content(second_item.status)
+    expect(page).to have_content second_item.name
+    expect(page).to have_content second_item.status
   end
 end
