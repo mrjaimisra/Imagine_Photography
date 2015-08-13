@@ -18,6 +18,16 @@ class UsersController < ApplicationController
     redirect_to "/404" unless current_user
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    current_user.update_attributes(user_params)
+    current_user.save!
+    redirect_to profile_path(current_user)
+  end
+
   private
 
   def user_params
