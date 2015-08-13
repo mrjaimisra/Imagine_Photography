@@ -18,7 +18,6 @@
 </div>
 
 <div class="row">
-  <!-- Grid being used for spacing maybe try to do it with sass in view refactor -->
   <div class="col-md-3"><h4>Details:</h4></div>
   <div class="col-md-9"></div>
 </div>
@@ -46,11 +45,11 @@
                             class: "img-circle"
                         ),
                         meal_path(id: order_item.item_id) %></td>
-        <td><%= order_item.name %></td>
-        <td>$<%= order_item.price %></td>
+        <td><%= link_to order_item.name, meal_path(order_item) %></td>
+        <td><%= number_to_currency(order_item.price) %></td>
         <td><%= order_item.quantity %></td>
         <div class="subtotal">
-          <td>$<%= order_item.subtotal %></td>
+          <td><%= number_to_currency(order_item.subtotal) %></td>
         </div>
         <td><%= @order.status %></td>
         <td><%= order_item.updated_at %></td>
