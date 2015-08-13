@@ -11,14 +11,14 @@ class Seed
   end
 
   def create_categories
-    names = %w(breakfast lunch dinner)
+    names = %w(Breakfast Lunch Dinner)
     [*0..2].each do |num|
       Category.create(name: names[num])
     end
   end
 
   def create_statuses
-    names = %w(ordered paid cancelled completed)
+    names = %w(Ordered Paid Cancelled Completed)
     [*0..3].each do |num|
       Status.create(name: names[num])
     end

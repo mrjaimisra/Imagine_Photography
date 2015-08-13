@@ -25,7 +25,6 @@ RSpec.describe "an admin" do
     end
 
     it "can see all orders" do
-
       expect(page).to have_content("Ordered")
       expect(page).to have_content("Paid")
       expect(page).to have_content("Cancelled")
@@ -44,7 +43,6 @@ RSpec.describe "an admin" do
     end
 
     it "can see ordered orders" do
-
       expect(page).to have_content(ordered_status.name)
       expect(page).to have_content(order.id)
       expect(page).to have_content(order.total)
@@ -52,7 +50,6 @@ RSpec.describe "an admin" do
     end
 
     it "can see paid orders" do
-
       expect(page).to have_content(paid_status.name)
       expect(page).to have_content(order.id)
       expect(page).to have_content(order.total)
@@ -60,7 +57,6 @@ RSpec.describe "an admin" do
     end
 
     it "can see cancelled orders" do
-
       expect(page).to have_content(cancelled_status.name)
       expect(page).to have_content(order.id)
       expect(page).to have_content(order.total)
@@ -68,11 +64,73 @@ RSpec.describe "an admin" do
     end
 
     it "can see completed orders" do
-
       expect(page).to have_content(completed_status.name)
       expect(page).to have_content(order.id)
       expect(page).to have_content(order.total)
       expect(page).to have_content(order.status)
+    end
+
+    it "can see the total number of orders for all types" do
+      orders = Order.all
+
+      expect(page).to have_content(orders.count)
+    end
+
+    it "can see the total number of ordered orders" do
+      orders = Order.where(status_id: ordered_status.id)
+
+      expect(page).to have_content(orders.count)
+    end
+
+    it "can see the total number of orders for paid orders" do
+      orders = Order.where(status_id: paid_status.id)
+
+      expect(page).to have_content(orders.count)
+    end
+
+    it "can see the total number of orders for cancelled orders" do
+      orders = Order.where(status_id: cancelled_status.id)
+
+      expect(page).to have_content(orders.count)
+    end
+
+    it "can see the total number of orders for completed orders" do
+      orders = Order.where(status_id: completed_status.id)
+
+      expect(page).to have_content(orders.count)
+    end
+
+    it "can change the status for an individual order if the status is paid" do
+      order.update_attributes(status_id: paid_status.id)
+      click_link "View"
+
+      expect(page).to have_content(paid_status.name)
+      select "Completed", from: "order[status]"
+      click_button "Update Order Status"
+      expect(current_path).to eq(admin_orders_path)
+      expect(page).to have_content(completed_status.name)
+    end
+
+    it "can change the status for an individual order if status is ordered" do
+      order.update_attributes(status_id: ordered_status.id)
+      click_link "View"
+
+      expect(page).to have_content(ordered_status.name)
+      select "Paid", from: "order[status]"
+      click_button "Update Order Status"
+      expect(current_path).to eq(admin_orders_path)
+      expect(page).to have_content(paid_status.name)
+    end
+
+    it "updating the status changes the status attribute in the database" do
+      order.update_attributes(status_id: ordered_status.id)
+      click_link "View"
+
+      select "Paid", from: "order[status]"
+      click_button "Update Order Status"
+
+      expect(current_path).to eq(admin_orders_path)
+      expect(page).to have_content "Paid Total: 1"
     end
   end
 end

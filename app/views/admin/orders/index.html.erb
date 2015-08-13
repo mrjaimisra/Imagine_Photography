@@ -6,6 +6,7 @@
   <div class="col-md-6 list-group">
     <% @statuses.each do |status| %>
       <%= link_to status.name, "/admin/orders/#{status.name}", class: "list-group-item" %>
+      Total: <%= Order.where(status_id: status.id).count %>
       <% end %>
   </div>
   <div class="col-md-3"></div>

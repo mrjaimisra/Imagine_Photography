@@ -26,7 +26,7 @@ RSpec.describe "the category view", type: :feature do
 
     it "displays the correct path in the address bar" do
       visit "menu/#{category.name}"
-      expect(current_path).to eq("/menu/breakfast")
+      expect(current_path).to eq("/menu/Breakfast")
     end
 
     it "views the items in the category" do
