@@ -1,18 +1,5 @@
 require "rails_helper"
 
-# As an Admin
-# When I visit the dashboard
-
-# Then I can see a listing of all orders
-
-# And I can see the total number of orders for each status
-# ("Ordered", "Paid", "Cancelled", "Completed")
-
-# And I can see a link for each individual order
-
-# And I can filter orders to display by each status type
-# ("Ordered", "Paid", "Cancelled", "Completed")
-
 RSpec.describe "an admin" do
   let!(:admin) { Fabricate(:user) }
   let!(:item) { Fabricate(:item) }
@@ -22,8 +9,12 @@ RSpec.describe "an admin" do
   let!(:cancelled_status) { Status.create(name: "Cancelled") }
   let!(:completed_status) { Status.create(name: "Completed") }
 
-  let!(:order) { Order.create(user_id: admin.id, status_id: completed_status.id) }
-  let!(:order_item) { OrderItem.create(order_id: order.id, quantity: 1, item_id: item.id) }
+  let!(:order) {
+    Order.create(user_id: admin.id, status_id: completed_status.id)
+  }
+  let!(:order_item) {
+    OrderItem.create(order_id: order.id, quantity: 1, item_id: item.id)
+  }
 
   context "visits admin dashboard" do
     before(:each) do
