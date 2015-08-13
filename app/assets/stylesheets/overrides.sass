@@ -1,32 +1,112 @@
-
 $text-highlight: #09afa9
+$transparent-background: rgba(254, 254, 254, .75)
 
 body
   /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of
-  padding-top: 70px
+  padding-top: 100px
+  background-image: image-url('background-img-wood.png')
+
+  .container .row:first-child
+    margin-top: 1em
+
+.vertical-center
+  display: flex
+  align-items: flex-start
+
+.glyphicon-shopping-cart
+  margin-right: .5em
+
+.navbar
+  max-height: 100px
+  background-color: rgba(9, 9, 9, .5)
+
+  .navbar-nav
+    padding-right: 1em
 
 .navbar-inverse .navbar-nav > li > a
   color: $text-highlight
   font-size: 1.5em
   //hack to center vertically
   padding-top: 1.5em
+  margin-bottom: .5em
 
 .navbar-header .navbar-brand
   height: 100%
   width: 60%
 
 .jumbotron
-  background-image: image-url('Family-eating.jpg')
-  background-repeat: no-repeat
-  height: 390px
-  background-size: cover
-  background-position: center center
+  background-color: transparent
+  padding-top: 20px
+  padding-bottom: 20px
+  div
+    background-image: image-url('plate-3.png')
+    background-size: cover
+    background-repeat: no-repeat
+    height: 490px
+    background-size: cover
+    background-position: center center
 
-.hero-spacer
-  margin-top: 50px
+.category-feature
+  .thumbnail
+    box-shadow: 0 0 10px black
+    background-color: $transparent-background
+    border: none
+    .caption
+      padding-top: 0
 
-.hero-feature
-  margin-bottom: 30px
+form
+  background-color: $transparent-background
+  padding: 10px
+  width: 50%
+
+.button_to
+  background-color: transparent
+
+.item-info
+  background-color: $transparent-background
+  padding: 10px
+
+.status
+  background-color: $transparent-background
+  padding: 10px
+  margin: 10px
+
+.item-list
+  background: transparent
+  .thumbnail
+    border: none
+
+.total-orders
+  background-color: $transparent-background
+  margin-bottom: 10px
+  text-align: center
+  width: 50%
+
+.item-show
+  .thumbnail
+    box-shadow: 0 0 10px black
+    background-color: $transparent-background
+    width: 50%
+    border: none
+
+.order-list-button
+  width: 50%
+
+.alert
+  width: 50%
+
+.lone-button-container
+  background-color: $transparent-background
+  width: 50%
+  padding: 10px
+
+.table-responsive
+  background-color: $transparent-background
+  padding: 10px
+
+.item-box .thumbnail
+  box-shadow: 0 0 10px black
+  background-color: $transparent-background
 
 .category-feature .thumbnail img
   height: 230px

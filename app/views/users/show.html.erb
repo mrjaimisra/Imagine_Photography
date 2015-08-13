@@ -1,0 +1,25 @@
+<h1><%= current_user.username.capitalize %>'s Profile</h1>
+
+<div class="row">
+  <div class="col-md-3"><h4>Account Information</h4></div>
+  <div class="col-md-9"></div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped profile">
+
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Phone Number</th>
+      <th></th>
+    </tr>
+      <tr class="user-info">
+        <td><%= current_user.username.capitalize %></td>
+        <td><%= current_user.street_name %>, <%= current_user.zipcode %></td>
+        <td><%= current_user.phone_number %></td>
+        <td><%= link_to "Edit Profile", profile_edit_path(id: current_user.id) %></td>
+      </tr>
+  </table>
+</div>
+

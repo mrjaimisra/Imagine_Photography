@@ -1,15 +1,13 @@
 <!-- Jumbotron Header -->
 <header class="jumbotron hero-spacer">
-  <%= image_tag "DINNERS-READY-LOGO-Transparent6.png", html_option = { class: "img-responsive" } %>
+  <div>
+    <%= image_tag "home-page-logo-large-2.png", html_option = { class: "img-responsive center-block vertical-center" } %>
+  </div>
 </header>
 
 <hr>
 
-<div class="row">
-  <div class="col-lg-12">
-    <h3>Home Cooked Meals</h3>
-  </div>
-</div>
+<%= render partial: "layouts/page_title", locals: { page_title: "Home Cooked Meals" } %>
 
 <div class="row text-center">
 

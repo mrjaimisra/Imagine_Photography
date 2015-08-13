@@ -1,0 +1,41 @@
+<%= render partial: "layouts/page_title", locals: {page_title: "All Orders"} %>
+<%= render partial: "layouts/flash_message" %>
+
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6 list-group">
+    <% @statuses.each do |status| %>
+      <%= link_to status.name, "/admin/orders/#{status.name}", class: "list-group-item btn btn-default order-list-button" %>
+      <div class="total-orders"><strong>Total: <%= Order.where(status_id: status.id).count %></strong></div>
+      <% end %>
+  </div>
+  <div class="col-md-3"></div>
+</div>
+
+<div class="row">
+  <!-- Grid being used for spacing maybe try to do it with sass in view refactor -->
+  <div class="col-md-3"><h4>Details:</h4></div>
+  <div class="col-md-9"></div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped orders">
+
+    <tr>
+      <th>Order Number</th>
+      <th>Total</th>
+      <th>Order Updated Date</th>
+      <th></th>
+    </tr>
+
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= link_to order.id, "/orders/#{order.id}" %></td>
+        <td><%= number_to_currency(order.total) %></td>
+        <td><%= order.updated_at.strftime("%A, %b %d %Y %l:%M %p") %></td>
+        <td><%= link_to "View", order_path(order) %></td>
+      </tr>
+    <% end %>
+  </table>
+
+</div>

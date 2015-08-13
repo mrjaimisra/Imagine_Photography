@@ -9,13 +9,29 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to menu_path
     else
-      redirect_to login_path
+      flash[:danger] = "Ya screwed something up parter, try again!"
+      redirect_to sign_up_path
     end
+  end
+
+  def show
+    redirect_to "/404" unless current_user
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    current_user.update_attributes(user_params)
+    current_user.save!
+    redirect_to profile_path(current_user)
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :password)
+    params.require(:user).permit(:username, :password,
+      :street_name, :zipcode, :phone_number)
   end
 end

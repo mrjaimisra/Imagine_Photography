@@ -1,3 +1,4 @@
+require "twilio-ruby"
 class SessionsController < ApplicationController
   def new
   end
@@ -7,10 +8,10 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
       redirect_to menu_path
-      flash[:success] = "YeeHaw! #{@user.username} is signed in"
+      flash[:success] = "YeeHaw! #{@user.username} is signed in!"
     else
       redirect_to login_path
-      flash[:error] = "Sorry m'friend. You go HUNGRY!"
+      flash[:danger] = "Sorry m'friend. You go HUNGRY!"
     end
   end
 
