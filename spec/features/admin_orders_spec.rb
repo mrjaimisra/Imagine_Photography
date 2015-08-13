@@ -1,16 +1,6 @@
 require "rails_helper"
 
-# As an Admin
-# When I visit the dashboard
-
-# Then I can see a listing of all orders
-
 # And I can see the total number of orders for each status
-# ("Ordered", "Paid", "Cancelled", "Completed")
-
-# And I can see a link for each individual order
-
-# And I can filter orders to display by each status type
 # ("Ordered", "Paid", "Cancelled", "Completed")
 
 RSpec.describe "an admin" do
@@ -34,7 +24,6 @@ RSpec.describe "an admin" do
     end
 
     it "can see all orders" do
-
       expect(page).to have_content("Ordered")
       expect(page).to have_content("Paid")
       expect(page).to have_content("Cancelled")
@@ -53,7 +42,6 @@ RSpec.describe "an admin" do
     end
 
     it "can see ordered orders" do
-
       expect(page).to have_content(ordered_status.name)
       expect(page).to have_content(order.id)
       expect(page).to have_content(order.total)
@@ -61,7 +49,6 @@ RSpec.describe "an admin" do
     end
 
     it "can see paid orders" do
-
       expect(page).to have_content(paid_status.name)
       expect(page).to have_content(order.id)
       expect(page).to have_content(order.total)
@@ -69,7 +56,6 @@ RSpec.describe "an admin" do
     end
 
     it "can see cancelled orders" do
-
       expect(page).to have_content(cancelled_status.name)
       expect(page).to have_content(order.id)
       expect(page).to have_content(order.total)
@@ -77,11 +63,40 @@ RSpec.describe "an admin" do
     end
 
     it "can see completed orders" do
-
       expect(page).to have_content(completed_status.name)
       expect(page).to have_content(order.id)
       expect(page).to have_content(order.total)
       expect(page).to have_content(order.status)
+    end
+
+    it "can see the total number of orders for all types" do
+      orders = Order.all
+
+      expect(page).to have_content(orders.count)
+    end
+
+    it "can see the total number of ordered orders" do
+      orders = Order.where(status_id: ordered_status.id)
+
+      expect(page).to have_content(orders.count)
+    end
+
+    it "can see the total number of orders for paid orders" do
+      orders = Order.where(status_id: paid_status.id)
+
+      expect(page).to have_content(orders.count)
+    end
+
+    it "can see the total number of orders for cancelled orders" do
+      orders = Order.where(status_id: cancelled_status.id)
+
+      expect(page).to have_content(orders.count)
+    end
+
+    it "can see the total number of orders for completed orders" do
+      orders = Order.where(status_id: completed_status.id)
+
+      expect(page).to have_content(orders.count)
     end
   end
 end
