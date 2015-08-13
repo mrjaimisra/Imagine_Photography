@@ -5,8 +5,8 @@
   <div class="col-md-3"></div>
   <div class="col-md-6 list-group">
     <% @statuses.each do |status| %>
-      <%= link_to status.name, "/admin/orders/#{status.name}", class: "list-group-item" %>
-      Total: <%= Order.where(status_id: status.id).count %>
+      <%= link_to status.name, "/admin/orders/#{status.name}", class: "list-group-item btn btn-default order-list-button" %>
+      <div class="total-orders"><strong>Total: <%= Order.where(status_id: status.id).count %></strong></div>
       <% end %>
   </div>
   <div class="col-md-3"></div>
