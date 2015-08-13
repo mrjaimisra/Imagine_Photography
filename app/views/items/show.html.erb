@@ -1,7 +1,7 @@
 <%= render partial: "layouts/page_title", locals: { page_title: "Meal" } %>
 
 <div class="row item-show">
-  <div class="col-md-3 item-info">
+  <div class="col-md-3 item-info item-list">
     <p class="lead">
       <%= @item.name %>
       (<%= link_to @item.category.name, menu_category_path(@item.category_id) %>)
@@ -10,15 +10,13 @@
         <%= @item.description %>
       </p>
       <h4><%= number_to_currency(@item.price) %></h4>
-      <%= button_to "Add to Cart", cart_items_path(item_id: @item.id) unless @item.retired? %>
+      <%= button_to "Add to Cart", cart_items_path(item_id: @item.id), class: "btn btn-primary" unless @item.retired? %>
   </div>
 
   <div class="col-md-9">
 
     <div class="thumbnail">
       <%= image_tag @item.image_url, class: "img-responsive" %>
-      <div class="caption-full">
-      </div>
     </div>
   </div>
 </div>
