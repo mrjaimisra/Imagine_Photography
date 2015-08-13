@@ -32,4 +32,3 @@ RSpec.describe "a category" do
     expect(status.name).to eq("Hello")
   end
 end
-
