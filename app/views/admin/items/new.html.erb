@@ -22,7 +22,7 @@
           <%= f.text_field :price, class: "form-control" %>
         </div>
 
-        <div class="form-group btn btn-default dropdown-toggle">
+        <div class="form-group dropdown-toggle">
           <%= f.label :category %>
           <%= f.collection_select(:category, Category.all, :id, :name, include_blank: "Please Select") %>
         </div>
@@ -32,11 +32,11 @@
           <%= f.text_field :image_url, class: "form-control" %>
         </div>
 
-        <div class="form-group btn btn-default dropdown-toggle">
+        <div class="form-group dropdown-toggle">
           <%= f.label :status %>
           <%= f.select(:status, Item.statuses.keys.map {|status| [status.titleize,status]}) %>
         </div><br><br>
-        <%= f.submit "Add Meal", class: "btn btn-default" %>
+        <%= f.submit "Add Meal", class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
