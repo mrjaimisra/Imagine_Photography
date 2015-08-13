@@ -6,9 +6,9 @@ RSpec.describe "an admin on their dashboards" do
   before(:each) do
     sign_in(user)
 
-    Category.create(name: "breakfast")
-    Category.create(name: "lunch")
-    Category.create(name: "dinner")
+    Category.create(name: "Breakfast")
+    Category.create(name: "Lunch")
+    Category.create(name: "Dinner")
   end
 
   it "can access the form to add a new item" do

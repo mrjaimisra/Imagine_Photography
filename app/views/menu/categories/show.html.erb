@@ -4,12 +4,7 @@
 <div class="items-list">
   <div class="row">
     <div class="col-md-3">
-      <div class="list-group">
-        <%= link_to "Full Menu", "/menu", class: "list-group-item" %>
-        <%= link_to "Breakfast", "/menu/breakfast", class: "list-group-item" %>
-        <%= link_to "Lunch", "/menu/lunch", class: "list-group-item" %>
-        <%= link_to "Dinner", "/menu/dinner", class: "list-group-item" %>
-      </div>
+      <%= render partial: "layouts/category_list" %>
     </div>
 
     <div class="col-md-9">

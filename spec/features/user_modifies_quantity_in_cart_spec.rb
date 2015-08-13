@@ -4,7 +4,7 @@ RSpec.describe "the cart quantity", type: :feature do
   context "a user with items in the cart" do
     let!(:item) { Fabricate(:item) }
     let!(:user) { Fabricate(:user) }
-    let!(:category) { Category.create(name: "lunch") }
+    let!(:category) { Category.create(name: "Lunch") }
 
     it "adds items to the cart" do
       visit menu_path

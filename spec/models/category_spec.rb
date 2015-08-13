@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "a category" do
-  let!(:category) { Category.create(name: "breakfast") }
+  let!(:category) { Category.create(name: "Breakfast") }
 
   it "is valid" do
     expect(category).to be_valid
@@ -13,7 +13,7 @@ RSpec.describe "a category" do
   end
 
   it "is invalid if it has a duplicate name" do
-    other_category = Category.create(name: "breakfast")
+    other_category = Category.create(name: "Breakfast")
     expect(other_category).to_not be_valid
   end
 

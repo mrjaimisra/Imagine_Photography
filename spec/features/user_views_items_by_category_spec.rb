@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "the category view", type: :feature do
   context "user visits a category page" do
-    let!(:category) { Category.create(name: "breakfast") }
+    let!(:category) { Category.create(name: "Breakfast") }
     let!(:item) {
       Item.create(
         name:        "Breakfast burrito",
@@ -13,7 +13,7 @@ RSpec.describe "the category view", type: :feature do
       )
     }
 
-    let!(:other_category) { Category.create(name: "lunch") }
+    let!(:other_category) { Category.create(name: "Lunch") }
     let!(:other_item) {
       Item.create(
         name:        "Hamburger",
