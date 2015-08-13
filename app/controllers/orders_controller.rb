@@ -1,3 +1,5 @@
+require 'twilio-ruby'
+
 class OrdersController < ApplicationController
 
   def create
