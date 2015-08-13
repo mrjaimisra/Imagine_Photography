@@ -30,10 +30,10 @@
                         ),
                         meal_path(id: order_item.item_id) %></td>
         <td><%= order_item.name %></td>
-        <td>$<%= order_item.price %></td>
+        <td><%= number_to_currency(order_item.price) %></td>
         <td><%= order_item.quantity %></td>
         <div class="subtotal">
-          <td>$<%= order_item.subtotal %></td>
+          <td><%= number_to_currency(order_item.subtotal) %></td>
         </div>
         <td><%= @order.status %></td>
         <td><%= order_item.updated_at %></td>
