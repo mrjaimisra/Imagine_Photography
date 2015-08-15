@@ -14,6 +14,7 @@ gem "twilio-ruby"
 gem "bootstrap-sass"
 gem "autoprefixer-rails"
 gem "google_directions"
+gem "skylight"
 
 group :development, :test do
   gem 'byebug'
