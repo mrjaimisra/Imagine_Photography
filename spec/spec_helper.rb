@@ -8,6 +8,7 @@ RSpec.configure do |config|
   end
 
   config.disable_monkey_patching!
+  config.backtrace_exclusion_patterns << %r{/gems/}
 
   if config.files_to_run.one?
     config.default_formatter = "doc"
@@ -37,5 +38,4 @@ RSpec.configure do |config|
     require "simplecov"
     SimpleCov.start
   end
-
 end

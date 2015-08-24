@@ -15,6 +15,8 @@ gem "bootstrap-sass"
 gem "autoprefixer-rails"
 gem "google_directions"
 gem "skylight"
+gem "faker"
+gem "puma"
 
 group :development, :test do
   gem 'byebug'
