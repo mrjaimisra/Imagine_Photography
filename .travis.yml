@@ -6,7 +6,3 @@ script:
   - bundle install
   - bundle exec rake db:create db:schema:load
   - bundle exec rspec
-
-addons:
-  code_climate:
-    repo_token: a46f18b88fdabd9f0b5c24c45ca8dc4b5dc58b8d8a983b65affd5232f482df9c bundle exec rake

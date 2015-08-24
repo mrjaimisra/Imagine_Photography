@@ -2,14 +2,14 @@
 
 [![Stories in Ready](https://badge.waffle.io/applegrain/dinners_ready.svg?label=ready&title=Ready)](http://waffle.io/applegrain/dinners_ready) [![Code Climate](https://codeclimate.com/github/applegrain/dinners_ready/badges/gpa.svg)](https://codeclimate.com/github/applegrain/dinners_ready) [![Build Status](https://travis-ci.org/applegrain/dinners_ready.svg)](https://travis-ci.org/applegrain/dinners_ready) [![Test Coverage](https://codeclimate.com/github/applegrain/dinners_ready/badges/coverage.svg)](https://codeclimate.com/github/applegrain/dinners_ready/coverage)
 
-##### [Jason Wright](https://github.com/noobjey), [Jai Misra](https://github.com/mrjaimisra), [Lovisa Svallingson](https://github.com/applegrain)
+##### [Jai Misra](https://github.com/mrjaimisra), [Mike Reeves](https://github.com/michael-reeves), [Michael Merrell](https://github.com/michaelkm), [Tyler Graham](https://github.com/tgraham777)
 
-The Little Shop of Orders is the final project in Module 2 at the [Turing School](http://turing.io). Groups need to 
-build an online store where a user can browse and order products and the admin can manage the products and view
-user info. 
+The Pivot is the first project for Module 3 at the [Turing School](http://turing.io).
+Groups inherited a code base for an online store, and need modify the code for a new purpose.
+In our case, we inherited a meals-on-wheels style restaurant, which we need to transform into a website selling photography. 
 
 ### Instructions 
-- run `git clone git@github.com:applegrain/dinners_ready.git`
+- run `git clone git@github.com:mrjaimisra/the_pivot.git`
 - run `rails s`, access `http://localhost:3000` in your browser 
 - to run the tests, run `bundle exec rspec`  
 
@@ -25,11 +25,10 @@ user info.
 
 ### Team workflow 
 - **Tools** 
-  - [waffle](https://waffle.io/applegrain/dinners_ready) 
-  - [travis]  (https://travis-ci.org/applegrain/dinners_ready)
-  - hound (rubocop locally to test before PR) 
-  - [code climate](https://codeclimate.com/github/applegrain/dinners_ready) 
-  - simple cov 
+  - [waffle](https://waffle.io/mrjaimisra/the_pivot) 
+  - [travis]  (https://travis-ci.org/mrjaimisra/the_pivot)
+  - simple cov
+   
 - **Workflow**
   - checkout a branch named after the waffle story and include the number 
     - example: `2-admin-can-create-meals`
