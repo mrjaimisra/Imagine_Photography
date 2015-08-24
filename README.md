@@ -1,6 +1,6 @@
-# Dinner's Ready 
+# Photo Bomb
 
-[![Stories in Ready](https://badge.waffle.io/mrjaimisra/the_pivot.svg?label=ready&title=Ready)](http://waffle.io/mrjaimisra/the_pivot) [![Code Climate](https://codeclimate.com/github/applegrain/dinners_ready/badges/gpa.svg)](https://codeclimate.com/github/applegrain/dinners_ready) [![Build Status](https://travis-ci.org/applegrain/dinners_ready.svg)](https://travis-ci.org/mrjaimisra/the_pivot) [![Test Coverage](https://codeclimate.com/github/mrjaimisra/the_pivot/badges/coverage.svg)]
+[![Stories in Ready](https://badge.waffle.io/mrjaimisra/the_pivot.svg?label=ready&title=Ready)](http://waffle.io/mrjaimisra/the_pivot) [![Code Climate](https://codeclimate.com/github/applegrain/dinners_ready/badges/gpa.svg)](https://codeclimate.com/github/applegrain/dinners_ready) [![Build Status](https://travis-ci.org/applegrain/dinners_ready.svg)](https://travis-ci.org/mrjaimisra/the_pivot)
 
 ##### [Jai Misra](https://github.com/mrjaimisra), [Mike Reeves](https://github.com/michael-reeves), [Michael Merrell](https://github.com/michaelkm), [Tyler Graham](https://github.com/tgraham777)
 
