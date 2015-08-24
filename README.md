@@ -1,6 +1,6 @@
 # Dinner's Ready 
 
-[![Stories in Ready](https://badge.waffle.io/applegrain/dinners_ready.svg?label=ready&title=Ready)](http://waffle.io/applegrain/dinners_ready) [![Code Climate](https://codeclimate.com/github/applegrain/dinners_ready/badges/gpa.svg)](https://codeclimate.com/github/applegrain/dinners_ready) [![Build Status](https://travis-ci.org/applegrain/dinners_ready.svg)](https://travis-ci.org/applegrain/dinners_ready) [![Test Coverage](https://codeclimate.com/github/applegrain/dinners_ready/badges/coverage.svg)](https://codeclimate.com/github/applegrain/dinners_ready/coverage)
+[![Stories in Ready](https://badge.waffle.io/mrjaimisra/the_pivot.svg?label=ready&title=Ready)](http://waffle.io/mrjaimisra/the_pivot) [![Code Climate](https://codeclimate.com/github/applegrain/dinners_ready/badges/gpa.svg)](https://codeclimate.com/github/applegrain/dinners_ready) [![Build Status](https://travis-ci.org/applegrain/dinners_ready.svg)](https://travis-ci.org/mrjaimisra/the_pivot) [![Test Coverage](https://codeclimate.com/github/mrjaimisra/the_pivot/badges/coverage.svg)]
 
 ##### [Jai Misra](https://github.com/mrjaimisra), [Mike Reeves](https://github.com/michael-reeves), [Michael Merrell](https://github.com/michaelkm), [Tyler Graham](https://github.com/tgraham777)
 
@@ -13,15 +13,14 @@ In our case, we inherited a meals-on-wheels style restaurant, which we need to t
 - run `rails s`, access `http://localhost:3000` in your browser 
 - to run the tests, run `bundle exec rspec`  
 
-[Project Outline](https://github.com/turingschool/curriculum/blob/master/source/projects/little_shop.markdown) | [Heroku](https://dinners-ready.herokuapp.com/)
+[Project Outline](https://github.com/turingschool/lesson_plans/blob/master/ruby_03-professional_rails_applications/the_pivot.markdown#pivots) | [Heroku](https://photo_bomb.herokuapp.com/)
 
 ### Areas of focus
-- Use TDD to drive all layers of Rails development including unit, integration, and user acceptance tests
-- Design a system of models which use one-to-one, one-to-many, and many-to-many relationships
-- Practice mixing HTML, CSS, and Rails templates to create an inviting and usable User Interface
-- Differentiate responsibilities between components of the Rails stack
-- Build a logical user-flow that moves across multiple controllers and models
-- Practice an agile workflow and improve communication skills working within a team
+- Working with Multitenancy
+- Implementing JavaScript
+- Securing a Rails App
+- Sending Email
+- Creating Seed files
 
 ### Team workflow 
 - **Tools** 
