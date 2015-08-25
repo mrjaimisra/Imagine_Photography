@@ -21,12 +21,14 @@ Rails.application.routes.draw do
     resources :categories, only: [:show]
   end
 
-  get "/menu", to: "items#index", as: :menu
-  post "/menu", to: "location#check_zipcode", as: :zipcode
-  get "meals/:id", to: "items#show", as: :meal
+  resources :photos, only: [:index, :show]
 
+  get "/photographers", to: "users#photographers"
 
-  get "menu/:id", to: "menu/categories#show"
+  # get "/photos", to: "items#index", as: :menu
+  # post "/menu", to: "location#check_zipcode", as: :zipcode
+  # get "meals/:id", to: "items#show", as: :meal
+  # get "menu/:id", to: "menu/categories#show"
 
   post "/cart_items", to: "cart_items#create"
   put "/cart_items", to: "cart_items#update"
