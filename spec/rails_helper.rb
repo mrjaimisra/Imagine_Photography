@@ -21,4 +21,5 @@ RSpec.configure do |config|
   Capybara.register_driver :selenium do |app|
     Capybara::Selenium::Driver.new(app, browser: :chrome)
   end
+  config.infer_spec_type_from_file_location!
 end

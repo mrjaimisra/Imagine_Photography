@@ -30,9 +30,9 @@
       </li>
       <li>
         <% if current_user %>
-          <%= link_to "Sign Out", logout_path, method: :delete %>
+          <%= link_to "Sign out", logout_path, method: :delete %>
         <% else %>
-          <%= link_to "Sign In", login_path %>
+          <%= link_to "Sign in", login_path %>
         <% end %>
       </li>
     </ul>
