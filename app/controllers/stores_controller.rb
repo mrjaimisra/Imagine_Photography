@@ -4,6 +4,5 @@ class StoresController < ApplicationController
   end
 
   def show
-
   end
 end
