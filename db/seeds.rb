@@ -17,8 +17,15 @@ class Seed
           image_url: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200"
       )
 
+<<<<<<< HEAD
+  def run
+    create_categories
+    create_photos
+    create_statuses
+=======
       puts "Photo #{i}: #{photo.name} created!"
     end
+>>>>>>> master
   end
 
   def generate_categories
@@ -51,6 +58,17 @@ class Seed
     end
   end
 
+<<<<<<< HEAD
+  def create_photos
+    id = %w(1 2 3)
+    price = %w(3 5 7 9 11 13 15)
+    [*1...15].each do |num|
+      Photo.create(name: name.rotate(num).first,
+                  description: description,
+                  price: price.rotate(num).first,
+                  image_url: image_url,
+                  category_id: id.rotate(num).first)
+=======
   def generate_photographers
     admin = User.create!(
         name: Carmer,
@@ -70,6 +88,7 @@ class Seed
         photographer.update_attribute(business_id, photographer.id)
 
       puts "Photographer #{i}: #{photographer.name} - #{photographer.email} - #{photographer.password} created!"
+>>>>>>> master
     end
   end
 
