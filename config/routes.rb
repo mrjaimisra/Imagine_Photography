@@ -21,8 +21,9 @@ Rails.application.routes.draw do
     resources :categories, only: [:show]
   end
 
-  resources :photos, only: [:index, :show]
   get "/explore", to: "photos#index"
+  resources :photos, only: [:show]
+
   # post "/menu", to: "location#check_zipcode", as: :zipcode
   # get "meals/:id", to: "items#show", as: :meal
   # get "menu/:id", to: "menu/categories#show"
@@ -34,6 +35,9 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:create, :index, :show]
 
-  resources :stores, only: [:index, :show], path: :photographers, as: :photographers do
+  resources :stores, only: [:index, :show], path: :photographers, as: :photographers
+
+  namespace :stores, path: ":photographer", as: :photographer do
+    resources :photos, only: [:index, :show]
   end
 end

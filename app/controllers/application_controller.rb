@@ -20,4 +20,8 @@ class ApplicationController < ActionController::Base
   def authorization_error
     render file: "/public/404_authorization.html", layout: false, status: 404
   end
+
+  def current_store
+    @current_store ||= Store.find_by(url: params[:photographer]) if params[:photographer]
+  end
 end

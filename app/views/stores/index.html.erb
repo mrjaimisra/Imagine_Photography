@@ -2,8 +2,10 @@
 
   <h1>Photographers</h1>
 
-  <% @photographers.each do |photographer| %>
-    <%= photographer.name %>
-  <% end %>
-
+  <h3>
+    <% @photographers.each do |photographer| %>
+      <%= link_to photographer.name, photographer_photos_path(photographer: photographer.url) %> <br/>
+    <% end %>
+  </h3>
+  
 </div>
