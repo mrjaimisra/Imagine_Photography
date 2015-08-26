@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "User visits home page" do
   before do
-    visit "/"
+    visit root_path
   end
 
   scenario "successfully" do
