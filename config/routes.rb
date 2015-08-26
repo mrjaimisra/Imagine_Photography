@@ -22,9 +22,6 @@ Rails.application.routes.draw do
   end
 
   resources :photos, only: [:index, :show]
-
-  get "/photographers", to: "users#photographers"
-
   get "/explore", to: "photos#index"
   # post "/menu", to: "location#check_zipcode", as: :zipcode
   # get "meals/:id", to: "items#show", as: :meal
@@ -33,10 +30,10 @@ Rails.application.routes.draw do
   post "/cart_items", to: "cart_items#create"
   put "/cart_items", to: "cart_items#update"
   get "/cart", to: "cart_items#index"
-
   delete "/cart_items", to: "cart_items#destroy"
 
   resources :orders, only: [:create, :index, :show]
+
+  resources :stores, only: [:index, :show], path: :photographers, as: :photographers do
+  end
 end
-
-

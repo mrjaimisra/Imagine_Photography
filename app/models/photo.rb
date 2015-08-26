@@ -1,5 +1,6 @@
 class Photo < ActiveRecord::Base
   belongs_to :category
+  belongs_to :store
   has_many :order_photos
   has_many :orders, through: :order_photos
 
