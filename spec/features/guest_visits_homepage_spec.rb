@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.feature "user visits home page" do
+RSpec.feature "User visits home page" do
   before do
     visit "/"
   end

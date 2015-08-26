@@ -1,8 +1,10 @@
 Fabricator(:user) do
-  username "Jason"
+  name     Faker::Name.name
+  username Faker::Internet.email
   password "password"
-  role 0
-  zipcode 80202
-  street_name "1510 Blake Street"
-  phone_number "5732681897"
+  phone_number Faker::PhoneNumber.phone_number
+  pass_word = Faker::Internet.password
+  password pass_word
+  password_confirmation pass_word
+  role { %w(default business_admin photographer site_admin).sample }
 end

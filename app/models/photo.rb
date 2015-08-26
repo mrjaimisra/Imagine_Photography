@@ -1,4 +1,4 @@
-class Item < ActiveRecord::Base
+class Photo < ActiveRecord::Base
   belongs_to :category
   has_many :order_items
   has_many :orders, through: :order_items
@@ -13,7 +13,7 @@ class Item < ActiveRecord::Base
             :image_url,
             :category_id, presence: true
 
-  validates :name, uniqueness: true
+  # validates :name, uniqueness: true
 
   enum status: %w(active retired)
 

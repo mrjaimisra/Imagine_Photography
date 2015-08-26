@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   get "/photographers", to: "users#photographers"
 
-  # get "/photos", to: "items#index", as: :menu
+  get "/explore", to: "photos#index"
   # post "/menu", to: "location#check_zipcode", as: :zipcode
   # get "meals/:id", to: "items#show", as: :meal
   # get "menu/:id", to: "menu/categories#show"

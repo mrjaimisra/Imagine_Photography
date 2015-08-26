@@ -6,7 +6,7 @@ class Seed
 
   def run
     create_categories
-    create_items
+    create_photos
     create_statuses
   end
 
@@ -24,11 +24,11 @@ class Seed
     end
   end
 
-  def create_items
+  def create_photos
     id = %w(1 2 3)
     price = %w(3 5 7 9 11 13 15)
     [*1...15].each do |num|
-      Item.create(name: name.rotate(num).first,
+      Photo.create(name: name.rotate(num).first,
                   description: description,
                   price: price.rotate(num).first,
                   image_url: image_url,
