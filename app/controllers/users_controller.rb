@@ -28,6 +28,10 @@ class UsersController < ApplicationController
     redirect_to profile_path(current_user)
   end
 
+  def photographers
+    @photographers = User.photographers
+  end
+
   private
 
   def user_params

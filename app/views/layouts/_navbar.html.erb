@@ -1,0 +1,37 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="navbar-header">
+    <div>
+      <%= link_to "Imagine", root_path, class: "navbar-brand" %>
+    </div>
+  </div>
+  <div class="navbar-inverse">
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <%= link_to "Explore", photos_path %>
+      </li>
+      <li>
+        <%= link_to "Photographers", photographers_path %>
+      </li>
+      <li>
+        <%= link_to "Cart", cart_path %>
+      </li>
+      <li>
+        <% if current_user %>
+          <% if current_user && current_user.site_admin? %>
+          <li><%= link_to "Dashboard", admin_dashboard_path %></li>
+        <% else %>
+          <li><%= link_to "Orders", orders_path %></li>
+          <li><%= link_to "Profile", profile_path %></li>
+        <% end %>
+      <% end %>
+      </li>
+      <li>
+        <% if current_user %>
+          <%= link_to "Sign out", logout_path, method: :delete %>
+        <% else %>
+          <%= link_to "Sign in", login_path %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</nav>
