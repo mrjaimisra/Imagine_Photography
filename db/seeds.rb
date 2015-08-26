@@ -4,40 +4,9 @@ class Seed
     seed.generate_customers
     seed.generate_photographers
     seed.generate_platform_admins
-    seed.generate_photos
     seed.generate_categories
+    seed.generate_photos
     seed.generate_orders
-  end
-  
-  def generate_photos
-    500.times do |i|
-      photo = Photo.create!(
-          name: Faker::Commerce.product_name,
-          description: Faker::Lorem.paragraph,
-          image_url: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200"
-      )
-
-<<<<<<< HEAD
-  def run
-    create_categories
-    create_photos
-    create_statuses
-=======
-      puts "Photo #{i}: #{photo.name} created!"
-    end
->>>>>>> master
-  end
-
-  def generate_categories
-    10.times do |i|
-      categories = %w(Travel Plants Leisure People Patterns Animals Black_And_White Sports Weddings Landscape)
-      name = categories.shuffle.pop
-      category = Category.create!(
-          name: name
-      )
-      categorize_photos(category)
-      puts "Category #{i}: #{category.name} created!"
-    end
   end
 
   def generate_customers
@@ -58,25 +27,13 @@ class Seed
     end
   end
 
-<<<<<<< HEAD
-  def create_photos
-    id = %w(1 2 3)
-    price = %w(3 5 7 9 11 13 15)
-    [*1...15].each do |num|
-      Photo.create(name: name.rotate(num).first,
-                  description: description,
-                  price: price.rotate(num).first,
-                  image_url: image_url,
-                  category_id: id.rotate(num).first)
-=======
   def generate_photographers
     admin = User.create!(
-        name: Carmer,
+        name: "Carmer",
         email: "andrew@turing.io",
         password: "password",
         role: 2
     )
-        admin.update_attribute(business_id, admin.id)
 
     19.times do |i|
       photographer = User.create!(
@@ -85,10 +42,46 @@ class Seed
           role: 2,
           password: Faker::Internet.password
     )
-        photographer.update_attribute(business_id, photographer.id)
-
       puts "Photographer #{i}: #{photographer.name} - #{photographer.email} - #{photographer.password} created!"
->>>>>>> master
+    end
+  end
+
+  def generate_platform_admins
+    platform_admin = User.create!(
+        name: "Jorge",
+        email: "jorge @turing.io",
+                     role: 3,
+                     password: "password",
+    )
+
+    puts "Platform Admin #{platform_admin.name} - #{platform_admin.email} - #{platform_admin.password} created!"
+  end
+
+  def generate_categories
+    categories = ["Travel", "Plants", "Leisure", "People", "Patterns",
+                  "Animals", "Architecture", "Sports", "Weddings",
+                  "Landscape"]
+    10.times do |i|
+      name = categories.pop
+      category = Category.create!(
+          name: name
+      )
+      puts "Category #{i}: #{category.name} created!"
+    end
+  end
+
+  def generate_photos
+    50.times do |i|
+      10.times do |j|
+        photo = Photo.create!(
+            name: Faker::Commerce.product_name,
+            description: Faker::Lorem.paragraph,
+            price: Faker::Commerce.price + 1,
+            category_id: j+1,
+            image_url: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200"
+        )
+        puts "Photo #{i * 10 + j}: #{photo.name} created!"
+      end
     end
   end
 
@@ -103,25 +96,14 @@ class Seed
   #     puts "Business Admin #{i}: #{business_admin.name} - #{business_admin.email} - #{business_admin.password} created!"
   # end
 
-  def generate_platform_admins
-    platform_admin = User.create!(
-        name: "Jorge",
-        email: "jorge @turing.io",
-                     role: 3,
-                     password: "password",
-    )
-
-    puts "Platform Admin #{i}: #{platform_admin.name} - #{platform_admin.email} - #{platform_admin.password} created!"
-  end
-
   def generate_orders
     10.times do |i|
       customers = User.where(role: 0)
       customers.each do |customer|
         order = Order.create!(user_id: customer.id)
+        add_photos(order)
+        puts "Order #{i}: Order for #{customer.name} created!"
       end
-      add_photos(order)
-      puts "Order #{i}: Order for #{user.name} created!"
     end
   end
 
@@ -135,13 +117,6 @@ class Seed
     end
   end
 
-  def categorize_photos(category)
-    50.times do |i|
-      photo = Photo.find(Random.new.rand(1..500))
-      category.photos << photo
-      puts "#{i}: Added photo #{photo.name} to category #{category.name}."
-    end
-  end
 end
 
 Seed.start
