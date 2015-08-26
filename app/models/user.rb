@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   validates :username, presence: true, uniqueness: true
   validates :password, :street_name, :zipcode, :phone_number, presence: true
 
-  enum role: %w(default business_admin photographer site_admin)
+  enum role: %w(default business_admin photographer platform_admin)
 
   scope :customers,      -> { where(role: 0) }
   scope :photographers,  -> { where(role: 2) }
