@@ -1,15 +1,15 @@
 class Order < ActiveRecord::Base
   belongs_to :user
-  has_many :order_items, autosave: true
-  has_many :items, through: :order_items
+  has_many :order_photos, autosave: true
+  has_many :photos, through: :order_photos
 
   def customer_name
-    User.find(user_id).username
+    User.find(user_id).name
   end
 
   def total
-    order_items.inject(0) do |total, order_item|
-      total += order_item.quantity * Item.find(order_item.item_id).price
+    order_photos.inject(0) do |total, order_photo|
+      total += order_photo.quantity * Photo.find(order_photo.photo_id).price
     end
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826012439) do
+ActiveRecord::Schema.define(version: 20150826054443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,16 +20,16 @@ ActiveRecord::Schema.define(version: 20150826012439) do
     t.string "name"
   end
 
-  create_table "order_items", force: :cascade do |t|
+  create_table "order_photos", force: :cascade do |t|
     t.integer  "order_id"
-    t.integer  "item_id"
     t.integer  "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "photo_id"
   end
 
-  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id", using: :btree
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  add_index "order_photos", ["order_id"], name: "index_order_photos_on_order_id", using: :btree
+  add_index "order_photos", ["photo_id"], name: "index_order_photos_on_photo_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.integer  "user_id"
@@ -58,14 +58,11 @@ ActiveRecord::Schema.define(version: 20150826012439) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string  "username"
     t.string  "password_digest"
     t.integer "role",            default: 0
-    t.integer "zipcode"
-    t.string  "phone_number"
-    t.string  "street_name"
+    t.string  "name"
+    t.string  "email"
   end
 
-  add_foreign_key "order_items", "orders"
-  add_foreign_key "order_items", "photos", column: "item_id"
+  add_foreign_key "order_photos", "orders"
 end
