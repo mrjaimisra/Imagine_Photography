@@ -1,12 +1,12 @@
 require "rails_helper"
 
 RSpec.describe "the cart quantity", type: :feature do
-  context "a user with items in the cart" do
+  context "a user with photos in the cart" do
     let!(:item) { Fabricate(:item) }
     let!(:user) { Fabricate(:user) }
     let!(:category) { Category.create(name: "Lunch") }
 
-    it "adds items to the cart" do
+    it "adds photos to the cart" do
       visit menu_path
 
       within(".item-info") do
@@ -26,7 +26,7 @@ RSpec.describe "the cart quantity", type: :feature do
       expect(page).to have_content "3"
     end
 
-    it "decreases quantity of items from the cart" do
+    it "decreases quantity of photos from the cart" do
       sign_in(user)
       visit menu_path
 
@@ -71,7 +71,7 @@ RSpec.describe "the cart quantity", type: :feature do
       end
     end
 
-    it "removes items from the cart" do
+    it "removes photos from the cart" do
       sign_in(user)
       visit menu_path
       2.times { click_button "Add to Cart" }

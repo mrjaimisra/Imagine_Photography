@@ -7,6 +7,7 @@ class Seed
     seed.generate_platform_admins
     seed.generate_categories
     seed.generate_photos
+    seed.generate_stores
     seed.generate_orders
   end
 
@@ -17,13 +18,10 @@ class Seed
   end
 
   def generate_customers
-    registered_user_role =  Role.find_by(name: "registered_user")
-
     user = User.create(name: "Josh",
                 email: "josh@turing.io",
                 password: "password",
     )
-    user.roles << registered_user_role
 
     99.times do |i|
       customer = User.create!(
@@ -31,7 +29,6 @@ class Seed
           email: Faker::Internet.email,
           password: Faker::Internet.password,
       )
-      customer.roles << registered_user_role
 
       puts "Customer #{i}: #{customer.name} - #{customer.email} - #{customer.password} created!"
     end
@@ -53,7 +50,6 @@ class Seed
           password: Faker::Internet.password
       )
       photographer.roles << store_admin_role
-
       puts "Photographer #{i}: #{photographer.name} - #{photographer.email} - #{photographer.password} created!"
     end
   end
@@ -63,7 +59,7 @@ class Seed
     platform_admin = User.create!(
         name: "Jorge",
         email: "jorge @turing.io",
-                     password: "password",
+        password: "password",
     )
     platform_admin.roles << site_admin_role
 
@@ -72,12 +68,12 @@ class Seed
 
   def generate_categories
     categories = ["Travel", "Plants", "Leisure", "People", "Patterns",
-                  "Animals", "Architecture", "Sports", "Weddings",
-                  "Landscape"]
+    "Animals", "Architecture", "Sports", "Weddings",
+    "Landscape"]
     10.times do |i|
       name = categories.pop
       category = Category.create!(
-          name: name
+      name: name
       )
       puts "Category #{i}: #{category.name} created!"
     end
@@ -87,15 +83,28 @@ class Seed
     50.times do |i|
       10.times do |j|
         photo = Photo.create!(
-            name: Faker::Commerce.product_name,
-            description: Faker::Lorem.paragraph,
-            price: Faker::Commerce.price + 1,
-            category_id: j+1,
-            image_url: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200"
+        name: Faker::Commerce.product_name,
+        description: Faker::Lorem.paragraph,
+        price: Faker::Commerce.price + 1,
+        category_id: j+1,
+        image_url: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200"
         )
         puts "Photo #{i * 10 + j}: #{photo.name} created!"
       end
     end
+  end
+
+  def generate_stores
+    Store.create!(name: "MKPhotography")
+
+    19.times do |i|
+      store = Store.create!(
+        name: Faker::Company.name
+      )
+      add_photos(store)
+      puts "Store #{i}: #{store.name} created!"
+    end
+
   end
 
   # def generate_business_admins

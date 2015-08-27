@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
     render file: "/public/404_authorization.html", layout: false, status: 404
   end
 
+  def current_store
+    @current_store ||= Store.find_by(url: params[:photographer]) if params[:photographer]
+  end
+
   def current_permission
     @current_permission ||= Permission.new(current_user)
   end
@@ -39,4 +43,5 @@ class ApplicationController < ActionController::Base
     def authorized?
       current_permission.allow?(params[:controller], params[:action])
     end
+
 end

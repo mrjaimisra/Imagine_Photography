@@ -1,10 +1,10 @@
 require "rails_helper"
 
-RSpec.describe "the items view", type: :feature do
-  context "a user visits the items view" do
+RSpec.describe "the photos view", type: :feature do
+  context "a user visits the photos view" do
     let!(:item) { Fabricate(:item) }
 
-    it "displays all items" do
+    it "displays all photos" do
       visit menu_path
 
       within(".item-box") do
@@ -12,7 +12,7 @@ RSpec.describe "the items view", type: :feature do
       end
     end
 
-    it "views an items name, description, price and image" do
+    it "views an photos name, description, price and image" do
       visit menu_path
 
       within(".item-box") do

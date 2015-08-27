@@ -27,7 +27,7 @@ class Cart
 
   def total
     data.reduce(0) { |total, (id, quantity)|
-      total += photo.find(id).price * quantity }
+      total += Photo.find(id).price * quantity }
   end
 
   def empty

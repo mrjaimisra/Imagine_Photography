@@ -29,7 +29,7 @@ RSpec.describe "the category view", type: :feature do
       expect(current_path).to eq("/menu/Breakfast")
     end
 
-    it "views the items in the category" do
+    it "views the photos in the category" do
       visit "menu/#{category.name}"
 
       within(".page-title") do
@@ -44,7 +44,7 @@ RSpec.describe "the category view", type: :feature do
       end
     end
 
-    it "cannot view items in other categories" do
+    it "cannot view photos in other categories" do
       visit "menu/#{other_category.name}"
 
       within(".item-box") do
@@ -54,7 +54,7 @@ RSpec.describe "the category view", type: :feature do
       end
     end
 
-    it "redirects to an items show page when item name is clicked" do
+    it "redirects to an photos show page when item name is clicked" do
       visit "menu/#{category.name}"
 
       within(".item-box") do

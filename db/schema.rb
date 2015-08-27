@@ -40,6 +40,12 @@ ActiveRecord::Schema.define(version: 20150826232446) do
 
   add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
+  create_table "photographers", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "photos", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -49,7 +55,10 @@ ActiveRecord::Schema.define(version: 20150826232446) do
     t.string   "image_url"
     t.integer  "category_id"
     t.integer  "status",                               default: 0
+    t.integer  "store_id"
   end
+
+  add_index "photos", ["store_id"], name: "index_photos_on_store_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name",       default: "registered_user"
@@ -63,6 +72,13 @@ ActiveRecord::Schema.define(version: 20150826232446) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "stores", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "url"
   end
 
   create_table "user_roles", force: :cascade do |t|
@@ -82,6 +98,7 @@ ActiveRecord::Schema.define(version: 20150826232446) do
   end
 
   add_foreign_key "order_photos", "orders"
+  add_foreign_key "photos", "stores"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
 end

@@ -21,20 +21,24 @@ Rails.application.routes.draw do
     resources :categories, only: [:show]
   end
 
-  resources :photos, only: [:index, :show]
-
-  get "/photographers", to: "users#photographers"
-
   get "/explore", to: "photos#index"
+  resources :photos, only: [:show]
+
   # post "/menu", to: "location#check_zipcode", as: :zipcode
-  # get "meals/:id", to: "items#show", as: :meal
+  # get "meals/:id", to: "photos#show", as: :meal
   # get "menu/:id", to: "menu/categories#show"
 
-  post "/cart_items", to: "cart_items#create"
-  put "/cart_items", to: "cart_items#update"
-  get "/cart", to: "cart_items#index"
+  # post "/cart_photos", to: "cart_photos#create"
+  # put "/cart_photos", to: "cart_photos#update"
+  # delete "/cart_photos", to: "cart_photos#destroy"
 
-  delete "/cart_items", to: "cart_items#destroy"
+  get "/cart", to: "cart_photos#index"
 
+  resources :cart_photos, only: [:create, :update, :destroy]
   resources :orders, only: [:create, :index, :show]
+  resources :stores, only: [:index, :show], path: :photographers, as: :photographers
+
+  namespace :stores, path: ":photographer", as: :photographer do
+    resources :photos, only: [:index, :show]
+  end
 end

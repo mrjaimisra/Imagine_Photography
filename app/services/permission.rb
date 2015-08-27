@@ -71,7 +71,7 @@ class Permission
                      (action.in? %w( index show ))
       return true if (controller == 'photos') &&
                      (action.in? %w( index show ))
-      return true if (controller == 'cart_items') &&
+      return true if (controller == 'cart_photos') &&
                      (action.in? %w( index create update destroy ))
       return true if (controller == 'orders') &&
                      (action.in? %w( index show create ))
@@ -83,11 +83,13 @@ class Permission
                      (action.in? %w( new create ))
       return true if (controller == 'users') &&
                      (action.in? %w( new create ))
-      return true if (controller == 'stores')      &&
+      return true if (controller == 'stores') &&
+                     (action.in? %w( index show ))
+      return true if (controller == 'stores/photos') &&
                      (action.in? %w( index show ))
       return true if (controller == 'photos') &&
                      (action.in? %w( index show ))
-      return true if (controller == 'cart_items') &&
+      return true if (controller == 'cart_photos') &&
                      (action.in? %w( index create update destroy ))
     end
 

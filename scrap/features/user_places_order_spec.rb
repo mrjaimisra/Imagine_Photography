@@ -72,7 +72,7 @@ RSpec.describe "a user with a non empty cart", type: :feature do
           end
         end
 
-        it "sees no items in cart" do
+        it "sees no photos in cart" do
           visit cart_path
 
           within(".total") do

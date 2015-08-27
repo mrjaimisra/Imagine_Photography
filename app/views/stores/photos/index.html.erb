@@ -10,22 +10,18 @@
     <div class="col-md-9">
       <div class="row item-info item-list">
 
-        <% @items.each do |item| %>
+        <% @photos.each do |photo| %>
           <div class="col-sm-4 col-lg-4 col-md-4 item-box">
             <div class="thumbnail">
-              <%= link_to image_tag(item.image_url, alt: "image url", class: "item-image"), meal_path(item) %>
+              <%= link_to photo.name, photo_path(photo) %>
               <div class="caption">
-                <h4 class="pull-right"><%= number_to_currency(item.price) %></h4>
-                <h4>
-                  <%= link_to item.name, meal_path(item) %>
-                </h4>
-
+                <h4 class="pull-right"><%= number_to_currency(photo.price) %></h4>
                 <p>
-                  <%= item.description %>
+                  <%= photo.description %>
                 </p>
               </div>
               <p>
-                <%= button_to "Add to Cart", cart_items_path(item_id: item.id), method: :post, class: "btn btn-primary btn-large center-block" %>
+                <%#= button_to "Add to Cart", cart_photos_path(photo_id: photo.id), method: :post, class: "btn btn-primary btn-large center-block" %>
               </p>
             </div>
           </div>

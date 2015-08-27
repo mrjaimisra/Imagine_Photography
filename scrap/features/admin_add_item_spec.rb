@@ -17,7 +17,7 @@ RSpec.describe "an admin on their dashboards" do
     visit "/admin/dashboard"
     click_link "Add New Meal"
 
-    expect(current_path).to eq("/admin/items/new")
+    expect(current_path).to eq("/admin/photos/new")
     expect(page).to have_content("Name")
     expect(page).to have_content("Description")
     expect(page).to have_content("Price")
@@ -29,7 +29,7 @@ RSpec.describe "an admin on their dashboards" do
     visit "/admin/dashboard"
     click_link "Add New Meal"
 
-    expect(current_path).to eq("/admin/items/new")
+    expect(current_path).to eq("/admin/photos/new")
 
     fill_in "Name", with: "Chicken Fingers"
     fill_in "Description", with: "Golden fried crispy battered chicken breast"
@@ -49,7 +49,7 @@ RSpec.describe "an admin on their dashboards" do
     visit "/admin/dashboard"
     click_link "Add New Meal"
 
-    expect(current_path).to eq("/admin/items/new")
+    expect(current_path).to eq("/admin/photos/new")
 
     fill_in "Name", with: ""
     fill_in "Description", with: "Golden fried crispy battered chicken breast"
@@ -58,7 +58,7 @@ RSpec.describe "an admin on their dashboards" do
     select "Lunch", from: "item[category]"
     click_button "Add Meal"
 
-    expect(current_path).to eq("/admin/items")
+    expect(current_path).to eq("/admin/photos")
     expect(page).to have_content("Name can't be blank")
   end
 
@@ -66,7 +66,7 @@ RSpec.describe "an admin on their dashboards" do
     visit "/admin/dashboard"
     click_link "Add New Meal"
 
-    expect(current_path).to eq("/admin/items/new")
+    expect(current_path).to eq("/admin/photos/new")
 
     fill_in "Name", with: "Chicken Fingers"
     fill_in "Description", with: ""
@@ -75,7 +75,7 @@ RSpec.describe "an admin on their dashboards" do
     select "Lunch", from: "item[category]"
     click_button "Add Meal"
 
-    expect(current_path).to eq("/admin/items")
+    expect(current_path).to eq("/admin/photos")
     expect(page).to have_content("Description can't be blank")
   end
 
@@ -83,7 +83,7 @@ RSpec.describe "an admin on their dashboards" do
     visit "/admin/dashboard"
     click_link "Add New Meal"
 
-    expect(current_path).to eq("/admin/items/new")
+    expect(current_path).to eq("/admin/photos/new")
 
     fill_in "Name", with: "Chicken Fingers"
     fill_in "Description", with: "Golden fried crispy battered chicken breast"
@@ -91,7 +91,7 @@ RSpec.describe "an admin on their dashboards" do
     fill_in "Image", with: ""
     click_button "Add Meal"
 
-    expect(current_path).to eq("/admin/items")
+    expect(current_path).to eq("/admin/photos")
     expect(page).to have_content("Category must be selected")
   end
 end
