@@ -7,10 +7,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to menu_path
+      flash[:success] = "Account successfully created!"
+      redirect_to explore_path
     else
-      flash[:danger] = "Ya screwed something up parter, try again!"
-      redirect_to sign_up_path
+      # flash[:danger] = "Invalid information!"
+      render :new
     end
   end
 
@@ -31,7 +32,6 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:username, :password,
-        :street_name, :zipcode, :phone_number)
+      params.require(:user).permit(:name, :email, :password)
     end
 end

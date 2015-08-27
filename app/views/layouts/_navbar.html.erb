@@ -17,7 +17,7 @@
       </li>
       <li>
         <% if current_user %>
-          <% if current_user && current_user.site_admin? %>
+          <% if current_user && current_user.registered_user? %>
           <li><%= link_to "Dashboard", admin_dashboard_path %></li>
         <% else %>
           <li><%= link_to "Orders", orders_path %></li>
