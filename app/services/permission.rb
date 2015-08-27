@@ -91,6 +91,7 @@ class Permission
                      (action.in? %w( index show ))
       return true if (controller == 'cart_photos') &&
                      (action.in? %w( index create update destroy ))
+      return true if (controller == 'orders') &&
+                     (action == 'create')
     end
-
 end
