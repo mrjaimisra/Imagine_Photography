@@ -10,8 +10,8 @@ class UsersController < ApplicationController
       flash[:success] = "Account successfully created!"
       redirect_to explore_path
     else
-      flash[:danger] = "Ya screwed something up parter, try again!"
-      redirect_to sign_up_path
+      # flash[:danger] = "Invalid information!"
+      render :new
     end
   end
 

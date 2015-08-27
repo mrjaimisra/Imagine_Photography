@@ -18,7 +18,6 @@ class User < ActiveRecord::Base
   validates :password, presence: true,
                          length: { maximum: 50 }
 
-
   def set_default_role
     self.roles << Role.find_by(name: "registered_user")
   end
@@ -46,5 +45,4 @@ class User < ActiveRecord::Base
   def self.platform_admins
     all.joins(:roles).where(roles: { name: "platform_admin" })
   end
-
 end
