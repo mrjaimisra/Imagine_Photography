@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  after_create :set_default_role
+  after_save :set_default_role
 
   has_secure_password
   has_many :orders
