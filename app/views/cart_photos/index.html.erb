@@ -12,7 +12,7 @@
   <div class="col-md-6"></div>
   <div class="col-md-3">
     <div class="btn-group" role="group" aria-label="...">
-      <%= link_to "Keep Shopping", menu_path, class: "btn btn-warning" %>
+      <%= link_to "Keep shopping", explore_path, class: "btn btn-warning" %>
       <%= link_to "Check Out", orders_path, method: :post, class: "btn btn-primary" %>
     </div>
   </div>
@@ -23,7 +23,7 @@
 
     <tr>
       <th></th>
-      <th>Item</th>
+      <th>photo</th>
       <th>Description</th>
       <th>Price</th>
       <th>Quantity</th>
@@ -31,19 +31,19 @@
       <th></th>
     </tr>
     <tr>
-      <% @cart_items.each do |cart_item| %>
-        <td><%= image_tag(cart_item.image_url, height: 80, width: 80, class: "img-circle") %></td>
-        <td><%= cart_item.name %></td>
-        <td><%= cart_item.description %></td>
-        <td><%= number_to_currency(cart_item.price) %></td>
-        <td><%= button_to "-", cart_items_path(id: "#{cart_item.id}", quantity: "decrease"), method: :put %>
-          <%= cart_item.quantity %>
-          <%= button_to "+", cart_items_path(id: "#{cart_item.id}", quantity: "increase"), method: :put %></td>
+      <% @cart_photos.each do |cart_photo| %>
+        <td><%= image_tag(cart_photo.image_url, height: 80, width: 80, class: "img-circle") %></td>
+        <td><%= cart_photo.name %></td>
+        <td><%= cart_photo.description %></td>
+        <td><%= number_to_currency(cart_photo.price) %></td>
+        <td><%= button_to "-", cart_photos_path(id: "#{cart_photo.id}", quantity: "decrease"), method: :put %>
+          <%= cart_photo.quantity %>
+          <%= button_to "+", cart_photos_path(id: "#{cart_photo.id}", quantity: "increase"), method: :put %></td>
 
         <div class="subtotal">
-          <td><%= number_to_currency(cart_item.subtotal) %></td>
+          <td><%= number_to_currency(cart_photo.subtotal) %></td>
         </div>
-        <td><%= link_to "Remove", cart_items_path(id: cart_item), method: :delete %></td>
+        <td><%= link_to "Remove", cart_photos_path(id: cart_photo), method: :delete %></td>
         </tr>
       <% end %>
       </table>

@@ -28,10 +28,13 @@ Rails.application.routes.draw do
   # get "meals/:id", to: "photos#show", as: :meal
   # get "menu/:id", to: "menu/categories#show"
 
-  post "/cart_items", to: "cart_items#create"
-  put "/cart_items", to: "cart_items#update"
-  get "/cart", to: "cart_items#index"
-  delete "/cart_items", to: "cart_items#destroy"
+  # post "/cart_photos", to: "cart_photos#create"
+  # put "/cart_photos", to: "cart_photos#update"
+  # delete "/cart_photos", to: "cart_photos#destroy"
+
+  get "/cart", to: "cart_photos#index"
+
+  resources :cart_photos, only: [:create, :update, :destroy]
 
   resources :orders, only: [:create, :index, :show]
 

@@ -1,14 +1,14 @@
-class CartItemsController < ApplicationController
+class CartPhotosController < ApplicationController
   def index
-    @cart_items = cart.items
+    @cart_photos = cart.photos
     delivery_flash? if current_user
   end
 
   def create
-    item = Item.find(params[:item_id])
-    cart.add_item(item)
+    photo = Photo.find(params[:photo_id])
+    cart.add_photo(photo)
     session[:cart] = cart.data
-    redirect_to :back
+    redirect_to cart_path
   end
 
   def update
@@ -26,12 +26,12 @@ class CartItemsController < ApplicationController
   private
 
   def remove_and_render_flash(id)
-    item = Item.find_by(id: id)
-    link = "<a href='/meals/#{params[:id]}'>#{item.name}</a>"
+    photo = Photo.find_by(id: id)
+    link = "<a href='/meals/#{params[:id]}'>#{photo.name}</a>"
     flash[:success] =
       %[Successfully removed #{link} from your cart.]
 
-    cart.remove_from_cart(item)
+    cart.remove_from_cart(photo)
   end
 
   def delivery_flash?

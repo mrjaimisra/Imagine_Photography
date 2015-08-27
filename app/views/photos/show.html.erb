@@ -1,4 +1,4 @@
-<%= render partial: "layouts/page_title", locals: { page_title: "Meal" } %>
+<%= render partial: "layouts/page_title", locals: { page_title: @photo.name } %>
 
 <div class="row item-show">
   <div class="col-md-3 item-info">
@@ -10,7 +10,7 @@
         <%= @photo.description %>
       </p>
       <h4><%= number_to_currency(@photo.price) %></h4>
-      <%= button_to "Add to Cart", cart_items_path(item_id: @photo.id), class: "btn btn-primary" unless @photo.retired? %>
+      <%= button_to "Add to cart", cart_photos_path(photo_id: @photo.id), class: "btn btn-primary" %>
   </div>
 
   <div class="col-md-9">
