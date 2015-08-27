@@ -35,9 +35,7 @@ Rails.application.routes.draw do
   get "/cart", to: "cart_photos#index"
 
   resources :cart_photos, only: [:create, :update, :destroy]
-
   resources :orders, only: [:create, :index, :show]
-
   resources :stores, only: [:index, :show], path: :photographers, as: :photographers
 
   namespace :stores, path: ":photographer", as: :photographer do
