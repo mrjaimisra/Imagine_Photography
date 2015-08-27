@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826054443) do
+ActiveRecord::Schema.define(version: 20150826232446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,18 +51,37 @@ ActiveRecord::Schema.define(version: 20150826054443) do
     t.integer  "status",                               default: 0
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string   "name",       default: "registered_user"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "roles", ["name"], name: "index_roles_on_name", unique: true, using: :btree
+
   create_table "statuses", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_roles", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "user_roles", ["role_id"], name: "index_user_roles_on_role_id", using: :btree
+  add_index "user_roles", ["user_id"], name: "index_user_roles_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
-    t.string  "password_digest"
-    t.integer "role",            default: 0
-    t.string  "name"
-    t.string  "email"
+    t.string "password_digest"
+    t.string "name"
+    t.string "email"
   end
 
   add_foreign_key "order_photos", "orders"
+  add_foreign_key "user_roles", "roles"
+  add_foreign_key "user_roles", "users"
 end

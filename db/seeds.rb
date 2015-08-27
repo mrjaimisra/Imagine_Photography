@@ -1,6 +1,7 @@
 class Seed
   def self.start
     seed = Seed.new
+    seed.generate_roles
     seed.generate_customers
     seed.generate_photographers
     seed.generate_platform_admins
@@ -9,50 +10,62 @@ class Seed
     seed.generate_orders
   end
 
+  def generate_roles
+    Role.create!(name: "registered_user")
+    Role.create!(name: "store_admin")
+    Role.create!(name: "platform_admin")
+  end
+
   def generate_customers
-    User.create(name: "Josh",
+    registered_user_role =  Role.find_by(name: "registered_user")
+
+    user = User.create(name: "Josh",
                 email: "josh@turing.io",
                 password: "password",
-                role: 0
     )
+    user.roles << registered_user_role
 
     99.times do |i|
       customer = User.create!(
           name: Faker::Name.name,
           email: Faker::Internet.email,
-          role: 0,
           password: Faker::Internet.password,
       )
+      customer.roles << registered_user_role
+
       puts "Customer #{i}: #{customer.name} - #{customer.email} - #{customer.password} created!"
     end
   end
 
   def generate_photographers
+    store_admin_role =  Role.find_by(name: "store_admin")
     admin = User.create!(
         name: "Carmer",
         email: "andrew@turing.io",
         password: "password",
-        role: 2
     )
+    admin.roles << store_admin_role
 
     19.times do |i|
       photographer = User.create!(
           name: Faker::Name.name,
           email: Faker::Internet.email,
-          role: 2,
           password: Faker::Internet.password
-    )
+      )
+      photographer.roles << store_admin_role
+
       puts "Photographer #{i}: #{photographer.name} - #{photographer.email} - #{photographer.password} created!"
     end
   end
 
   def generate_platform_admins
+    site_admin_role = Role.find_by(name: "platform_admin")
     platform_admin = User.create!(
         name: "Jorge",
         email: "jorge @turing.io",
-                     role: 3,
                      password: "password",
     )
+    platform_admin.roles << site_admin_role
 
     puts "Platform Admin #{platform_admin.name} - #{platform_admin.email} - #{platform_admin.password} created!"
   end
@@ -98,7 +111,7 @@ class Seed
 
   def generate_orders
     10.times do |i|
-      customers = User.where(role: 0)
+      customers = User.registered_users
       customers.each do |customer|
         order = Order.create!(user_id: customer.id)
         add_photos(order)

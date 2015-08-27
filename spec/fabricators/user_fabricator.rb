@@ -5,5 +5,4 @@ Fabricator(:user) do
   pass_word =           Faker::Internet.password
   password              pass_word
   password_confirmation pass_word
-  role                  "default"
 end
