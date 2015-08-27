@@ -43,7 +43,7 @@ group :development, :test do
   gem 'chromedriver-helper'
   gem 'database_cleaner'
   gem 'simplecov', require: false
-  # gem 'codeclimate-test-reporter', require: nil
+  gem 'codeclimate-test-reporter', require: nil
   gem 'web-console', '~> 2.0'
 end
 
