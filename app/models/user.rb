@@ -6,8 +6,17 @@ class User < ActiveRecord::Base
   has_many :user_roles
   has_many :roles, through: :user_roles
 
-  validates :email, presence: true, uniqueness: true
-  validates :password, presence: true
+  validates :name, presence: true,
+                     length: { maximum: 50 }
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true,
+                  uniqueness: { case_sensitive: false },
+                      length: { maximum: 255 },
+                      format: { with: VALID_EMAIL_REGEX }
+
+  validates :password, presence: true,
+                         length: { maximum: 50 }
 
   def set_default_role
     self.roles << Role.find_by(name: "registered_user")
@@ -36,5 +45,4 @@ class User < ActiveRecord::Base
   def self.platform_admins
     all.joins(:roles).where(roles: { name: "platform_admin" })
   end
-
 end
