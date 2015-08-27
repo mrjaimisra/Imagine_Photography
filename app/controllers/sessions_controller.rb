@@ -4,14 +4,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(username: params[:session][:username])
+    @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
       redirect_to menu_path
-      flash[:success] = "YeeHaw! #{@user.username} is signed in!"
+      flash[:success] = "#{@user.name} is signed in!"
     else
       redirect_to login_path
-      flash[:danger] = "Sorry m'friend. You go HUNGRY!"
+      flash[:danger] = "Invalid login information!"
     end
   end
 
