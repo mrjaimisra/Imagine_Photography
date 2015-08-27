@@ -17,6 +17,7 @@ RSpec.feature "Guest attempts login", type: :feature do
 
     expect(current_path).to eq(login_path)
     expect(page).to have_content("Invalid login information!")
+    expect(page).to have_link("Sign up")
   end
 
   scenario "without valid email" do
@@ -29,6 +30,7 @@ RSpec.feature "Guest attempts login", type: :feature do
 
     expect(current_path).to eq(login_path)
     expect(page).to have_content("Invalid login information!")
+    expect(page).to have_link("Sign up")
   end
 
   scenario "without valid password" do
@@ -41,5 +43,6 @@ RSpec.feature "Guest attempts login", type: :feature do
 
     expect(current_path).to eq(login_path)
     expect(page).to have_content("Invalid login information!")
+    expect(page).to have_link("Sign up")
   end
 end
