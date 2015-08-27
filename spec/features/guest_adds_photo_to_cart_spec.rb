@@ -7,7 +7,8 @@ RSpec.feature "Guest adds photo to cart", type: :feature do
   scenario "successfully" do
     visit photo_path(photo)
     click_on("Add to cart")
-    click_link("Keep shopping")
+    expect(current_path).to eq cart_path
+    click_on("Keep shopping")
 
     expect(current_path).to eq(explore_path)
 
