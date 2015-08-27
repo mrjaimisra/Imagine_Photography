@@ -12,6 +12,11 @@ RSpec.describe User, type: :model do
     expect(user).to be_valid
   end
 
+  it "is invalid without a name" do
+    user.name = nil
+    expect(user).to_not be_valid
+  end
+
   it "is invalid without an email" do
     user.email = nil
     expect(user).to_not be_valid
@@ -20,6 +25,48 @@ RSpec.describe User, type: :model do
   it "is invalid without a password" do
     user.password = nil
     expect(user).to_not be_valid
+  end
+
+  it "is invalid with a name that is too long" do
+    user.name = "a" * 51
+    expect(user).to_not be_valid
+  end
+
+  it "is invalid with an email that is too long" do
+    user.email = "a" * 244 + "@example.com"
+    expect(user).to_not be_valid
+  end
+
+  it "is invalid with a password that is too long" do
+    user.password = "p" * 51
+    expect(user).to_not be_valid
+  end
+
+  it "is valid with a properly-formatted email" do
+    valid_addresses = %w(user@example.com USER@foo.COM A_US-ER@foo.bar.org
+                      first.last@foo.io alice+bob@baz.cn tyler@me.net)
+    valid_addresses.each do |valid_address|
+      user.email = valid_address
+      expect(user).to be_valid
+    end
+  end
+
+  it "is invalid without a properly-formatted email" do
+    invalid_addresses = %w(user@example,com USER_at_foo.COM user.name@example.
+                      first.last@foo_io tyler@you_me.net)
+    invalid_addresses.each do |invalid_address|
+      user.email = invalid_address
+      expect(user).to_not be_valid
+    end
+  end
+
+  it "is invalid without a unique email" do
+    user.save
+    second_user = User.new(name: "Jai",
+                           email: "Jerry@internet.com",
+                           password: "password2")
+
+    expect(second_user).to_not be_valid
   end
 
   it "has a default role of 'registered_user'" do

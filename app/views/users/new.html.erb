@@ -6,23 +6,13 @@
     <div class="create-user-form">
       <%= form_for(@user, url: sign_up_path) do |f| %>
         <div class="form-group">
-          <%= f.label :username %>
-          <%= f.text_field :username, class: "form-control", placeholder: "Username" %>
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
         </div>
 
         <div class="form-group">
-          <%= f.label :street_name %>
-          <%= f.text_field :street_name, class: "form-control", placeholder: "Street Name & Number" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :zipcode %>
-          <%= f.text_field :zipcode, class: "form-control", placeholder: "Zipcode" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :phone_number %>
-          <%= f.text_field :phone_number, class: "form-control", placeholder: "Phone number" %>
+          <%= f.label :email %>
+          <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
         </div>
 
         <div class="form-group">
@@ -31,14 +21,14 @@
         </div>
 
         <div class="form-group">
-          <%= f.submit "Sign Up", class: "btn btn-primary" %>
+          <%= f.submit "Create account", class: "btn btn-primary" %>
         </div>
 
       <% end %>
       <hr/>
       <div class="lone-button-container">
         <h5>Already have an account?</h5>
-        <%= link_to "Sign In", login_path, class: "btn btn-primary" %>
+        <%= link_to "Sign in", login_path, class: "btn btn-primary" %>
       </div>
     </div>
   </div>
