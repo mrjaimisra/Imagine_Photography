@@ -17,6 +17,7 @@ gem "google_directions"
 gem "skylight"
 gem "faker"
 gem "puma"
+gem "paperclip", "~> 4.3.0"
 
 group :development, :test do
   gem 'byebug'

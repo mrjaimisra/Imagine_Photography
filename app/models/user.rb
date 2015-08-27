@@ -1,31 +1,40 @@
 class User < ActiveRecord::Base
+  after_save :set_default_role
+
   has_secure_password
   has_many :orders
-  validates :username, presence: true, uniqueness: true
-  validates :password, :street_name, :zipcode, :phone_number, presence: true
+  has_many :user_roles
+  has_many :roles, through: :user_roles
 
-  enum role: %w(default business_admin photographer site_admin)
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true
 
-  scope :customers,      -> { where(role: 0) }
-  scope :photographers,  -> { where(role: 2) }
-
-  def destination
-    "#{street_name}, #{zipcode}"
+  def set_default_role
+    self.roles << Role.find_by(name: "registered_user")
   end
 
-  def origin
-    "Union Station, Denver"
+  def registered_user?
+    roles.exists?(name: 'registered_user')
   end
 
-  def directions
-    GoogleDirections.new(origin, destination)
+  def store_admin?
+    roles.exists?(name: 'store_admin')
   end
 
-  def valid_delivery?
-    directions.distance_in_miles < 50
+  def platform_admin?
+    roles.exists?(name: 'platform_admin')
   end
 
-  def delivery_time
-    directions.drive_time_in_minutes
+  def self.registered_users
+    all.joins(:roles).where(roles: { name: "registered_user" })
   end
+
+  def self.store_admins
+    all.joins(:roles).where(roles: { name: "store_admin" })
+  end
+
+  def self.platform_admins
+    all.joins(:roles).where(roles: { name: "platform_admin" })
+  end
+
 end

@@ -1,61 +1,73 @@
 require "rails_helper"
 
-RSpec.describe "the user", type: :model do
-  context "a user" do
-    let(:user) { Fabricate(:user) }
+RSpec.describe User, type: :model do
+  let(:user) {
+    User.create(name: "Jen", email: "jerry@internet.com", password: "password")
+  }
+  let!(:registered) { Role.create }
+  let!(:store_adm) { Role.create(name: "store_admin") }
+  let!(:platform_adm) { Role.create(name: "platform_admin")}
 
-    it "is valid" do
-      expect(user).to be_valid
-    end
+  it "is valid" do
+    expect(user).to be_valid
+  end
 
-    it "is invalid without a username" do
-      user.username = nil
-      expect(user).to_not be_valid
-    end
+  it "is invalid without an email" do
+    user.email = nil
+    expect(user).to_not be_valid
+  end
 
-    it "is invalid without a password" do
-      user.password = nil
-      expect(user).to_not be_valid
-    end
+  it "is invalid without a password" do
+    user.password = nil
+    expect(user).to_not be_valid
+  end
 
-    it "is invalid without a street name" do
-      user.street_name = nil
-      expect(user).to_not be_valid
-    end
+  it "has a default role of 'registered_user'" do
+    expect(user).to be_registered_user
+  end
 
-    it "is invalid without a zipcode" do
-      user.zipcode = nil
-      expect(user).to_not be_valid
-    end
+  it "can be a store administrator" do
+    user.roles << store_adm
 
-    it "is invalid without a phone number" do
-      user.phone_number = nil
-      expect(user).to_not be_valid
-    end
+    expect(user).to be_store_admin
+  end
 
-    it "has a default role of 'default'" do
-      expect(user.role).to eq "default"
-    end
+  it "can be a platform administrator" do
+    user.roles << platform_adm
 
-    it "has an associated zipcode" do
-      expect(user.zipcode).to eq 80202
-    end
+    expect(user).to be_platform_admin
+  end
 
-    it "can get delivery" do
-      expect(user.valid_delivery?).to eq true
-    end
+  it "can return a collection of registered_users" do
+    user1 = User.create(name: 'Ted', email: "t@texas.com", password: 'password')
+    user2 = User.create(name: 'Bee', email: "b@texas.com", password: 'password')
+    user3 = User.create(name: 'Jai', email: "j@texas.com", password: 'password')
 
-    it "has an associated phone number" do
-      expect(user.phone_number).to eq "5732681897"
-    end
+    expect(User.all.count).to eq 3
+    expect(User.registered_users.count).to eq 3
+  end
 
-    it "can get delivery if they live within 50 miles of the store" do
-      expect(user.valid_delivery?).to eq true
-    end
+  it "can return a collection of store administrators" do
+    user1 = User.create(name: 'Ted', email: "t@texas.com", password: 'password')
+    user2 = User.create(name: 'Bee', email: "b@texas.com", password: 'password')
+    user3 = User.create(name: 'Jai', email: "j@texas.com", password: 'password')
 
-    it "can get estimated delivery time" do
-      allow_any_instance_of(User).to receive(:delivery_time).and_return(7)
-      expect(user.delivery_time).to eq 7
-    end
+    user1.roles << store_adm
+    user2.roles << store_adm
+
+    expect(User.all.count).to eq 3
+    expect(User.store_admins.count).to eq 2
+  end
+
+  it "can return a collection of platform administrators" do
+    user1 = User.create(name: 'Ted', email: "t@texas.com", password: 'password')
+    user2 = User.create(name: 'Bee', email: "b@texas.com", password: 'password')
+    user3 = User.create(name: 'Jai', email: "j@texas.com", password: 'password')
+
+    user1.roles << platform_adm
+    user2.roles << platform_adm
+
+    expect(User.all.count).to eq 3
+    expect(User.platform_admins.count).to eq 2
   end
 end

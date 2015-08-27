@@ -1,0 +1,55 @@
+<!-- This is the only title not using the partial, need to figure out how to position the shopping cart with sass -->
+<div class="row">
+  <div class="col-lg-12">
+    <h3><span class="glyphicon glyphicon-shopping-cart" , aria-hidden="true"></span>Shopping Cart</h3>
+  </div>
+</div>
+
+<%= render partial: "layouts/flash_message" %>
+
+<div class="row">
+  <div class="col-md-3"><h4>Order Details:</h4></div>
+  <div class="col-md-6"></div>
+  <div class="col-md-3">
+    <div class="btn-group" role="group" aria-label="...">
+      <%= link_to "Keep shopping", explore_path, class: "btn btn-warning" %>
+      <%= link_to "Check Out", orders_path, method: :post, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+
+    <tr>
+      <th></th>
+      <th>photo</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Subtotal</th>
+      <th></th>
+    </tr>
+    <tr>
+      <% @cart_photos.each do |cart_photo| %>
+        <td><%= image_tag(cart_photo.image_url, height: 80, width: 80, class: "img-circle") %></td>
+        <td><%= cart_photo.name %></td>
+        <td><%= cart_photo.description %></td>
+        <td><%= number_to_currency(cart_photo.price) %></td>
+        <td><%= button_to "-", cart_photos_path(id: "#{cart_photo.id}", quantity: "decrease"), method: :put %>
+          <%= cart_photo.quantity %>
+          <%= button_to "+", cart_photos_path(id: "#{cart_photo.id}", quantity: "increase"), method: :put %></td>
+
+        <div class="subtotal">
+          <td><%= number_to_currency(cart_photo.subtotal) %></td>
+        </div>
+        <td><%= link_to "Remove", cart_photos_path(id: cart_photo), method: :delete %></td>
+        </tr>
+      <% end %>
+      </table>
+
+  <div class="total">
+    <h3>Total: <%= number_to_currency(cart.total) %></h3>
+  </div>
+
+</div>

@@ -5,7 +5,7 @@ RSpec.describe "the cart", type: :feature do
     let!(:item) { Fabricate(:item) }
     let!(:user) { Fabricate(:user) }
 
-    it "can add items to the cart" do
+    it "can add photos to the cart" do
       visit menu_path
 
       within(".item-info") do
@@ -23,7 +23,7 @@ RSpec.describe "the cart", type: :feature do
       end
     end
 
-    it "can login and his/her items persist in the cart" do
+    it "can login and his/her photos persist in the cart" do
       visit menu_path
 
       within(".item-info") do
@@ -48,7 +48,7 @@ RSpec.describe "the cart", type: :feature do
     let!(:item) { Fabricate(:item) }
     let!(:user) { Fabricate(:user) }
 
-    it "can add items to the cart" do
+    it "can add photos to the cart" do
       sign_in(user)
       visit menu_path
 
@@ -71,7 +71,7 @@ RSpec.describe "the cart", type: :feature do
     let!(:item) { Fabricate(:item) }
     let!(:user) { Fabricate(:user) }
 
-    it "can add items to the cart" do
+    it "can add photos to the cart" do
       sign_in(user)
       visit menu_path
 

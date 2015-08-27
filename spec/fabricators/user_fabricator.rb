@@ -1,8 +1,8 @@
 Fabricator(:user) do
-  username "Jason"
-  password "password"
-  role 0
-  zipcode 80202
-  street_name "1510 Blake Street"
-  phone_number "5732681897"
+  name                  Faker::Name.name
+  email                 Faker::Internet.email
+  password              "password"
+  pass_word =           Faker::Internet.password
+  password              pass_word
+  password_confirmation pass_word
 end

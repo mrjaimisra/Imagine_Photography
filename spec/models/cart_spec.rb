@@ -5,23 +5,23 @@ RSpec.describe "the cart", type: :model do
     expect(Cart).to be
   end
 
-  context "method items" do
-    let(:item) { Fabricate(:item) }
+  context "method photos" do
+    let(:photo) { Fabricate(:photo) }
 
-    it "returns an array of cart items" do
+    it "returns an array of cart photos" do
       data = Hash.new(0)
-      data[item.id] = 2
+      data[photo.id] = 2
       cart = Cart.new(data)
 
-      expect(cart.items.first).to be_a_kind_of CartItem
+      expect(cart.photos.first).to be_a_kind_of CartPhoto
     end
   end
 
   context "method data" do
-    let(:item) { Fabricate(:item) }
+    let(:photo) { Fabricate(:photo) }
 
-    it "returns a hash with the item id and quantity" do
-      id = item.id.to_s
+    it "returns a hash with the photo id and quantity" do
+      id = photo.id.to_s
       input_data = {}
       input_data[id] = 2
       cart = Cart.new(input_data)
@@ -29,17 +29,17 @@ RSpec.describe "the cart", type: :model do
     end
   end
 
-  context "method add item" do
-    let(:item) { Fabricate(:item) }
+  context "method add photo" do
+    let(:photo) { Fabricate(:photo) }
 
-    it "updates the data when an item is added" do
-      id = item.id.to_s
+    it "updates the data when a photo is added" do
+      id = photo.id.to_s
       cart = Cart.new(nil)
 
-      cart.add_item(item)
+      cart.add_photo(photo)
       expect(cart.data).to eq({ id => 1 })
 
-      cart.add_item(item)
+      cart.add_photo(photo)
       expect(cart.data).to eq({ id => 2 })
     end
   end

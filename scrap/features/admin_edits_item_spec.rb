@@ -5,7 +5,7 @@ RSpec.describe "an admin" do
   let!(:item) { Fabricate(:item) }
   let!(:category) { Category.create(name: "Lunch") }
 
-  context "visits admin/items" do
+  context "visits admin/photos" do
     before do
       admin.update_attribute(:role, 1)
       sign_in(admin)
@@ -18,7 +18,7 @@ RSpec.describe "an admin" do
       end
 
       it "shows the edit page for that item" do
-        expect(current_path).to eq("/admin/items/#{item.id}/edit")
+        expect(current_path).to eq("/admin/photos/#{item.id}/edit")
       end
 
       it "updates the name" do
