@@ -1,13 +1,16 @@
 // variables
 
-$dark-gray: #262626
-$medium-dark-gray: #383838
+$gray-dark: #262626
+$gray: #383838
 $brand-primary: #ad5ccc
 // @brand-primary: darken(#428bca, 6.5%) // #337ab7
 $brand-success: #bef368
 $brand-info:    #ad5ccc
 $brand-warning: #f6fd6c
 $brand-danger:  #e562a2
+
+body
+  background-color: $gray-dark
 
 #landing
   background: url(image-path("beach_van.jpg")) no-repeat center center
@@ -16,6 +19,53 @@ $brand-danger:  #e562a2
   -webkit-background-size: cover
   background-size: cover
   height: 650px
+
+.featured-stores
+  display: inline-flex
+  margin-top: 0px
+  width: 100%
+
+.featured-store
+  color: white
+  flex: 1 1 auto
+  -webkit-flex: 1 1 auto
+  flex-direction: row
+  width: 33%
+
+.featured-store:hover
+  text-decoration: none
+  color: white
+
+.featured-store div
+  height: 300px
+  padding-top: 120px
+
+#featured-artist-1
+  background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(image-path("black_and_white_stairs.jpg"))
+  background-position: center, center
+  background-repeat: no-repeat
+  -moz-background-size: cover
+  -o-background-size: cover
+  -webkit-background-size: cover
+  background-size: cover
+
+#featured-artist-2
+  background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(image-path("lakeside.jpg"))
+  background-position: center, center
+  background-repeat: no-repeat
+  -moz-background-size: cover
+  -o-background-size: cover
+  -webkit-background-size: cover
+  background-size: cover
+
+#featured-artist-3
+  background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url(image-path("tansai.jpg"))
+  background-position: center, center
+  background-repeat: no-repeat
+  -moz-background-size: cover
+  -o-background-size: cover
+  -webkit-background-size: cover
+  background-size: cover
 
 // Use as-is
 .btn-primary
@@ -26,3 +76,9 @@ $alert-message-background: $brand-info
 
 .alert
   background-color: $alert-message-background
+
+footer
+  min-height: 7em
+
+footer .row
+  margin-top: 2.5em
