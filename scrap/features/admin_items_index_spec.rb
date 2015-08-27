@@ -10,13 +10,13 @@ RSpec.describe "an admin on their dashboards" do
     user.update_attribute("role", 1)
   end
 
-  it "can see all items" do
+  it "can see all photos" do
     second_item.update_attributes(name: "Burger", status: 1)
 
     visit "/admin/dashboard"
     click_link "View All Meals"
 
-    expect(current_path).to eq "/admin/items"
+    expect(current_path).to eq "/admin/photos"
     expect(page).to have_content "Meal"
     expect(page).to have_content "Description"
     expect(page).to have_content "Price"

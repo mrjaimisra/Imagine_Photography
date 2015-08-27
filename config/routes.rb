@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :photos, only: [:show]
 
   # post "/menu", to: "location#check_zipcode", as: :zipcode
-  # get "meals/:id", to: "items#show", as: :meal
+  # get "meals/:id", to: "photos#show", as: :meal
   # get "menu/:id", to: "menu/categories#show"
 
   post "/cart_items", to: "cart_items#create"
