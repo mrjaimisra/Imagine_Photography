@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Dinner's Ready 4 U</title>
+  <title>Imagine</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -28,13 +28,9 @@
   <%= render 'layouts/navbar' %>
 
 <!-- Page Content -->
-<div class="container">
+<%= yield %>
 
-  <%= yield %>
-
-  <%= render 'layouts/footer' %>
-</div>
-<!-- /.container -->
+<%= render 'layouts/footer' %>
 
 </body>
 

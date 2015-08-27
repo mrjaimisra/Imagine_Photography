@@ -1,64 +1,27 @@
-<!-- Jumbotron Header -->
-<header class="jumbotron hero-spacer">
-  <div>
-    <%= image_tag "home-page-logo-large-2.png", html_option = { class: "img-responsive center-block vertical-center" } %>
+<header >
+  <div id="landing" >
+    &nbsp;
   </div>
 </header>
-
-<hr>
-
-<%= render partial: "layouts/page_title", locals: { page_title: "Home Cooked Meals" } %>
-
 <div class="row text-center">
-
-  <div class="col-md-3 col-sm-6 hero-feature category-feature">
-    <div class="thumbnail">
-      <%= link_to "Imagine", explore_path %>
-      <div class="caption">
-        <h3><%= link_to "Full Menu", "/menu" %></h3>
-
-        <p>Browse all the meals!</p>
+  <div class="featured-stores">
+    <a href="#" class="featured-store">
+      <div id="featured-artist-1">
+        <p>featured</p>
+        <h3>Linda Snyder</h3>
       </div>
-    </div>
-  </div>
-
-  <div class="col-md-3 col-sm-6 hero-feature category-feature">
-    <div class="thumbnail">
-      <%= link_to image_tag("breakfast.jpg"), "/menu/Breakfast" %>
-      <div class="caption">
-        <h3><%= link_to "Breakfast", "/menu/Breakfast" %></h3>
-
-        <p>Get the day started right!</p>
+    </a>
+    <a href="#" class="featured-store">
+      <div id="featured-artist-2">
+        <p>featured</p>
+        <h3>Danielle Austin</h3>
       </div>
-    </div>
-  </div>
-
-  <div class="col-md-3 col-sm-6 hero-feature category-feature">
-    <div class="thumbnail">
-      <%= link_to image_tag("lunch.jpg"), "menu/Lunch" %>
-
-      <div class="caption">
-        <h3><%= link_to "Lunch", "/menu/Lunch" %></h3>
-
-        <p>Fast and Filling!</p>
+    </a>
+    <a href="#" class="featured-store">
+      <div id="featured-artist-3">
+        <p>featured</p>
+        <h3>Anne Johnson</h3>
       </div>
-    </div>
+    </a>
   </div>
-
-  <div class="col-md-3 col-sm-6 hero-feature category-feature">
-    <div class="thumbnail">
-      <%= link_to image_tag("dinner.jpg"), "menu/Dinner" %>
-
-      <div class="caption">
-        <h3><%= link_to "Dinner", "/menu/Dinner" %></h3>
-
-        <p>It's time for some Home Cooking!</p>
-
-      </div>
-    </div>
-  </div>
-
-</div>
-<hr>
-
-
+</div> <!-- /.row -->
