@@ -1,64 +1,62 @@
 6<!-- Jumbotron Header -->
-<header class="jumbotron hero-spacer">
-  <div>
-    <%= image_tag "home-page-logo-large-2.png", html_option = { class: "img-responsive center-block vertical-center" } %>
+<header >
+  <div id="landing" >
+    &nbsp;
   </div>
 </header>
 
 <hr>
+<div class="container">
 
-<%= render partial: "layouts/page_title", locals: { page_title: "Home Cooked Meals" } %>
+  <div class="row text-center">
 
-<div class="row text-center">
+    <div class="col-md-3 col-sm-6 hero-feature category-feature">
+      <div class="thumbnail">
+        <%= link_to "Imagine", explore_path %>
+        <div class="caption">
+          <h3><%= link_to "Full Menu", "/menu" %></h3>
 
-  <div class="col-md-3 col-sm-6 hero-feature category-feature">
-    <div class="thumbnail">
-      <%= link_to "Imagine", explore_path %>
-      <div class="caption">
-        <h3><%= link_to "Full Menu", "/menu" %></h3>
-
-        <p>Browse all the meals!</p>
+          <p>Browse all the meals!</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="col-md-3 col-sm-6 hero-feature category-feature">
-    <div class="thumbnail">
-      <%= link_to image_tag("breakfast.jpg"), "/menu/Breakfast" %>
-      <div class="caption">
-        <h3><%= link_to "Breakfast", "/menu/Breakfast" %></h3>
+    <div class="col-md-3 col-sm-6 hero-feature category-feature">
+      <div class="thumbnail">
+        <%= link_to image_tag("breakfast.jpg"), "/menu/Breakfast" %>
+        <div class="caption">
+          <h3><%= link_to "Breakfast", "/menu/Breakfast" %></h3>
 
-        <p>Get the day started right!</p>
+          <p>Get the day started right!</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="col-md-3 col-sm-6 hero-feature category-feature">
-    <div class="thumbnail">
-      <%= link_to image_tag("lunch.jpg"), "menu/Lunch" %>
+    <div class="col-md-3 col-sm-6 hero-feature category-feature">
+      <div class="thumbnail">
+        <%= link_to image_tag("lunch.jpg"), "menu/Lunch" %>
 
-      <div class="caption">
-        <h3><%= link_to "Lunch", "/menu/Lunch" %></h3>
+        <div class="caption">
+          <h3><%= link_to "Lunch", "/menu/Lunch" %></h3>
 
-        <p>Fast and Filling!</p>
+          <p>Fast and Filling!</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="col-md-3 col-sm-6 hero-feature category-feature">
-    <div class="thumbnail">
-      <%= link_to image_tag("dinner.jpg"), "menu/Dinner" %>
+    <div class="col-md-3 col-sm-6 hero-feature category-feature">
+      <div class="thumbnail">
+        <%= link_to image_tag("dinner.jpg"), "menu/Dinner" %>
 
-      <div class="caption">
-        <h3><%= link_to "Dinner", "/menu/Dinner" %></h3>
+        <div class="caption">
+          <h3><%= link_to "Dinner", "/menu/Dinner" %></h3>
 
-        <p>It's time for some Home Cooking!</p>
+          <p>It's time for some Home Cooking!</p>
 
+        </div>
       </div>
     </div>
-  </div>
 
+  </div>
+  <hr>
 </div>
-<hr>
-
-

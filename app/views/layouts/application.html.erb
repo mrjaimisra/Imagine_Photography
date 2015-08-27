@@ -28,13 +28,9 @@
   <%= render 'layouts/navbar' %>
 
 <!-- Page Content -->
-<div class="container">
+<%= yield %>
 
-  <%= yield %>
-
-  <%= render 'layouts/footer' %>
-</div>
-<!-- /.container -->
+<%= render 'layouts/footer' %>
 
 </body>
 
