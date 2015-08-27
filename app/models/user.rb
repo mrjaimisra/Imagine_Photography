@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  after_create :set_default_role
+
   has_secure_password
   has_many :orders
   has_many :user_roles
@@ -6,6 +8,10 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
+
+  def set_default_role
+    self.roles << Role.find_by(name: "registered_user")
+  end
 
   def registered_user?
     roles.exists?(name: 'registered_user')

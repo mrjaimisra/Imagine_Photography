@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Order, type: :model do
+  let!(:role) { Role.create }
   let!(:user) { Fabricate(:user) }
   let!(:photo) { Fabricate(:photo) }
   let!(:status) { Status.create(name: "ordered") }
@@ -17,7 +18,7 @@ RSpec.describe Order, type: :model do
     end
 
     it "has a total" do
-      expect(order.total).to eq photo.price * 3 
+      expect(order.total).to eq photo.price * 3
     end
   end
 end
