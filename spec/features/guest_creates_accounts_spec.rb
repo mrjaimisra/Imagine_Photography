@@ -1,15 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature "Guest creates account", type: :feature do
-  "Name can't be blank"
-  "Name is too long (maximum is 50 characters)"
-  "Email can't be blank"
-  "Email has already been taken"
-  "Email is too long (maximum is 255 characters)"
-  "Email is invalid"
-  "Password can't be blank"
-  "Password is too long (maximum is 50 characters)"
-
   before do
     build_roles
     visit login_path

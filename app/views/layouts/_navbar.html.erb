@@ -19,10 +19,11 @@
         <li>
           <% if current_user %>
             <% if current_user && current_user.registered_user? %>
-            <li><%= link_to "Dashboard", admin_dashboard_path %></li>
-          <% else %>
+            <%= render "layouts/registered_user_navbar" %>
+      <% elsif current_user && current_user.store_admin? %>
+            <li><%= link_to "Settings", settings_path %></li>
+            <li><%= link_to "Dashboard", profile_path %></li>
             <li><%= link_to "Orders", orders_path %></li>
-            <li><%= link_to "Profile", profile_path %></li>
           <% end %>
         <% end %>
         </li>
