@@ -1,7 +1,6 @@
-<h1>Sign Up</h1>
-<%= render partial: "layouts/flash_message" %>
 <div class="container">
-  <div class="row">
+  <%= render partial: "layouts/flash_message" %>
+  <div class="row mt-100">
     <div class="col-lg-8 col-md-offset-2">
       <div class="create-user-form">
         <%= form_for(@user, url: sign_up_path) do |f| %>
@@ -22,6 +21,11 @@
           </div>
 
           <div class="form-group">
+            <%= f.label :avatar %>
+            <%= f.file_field :avatar, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
             <%= f.submit "Create account", class: "btn btn-primary" %>
           </div>
 
@@ -33,5 +37,5 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </div> <!-- ./row -->
+</div> <!-- ./container -->

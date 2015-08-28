@@ -14,22 +14,14 @@ RSpec.configure do |config|
     config.default_formatter = "doc"
   end
 
+  # Paperclip cleanup for capybara
+  config.after(:suite) do
+    FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
+  end
+
   config.order = :random
 
   Kernel.srand config.seed
-
-  def test_image_url
-    "http://i.livescience.com/images/i/000/048/850/i02/capybara-02.jpg?1324347800"
-  end
-
-  def sign_in(user)
-    visit root_path
-
-    click_link "Sign In"
-    fill_in "Username", with: user.username
-    fill_in "Password", with: user.password
-    click_button "Sign In"
-  end
 
   if ENV["CI"]
     require "codeclimate-test-reporter"

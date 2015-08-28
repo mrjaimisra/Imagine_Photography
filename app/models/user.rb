@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   has_many :user_roles
   has_many :roles, through: :user_roles
 
+  has_attached_file :avatar, styles: { medium: "300x300#", thumb: "100x100#" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
   validates :name, presence: true,
                      length: { maximum: 50 }
 
@@ -17,6 +20,7 @@ class User < ActiveRecord::Base
 
   validates :password, presence: true,
                          length: { maximum: 50 }
+
 
   def set_default_role
     self.roles << Role.find_by(name: "registered_user")

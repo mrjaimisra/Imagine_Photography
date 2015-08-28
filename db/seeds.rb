@@ -58,7 +58,7 @@ class Seed
     site_admin_role = Role.find_by(name: "platform_admin")
     platform_admin = User.create!(
         name: "Jorge",
-        email: "jorge @turing.io",
+        email: "jorge@turing.io",
         password: "password",
     )
     platform_admin.roles << site_admin_role
