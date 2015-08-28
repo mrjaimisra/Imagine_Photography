@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post "/sign_up", to: "users#create"
   get "/profile", to: "users#show"
   patch "/profile", to: "users#update"
-  get "/settings", to: "users#edit", as: "settings"
+  get "/profile/settings", to: "users#edit", as: "settings"
 
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
