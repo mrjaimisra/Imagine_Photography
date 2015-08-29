@@ -3,7 +3,7 @@
   <div class="row mt-100">
     <div class="col-lg-8 col-md-offset-2">
       <div class="create-user-form">
-        <%= form_for(@user, url: sign_up_path) do |f| %>
+        <%= form_for(@user, html: { multipart: true }, url: sign_up_path) do |f| %>
           <%= render "layouts/user_errors" %>
           <div class="form-group">
             <%= f.label :name %>
