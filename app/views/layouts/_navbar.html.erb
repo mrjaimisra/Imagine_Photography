@@ -21,8 +21,8 @@
               <%= render "layouts/registered_user_navbar" %>
             <% elsif current_user && current_user.store_admin? %>
               <%= render "layouts/store_admin_navbar" %>
+            <% end %>
           <% end %>
-        <% end %>
         <li>
           <% if current_user %>
             <%= link_to "Sign out", logout_path, method: :delete %>
