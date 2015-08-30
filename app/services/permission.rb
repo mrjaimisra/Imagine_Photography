@@ -43,6 +43,8 @@ class Permission
                      (action.in? %w( index show ))
       return true if (controller == 'admin/orders') &&
                      (action.in? %w( index show update ))
+      return true if (controller == 'stores/photos') &&
+                     (action.in? %w( index show new create edit update))
     end
 
     def store_admin_permissions
@@ -59,6 +61,9 @@ class Permission
                      (action.in? %w( index show ))
       return true if (controller == 'admin/orders') &&
                      (action.in? %w( index show update ))
+      return true if (controller == 'stores/photos') &&
+                     (action.in? %w( index show new create edit update))
+
     end
 
     def registered_user_permissions
@@ -75,6 +80,8 @@ class Permission
                      (action.in? %w( index create update destroy ))
       return true if (controller == 'orders') &&
                      (action.in? %w( index show create ))
+      return true if (controller == 'stores/photos') &&
+                     (action.in? %w( index show ))
     end
 
     def guest_permissions

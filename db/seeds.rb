@@ -19,9 +19,17 @@ class Seed
 
   def generate_customers
     user = User.create(name: "Josh",
-                email: "josh@turing.io",
-                password: "password",
+                       email: "josh@turing.io",
+                       password: "password",
     )
+
+    # users.each do |name, email, password, avatar, header|
+    #   User.create(name: name,
+                    # email: email,
+                    # password: password,
+                    # avatar = File.open("/app/assets/images/avatars/#{avatar}.jpg")
+                    # header = File.open("/app/assets/images/headers/#{header}.jpg")
+    # end
 
     99.times do |i|
       customer = User.create!(
@@ -42,6 +50,13 @@ class Seed
         password: "password",
     )
     admin.roles << store_admin_role
+
+    # stores.each do |name, email, avatar, header|
+    #   User.create(name: name,
+                    # email: email,
+                    # avatar = File.open("/app/assets/images/avatars/#{avatar}.jpg")
+                    # header = File.open("/app/assets/images/headers/#{header}.jpg")
+    # end
 
     19.times do |i|
       photographer = User.create!(
@@ -138,6 +153,26 @@ class Seed
       puts "#{i}: Added photo #{photo.name} to order #{photo.id}."
     end
   end
+
+  # def users
+  # [
+  #   ["Jeff Casimir",    "jeff@turing.io",   "password", jeff],
+  #   ["Jorge Tellez",    "jorge@turing.io",  "password", jorge],
+  #   ["Josh Cheek",      "joshc@turing.io",  "password", joshc],
+  #   ["Josh Mejia",      "joshm@turing.io",  "password", joshm],
+  #   ["Horace Williams", "horace@turing.io", "password", horace],
+  #   ["Steve Kinney",    "steve@turing.io",  "password", steve],
+  #   ["Rachel Warbelow", "rachel@turing.io", "password", rachel]
+  # ]
+  # end
+
+  # def stores
+  # [
+  #   ["Linda Snyder",    "linda@snyder.com",      "#", "#"],
+  #   ["Danielle Austin", "hello@daphoto.com",     "#", "#"],
+  #   ["Ann Johnson",     "annj@johnsonphoto.com", "#", "#"]
+  # ]
+  # end
 
 end
 

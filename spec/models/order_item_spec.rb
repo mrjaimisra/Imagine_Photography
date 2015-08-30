@@ -5,7 +5,7 @@ RSpec.describe OrderPhoto, type: :model do
 
   context "a valid order photo" do
     it "has an image url" do
-      expect(order_photo.image_url).to eq "hello.jpg"
+      expect(order_photo.image_url).to eq "beach_van.jpg"
     end
 
     it "has a name" do

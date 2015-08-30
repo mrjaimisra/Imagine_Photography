@@ -14,6 +14,7 @@ RSpec.feature "User", type: :feature do
     fill_in "Email", with: user.email
     fill_in "Password", with: user.password
     attach_file "Avatar", "spec/fixtures/images/headshot.jpg"
+    attach_file "Header", "spec/fixtures/images/beach_van.jpg"
 
     click_button "Create account"
 
@@ -26,7 +27,9 @@ RSpec.feature "User", type: :feature do
 
     expect(page).to have_content user.name
     expect(page).to have_content user.email
-    save_and_open_page
     expect(page).to have_content user.avatar.url
+    expect(page).to have_content user.header.url
   end
+
+
 end

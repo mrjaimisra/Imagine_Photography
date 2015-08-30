@@ -4,6 +4,14 @@ class Photo < ActiveRecord::Base
   has_many :order_photos
   has_many :orders, through: :order_photos
 
+  has_attached_file :image, styles: { xlarge: "1200x1200",
+                                      large: "800x800",
+                                      medium: "300x300#",
+                                      thumb: "150x150#" },
+                                      default_url: "/images/:style/missing.png"
+
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
   before_validation :default_image,
                     :price_greater_than_zero,
                     :category_id_not_zero
@@ -11,14 +19,15 @@ class Photo < ActiveRecord::Base
   validates :name,
             :description,
             :price,
-            :image_url,
+            :image_file_name,
+            :store_id,
             :category_id, presence: true
 
   enum status: %w(active retired)
 
   def default_image
     if image_url.nil? || image_url.empty?
-      self.image_url = "Family-eating.jpg"
+      self.image_url = "beach_van.jpg"
     end
   end
 

@@ -6,12 +6,14 @@ class User < ActiveRecord::Base
   has_many :user_roles
   has_many :roles, through: :user_roles
 
-  has_attached_file :avatar, styles: { xlarge: "1200x1200",
-                                       large: "800x800",
-                                       medium: "300x300#",
+  has_attached_file :avatar, styles: { medium: "300x300#",
                                        thumb: "150x150#" },
                                        default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
+  has_attached_file :header, styles: { xlarge: "2000x800"},
+                                       default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :header, content_type: /\Aimage\/.*\Z/
 
   validates :name, presence: true,
                      length: { maximum: 50 }

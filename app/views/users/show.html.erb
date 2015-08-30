@@ -1,8 +1,10 @@
-<div class="container">
-  <div class="row">
-    <%= image_tag current_user.avatar.url(:thumb, timestamps: false),
-                  class: "img-circle" %>
-    <h1><%= current_user.name %></h1>
-    <h3><%= current_user.email %></h3>
+<header id="profile-header" style="background: url(<%= image_path(current_user.header.url(:xlarge, timestamps: false)) %>) no-repeat center center">
+  <div class="container">
+    <div class="row">
+      <%= image_tag current_user.avatar.url(:thumb, timestamps: false),
+                    class: "img-circle" %>
+      <h1><%= current_user.name %></h1>
+      <h3><%= current_user.email %></h3>
+    </div>
   </div>
-</div>
+</header>
