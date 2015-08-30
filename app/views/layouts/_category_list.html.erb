@@ -1,6 +1,22 @@
 <div class="list-group">
-  <%= link_to "Full Menu", "/menu", class: "list-group-item" %>
-  <%= link_to "Breakfast", "/menu/Breakfast", class: "list-group-item" %>
-  <%= link_to "Lunch", "/menu/Lunch", class: "list-group-item" %>
-  <%= link_to "Dinner", "/menu/Dinner", class: "list-group-item" %>
+  <% if store = params[:store] %>
+    <ul>
+      <% photo_categories.each do |category| %>
+        <li>
+          <%= link_to category.name,
+                      photographer_category_path(store: store, id: category),
+                      class: "list-group-item"  %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <ul>
+      <% photo_categories.each do |category| %>
+        <li>
+          <%= link_to category.name, photos_category_path(category),
+                      class: "list-group-item" %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>

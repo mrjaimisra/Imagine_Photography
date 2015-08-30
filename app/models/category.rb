@@ -6,7 +6,7 @@ class Category < ActiveRecord::Base
   before_save :capitalize_name
 
   def to_param
-    name
+    name.downcase
   end
 
   def check_for_spaces
