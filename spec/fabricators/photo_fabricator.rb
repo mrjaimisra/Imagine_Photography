@@ -1,5 +1,8 @@
 Fabricator(:photo) do
-  before_validation { Fabricate(:store) }
+  before_validation {
+    Store.create(name: "My Store", email: "hello@example.com")
+  }
+
   name             Faker::Book.title
   description      Faker::Lorem.sentence(4)
   price            Faker::Commerce.price + 1
