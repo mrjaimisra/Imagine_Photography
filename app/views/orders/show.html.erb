@@ -7,3 +7,22 @@
     <h3>Items:</h3>
   </div>
 </div>
+
+<% @order.order_photos.each do |order_photo| %>
+  <ul>
+    <li><%= link_to image_tag(
+                      order_photo.image_url,
+                      height: 80,
+                      width:  80,
+                      class:  "img-circle"
+                    ),
+                    photo_path(order_photo) %></li>
+    <li><%= link_to order_photo.name, photo_path(order_photo) %></li>
+    <li><%= number_to_currency(order_photo.price) %></li>
+    <li><%= order_photo.updated_at %></li>
+  </ul>
+
+  <div class="total">
+    <h3>Total: $<%= @order.total %></h3>
+  </div>
+<% end %>
