@@ -1,5 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :user
+  belongs_to :status
+
   has_many :order_photos, autosave: true
   has_many :photos, through: :order_photos
 
@@ -13,7 +15,7 @@ class Order < ActiveRecord::Base
     end
   end
 
-  def status
-    Status.find(status_id).name
-  end
+  # def status_name(status_id)
+  #   Status.find(status_id).name
+  # end
 end
