@@ -26,7 +26,7 @@ RSpec.feature "Registered customer views specific order", type: :feature do
     click_on "View"
 
     expect(current_path).to eq(order_path(order.id))
-    expect(page).to have_content("Order number: #{order.id}")
-    expect(page).to have_content("Status: completed")
+    expect(page).to have_content("Order ##{order.id}")
+    expect(page).to have_content("Status: Completed")
   end
 end

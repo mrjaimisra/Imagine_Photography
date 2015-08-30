@@ -1,15 +1,9 @@
-<h1><%= "Order number: #{@order.id}" %></h1>
+<br><br><h1><%= "Order ##{@order.id}" %></h1>
 
 <div class="row">
   <div class="col-md-3">
-    <h4>Order details:</h4>
-  </div>
-
-  <div class="col-md-6"></div>
-  <div class="col-md-3 status pull-right">
-    <div>
-      <strong>Status:</strong>
-      <%= @status %> <br/>
-    </div>
+    <h2>Order Details</h2>
+    <h3>Status: <%= @status %></h3>
+    <h3>Items:</h3>
   </div>
 </div>
