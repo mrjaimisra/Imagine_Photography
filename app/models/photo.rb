@@ -8,7 +8,7 @@ class Photo < ActiveRecord::Base
                                       large: "800x800",
                                       medium: "300x300#",
                                       thumb: "150x150#" },
-                                      default_url: "/images/:style/missing.png"
+                                      default_url: "/images/beach_van.jpg"
 
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 

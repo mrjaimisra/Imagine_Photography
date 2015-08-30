@@ -3,11 +3,11 @@ class Seed
     seed = Seed.new
     seed.generate_roles
     seed.generate_customers
-    seed.generate_photographers
     seed.generate_platform_admins
     seed.generate_categories
-    seed.generate_photos
     seed.generate_stores
+    seed.generate_photos
+    seed.generate_store_admins
     seed.generate_orders
   end
 
@@ -42,7 +42,7 @@ class Seed
     end
   end
 
-  def generate_photographers
+  def generate_store_admins
     store_admin_role =  Role.find_by(name: "store_admin")
     admin = User.create!(
         name: "Carmer",
@@ -50,13 +50,6 @@ class Seed
         password: "password",
     )
     admin.roles << store_admin_role
-
-    # stores.each do |name, email, avatar, header|
-    #   User.create(name: name,
-                    # email: email,
-                    # avatar = File.open("/app/assets/images/avatars/#{avatar}.jpg")
-                    # header = File.open("/app/assets/images/headers/#{header}.jpg")
-    # end
 
     19.times do |i|
       photographer = User.create!(
@@ -83,14 +76,33 @@ class Seed
 
   def generate_categories
     categories = ["Travel", "Plants", "Leisure", "People", "Patterns",
-    "Animals", "Architecture", "Sports", "Weddings",
-    "Landscape"]
+                  "Animals", "Architecture", "Sports", "Weddings", "Landscape"]
     10.times do |i|
       name = categories.pop
       category = Category.create!(
-      name: name
+        name: name
       )
       puts "Category #{i}: #{category.name} created!"
+    end
+  end
+
+  def generate_stores
+    stores.each do |name, email, avatar, header|
+      Store.create!( name:   name,
+                     email:  email,
+                     avatar: Faker::Company.logo,
+                     header: File.open("app/assets/images/headers/#{header}")
+                   )
+    end
+
+    19.times do |i|
+      store = Store.create!(
+        name:   Faker::Company.name,
+        email:  Faker::Internet.email,
+        avatar: Faker::Company.logo,
+        header: File.open("app/assets/images/headers/header-#{i}.jpg")
+      )
+      puts "Store #{i}: #{store.name} created!"
     end
   end
 
@@ -98,40 +110,17 @@ class Seed
     50.times do |i|
       10.times do |j|
         photo = Photo.create!(
-        name: Faker::Commerce.product_name,
-        description: Faker::Lorem.paragraph,
-        price: Faker::Commerce.price + 1,
-        category_id: j+1,
-        image_url: "http://robohash.org/#{i}.png?set=set2&bgset=bg1&size=200x200"
+          name: Faker::Commerce.product_name,
+          description: Faker::Lorem.paragraph,
+          price: Faker::Commerce.price + 1,
+          category_id: j+1,
+          store_id: Store.all.sample.id,
+          image: File.open("app/assets/images/photos/photo-#{rand(100)}.jpg")
         )
         puts "Photo #{i * 10 + j}: #{photo.name} created!"
       end
     end
   end
-
-  def generate_stores
-    Store.create!(name: "MKPhotography")
-
-    19.times do |i|
-      store = Store.create!(
-        name: Faker::Company.name
-      )
-      add_photos(store)
-      puts "Store #{i}: #{store.name} created!"
-    end
-
-  end
-
-  # def generate_business_admins
-  #     business_admin = User.create!(
-  #         name: Faker::Name.name,
-  #         email: andrew@turing.io,
-  #         role: 1,
-  #         password: "password",
-  #     )
-  #
-  #     puts "Business Admin #{i}: #{business_admin.name} - #{business_admin.email} - #{business_admin.password} created!"
-  # end
 
   def generate_orders
     10.times do |i|
@@ -148,31 +137,31 @@ class Seed
 
   def add_photos(order)
     10.times do |i|
-      photo = Photo.find(Random.new.rand(1..500))
+      photo = Photo.all.sample
       order.photos << photo
       puts "#{i}: Added photo #{photo.name} to order #{photo.id}."
     end
   end
 
-  # def users
-  # [
-  #   ["Jeff Casimir",    "jeff@turing.io",   "password", jeff],
-  #   ["Jorge Tellez",    "jorge@turing.io",  "password", jorge],
-  #   ["Josh Cheek",      "joshc@turing.io",  "password", joshc],
-  #   ["Josh Mejia",      "joshm@turing.io",  "password", joshm],
-  #   ["Horace Williams", "horace@turing.io", "password", horace],
-  #   ["Steve Kinney",    "steve@turing.io",  "password", steve],
-  #   ["Rachel Warbelow", "rachel@turing.io", "password", rachel]
-  # ]
-  # end
+  def users
+    [
+      ["Jeff Casimir",    "jeff@turing.io",   "password", "jeff",   1],
+      ["Jorge Tellez",    "jorge@turing.io",  "password", "jorge",  2],
+      ["Josh Cheek",      "joshc@turing.io",  "password", "joshc",  3],
+      ["Josh Mejia",      "joshm@turing.io",  "password", "joshm",  4],
+      ["Horace Williams", "horace@turing.io", "password", "horace", 5],
+      ["Steve Kinney",    "steve@turing.io",  "password", "steve",  6],
+      ["Rachel Warbelow", "rachel@turing.io", "password", "rachel", 7]
+    ]
+  end
 
-  # def stores
-  # [
-  #   ["Linda Snyder",    "linda@snyder.com",      "#", "#"],
-  #   ["Danielle Austin", "hello@daphoto.com",     "#", "#"],
-  #   ["Ann Johnson",     "annj@johnsonphoto.com", "#", "#"]
-  # ]
-  # end
+  def stores
+    [
+      ["Linda Snyder",    "linda@snyder.com",      "linda",    "black_and_white_stairs.jpg"],
+      ["Danielle Austin", "hello@daphoto.com",     "danielle", "lakeside.jpg"],
+      ["Ann Johnson",     "annj@johnsonphoto.com", "ann",      "tansai.jpg"]
+    ]
+  end
 
 end
 
