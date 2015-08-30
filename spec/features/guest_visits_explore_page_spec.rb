@@ -21,4 +21,10 @@ RSpec.feature "Guest visits explore page", type: :feature do
     end
     expect(page).to have_xpath("//img[@src=\"#{photo.image.url}\"]")
   end
+
+  scenario "and does not see error message" do
+    visit explore_path
+
+    expect(page).not_to have_content "You're not authorized to visit this page!"
+  end
 end
