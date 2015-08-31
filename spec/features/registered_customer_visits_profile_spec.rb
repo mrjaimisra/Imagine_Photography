@@ -2,7 +2,6 @@
 # I should be redirected to my profile page, where I can see:
 # All of the photos I purchased previously
 # A link to edit my account information (username and password)
-# A link to see all of my previous orders
 
 require 'rails_helper'
 
@@ -26,11 +25,9 @@ RSpec.feature "Customer visits profile", type: :feature do
       click_link "You"
     end
 
-    expect(current_path).to eq(explore_path)
-    # expect(page).to have_link("Edit")
-    # within(".orders") do
-    #   expect(page).to have_content(order.id)
-    # end
+    expect(current_path).to eq(profile_path)
+    expect(page).to have_link("Edit")
+    expect(page).to have_link(photo.name)
   end
 
   private

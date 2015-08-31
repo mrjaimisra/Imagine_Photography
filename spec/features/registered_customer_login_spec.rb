@@ -17,8 +17,7 @@ RSpec.feature "Registered customer logs in", type: :feature do
     expect(current_path).to eq(explore_path)
 
     within(".navbar") do
-      expect(page).to have_link("Profile")
-      expect(page).to have_link("Settings")
+      expect(page).to have_link("You")
       expect(page).to have_link("Sign out")
       expect(page).to_not have_link("Sign in")
     end
