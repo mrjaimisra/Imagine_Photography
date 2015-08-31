@@ -5,10 +5,10 @@ class OrdersController < ApplicationController
     if current_user
       create_order
       empty_cart
-      notify_user
-      redirect_to orders_path
+      # notify_user
+      redirect_to order_path(create_order)
     else
-      flash[:warning] = "Sign In to complete your order, Dinners almost ready!"
+      flash[:warning] = "Sign in to complete your order"
       redirect_to login_path
     end
   end
@@ -24,33 +24,34 @@ class OrdersController < ApplicationController
 
   private
 
-  def add_order_items(order)
-    cart.items.each do |cart_item|
-      order.order_items.new(item: cart_item.item, quantity: cart_item.quantity)
+  def add_order_photos(order)
+    cart.photos.each do |cart_photo|
+      order.order_photos.new(photo: cart_photo.photo, quantity: cart_photo.quantity)
     end
   end
 
-  def send_text_message
-    send_to = current_user.phone_number
-    twilio_phone_number = "5733033256"
-    @twilio_client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
-
-    @twilio_client.account.messages.create(
-      from: "+1#{twilio_phone_number}",
-      to: "+1#{send_to}",
-      body: "Your order is on it's way! Dinner will arrive in #{estimated_delivery_time} minutes. - Dinner's Ready"
-    )
-  end
-
-  def estimated_delivery_time
-    current_user.delivery_time
-  end
+  # def send_text_message
+  #   send_to = current_user.phone_number
+  #   twilio_phone_number = "5733033256"
+  #   @twilio_client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
+  #
+  #   @twilio_client.account.messages.create(
+  #     from: "+1#{twilio_phone_number}",
+  #     to: "+1#{send_to}",
+  #     body: "Your order is on it's way! Dinner will arrive in #{estimated_delivery_time} minutes. - Dinner's Ready"
+  #   )
+  # end
+  #
+  # def estimated_delivery_time
+  #   current_user.delivery_time
+  # end
 
   def create_order
     order = current_user.orders.new
-    add_order_items(order)
+    add_order_photos(order)
     order.status_id = 1
     order.save
+    order
   end
 
   def empty_cart
@@ -58,8 +59,8 @@ class OrdersController < ApplicationController
     cart.empty
   end
 
-  def notify_user
-    send_text_message if current_user.phone_number
-    flash[:success] = "Order placed! Dinners on the way!"
-  end
+  # def notify_user
+  #   send_text_message if current_user.phone_number
+  #   flash[:success] = "Order placed! Dinners on the way!"
+  # end
 end
