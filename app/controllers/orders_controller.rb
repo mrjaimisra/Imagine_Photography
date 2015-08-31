@@ -1,7 +1,6 @@
 require 'twilio-ruby'
 
 class OrdersController < ApplicationController
-
   def create
     if current_user
       create_order
@@ -20,6 +19,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @status = @order.status
   end
 
   private
