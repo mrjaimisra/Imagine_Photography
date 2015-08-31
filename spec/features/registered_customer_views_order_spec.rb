@@ -4,16 +4,20 @@ RSpec.feature "Registered customer views specific order", type: :feature do
   before do
     build_roles
   end
+  let!(:category)     { Category.create(name: "People") }
+  let!(:photographer) { Fabricate(:store) }
+  let!(:photo)        { photographer.photos.create(
+                        name: "My Photo",
+                        description: "My description",
+                        price:       "120.00",
+                        category_id: category.id,
+                        status: 1,
+                        image: File.open("spec/fixtures/images/beach_van.jpg")
+                     ) }
   let!(:user) { Fabricate(:user) }
 
   scenario "successfully" do
     status = Status.create!(name: "completed")
-    category = Category.create!(name: "Bahhhhbraaahhh")
-    photo = Photo.create!(name: "Dingo",
-                   description: "It ate a baby!",
-                         price: 50.25,
-                     image_url: "/images/dinner.jpg",
-                   category_id: category.id)
     order = Order.create!(user_id: user.id, status_id: status.id)
 
     order.photos << photo

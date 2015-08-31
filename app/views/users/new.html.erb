@@ -1,24 +1,43 @@
-<h1>Sign Up</h1>
-<%= render partial: "layouts/flash_message" %>
 <div class="container">
-  <div class="row">
+  <%= render partial: "layouts/flash_message" %>
+  <div class="row mt-100">
     <div class="col-lg-8 col-md-offset-2">
       <div class="create-user-form">
-        <%= form_for(@user, url: sign_up_path) do |f| %>
+        <%= form_for(@user,
+                     html: { multipart: true },
+                     url: sign_up_path) do |f| %>
+
           <%= render "layouts/user_errors" %>
+
           <div class="form-group">
             <%= f.label :name %>
-            <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+            <%= f.text_field :name,
+                             class: "form-control",
+                             placeholder: "Name" %>
           </div>
 
           <div class="form-group">
             <%= f.label :email %>
-            <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+            <%= f.text_field :email,
+                             class: "form-control",
+                             placeholder: "Email" %>
           </div>
 
           <div class="form-group">
             <%= f.label :password %>
-            <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+            <%= f.password_field :password,
+                                 class: "form-control",
+                                 placeholder: "Password" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :avatar %>
+            <%= f.file_field :avatar, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :header, "Header Image" %>
+            <%= f.file_field :header, class: "form-control" %>
           </div>
 
           <div class="form-group">
@@ -33,5 +52,5 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </div> <!-- ./row -->
+</div> <!-- ./container -->

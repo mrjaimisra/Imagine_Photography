@@ -19,3 +19,6 @@ coverage/
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore Paperclip generated files
+public/system/

@@ -1,8 +1,16 @@
 require 'rails_helper'
 
-RSpec.feature "User visits explore page", type: :feature do
-  let!(:photo) { Fabricate(:photo) }
-  let!(:second_photo) { Fabricate(:photo) }
+RSpec.feature "Guest visits explore page", type: :feature do
+  let!(:category)     { Category.create(name: "People") }
+  let!(:photographer) { Fabricate(:store) }
+  let!(:photo)        { photographer.photos.create(
+                          name: "My Photo",
+                          description: "My description",
+                          price:       "120.00",
+                          category_id: category.id,
+                          status: 1,
+                          image: File.open("spec/fixtures/images/beach_van.jpg")
+                       ) }
 
   scenario "successfully" do
     visit explore_path
@@ -11,7 +19,12 @@ RSpec.feature "User visits explore page", type: :feature do
       expect(page).to have_content("Explore")
     end
 
-    expect(page).to have_content(photo.name)
-    expect(page).to have_content(second_photo.name)
+    expect(page).to have_xpath("//img[@src=\"#{photo.image.url(:medium)}\"]")
+  end
+
+  scenario "and does not see error message" do
+    visit explore_path
+
+    expect(page).not_to have_content "You're not authorized to visit this page!"
   end
 end

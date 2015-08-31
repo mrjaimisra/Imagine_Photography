@@ -4,6 +4,8 @@ $gray-dark: #262626
 $gray: #383838
 $gray-light: #777777
 $brand-primary: #ad5ccc
+// $brand-text: #fffbf2
+$brand-text: #d0cfce
 // @brand-primary: darken(#428bca, 6.5%) // #337ab7
 $brand-success: #bef368
 $brand-info:    #ad5ccc
@@ -12,6 +14,11 @@ $brand-danger:  #e562a2
 
 body
   background-color: $gray-dark
+  color: $brand-text
+  margin-top: 53px
+
+.mt-100
+  margin-top: 100px
 
 .logo img
   margin: 12px 10px 12px 0px
@@ -24,6 +31,10 @@ body
   -webkit-background-size: cover
   background-size: cover
   height: 650px
+
+.thumbnail
+  background-color: $gray-dark
+  border: none
 
 .featured-stores
   display: inline-flex
@@ -71,6 +82,7 @@ body
   -o-background-size: cover
   -webkit-background-size: cover
   background-size: cover
+
 
 // Use as-is
 .btn-primary

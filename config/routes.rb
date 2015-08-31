@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get "/sign_up", to: "users#new"
   post "/sign_up", to: "users#create"
-  get "/profile", to: "users#show"
+  get "/profile", to: "users#show", as: :profile
   patch "/profile", to: "users#update"
   get "/profile/edit", to: "users#edit"
 
@@ -17,8 +17,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :update]
   end
 
-  namespace :menu do
-    resources :categories, only: [:show]
+  namespace :photos do
+    resources :categories, param: :name, only: [:show]
   end
 
   get "/explore", to: "photos#index"
@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   resources :stores, only: [:index, :show], path: :photographers, as: :photographers
 
   namespace :stores, path: ":photographer", as: :photographer do
-    resources :photos, only: [:index, :show]
+    resources :photos, only: [:index, :show, :new, :create]
+    resources :category, only: [:show], param: :name
   end
 end

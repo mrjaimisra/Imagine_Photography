@@ -1,31 +1,17 @@
-<h1>Explore</h1>
-<%= render partial: "layouts/flash_message" %>
-
-<div class="items-list">
+<div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <%= render partial: "layouts/category_list" %>
-    </div>
+    <h1>Explore</h1>
+    <%= render partial: "layouts/flash_message" %>
 
-    <div class="col-md-9">
-      <div class="row item-info item-list">
+    <div class="items-list">
+      <div class="row">
+        <div class="col-md-3">
+          <%= render partial: "layouts/category_list" %>
+        </div>
 
-        <% @photos.each do |photo| %>
-          <div class="col-sm-4 col-lg-4 col-md-4 item-box">
-            <div class="thumbnail">
-              <%= link_to photo.name, photo_path(photo) %>
-              <div class="caption">
-                <h4 class="pull-right"><%= number_to_currency(photo.price) %></h4>
-                <p>
-                  <%= photo.description %>
-                </p>
-              </div>
-              <p>
-                <%#= button_to "Add to Cart", cart_photos_path(photo_id: photo.id), method: :post, class: "btn btn-primary btn-large center-block" %>
-              </p>
-            </div>
-          </div>
-        <% end %>
+        <div class="col-md-9">
+          <%= render partial: "layouts/photos_index" %>
+        </div>
       </div>
     </div>
   </div>

@@ -1,22 +1,26 @@
-<h1><%= @photo.name %></h1>
-
-<div class="row item-show">
-  <div class="col-md-3 item-info">
-    <p class="lead">
-      <%= @photo.name %>
-      (<%#= link_to @photo.category.name, menu_category_path(@photo.category.name) %>)
-    </p>
-      <p><strong>Description:</strong><br>
+<div class="container">
+  <div class="row">
+    <div class="row item-show">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="thumbnail">
+          <%= image_tag @photo.image.url(:large), class: "img-responsive" %>
+        </div>
+      </div>
+    </div> <!-- ./row -->
+    <div class="row item-info">
+      <h3 class="col-md-3 col-md-offset-1 lead">
+        <%= @photo.name %>
+      </h3>
+    </div> <!-- ./row -->
+    <div class="row">
+      <p class="col-md-7 col-md-offset-1"><strong>Description:</strong><br>
         <%= @photo.description %>
       </p>
-      <h4><%= number_to_currency(@photo.price) %></h4>
-      <%= button_to "Add to cart", cart_photos_path(photo_id: @photo.id), class: "btn btn-primary" %>
-  </div>
-
-  <div class="col-md-9">
-
-    <div class="thumbnail">
-      <%= image_tag @photo.image_url, class: "img-responsive" %>
-    </div>
-  </div>
-</div>
+      <div class="col-md-3 col-md-offset-1">
+        <h4><%= number_to_currency(@photo.price) %></h4>
+        <%= button_to "Add to cart", cart_photos_path(photo_id: @photo.id),
+                      class: "btn btn-primary" %>
+      </div>
+    </div> <!-- ./row -->
+  </div> <!-- ./row -->
+</div> <!-- ./container -->

@@ -25,7 +25,7 @@ RSpec.describe "the photo", type: :model do
 
     it "defaults to an image url when none provided" do
       photo.update_attributes(image_url: nil)
-      expect(photo.image_url).to eq("Family-eating.jpg")
+      expect(photo.image_url).to eq("beach_van.jpg")
     end
 
     it "is invalid without a category id" do
@@ -44,4 +44,3 @@ RSpec.describe "the photo", type: :model do
     end
   end
 end
-

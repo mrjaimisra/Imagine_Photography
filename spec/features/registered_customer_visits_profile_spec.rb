@@ -27,7 +27,7 @@ RSpec.feature "Customer visits profile", type: :feature do
 
     expect(current_path).to eq(profile_path)
     expect(page).to have_link("Edit")
-    expect(page).to have_link(photo.name)
+    expect(page).to have_xpath("//img[@src=\"#{photo.image.url(:medium)}\"]")
   end
 
   private
@@ -42,4 +42,3 @@ RSpec.feature "Customer visits profile", type: :feature do
     click_button "Sign in"
   end
 end
-

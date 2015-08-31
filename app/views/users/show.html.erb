@@ -1,43 +1,22 @@
-<h1><%= current_user.name.capitalize %>'s Profile</h1>
-
-<div class="row">
-  <div class="col-md-3"><h4>Account Information</h4></div>
-  <div class="col-md-9"></div>
-</div>
-
-<div class="table-responsive">
-  <table class="table table-striped profile">
-
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th></th>
-    </tr>
-    <tr class="user-info">
-      <td><%= current_user.name.capitalize %></td>
-      <td><%= current_user.email %></td>
-      <td><%= link_to "Edit profile", profile_edit_path(id: current_user.id) %></td>
-    </tr>
-  </table>
-
-  <div class="col-md-9">
-    <div class="row item-info item-list">
-
-      <% @photos.each do |photo| %>
-        <div class="col-sm-4 col-lg-4 col-md-4 item-box">
-          <div class="thumbnail">
-            <%= image_tag(
-                    photo.image_url,
-                    height: 80,
-                    width: 80,
-                    class: "img")%>
-            <%= link_to photo.name, photo_path(photo) %>
-            <div class="caption">
-            </div>
-          </div>
-        </div>
-      <% end %>
+<header id="profile-header" style="background: url(<%= image_path(current_user.header.url(:xlarge, timestamps: false)) %>) no-repeat center center">
+  <div class="container">
+    <div class="row">
+      <%= image_tag current_user.avatar.url(:thumb, timestamps: false),
+                    class: "img-circle" %>
+      <h1><%= current_user.name %></h1>
+      <h3><%= current_user.email %></h3>
+      <%= link_to "Edit profile", profile_edit_path(id: current_user.id) %>
     </div>
-
   </div>
-
+</header>
+<div class="container">
+  <div class="row photo-list">
+    <% @photos.each do |photo| %>
+    <div class="col-sm-3 col-lg-3 col-md-3 item-box">
+      <div class="thumbnail">
+        <a class="photo" href="<%= photo_path(photo) %>"><%= image_tag photo.image.url(:medium) %></a>
+      </div> <!-- ./thumbnail -->
+    </div>
+    <% end %>
+  </div>
+</div>

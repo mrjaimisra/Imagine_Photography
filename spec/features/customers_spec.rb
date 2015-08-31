@@ -19,7 +19,7 @@ RSpec.feature "Customers", type: :feature do
 
     expect(current_path).to eq(explore_path)
 
-    click_on photo.name
+    find(:xpath, "//a/img[@src='#{photo.image.url(:medium)}']/..").click
     click_button "Add to cart"
 
     expect(current_path).to eq(cart_path)
