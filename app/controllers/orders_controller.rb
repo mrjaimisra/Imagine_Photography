@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @status = @order.status.name
+    @status = @order.status
   end
 
   private

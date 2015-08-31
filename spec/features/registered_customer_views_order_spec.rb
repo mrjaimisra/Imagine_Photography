@@ -35,8 +35,7 @@ RSpec.feature "Registered customer views specific order", type: :feature do
     expect(current_path).to eq(order_path(order.id))
     expect(page).to have_content("Order ##{order.id}")
     expect(page).to have_content("Status: Completed")
-
-    expect(page).to have_content("Dingo")
-    expect(page).to have_content("$50.25")
+    expect(page).to have_content("#{photo.name}")
+    expect(page).to have_content("#{photo.price}")
   end
 end
