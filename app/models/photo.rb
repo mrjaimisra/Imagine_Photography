@@ -6,8 +6,8 @@ class Photo < ActiveRecord::Base
 
   has_attached_file :image, styles: { xlarge: "1200x1200",
                                       large: "800x800",
-                                      medium: "300x300#",
-                                      thumb: "150x150#" },
+                                      medium: "400x400#",
+                                      thumb: "200x200#" },
                                       default_url: "/images/beach_van.jpg"
 
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
