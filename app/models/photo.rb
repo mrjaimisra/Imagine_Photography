@@ -4,8 +4,7 @@ class Photo < ActiveRecord::Base
   has_many :order_photos
   has_many :orders, through: :order_photos
 
-  has_attached_file :image, styles: { xlarge: "1200x1200",
-                                      large: "800x800",
+  has_attached_file :image, styles: { large: "1200x1200",
                                       medium: "400x400#",
                                       thumb: "200x200#" },
                                       default_url: "/images/beach_van.jpg"
@@ -42,4 +41,7 @@ class Photo < ActiveRecord::Base
       errors.add(:category, "must be selected")
     end
   end
+
+  # for will_paginate
+  self.per_page = 36
 end
