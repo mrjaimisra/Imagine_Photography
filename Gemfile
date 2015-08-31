@@ -30,7 +30,7 @@ gem "puma"
 gem "paperclip", "~> 4.3.0"
 
 group :development, :test do
-  # gem 'byebug'
+  gem 'byebug'
   gem 'rspec-rails'
   gem 'rspec-mocks'
   gem 'guard-rspec'
