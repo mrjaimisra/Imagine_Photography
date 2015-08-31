@@ -19,7 +19,7 @@ RSpec.feature "Guest visits explore page", type: :feature do
       expect(page).to have_content("Explore")
     end
 
-    expect(page).to have_xpath("//img[@src=\"#{photo.image.url}\"]")
+    expect(page).to have_xpath("//img[@src=\"#{photo.image.url(:medium)}\"]")
   end
 
   scenario "and does not see error message" do
