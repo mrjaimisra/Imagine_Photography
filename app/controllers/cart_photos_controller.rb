@@ -1,7 +1,7 @@
 class CartPhotosController < ApplicationController
   def index
     @cart_photos = cart.photos
-    delivery_flash? if current_user
+    # delivery_flash? if current_user
   end
 
   def create
@@ -34,9 +34,9 @@ class CartPhotosController < ApplicationController
     cart.remove_from_cart(photo)
   end
 
-  def delivery_flash?
-    unless current_user.valid_delivery?
-      flash.now[:warning] = "We unfortunately do not deliver in your area."
-    end
-  end
+  # def delivery_flash?
+  #   unless current_user.valid_delivery?
+  #     flash.now[:warning] = "We unfortunately do not deliver in your area."
+  #   end
+  # end
 end
