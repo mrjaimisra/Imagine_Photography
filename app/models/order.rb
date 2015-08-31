@@ -1,5 +1,7 @@
 class Order < ActiveRecord::Base
   belongs_to :user
+  belongs_to :status
+
   has_many :order_photos, autosave: true
   has_many :photos, through: :order_photos
 
@@ -9,11 +11,11 @@ class Order < ActiveRecord::Base
 
   def total
     order_photos.inject(0) do |total, order_photo|
-      total += order_photo.quantity * Photo.find(order_photo.photo_id).price
+      total += Photo.find(order_photo.photo_id).price
     end
   end
 
-  def status
-    Status.find(status_id).name
-  end
+  # def status_name(status_id)
+  #   Status.find(status_id).name
+  # end
 end

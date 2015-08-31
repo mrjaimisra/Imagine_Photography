@@ -1,6 +1,35 @@
-<h1><%= "Order Number: #{@order.id}" %></h1>
+<br><br><h1><%= "Order ##{@order.id}" %></h1>
 
 <div class="row">
+  <div class="col-md-3">
+    <h2>Order Details</h2>
+    <h3>Status: <%= @status.name %></h3>
+    <h3>Items:</h3>
+  </div>
+</div>
+
+<% @order.order_photos.each do |order_photo| %>
+  <ul>
+    <li><%= link_to image_tag(
+                      order_photo.image_url,
+                      height: 80,
+                      width:  80,
+                      class:  "img-circle"
+                    ),
+                    photo_path(order_photo) %></li>
+    <li><%= link_to order_photo.name, photo_path(order_photo) %></li>
+    <li><%= number_to_currency(order_photo.price) %></li>
+    <li><%= order_photo.updated_at %></li>
+  </ul>
+
+  <div class="total">
+    <h3>Total: $<%= @order.total %></h3>
+  </div>
+<% end %>
+
+
+
+<!-- <div class="row">
   <div class="col-md-3"><h4>Details:</h4></div>
   <div class="col-md-6"></div>
   <div class="col-md-3 status pull-right">
@@ -15,6 +44,8 @@
         <strong>Status:</strong>
         <%= @order.status %> <br/>
         <%= link_to "Your Orders", orders_path(current_user) %>
+        <%#= @order.status %> <br/>
+        <%#= link_to "Your Orders", orders_path(current_user) %>
       <%# end %>
     </div>
   </div>
@@ -43,21 +74,21 @@
                           class:  "img-circle"
                         ),
                         meal_path(id: order_photo.item_id) %></td>
-        <td><%= link_to order_photo.name, meal_path(order_photo) %></td>
-        <td><%= number_to_currency(order_photo.price) %></td>
-        <td><%= order_photo.quantity %></td>
+        <td><%#= link_to order_item.name, meal_path(order_item) %></td>
+        <td><%#= number_to_currency(order_item.price) %></td>
+        <td><%#= order_item.quantity %></td>
         <div class="subtotal">
-          <td><%= number_to_currency(order_photo.subtotal) %></td>
+          <td><%#= number_to_currency(order_item.subtotal) %></td>
         </div>
-        <td><%= @order.status %></td>
-        <td><%= order_photo.updated_at %></td>
-        <td><%= link_to "View", meal_path(id: order_photo.id) %></td>
+        <td><%#= @order.status %></td>
+        <td><%#= order_item.updated_at %></td>
+        <td><%#= link_to "View", meal_path(id: order_item.id) %></td>
       </tr>
-    <% end %>
+    <%# end %>
   </table>
 
   <div class="total">
-    <h3>Total: $<%= @order.total %></h3>
+    <h3>Total: $<%#= @order.total %></h3>
   </div>
 
-</div>
+</div> -->
