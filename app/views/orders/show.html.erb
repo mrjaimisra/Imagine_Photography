@@ -1,13 +1,8 @@
 <br><br><h1><%= "Order ##{@order.id}" %></h1>
 
-<%= link_to "Your Orders", orders_path(current_user) %>
-
 <div class="row">
   <div class="col-md-3">
-    <h2>Order Details</h2>
-
     <h3>Status: <%= @status.name %></h3>
-
     <h3>Items:</h3>
   </div>
 </div>
@@ -31,7 +26,7 @@
                             class: "img"
                         ),
                         photo_path(order_photo) %></td>
-        <td><%= link_to order_photo.name, photo_path(order_photo) %></td>
+        <td><%= link_to order_photo.name, photo_path(order_photo.photo_id) %></td>
         <td><%= number_to_currency(order_photo.price) %></td>
         <td><%= order_photo.updated_at %></td>
       </tr>
@@ -42,6 +37,9 @@
 <div class="total">
   <h3>Total: $<%= @order.total %></h3>
 </div>
+
+<%= link_to "Your Orders", orders_path(current_user) %>
+
 
 <%# if current_user.roles.include?("registered user") && @order.status == "Ordered" || @order.status == "Paid" %>
 <!--Change Status:-->

@@ -16,6 +16,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    @photos = []
+    current_user.orders.each do |order|
+      order.order_photos.each do |order_photo|
+          @photos << Photo.find(order_photo.photo_id)
+        end
+    end
     redirect_to "/404" unless current_user
   end
 
