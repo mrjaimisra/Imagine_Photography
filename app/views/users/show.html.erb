@@ -5,6 +5,18 @@
                     class: "img-circle" %>
       <h1><%= current_user.name %></h1>
       <h3><%= current_user.email %></h3>
+      <%= link_to "Edit profile", profile_edit_path(id: current_user.id) %>
     </div>
   </div>
 </header>
+<div class="container">
+  <div class="row photo-list">
+    <% @photos.each do |photo| %>
+    <div class="col-sm-3 col-lg-3 col-md-3 item-box">
+      <div class="thumbnail">
+        <a class="photo" href="<%= photo_path(photo) %>"><%= image_tag photo.image.url(:medium) %></a>
+      </div> <!-- ./thumbnail -->
+    </div>
+    <% end %>
+  </div>
+</div>

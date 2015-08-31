@@ -14,11 +14,7 @@ RSpec.describe Order, type: :model do
     end
 
     it "has a status" do
-      expect(order.status).to eq "Ordered"
-    end
-
-    it "has a total" do
-      expect(order.total).to eq photo.price * 3
+      expect(order.status.name).to eq "Ordered"
     end
   end
 end

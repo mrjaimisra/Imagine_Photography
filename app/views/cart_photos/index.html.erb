@@ -13,7 +13,7 @@
   <div class="col-md-3">
     <div class="btn-group" role="group" aria-label="...">
       <%= link_to "Keep shopping", explore_path, class: "btn btn-warning" %>
-      <%= link_to "Check Out", orders_path, method: :post, class: "btn btn-primary" %>
+      <%= link_to "Checkout", orders_path, method: :post, class: "btn btn-primary" %>
     </div>
   </div>
 </div>
@@ -23,11 +23,9 @@
 
     <tr>
       <th></th>
-      <th>photo</th>
+      <th>Photo</th>
       <th>Description</th>
       <th>Price</th>
-      <th>Quantity</th>
-      <th>Subtotal</th>
       <th></th>
     </tr>
     <tr>
@@ -36,13 +34,7 @@
         <td><%= cart_photo.name %></td>
         <td><%= cart_photo.description %></td>
         <td><%= number_to_currency(cart_photo.price) %></td>
-        <td><%= button_to "-", cart_photos_path(id: "#{cart_photo.id}", quantity: "decrease"), method: :put %>
-          <%= cart_photo.quantity %>
-          <%= button_to "+", cart_photos_path(id: "#{cart_photo.id}", quantity: "increase"), method: :put %></td>
 
-        <div class="subtotal">
-          <td><%= number_to_currency(cart_photo.subtotal) %></td>
-        </div>
         <td><%= link_to "Remove", cart_photos_path(id: cart_photo), method: :delete %></td>
         </tr>
       <% end %>

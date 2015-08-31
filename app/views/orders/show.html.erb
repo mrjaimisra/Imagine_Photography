@@ -1,63 +1,54 @@
-<h1><%= "Order Number: #{@order.id}" %></h1>
+<br><br><h1><%= "Order ##{@order.id}" %></h1>
 
 <div class="row">
-  <div class="col-md-3"><h4>Details:</h4></div>
-  <div class="col-md-6"></div>
-  <div class="col-md-3 status pull-right">
-    <div>
-      <% if current_user.role.eql?("admin") && @order.status == "Ordered" || @order.status == "Paid" %>
-        Change Status:
-        <%= form_for [:admin, @order] do |f| %>
-          <%= f.collection_select(:status, Status.all, :id, :name, { selected: @order.status_id }) %>
-          <%= f.submit "Update Order Status" %>
-        <% end %>
-      <% else %>
-        <strong>Status:</strong>
-        <%= @order.status %> <br/>
-        <%= link_to "Your Orders", orders_path(current_user) %>
-      <% end %>
-    </div>
+  <div class="col-md-3">
+    <h3>Status: <%= @status.name %></h3>
+    <h3>Items:</h3>
   </div>
 </div>
 
 <div class="table-responsive">
   <table class="table table-striped order">
-
     <tr>
-      <th></th>
+      <th>Image</th>
       <th>Name</th>
       <th>Price</th>
-      <th>Quantity</th>
-      <th>Subtotal</th>
-      <th>Status</th>
       <th>Last Updated</th>
       <th></th>
     </tr>
 
-    <% @order.order_items.each do |order_item| %>
+    <% @order.order_photos.each do |order_photo| %>
       <tr>
         <td><%= link_to image_tag(
-                          order_item.image_url,
-                          height: 80,
-                          width:  80,
-                          class:  "img-circle"
+                            order_photo.image_url,
+                            height: 80,
+                            width: 80,
+                            class: "img"
                         ),
-                        meal_path(id: order_item.item_id) %></td>
-        <td><%= link_to order_item.name, meal_path(order_item) %></td>
-        <td><%= number_to_currency(order_item.price) %></td>
-        <td><%= order_item.quantity %></td>
-        <div class="subtotal">
-          <td><%= number_to_currency(order_item.subtotal) %></td>
-        </div>
-        <td><%= @order.status %></td>
-        <td><%= order_item.updated_at %></td>
-        <td><%= link_to "View", meal_path(id: order_item.id) %></td>
+                        photo_path(order_photo) %></td>
+        <td><%= link_to order_photo.name, photo_path(order_photo.photo_id) %></td>
+        <td><%= number_to_currency(order_photo.price) %></td>
+        <td><%= order_photo.updated_at %></td>
       </tr>
     <% end %>
   </table>
-
-  <div class="total">
-    <h3>Total: $<%= @order.total %></h3>
-  </div>
-
 </div>
+
+<div class="total">
+  <h3>Total: $<%= @order.total %></h3>
+</div>
+
+<%= link_to "Your Orders", orders_path(current_user) %>
+
+
+<%# if current_user.roles.include?("registered user") && @order.status == "Ordered" || @order.status == "Paid" %>
+<!--Change Status:-->
+<%#= form_for [:admin, @order] do |f| %>
+<%#= f.collection_select(:status, Status.all, :id, :name, { selected: @order.status_id }) %>
+<%#= f.submit "Update Order Status" %>
+<%# end %>
+<%# else %>
+
+<%#= @order.status %> <br/>
+<%#= link_to "Your Orders", orders_path(current_user) %>
+<%# end %>
