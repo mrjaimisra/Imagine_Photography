@@ -25,12 +25,12 @@ RSpec.describe "the category view", type: :feature do
     }
 
     it "displays the correct path in the address bar" do
-      visit "menu/#{category.name}"
-      expect(current_path).to eq("/menu/Breakfast")
+      visit "photos/#{category.name}"
+      expect(current_path).to eq("/photos/Breakfast")
     end
 
     it "views the photos in the category" do
-      visit "menu/#{category.name}"
+      visit "photos/#{category.name}"
 
       within(".page-title") do
         expect(page).to have_content("#{category.name.capitalize}")
@@ -45,7 +45,7 @@ RSpec.describe "the category view", type: :feature do
     end
 
     it "cannot view photos in other categories" do
-      visit "menu/#{other_category.name}"
+      visit "photos/#{other_category.name}"
 
       within(".item-box") do
         expect(page).to_not have_link("#{item.name}")
@@ -55,7 +55,7 @@ RSpec.describe "the category view", type: :feature do
     end
 
     it "redirects to an photos show page when item name is clicked" do
-      visit "menu/#{category.name}"
+      visit "photos/#{category.name}"
 
       within(".item-box") do
         click_link("#{item.name}")
