@@ -36,7 +36,8 @@ Rails.application.routes.draw do
 
   resources :cart_photos, only: [:create, :update, :destroy]
   resources :orders, only: [:create, :index, :show]
-  resources :stores, only: [:index, :show], path: :photographers, as: :photographers
+  resources :stores, only: [:index, :show, :new, :create],
+                     path: :photographers, as: :photographers
 
   namespace :stores, path: ":photographer", as: :photographer do
     resources :photos, only: [:index, :show, :new, :create]

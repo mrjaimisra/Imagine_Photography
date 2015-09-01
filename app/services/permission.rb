@@ -73,7 +73,7 @@ class Permission
       return true if (controller == 'users') &&
                      (action.in? %w( show edit update ))
       return true if (controller == 'stores') &&
-                     (action.in? %w( index show ))
+                     (action.in? %w( index show new create ))
       return true if (controller == 'photos') &&
                      (action.in? %w( index show ))
       return true if (controller == 'cart_photos') &&
