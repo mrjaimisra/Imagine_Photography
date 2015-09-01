@@ -26,5 +26,6 @@ RSpec.feature "Customer checks out", type: :feature do
 
     click_on "Checkout"
     expect(current_path).to eq(order_path(Order.last))
+    expect(Order.last.status.name).to eq("Ordered")
   end
 end

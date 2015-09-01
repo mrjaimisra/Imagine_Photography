@@ -25,7 +25,7 @@
                             width: 80,
                             class: "img"
                         ),
-                        photo_path(order_photo) %></td>
+                        photo_path(order_photo.photo_id) %></td>
         <td><%= link_to order_photo.name, photo_path(order_photo.photo_id) %></td>
         <td><%= number_to_currency(order_photo.price) %></td>
         <td><%= order_photo.updated_at %></td>
