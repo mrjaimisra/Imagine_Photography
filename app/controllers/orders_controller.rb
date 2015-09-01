@@ -32,13 +32,7 @@ class OrdersController < ApplicationController
 
 
   def add_default_order_status(order)
-    current_status = Status.find_by(name: "Ordered")
-    if current_status
-      order.status = current_status
-    else
-      new_status = Status.create(name: "Ordered")
-      order.status = new_status
-    end
+    order.status = Status.find_or_create_by(name: "Ordered")
   end
 
   # def send_text_message
