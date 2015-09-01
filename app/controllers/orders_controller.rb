@@ -30,6 +30,11 @@ class OrdersController < ApplicationController
     end
   end
 
+
+  def add_default_order_status(order)
+    order.status = Status.find_or_create_by(name: "Ordered")
+  end
+
   # def send_text_message
   #   send_to = current_user.phone_number
   #   twilio_phone_number = "5733033256"
@@ -49,7 +54,8 @@ class OrdersController < ApplicationController
   def create_order
     order = current_user.orders.new
     add_order_photos(order)
-    order.status_id = 1
+    add_default_order_status(order)
+    # order.status_id = 1
     order.save
     order
   end
