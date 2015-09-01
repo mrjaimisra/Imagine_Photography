@@ -5,7 +5,7 @@
                  class: "col-md-8 col-md-offset-2",
                  url: photographer_photos_path do |f| %>
 
-      <%= render "layouts/photo_errors" %>
+      <%= render partial: "shared/errors", locals: { object: @photo } %>
 
       <div class="form-group">
         <%= f.label :image %>
