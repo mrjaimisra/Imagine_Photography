@@ -18,18 +18,13 @@ class Seed
   end
 
   def generate_customers
-    user = User.create(name: "Josh",
-                       email: "josh@turing.io",
-                       password: "password",
-    )
-
-    # users.each do |name, email, password, avatar, header|
-    #   User.create(name: name,
-                    # email: email,
-                    # password: password,
-                    # avatar = File.open("/app/assets/images/avatars/#{avatar}.jpg")
-                    # header = File.open("/app/assets/images/headers/#{header}.jpg")
-    # end
+    users.each do |name, email, password, avatar, header|
+      User.create(name: name,
+                  email: email,
+                  password: password,
+                  avatar = File.open("/app/assets/images/avatars/#{avatar}.jpg")
+                  header = File.open("/app/assets/images/headers/#{header}.jpg")
+    end
 
     99.times do |i|
       customer = User.create!(
@@ -145,9 +140,9 @@ class Seed
 
   def users
     [
+      ["Josh Cheek",      "josh@turing.io",   "password", "joshc",  3],
       ["Jeff Casimir",    "jeff@turing.io",   "password", "jeff",   1],
       ["Jorge Tellez",    "jorge@turing.io",  "password", "jorge",  2],
-      ["Josh Cheek",      "joshc@turing.io",  "password", "joshc",  3],
       ["Josh Mejia",      "joshm@turing.io",  "password", "joshm",  4],
       ["Horace Williams", "horace@turing.io", "password", "horace", 5],
       ["Steve Kinney",    "steve@turing.io",  "password", "steve",  6],
@@ -162,7 +157,6 @@ class Seed
       ["Ann Johnson",     "annj@johnsonphoto.com", "ann",      "tansai.jpg"]
     ]
   end
-
 end
 
 Seed.start
