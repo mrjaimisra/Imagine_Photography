@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <h1><%= @category.name.capitalize %></h1>
+    <%= render partial: "layouts/flash_message" %>
+
+    <div class="photos-list">
+      <div class="row">
+        <div class="col-md-3">
+          <%= render partial: "layouts/category_list" %>
+        </div>
+
+        <div class="col-md-9">
+          <%= render partial: "layouts/photos_index" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
