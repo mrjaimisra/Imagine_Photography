@@ -5,7 +5,7 @@
                     class: "img-circle", alt: current_user.name %>
       <h1><%= current_user.name %></h1>
       <h3><%= current_user.email %></h3>
-      <%= link_to "Edit profile", profile_edit_path(id: current_user.id) %>
+      <%= link_to "Edit profile", profile_edit_path %>
     </div>
   </div>
 </header>
