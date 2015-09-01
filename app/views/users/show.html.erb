@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <%= image_tag current_user.avatar.url(:thumb, timestamps: false),
-                    class: "img-circle" %>
+                    class: "img-circle", alt: current_user.name %>
       <h1><%= current_user.name %></h1>
       <h3><%= current_user.email %></h3>
       <%= link_to "Edit profile", profile_edit_path(id: current_user.id) %>
@@ -11,6 +11,7 @@
 </header>
 <div class="container">
   <div class="row photo-list">
+    <%= render partial: "layouts/flash_message" %>
     <% @photos.each do |photo| %>
     <div class="col-sm-3 col-lg-3 col-md-3 item-box">
       <div class="thumbnail">
