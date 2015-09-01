@@ -2,8 +2,9 @@
   <div class="container">
     <div class="row">
       <%= image_tag @photographer.avatar.url(:thumb, timestamps: false),
-                    class: "img-circle", alt: @photographer.name %>
+                    class: "img-circle" %>
       <h1><%= @photographer.name %></h1>
+
       <h3><%= @photographer.email %></h3>
     </div>
   </div>
@@ -11,25 +12,19 @@
 
 <div class="container">
   <div class="row">
-    <h1>Photos</h1>
+    <h1><%= @category.name.capitalize %></h1>
     <%= render partial: "layouts/flash_message" %>
 
-    <div class="items-list">
+    <div class="photos-list">
       <div class="row">
         <div class="col-md-3">
-          <%= render partial: "layouts/category_list" %>
+          <%= render partial: "layouts/category_list" if @category %>
         </div>
 
         <div class="col-md-9">
-          <% if current_user && current_user.store_admin? %>
-            <%= link_to "Upload photo to portfolio",
-                        new_photographer_photo_path(store: @photographer),
-                        class: "btn btn-primary" %>
-          <% end %>
           <%= render partial: "layouts/photos_index" %>
         </div>
       </div>
     </div>
-
   </div>
 </div>

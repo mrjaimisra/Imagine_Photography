@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  has_many :items
+  has_many :photos
   validate :check_for_special_characters
   validates :name, presence: true, uniqueness: true
 

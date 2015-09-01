@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Customers", type: :feature do
+RSpec.feature "Customer checks out", type: :feature do
   before do
     build_roles
   end
@@ -9,7 +9,6 @@ RSpec.feature "Customers", type: :feature do
   let!(:status)   { Status.create(name: "ordered") }
 
   scenario "successfully" do
-
     visit root_path
     click_link "Sign in"
 
@@ -27,5 +26,6 @@ RSpec.feature "Customers", type: :feature do
 
     click_on "Checkout"
     expect(current_path).to eq(order_path(Order.last))
+    expect(Order.last.status.name).to eq("Ordered")
   end
 end

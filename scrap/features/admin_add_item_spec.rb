@@ -24,7 +24,7 @@ RSpec.describe "an admin on their dashboards" do
     expect(page).to have_content("Category")
   end
 
-  it "can submit a new item to the menu" do
+  it "can submit a new item to the photos" do
 
     visit "/admin/dashboard"
     click_link "Add New Meal"

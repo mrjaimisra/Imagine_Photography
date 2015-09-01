@@ -29,16 +29,4 @@ RSpec.feature "Customer visits profile", type: :feature do
     expect(page).to have_link("Edit")
     expect(page).to have_xpath("//img[@src=\"#{photo.image.url(:medium)}\"]")
   end
-
-  private
-
-  def sign_in_customer
-    within(".navbar") do
-      click_link "Sign in"
-    end
-
-    fill_in "Email", with: customer.email
-    fill_in "Password", with: customer.password
-    click_button "Sign in"
-  end
 end

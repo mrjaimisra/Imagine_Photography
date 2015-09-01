@@ -19,8 +19,8 @@ class UsersController < ApplicationController
     @photos = []
     current_user.orders.each do |order|
       order.order_photos.each do |order_photo|
-          @photos << Photo.find(order_photo.photo_id)
-        end
+        @photos << Photo.find(order_photo.photo_id)
+      end
     end
     redirect_to "/404" unless current_user
   end
@@ -30,14 +30,16 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update_attributes(user_params)
-    current_user.save!
-    redirect_to profile_path(current_user)
+    if current_user.update_attributes(user_params)
+      redirect_to profile_path
+    else
+      render :edit
+    end
   end
 
   private
 
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :avatar, :header)
-    end
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :avatar, :header)
+  end
 end

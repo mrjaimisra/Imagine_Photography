@@ -7,7 +7,7 @@
                      html: { multipart: true },
                      url: sign_up_path) do |f| %>
 
-          <%= render "layouts/user_errors" %>
+          <%= render partial: "shared/errors", locals: { object: @user } %>
 
           <div class="form-group">
             <%= f.label :name %>
