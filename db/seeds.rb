@@ -18,18 +18,15 @@ class Seed
   end
 
   def generate_customers
-    user = User.create(name: "Josh",
-                       email: "josh@turing.io",
-                       password: "password",
-    )
-
-    # users.each do |name, email, password, avatar, header|
-    #   User.create(name: name,
-                    # email: email,
-                    # password: password,
-                    # avatar = File.open("/app/assets/images/avatars/#{avatar}.jpg")
-                    # header = File.open("/app/assets/images/headers/#{header}.jpg")
-    # end
+    users.each do |name, email, password, avatar, header|
+      User.create!(name: name,
+                   email: email,
+                   password: password,
+                   avatar: File.open("app/assets/images/avatars/#{avatar}.jpg"),
+                   header: File.open("app/assets/images/headers/#{header}.jpg")
+                  )
+      puts "Teacher: #{name} - #{email} created!"
+    end
 
     99.times do |i|
       customer = User.create!(
@@ -44,11 +41,7 @@ class Seed
 
   def generate_store_admins
     store_admin_role =  Role.find_by(name: "store_admin")
-    admin = User.create!(
-        name: "Carmer",
-        email: "andrew@turing.io",
-        password: "password",
-    )
+    admin = User.find_by(email: "andrew@turing.io")
     admin.roles << store_admin_role
 
     19.times do |i|
@@ -64,11 +57,7 @@ class Seed
 
   def generate_platform_admins
     site_admin_role = Role.find_by(name: "platform_admin")
-    platform_admin = User.create!(
-        name: "Jorge",
-        email: "jorge@turing.io",
-        password: "password",
-    )
+    platform_admin = User.find_by(email: "jorge@turing.io")
     platform_admin.roles << site_admin_role
 
     puts "Platform Admin #{platform_admin.name} - #{platform_admin.email} - #{platform_admin.password} created!"
@@ -88,11 +77,12 @@ class Seed
 
   def generate_stores
     stores.each do |name, email, avatar, header|
-      Store.create!( name:   name,
-                     email:  email,
-                     avatar: Faker::Company.logo,
-                     header: File.open("app/assets/images/headers/#{header}")
+      Store.create!(name:   name,
+                    email:  email,
+                    avatar: Faker::Company.logo,
+                    header: File.open("app/assets/images/headers/#{header}")
                    )
+      puts "Photographer: #{name} created!"
     end
 
     19.times do |i|
@@ -145,13 +135,14 @@ class Seed
 
   def users
     [
-      ["Jeff Casimir",    "jeff@turing.io",   "password", "jeff",   1],
-      ["Jorge Tellez",    "jorge@turing.io",  "password", "jorge",  2],
-      ["Josh Cheek",      "joshc@turing.io",  "password", "joshc",  3],
-      ["Josh Mejia",      "joshm@turing.io",  "password", "joshm",  4],
-      ["Horace Williams", "horace@turing.io", "password", "horace", 5],
-      ["Steve Kinney",    "steve@turing.io",  "password", "steve",  6],
-      ["Rachel Warbelow", "rachel@turing.io", "password", "rachel", 7]
+      ["Josh Cheek",      "josh@turing.io",   "password", "joshc",  "header-1"],
+      ["Jeff Casimir",    "jeff@turing.io",   "password", "jeff",   "header-2"],
+      ["Jorge Tellez",    "jorge@turing.io",  "password", "jorge",  "header-3"],
+      ["Josh Mejia",      "joshm@turing.io",  "password", "joshm",  "header-4"],
+      ["Horace Williams", "horace@turing.io", "password", "horace", "header-5"],
+      ["Steve Kinney",    "steve@turing.io",  "password", "steve",  "header-6"],
+      ["Rachel Warbelow", "rachel@turing.io", "password", "rachel", "header-7"],
+      ["Andrew Carmer",   "andrew@turing.io", "password", "andrew", "header-8"],
     ]
   end
 
@@ -162,7 +153,6 @@ class Seed
       ["Ann Johnson",     "annj@johnsonphoto.com", "ann",      "tansai.jpg"]
     ]
   end
-
 end
 
 Seed.start
