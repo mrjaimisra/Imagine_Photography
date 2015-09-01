@@ -1,8 +1,6 @@
 <div class="container">
   <div class="row">
     <h1>Explore</h1>
-    <%= render partial: "layouts/flash_message" %>
-
     <div class="items-list">
       <div class="row">
         <div class="col-md-3">
@@ -11,6 +9,7 @@
 
         <div class="col-md-9">
           <%= render partial: "layouts/photos_index" %>
+          <%= will_paginate @photos %>
         </div>
       </div>
     </div>
