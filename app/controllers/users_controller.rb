@@ -7,6 +7,13 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+      NotificationsMailer.contact(
+        name: "Imagine Photography",
+        email: "#{@user.email}",
+        message: "Congratulations! You have successfully created a new account
+        with Imagine Photography! Log in to your account to browse and purchase
+        photos and manage your profile."
+      ).deliver_now
       flash[:success] = "Account successfully created!"
       redirect_to explore_path
     else
