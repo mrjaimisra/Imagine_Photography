@@ -16,8 +16,8 @@ class Permission
     @action = action
 
     case
-      when platform_admin?
-        platform_admin_permissions
+      # when platform_admin?
+      #   platform_admin_permissions
       when store_admin?
         store_admin_permissions
       when registered_user?
@@ -29,27 +29,27 @@ class Permission
 
   private
 
-  def platform_admin_permissions
-    return true if (controller == 'site') && (action == 'index')
-    return true if (controller == 'sessions') &&
-        (action.in? %w( new create destroy ))
-    return true if (controller == 'users') &&
-        (action.in? %w( show edit update destroy ))
-    return true if (controller == 'stores') &&
-        (action.in? %w( index show new create edit update))
-    return true if (controller == 'photos') &&
-        (action.in? %w( index show new create edit update destroy ))
-    return true if (controller == 'photos/categories') &&
-        (action == 'show')
-    return true if (controller == 'orders') &&
-        (action.in? %w( index show ))
-    return true if (controller == 'admin/orders') &&
-        (action.in? %w( index show update ))
-    return true if (controller == 'stores/photos') &&
-        (action.in? %w( index show new create edit update))
-    return true if (controller == 'stores/categories') &&
-        (action == 'show')
-  end
+  # def platform_admin_permissions
+  #   return true if (controller == 'site') && (action == 'index')
+  #   return true if (controller == 'sessions') &&
+  #       (action.in? %w( new create destroy ))
+  #   return true if (controller == 'users') &&
+  #       (action.in? %w( show edit update destroy ))
+  #   return true if (controller == 'stores') &&
+  #       (action.in? %w( index show new create edit update))
+  #   return true if (controller == 'photos') &&
+  #       (action.in? %w( index show new create edit update destroy ))
+  #   return true if (controller == 'photos/categories') &&
+  #       (action == 'show')
+  #   return true if (controller == 'orders') &&
+  #       (action.in? %w( index show ))
+  #   return true if (controller == 'admin/orders') &&
+  #       (action.in? %w( index show update ))
+  #   return true if (controller == 'stores/photos') &&
+  #       (action.in? %w( index show new create edit update))
+  #   return true if (controller == 'stores/categories') &&
+  #       (action == 'show')
+  # end
 
   def store_admin_permissions
     return true if (controller == 'site') && (action == 'index')
