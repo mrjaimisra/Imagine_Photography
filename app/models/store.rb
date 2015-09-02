@@ -1,5 +1,6 @@
 class Store < ActiveRecord::Base
   has_many :photos
+  has_many :users
 
   has_attached_file :avatar, styles: { medium: "300x300#",
                                        thumb: "150x150#" },
