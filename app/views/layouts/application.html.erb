@@ -23,9 +23,13 @@
 </head>
 
 <body>
-
 <!-- Navigation -->
   <%= render 'layouts/navbar' %>
+
+<!-- Navigation -->
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
 
 <!-- Page Content -->
 <%= yield %>
