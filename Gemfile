@@ -4,15 +4,15 @@ gem "rails", "4.2.3"
 gem "pg"
 gem "sass-rails", "~> 5.0"
 gem "bootstrap-sass"
+gem 'bootswatch-rails'
 # twitter bootstrap css & javascript toolkit
-gem 'twitter-bootswatch-rails', '~> 3.3.4'
+# gem 'twitter-bootswatch-rails', '~> 3.3.4'
 # font-awesome
-gem 'twitter-bootswatch-rails-fontawesome', '~> 4.3'
+# gem 'twitter-bootswatch-rails-fontawesome', '~> 4.3'
 # twitter bootstrap helpers gem, e.g., alerts etc...
-gem 'twitter-bootswatch-rails-helpers'
-# gem 'bootswatch-sass'
+# gem 'twitter-bootswatch-rails-helpers'
 # Use less for bootswatch gem
-gem 'therubyracer'
+# gem 'therubyracer'
 
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
