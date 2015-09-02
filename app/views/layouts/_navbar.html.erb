@@ -1,4 +1,4 @@
-<nav class="navbar navbar-fixed-top navbar-inverse">
+<nav class="navbar navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -11,27 +11,20 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-left">
-        <li><%= link_to "You", profile_path %></li>
         <li><%= link_to "Explore", explore_path %></li>
         <li><%= link_to "Photographers", photographers_path %></li>
       </ul>
+
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Cart", cart_path %></li>
-        <% if current_user %>
-          <% if current_user && current_user.registered_user? %>
-            <li><%= link_to "Orders", orders_path %></li>
-            <li><%= link_to "Profile", orders_path %></li>
-          <% elsif current_user && current_user.store_admin? %>
-            <%= render "layouts/store_admin_navbar" %>
-          <% end %>
+        <% if current_user && current_user.registered_user? %>
+          <%= render "layouts/registered_user_navbar" %>
+        <% else !current_user %>
+          <li><%= link_to "Sign in", login_path %></li>
         <% end %>
-        <li>
-          <% if current_user %>
-            <%= link_to "Sign out", logout_path, method: :delete %>
-          <% else %>
-            <%= link_to "Sign in", login_path, class: "btn btn-primary" %>
-          <% end %>
-        </li>
+        <% if current_user && current_user.store_admin? %>
+          <%= render "layouts/store_admin_navbar" %>
+        <% end %>
+        <li><%= link_to "Cart", cart_path %></li>
       </ul>
     </div>
     <!-- /.nav-collapse -->

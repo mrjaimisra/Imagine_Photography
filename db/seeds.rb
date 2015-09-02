@@ -6,8 +6,8 @@ class Seed
     seed.generate_platform_admins
     seed.generate_categories
     seed.generate_stores
-    seed.generate_photos
     seed.generate_store_admins
+    seed.generate_photos
     seed.generate_orders
   end
 
@@ -36,22 +36,6 @@ class Seed
       )
 
       puts "Customer #{i}: #{customer.name} - #{customer.email} - #{customer.password} created!"
-    end
-  end
-
-  def generate_store_admins
-    store_admin_role =  Role.find_by(name: "store_admin")
-    admin = User.find_by(email: "andrew@turing.io")
-    admin.roles << store_admin_role
-
-    19.times do |i|
-      photographer = User.create!(
-          name: Faker::Name.name,
-          email: Faker::Internet.email,
-          password: Faker::Internet.password
-      )
-      photographer.roles << store_admin_role
-      puts "Photographer #{i}: #{photographer.name} - #{photographer.email} - #{photographer.password} created!"
     end
   end
 
@@ -93,6 +77,24 @@ class Seed
         header: File.open("app/assets/images/headers/header-#{i}.jpg")
       )
       puts "Store #{i}: #{store.name} created!"
+    end
+  end
+
+  def generate_store_admins
+    store_admin_role =  Role.find_by(name: "store_admin")
+    admin = User.find_by(email: "andrew@turing.io")
+    admin.update_attribute(:store_id, 1)
+    admin.roles << store_admin_role
+
+    19.times do |i|
+      photographer = User.create!(
+          name: Faker::Name.name,
+          email: Faker::Internet.email,
+          password: Faker::Internet.password,
+          store_id: i+2
+      )
+      photographer.roles << store_admin_role
+      puts "Photographer #{i}: #{photographer.name} - #{photographer.email} - #{photographer.password} created!"
     end
   end
 

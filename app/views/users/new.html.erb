@@ -1,7 +1,9 @@
 <div class="container">
-  <%= render partial: "layouts/flash_message" %>
   <div class="row mt-100">
     <div class="col-lg-8 col-md-offset-2">
+
+      <h1>Sign up</h1>
+      <br>
       <div class="create-user-form">
         <%= form_for(@user,
                      html: { multipart: true },
@@ -40,15 +42,16 @@
             <%= f.file_field :header, class: "form-control" %>
           </div>
 
+          <br>
+
           <div class="form-group">
             <%= f.submit "Create account", class: "btn btn-primary" %>
           </div>
 
         <% end %>
-        <hr/>
-        <div class="lone-button-container">
-          <h5>Already have an account?</h5>
-          <%= link_to "Sign in", login_path, class: "btn btn-primary" %>
+
+        <div class="new-account pull-right">
+          <h5><%= link_to "Already have an account?", login_path, class: "sign-up" %></h5>
         </div>
       </div>
     </div>

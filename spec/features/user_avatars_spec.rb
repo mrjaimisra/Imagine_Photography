@@ -21,7 +21,7 @@ RSpec.feature "User", type: :feature do
     expect(current_path).to eq(explore_path)
     expect(page).to have_content("Account successfully created!")
 
-    click_on "You"
+    click_on "Profile"
 
     expect(current_path).to eq(profile_path(user))
 

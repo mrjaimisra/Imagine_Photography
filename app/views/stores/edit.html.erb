@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-offset-2">
+      <h1>Edit Store</h1>
+      <div class="create-store-form">
+        <%= form_for(@photographer, html: { multipart: true },
+                     url: photographer_path(photographer: @photographer.url),
+                     method: "patch") do |f| %>
+          <%= render partial: "shared/errors", locals: { object: @photographer } %>
+
+          <%= f.hidden_field :url %>
+
+          <div class="form-group">
+            <%= f.label      :name, "Store Name" %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label       :email %>
+            <%= f.email_field :email, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label      :avatar %>
+            <%= f.file_field :avatar, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label      :header, "Header Image" %>
+            <%= f.file_field :header, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.submit "Update Store", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

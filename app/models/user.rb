@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :user_roles
   has_many :roles, through: :user_roles
+  belongs_to :store
 
   has_attached_file :avatar, styles: { medium: "300x300#",
                                        thumb: "150x150#" },

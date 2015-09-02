@@ -6,8 +6,6 @@
     </div>
   </div>
 
-  <%= render partial: "layouts/flash_message" %>
-
   <div class="row">
     <div class="col-md-3"><h4>Order Details:</h4></div>
     <div class="col-md-6"></div>
@@ -36,7 +34,7 @@
           <td><%= cart_photo.description %></td>
           <td><%= number_to_currency(cart_photo.price) %></td>
 
-          <td><%= link_to "Remove", cart_photos_path(id: cart_photo), method: :delete %></td>
+          <td><%= link_to "Remove", cart_photo_path(id: cart_photo), method: :delete %></td>
           </tr>
         <% end %>
         </table>

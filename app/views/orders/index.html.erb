@@ -1,29 +1,36 @@
-<h1><%= "#{current_user.name}'s Orders" %></h1>
-<%= render partial: "layouts/flash_message" %>
+<div class="container">
+  <div class="row mt-80">
+    <div class="col-lg-10 col-md-offset-1">
 
-<div class="row">
-  <div class="col-md-3"><h4>Details:</h4></div>
-  <div class="col-md-9"></div>
-</div>
 
-<div class="table-responsive">
-  <table class="table table-striped orders">
+      <h1><%= "#{current_user.name}'s Orders" %></h1>
+      <br>
+      <div class="row">
+        <div class="col-md-3"><h4>Details:</h4></div>
+        <div class="col-md-9"></div>
+      </div>
 
-    <tr>
-      <th>Order Number</th>
-      <th>Total</th>
-      <th>Order Updated Date</th>
-      <th></th>
-    </tr>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover orders">
 
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= link_to order.id, "/orders/#{order.id}" %></td>
-        <td><%= number_to_currency(order.total) %></td>
-        <td><%= order.updated_at.strftime("%A, %b %d %Y %l:%M %p") %></td>
-        <td><%= link_to "View", order_path(order) %></td>
-      </tr>
-    <% end %>
-  </table>
+          <tr>
+            <th>Order Number</th>
+            <th>Total</th>
+            <th>Order Updated Date</th>
+            <th></th>
+          </tr>
 
+          <% @orders.each do |order| %>
+          <tr>
+            <td><%= link_to order.id, "/orders/#{order.id}" %></td>
+            <td><%= number_to_currency(order.total) %></td>
+            <td><%= order.updated_at.strftime("%A, %b %d %Y %l:%M %p") %></td>
+            <td><%= link_to "View", order_path(order) %></td>
+          </tr>
+          <% end %>
+
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
