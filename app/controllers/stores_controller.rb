@@ -15,6 +15,13 @@ class StoresController < ApplicationController
     @photographer = Store.new(store_params)
     if @photographer.save
       flash[:success] = "Your application has been received."
+      NotificationsMailer.contact(
+        name: "Imagine Photography",
+        email: "#{current_user.email}",
+        message: "Congratulations! You have successfully created a new business
+        at Imagine Photography! Log in to your account to set up your profile
+        and begin uploading and selling your photos."
+      ).deliver_now
       redirect_to profile_path
     else
       flash.now[:warning] = "There was a problem with your information."
