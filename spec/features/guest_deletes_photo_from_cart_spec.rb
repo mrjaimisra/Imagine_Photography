@@ -18,8 +18,6 @@ RSpec.feature "Guest deletes photo from cart", type: :feature do
 
     find('tr', text: photo.name).click_on("Remove")
 
-    # save_and_open_page
-
     expect(current_path).to eq(cart_path)
     expect(page).to have_content(second_photo.name)
     expect(page).to_not have_content(photo.description)
