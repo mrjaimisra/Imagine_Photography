@@ -22,6 +22,10 @@ class StoresController < ApplicationController
     end
   end
 
+  def edit
+    @photographer = Store.find_by(url: params[:photographer])
+  end
+
   private
 
     def store_params
