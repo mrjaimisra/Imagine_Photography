@@ -40,7 +40,7 @@ Rails.application.routes.draw do
                      path: :photographers, as: :photographers
 
   get "/:photographer/edit", to: "stores#edit", as: "edit_photographer"
-  get "/:photographer", to: "stores#show", as: "photographer"
+  get "/:photographer", to: "stores/photos#show", as: "photographer"
   patch "/:photographer", to: "stores#update"
   put "/:photographer", to: "stores#update"
 

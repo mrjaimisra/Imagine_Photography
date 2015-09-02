@@ -1,0 +1,10 @@
+<header id="profile-header" style="background: url(<%= image_path(@photographer.header.url(:xlarge, timestamps: false)) %>) no-repeat center center">
+  <div class="container">
+    <div class="row">
+      <%= image_tag @photographer.avatar.url(:thumb, timestamps: false),
+                    class: "img-circle", alt: @photographer.name %>
+      <h1><%= @photographer.name %></h1>
+      <h3><%= @photographer.email %></h3>
+    </div>
+  </div>
+</header>

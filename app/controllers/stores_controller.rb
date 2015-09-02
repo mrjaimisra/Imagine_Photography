@@ -3,10 +3,6 @@ class StoresController < ApplicationController
     @photographers = Store.all
   end
 
-  def show
-    @photographer = Store.find_by(id: current_user.store_id)
-  end
-
   def new
     @photographer = Store.new
   end
