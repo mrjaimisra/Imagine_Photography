@@ -1,4 +1,4 @@
-class Permission
+  class Permission
   extend Forwardable
 
   attr_reader :user, :controller, :action
@@ -18,7 +18,7 @@ class Permission
     case
     when platform_admin?
       platform_admin_permissions
-    when store_admin?
+    when store_admin? #&& @user.store_id == @photographer.id
       store_admin_permissions
     when registered_user?
       registered_user_permissions
