@@ -7,8 +7,7 @@ class Stores::PhotosController < ApplicationController
 
   def new
     if current_user.store_id == current_store.id
-      photographer = Store.find_by(url: params[:photographer])
-      current_user && current_user.store_id == photographer.id
+      @photographer = Store.find_by(url: params[:photographer])
       @photo = Photo.new
     else
       redirect_to root_path
