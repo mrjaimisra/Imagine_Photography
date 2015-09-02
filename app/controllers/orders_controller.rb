@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
       NotificationsMailer.contact(
         name: "Imagine Photography",
         email: "#{store.email}",
-        message: "You have received an order for one of your photos! You can
+        message: "You have received an order for some of your photos! You can
         view the order through the 'Orders' link after signing in at Imagine
         and should receive proceeds from the sale shortly."
       ).deliver_now
