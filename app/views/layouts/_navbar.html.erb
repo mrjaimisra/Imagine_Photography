@@ -18,12 +18,11 @@
       <ul class="nav navbar-nav navbar-right">
         <% if current_user && current_user.registered_user? %>
           <%= render "layouts/registered_user_navbar" %>
+        <% else !current_user %>
+          <li><%= link_to "Sign in", login_path %></li>
         <% end %>
         <% if current_user && current_user.store_admin? %>
           <%= render "layouts/store_admin_navbar" %>
-        <% end %>
-        <% if !current_user %>
-          <li><%= link_to "Sign in", login_path %></li>
         <% end %>
         <li><%= link_to "Cart", cart_path %></li>
       </ul>

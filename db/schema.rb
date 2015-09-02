@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150830001736) do
+ActiveRecord::Schema.define(version: 20150901190518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,7 +114,10 @@ ActiveRecord::Schema.define(version: 20150830001736) do
     t.string   "header_content_type"
     t.integer  "header_file_size"
     t.datetime "header_updated_at"
+    t.integer  "store_id"
   end
+
+  add_index "users", ["store_id"], name: "index_users_on_store_id", using: :btree
 
   add_foreign_key "order_photos", "orders"
   add_foreign_key "photos", "stores"

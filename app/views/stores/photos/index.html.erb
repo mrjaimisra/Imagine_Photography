@@ -20,7 +20,7 @@
         </div>
 
         <div class="col-md-9">
-          <% if current_user && current_user.store_admin? %>
+          <% if current_user && current_user.store_admin? && current_user.store_id == @photographer.id %>
             <%= link_to "Upload photo to portfolio",
                         new_photographer_photo_path(store: @photographer),
                         class: "btn btn-primary" %>

@@ -4,6 +4,7 @@ class StoresController < ApplicationController
   end
 
   def show
+    @photographer = Store.find_by(id: current_user.store_id)
   end
 
   def new
