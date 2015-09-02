@@ -39,22 +39,6 @@ class Seed
     end
   end
 
-  def generate_store_admins
-    store_admin_role =  Role.find_by(name: "store_admin")
-    admin = User.find_by(email: "andrew@turing.io")
-    admin.roles << store_admin_role
-
-    19.times do |i|
-      photographer = User.create!(
-          name: Faker::Name.name,
-          email: Faker::Internet.email,
-          password: Faker::Internet.password
-      )
-      photographer.roles << store_admin_role
-      puts "Photographer #{i}: #{photographer.name} - #{photographer.email} - #{photographer.password} created!"
-    end
-  end
-
   def generate_platform_admins
     site_admin_role = Role.find_by(name: "platform_admin")
     platform_admin = User.find_by(email: "jorge@turing.io")
@@ -109,6 +93,24 @@ class Seed
         )
         puts "Photo #{i * 10 + j}: #{photo.name} created!"
       end
+    end
+  end
+
+  def generate_store_admins
+    store_admin_role =  Role.find_by(name: "store_admin")
+    admin = User.find_by(email: "andrew@turing.io")
+    admin.update_attribute(:store_id, 1)
+    admin.roles << store_admin_role
+
+    19.times do |i|
+      photographer = User.create!(
+          name: Faker::Name.name,
+          email: Faker::Internet.email,
+          password: Faker::Internet.password,
+          store_id: i+2
+      )
+      photographer.roles << store_admin_role
+      puts "Photographer #{i}: #{photographer.name} - #{photographer.email} - #{photographer.password} created!"
     end
   end
 
