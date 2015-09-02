@@ -1,11 +1,9 @@
-<h1>Sign In</h1>
-<%= render partial: "layouts/flash_message" %>
-
 <div class="container">
   <div class="row">
+    <div class="col-lg-8 col-md-offset-2 mt-100">
 
-    <div class="col-lg-8 col-md-offset-2">
-
+      <h1>Sign in</h1>
+      <br>
       <div class="login-form">
 
         <%= form_for(:session, url: login_path) do |f| %>
@@ -25,13 +23,9 @@
 
         <% end %>
 
-        <hr/>
-
-        <div class="lone-button-container">
-          <h5>Create an account to see our beautiful photos!</h5>
-          <%= link_to "Sign up", sign_up_path, class: "btn btn-primary" %>
+        <div class="new-account pull-right">
+          <h5><%= link_to "Sign up for a new account", sign_up_path, class: "sign-up" %></h5>
         </div>
-
       </div>
     </div>
   </div>

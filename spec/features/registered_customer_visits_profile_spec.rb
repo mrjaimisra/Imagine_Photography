@@ -22,7 +22,7 @@ RSpec.feature "Customer visits profile", type: :feature do
     expect(current_path).to eq(explore_path)
 
     within(".navbar") do
-      click_link "You"
+      click_link "Profile"
     end
 
     expect(current_path).to eq(profile_path)
