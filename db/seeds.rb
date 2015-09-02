@@ -6,8 +6,8 @@ class Seed
     seed.generate_platform_admins
     seed.generate_categories
     seed.generate_stores
-    seed.generate_photos
     seed.generate_store_admins
+    seed.generate_photos
     seed.generate_orders
   end
 
@@ -80,22 +80,6 @@ class Seed
     end
   end
 
-  def generate_photos
-    50.times do |i|
-      10.times do |j|
-        photo = Photo.create!(
-          name: Faker::Commerce.product_name,
-          description: Faker::Lorem.paragraph,
-          price: Faker::Commerce.price + 1,
-          category_id: j+1,
-          store_id: Store.all.sample.id,
-          image: File.open("app/assets/images/photos/photo-#{rand(100)}.jpg")
-        )
-        puts "Photo #{i * 10 + j}: #{photo.name} created!"
-      end
-    end
-  end
-
   def generate_store_admins
     store_admin_role =  Role.find_by(name: "store_admin")
     admin = User.find_by(email: "andrew@turing.io")
@@ -111,6 +95,22 @@ class Seed
       )
       photographer.roles << store_admin_role
       puts "Photographer #{i}: #{photographer.name} - #{photographer.email} - #{photographer.password} created!"
+    end
+  end
+
+  def generate_photos
+    50.times do |i|
+      10.times do |j|
+        photo = Photo.create!(
+          name: Faker::Commerce.product_name,
+          description: Faker::Lorem.paragraph,
+          price: Faker::Commerce.price + 1,
+          category_id: j+1,
+          store_id: Store.all.sample.id,
+          image: File.open("app/assets/images/photos/photo-#{rand(100)}.jpg")
+        )
+        puts "Photo #{i * 10 + j}: #{photo.name} created!"
+      end
     end
   end
 
