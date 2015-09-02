@@ -26,10 +26,9 @@ class OrdersController < ApplicationController
 
   def add_order_photos(order)
     cart.photos.each do |cart_photo|
-      order.order_photos.new(photo: cart_photo.photo, quantity: cart_photo.quantity)
+      order.order_photos.new(photo: cart_photo.photo)
     end
   end
-
 
   def add_default_order_status(order)
     order.status = Status.find_or_create_by(name: "Ordered")
