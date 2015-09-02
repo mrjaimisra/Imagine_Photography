@@ -12,7 +12,6 @@
 <div class="container">
   <div class="row">
     <h1>Photos</h1>
-    <%= render partial: "layouts/flash_message" %>
 
     <div class="items-list">
       <div class="row">
@@ -27,6 +26,7 @@
                         class: "btn btn-primary" %>
           <% end %>
           <%= render partial: "layouts/photos_index" %>
+          <%= will_paginate @photos %>
         </div>
       </div>
     </div>

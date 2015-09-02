@@ -14,7 +14,7 @@ RSpec.feature "Customer edits profile", type: "feature" do
     sign_in_customer
 
     within(".navbar") do
-      click_link("You")
+      click_link("Profile")
     end
 
     expect(page).to have_content(old_name)
@@ -55,9 +55,7 @@ RSpec.feature "Customer edits profile", type: "feature" do
 
     expect(current_path).to eq(login_path)
 
-    within("#flash") do
-      expect(page).to have_content("Invalid login information!")
-    end
+    expect(page).to have_content("Invalid login information!")
 
     fill_in "Email", with: new_email
     fill_in "Password", with: new_password
