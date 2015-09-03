@@ -40,6 +40,7 @@ class UsersController < ApplicationController
     if current_user.update_attributes(user_params)
       redirect_to profile_path
     else
+      flash[:danger] = "Update failed, please enter valid information in all fields"
       render :edit
     end
   end

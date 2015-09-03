@@ -1,7 +1,6 @@
 class CartPhotosController < ApplicationController
   def index
     @cart_photos = cart.photos
-    # delivery_flash? if current_user
   end
 
   def create

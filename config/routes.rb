@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   get "/explore", to: "photos#index"
-  resources :photos, only: [:show]
+  resources :photos, only: [:show, :edit, :update, :destroy]
 
   # post "/photos", to: "location#check_zipcode", as: :zipcode
   # get "meals/:id", to: "photos#show", as: :meal
