@@ -6,7 +6,9 @@
       </div>
       <div class="col-md-3 col-md-offset-3">
         <p>
-          <% if current_user && current_user.registered_user? %>
+          <% if current_user &&
+                current_user.registered_user? &&
+                !current_user.store_admin? %>
             <%= link_to "Photographer? Sign up here!", new_photographer_path,
                         class: "pull-right" %>
           <% end %>
