@@ -4,6 +4,12 @@ RSpec.feature "Guest visits photographer page", type: :feature do
   let!(:photo)        { Fabricate(:photo) }
   let!(:photographer) { Store.first }
 
+  before do
+    Store.create( name: "Linda Synder", email: "linda@snyder.com")
+    Store.create( name: "Danielle Austin", email: "danielle@austin.com")
+    Store.create( name: "Anne Johnson", email: "anne@johnson.com")
+  end
+
   scenario "successfully" do
     visit root_path
 

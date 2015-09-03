@@ -9,6 +9,9 @@ require 'rails_helper'
 RSpec.feature "Store admin", type: "feature" do
   before do
     build_roles
+    Store.create( name: "Linda Synder", email: "linda@snyder.com")
+    Store.create( name: "Danielle Austin", email: "danielle@austin.com")
+    Store.create( name: "Anne Johnson", email: "anne@johnson.com")
   end
 
   let!(:role) { Role.create(name: "store_admin") }

@@ -1,7 +1,11 @@
 require "rails_helper"
 
-RSpec.feature "User visits home page" do
+RSpec.feature "Guest visits homepage" do
   before do
+    Store.create( name: "Linda Synder", email: "linda@snyder.com")
+    Store.create( name: "Danielle Austin", email: "danielle@austin.com")
+    Store.create( name: "Anne Johnson", email: "anne@johnson.com")
+    
     visit root_path
   end
 

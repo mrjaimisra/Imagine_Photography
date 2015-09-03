@@ -3,6 +3,9 @@ require "rails_helper"
 RSpec.feature "Registered user" do
   before do
     build_roles
+    Store.create( name: "Linda Synder", email: "linda@snyder.com")
+    Store.create( name: "Danielle Austin", email: "danielle@austin.com")
+    Store.create( name: "Anne Johnson", email: "anne@johnson.com")
   end
 
   scenario "visits the new store page and submits an application" do
