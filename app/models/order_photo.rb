@@ -12,7 +12,7 @@ class OrderPhoto < ActiveRecord::Base
 
   private
 
-  def current_photo
-    Photo.find(photo_id)
-  end
+    def current_photo
+      Photo.find(photo_id)
+    end
 end

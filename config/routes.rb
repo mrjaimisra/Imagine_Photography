@@ -24,14 +24,6 @@ Rails.application.routes.draw do
   get "/explore", to: "photos#index"
   resources :photos, only: [:show, :edit, :update, :destroy]
 
-  # post "/photos", to: "location#check_zipcode", as: :zipcode
-  # get "meals/:id", to: "photos#show", as: :meal
-  # get "photos/:id", to: "photos/categories#show"
-
-  # post "/cart_photos", to: "cart_photos#create"
-  # put "/cart_photos", to: "cart_photos#update"
-  # delete "/cart_photos", to: "cart_photos#destroy"
-
   get "/cart", to: "cart_photos#index"
 
   resources :cart_photos, only: [:create, :update, :destroy]

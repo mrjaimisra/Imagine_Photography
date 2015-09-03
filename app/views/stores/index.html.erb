@@ -1,8 +1,8 @@
 <div class="container">
   <h1>Photographers</h1>
+  <hr>
+  <% @photographers.each do |photographer| %>
+    <%= render partial: "shared/photographer", locals: { photographer: photographer } %>
     <hr>
-    <% @photographers.each do |photographer| %>
-      <%= render partial: "shared/photographer", locals: { photographer: photographer } %>
-      <hr>
-    <% end %>
+  <% end %>
 </div>

@@ -9,12 +9,6 @@ class Category < ActiveRecord::Base
     name.downcase.parameterize
   end
 
-  # def check_for_spaces
-  #   if name.to_s.include?(" ")
-  #     errors.add(:invalid, "cannot have spaces")
-  #   end
-  # end
-
   def check_for_special_characters
     if name.to_s.match(/[^a-zA-Z0-9]+/)
       errors.add(:alphanumeric, "cannot have special characters")

@@ -14,8 +14,4 @@ class Order < ActiveRecord::Base
       total += Photo.find(order_photo.photo_id).price
     end
   end
-
-  # def status_name(status_id)
-  #   Status.find(status_id).name
-  # end
 end
