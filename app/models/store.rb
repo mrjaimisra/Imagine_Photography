@@ -4,11 +4,15 @@ class Store < ActiveRecord::Base
 
   has_attached_file :avatar, styles: { medium: "300x300#",
                                        thumb: "150x150#" },
-                                       default_url: "/images/:style/jorge.jpg"
+                                       default_url: "/images/:style/jorge.jpg",
+                                       bucket: "imagine-photography"
+                                       
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   has_attached_file :header, styles: { xlarge: "2000x800"},
-                                       default_url: "/images/:style/header-0.jpg"
+                                       default_url: "/images/:style/header-0.jpg",
+                                       bucket: "imagine-photography"
+
   validates_attachment_content_type :header, content_type: /\Aimage\/.*\Z/
 
   validates :name, presence: true,

@@ -7,8 +7,9 @@ class Photo < ActiveRecord::Base
   has_attached_file :image, styles: { large: "1200x1200",
                                       medium: "400x400#",
                                       thumb: "200x200#" },
-                                      default_url: "/images/beach_van.jpg"
-
+                                      default_url: "/images/beach_van.jpg",
+                                      bucket: "imagine-photography"
+                                      
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   before_validation :default_image,
