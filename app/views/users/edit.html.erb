@@ -8,12 +8,12 @@
         <%= form_for(current_user, url: profile_path) do |f| %>
         <div class="form-group">
           <%= f.label :name %>
-          <%= f.text_field :name, class: "form-control", placeholder: "Name" %>
+          <%= f.text_field :name, class: "form-control" %>
         </div>
 
         <div class="form-group">
           <%= f.label :email %>
-          <%= f.text_field :email, class: "form-control", placeholder: "Email" %>
+          <%= f.text_field :email, class: "form-control" %>
         </div>
 
         <div class="form-group">
@@ -31,7 +31,7 @@
           <%= f.file_field :header, class: "form-control" %>
         </div>
 
-        <div class="form-group">
+        <br><div class="form-group">
           <%= f.submit "Update profile", class: "btn btn-primary" %>
         </div>
         <% end %>
