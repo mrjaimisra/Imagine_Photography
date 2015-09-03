@@ -9,7 +9,7 @@ class Photo < ActiveRecord::Base
                                       thumb: "200x200#" },
                                       default_url: "/images/beach_van.jpg",
                                       bucket: "imagine-photography"
-                                      
+
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   before_validation :default_image,
@@ -44,5 +44,5 @@ class Photo < ActiveRecord::Base
   end
 
   # for will_paginate
-  self.per_page = 36
+  self.per_page = 16
 end

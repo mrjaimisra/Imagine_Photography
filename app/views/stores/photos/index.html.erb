@@ -2,32 +2,27 @@
 
 <div class="container">
   <div class="row">
-    <h1>Photos</h1>
-
-    <div class="items-list">
-      <div class="row">
-        <div class="col-md-3">
-          <%= render partial: "layouts/category_list" %>
-        </div>
-
-        <div class="col-md-9">
-          <% if current_user && current_user.store_admin? && current_user.store_id == @photographer.id %>
-            <%= link_to "Upload photo to portfolio",
-                        new_photographer_photo_path(store: @photographer),
-                        class: "btn btn-primary" %>
-          <% end %>
-          <div class="row photo-list">
-            <% @photos.each do |photo| %>
-              <div class="photo-box col-sm-6 col-lg-6 col-md-6">
-                <div class="thumbnail">
-                  <a class="photo" href="<%= photo_path(photo) %>"><%= image_tag photo.image.url(:medium) %></a>
-                </div>
-              </div>
-          <% end %>
-          </div>
-          <%= will_paginate @photos %>
-        </div>
+    <h1 class="col-md-1">Photos</h1>
+    <% if current_user && current_user.store_admin? &&
+                          current_user.store_id == @photographer.id %>
+      <div class="col-md-2 pull-right upload-photo">
+        <%= link_to "Upload photo to portfolio",
+                    new_photographer_photo_path(store: @photographer),
+                    class: "btn btn-primary" %>
       </div>
+    <% end %>
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render partial: "layouts/category_list" %>
+    </div>
+
+    <div class="col-md-9">
+      <%= render partial: "layouts/photos_index" %>
+      <%= will_paginate @photos %>
     </div>
   </div>
 </div>

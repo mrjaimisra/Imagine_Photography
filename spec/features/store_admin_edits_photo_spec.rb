@@ -3,6 +3,10 @@ require 'rails_helper'
 RSpec.feature "Store admin", type: "feature" do
   before do
     build_roles
+    Store.create( name: "Linda Synder", email: "linda@snyder.com")
+    Store.create( name: "Danielle Austin", email: "danielle@austin.com")
+    Store.create( name: "Anne Johnson", email: "anne@johnson.com")
+
     @store       = Fabricate(:store)
     @store_admin = Fabricate(:user)
     @store_admin.update_attributes(store_id: @store.id)
