@@ -1,13 +1,14 @@
-<header id="profile-header" style="background: url(<%= image_path(current_user.header.url(:xlarge, timestamps: false)) %>) no-repeat center center">
+<header id="profile-header" style="background: url(<%= image_path(current_user.header.url(:xlarge, timestamps: false)) %>) no-repeat center center; background-size: cover;">
   <div class="container">
-    <div class="row">
+    <div class="row profile">
       <%= image_tag current_user.avatar.url(:thumb, timestamps: false),
-                    class: "img-circle", alt: current_user.name %>
+                    class: "img-circle pull-left", alt: current_user.name %>
       <h1><%= current_user.name %></h1>
       <h3><%= current_user.email %></h3>
     </div>
   </div>
 </header>
+
 <div class="container">
   <div class="row photo-list">
     <% @photos.each do |photo| %>
