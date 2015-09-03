@@ -1,43 +1,68 @@
-# As a business admin,
-# when I visit my business homepage and click "Upload photo to portfolio"
-# I expect to be directed to a page where I can upload a photo and give it a name,
-# description, and price. After filling in the information and clicking on "Upload"
-# I expect to be taken to the new item show page.
-
 require 'rails_helper'
 
 RSpec.feature "Store admin", type: "feature" do
   before do
     build_roles
+    @store       = Fabricate(:store)
+    @store_admin = Fabricate(:user)
+    @store_admin.update_attributes(store_id: @store.id)
+    @store_admin.roles << Role.find_by(name: "store_admin")
+
+    allow_any_instance_of(ApplicationController).to receive(
+                                  :current_user).and_return(@store_admin)
   end
 
-  let!(:role) { Role.create(name: "store_admin") }
-  let!(:photographer) { Fabricate(:store) }
-  let!(:store_admin) { Fabricate(:user, store_id: photographer.id) }
-  let!(:user_role) { UserRole.create(user_id: photographer.id, role_id: role.id)}
-  let!(:photo) { Fabricate(:photo, store_id: photographer.id) }
+  let!(:photo) { Fabricate(:photo, store_id: @store.id) }
 
-  xscenario "edits photo" do
+  scenario "edits photo" do
     visit root_path
-    sign_in_store_admin
 
     within(".navbar") do
       click_link "My Store"
     end
 
-    expect(page).to have_content(photographer.name)
-    expect(page).to have_content(photographer.email)
-
+    expect(page).to have_content(@store.name)
+    expect(page).to have_content(@store.email)
     expect(page).to have_xpath("//img[@src=\"#{photo.image.url(:medium)}\"]")
-    expect(page).to have_link("Add photo")
 
-    click_link("Add photo")
-    expect(current_path).to eq(new_photo_path)
+    find(:xpath, "//a/img[@src='#{photo.image.url(:medium)}']/..").click
+
+    expect(current_path).to eq(photo_path(photo))
+    expect(page).to have_link("Edit photo")
+
+    click_link("Edit photo")
+    expect(current_path).to eq(edit_photo_path(photo))
 
     fill_in "Title", with: "New Title"
-    find('select#photo_category_id').find("option[value='2']").select_option
     fill_in "Description", with: "Description"
-    fill_in "Price", with: "Price"
+    fill_in "Price", with: 50
     click_button "Submit"
+
+    photo.reload
+
+    expect(current_path).to eq(photo_path(photo))
+    expect(photo.name).to eq("New Title")
+    expect(photo.description).to eq("Description")
+    expect(photo.price).to eq(50)
+  end
+
+  scenario "cannot edit photo without necessary information" do
+    visit root_path
+
+    within(".navbar") do
+      click_link "My Store"
+    end
+
+    find(:xpath, "//a/img[@src='#{photo.image.url(:medium)}']/..").click
+
+    click_link("Edit photo")
+
+    fill_in "Title", with: ""
+    fill_in "Description", with: "Description"
+    fill_in "Price", with: 50
+    click_button "Submit"
+
+    expect(current_path).to eq(edit_photo_path(photo))
+    expect(page).to have_content("Update failed, please enter valid information in all fields")
   end
 end

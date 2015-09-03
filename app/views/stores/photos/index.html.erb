@@ -16,7 +16,15 @@
                         new_photographer_photo_path(store: @photographer),
                         class: "btn btn-primary" %>
           <% end %>
-          <%= render partial: "layouts/photos_index" %>
+          <div class="row photo-list">
+            <% @photos.each do |photo| %>
+              <div class="photo-box col-sm-6 col-lg-6 col-md-6">
+                <div class="thumbnail">
+                  <a class="photo" href="<%= photo_path(photo) %>"><%= image_tag photo.image.url(:medium) %></a>
+                </div>
+              </div>
+          <% end %>
+          </div>
           <%= will_paginate @photos %>
         </div>
       </div>

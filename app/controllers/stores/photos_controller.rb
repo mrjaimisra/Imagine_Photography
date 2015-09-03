@@ -1,5 +1,5 @@
 class Stores::PhotosController < ApplicationController
-  before_action :set_photographer, only: [ :index, :create, :new, :show ]
+  before_action :set_photographer, only: [:index, :create, :new, :show]
 
   def index
     @photos = @photographer.photos.paginate(page: params[:page]).order('created_at DESC')
