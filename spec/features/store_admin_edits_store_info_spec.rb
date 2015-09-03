@@ -42,9 +42,8 @@ RSpec.feature "Store admin" do
     fill_in "Email",      with: "sandra@example.com"
 
     click_button "Update Store"
-    expect(current_path).to eq edit_photographer_path(photographer: @store.url)
+    expect(current_path).to eq photographer_path(photographer: @store.url)
     expect(page).to have_content "Name can't be blank"
-    expect(page).to have_content 'sandra@example.com'
   end
 
   scenario "can edit the store information" do
@@ -58,8 +57,7 @@ RSpec.feature "Store admin" do
     fill_in "Email",      with: ""
 
     click_button "Update Store"
-    expect(current_path).to eq edit_photographer_path(photographer: @store.url)
+    expect(current_path).to eq photographer_path(photographer: @store.url)
     expect(page).to have_content "Email can't be blank"
-    expect(page).to have_content "Sandra Smith"
   end
 end
