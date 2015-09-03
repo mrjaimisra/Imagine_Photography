@@ -22,7 +22,6 @@
                 <div class="thumbnail">
                   <a class="photo" href="<%= photo_path(photo) %>"><%= image_tag photo.image.url(:medium) %></a>
                 </div>
-              <%= link_to "Edit photo", edit_photo_path(photo), class: "btn btn-primary"%>
               </div>
           <% end %>
           </div>

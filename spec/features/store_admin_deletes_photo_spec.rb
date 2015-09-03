@@ -25,6 +25,8 @@ RSpec.feature "Store admin", type: "feature" do
       click_link "My Store"
     end
 
+    find(:xpath, "//a/img[@src='#{photo.image.url(:medium)}']/..").click
+
     click_link("Edit photo")
     expect(current_path).to eq(edit_photo_path(photo))
 

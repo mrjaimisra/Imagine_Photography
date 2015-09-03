@@ -23,8 +23,11 @@ RSpec.feature "Store admin", type: "feature" do
 
     expect(page).to have_content(@store.name)
     expect(page).to have_content(@store.email)
-
     expect(page).to have_xpath("//img[@src=\"#{photo.image.url(:medium)}\"]")
+
+    find(:xpath, "//a/img[@src='#{photo.image.url(:medium)}']/..").click
+
+    expect(current_path).to eq(photo_path(photo))
     expect(page).to have_link("Edit photo")
 
     click_link("Edit photo")
@@ -49,6 +52,8 @@ RSpec.feature "Store admin", type: "feature" do
     within(".navbar") do
       click_link "My Store"
     end
+
+    find(:xpath, "//a/img[@src='#{photo.image.url(:medium)}']/..").click
 
     click_link("Edit photo")
 
