@@ -1,44 +1,49 @@
 <div class="container">
-  <div class="row  mt-80 mb-80">
-    <%= form_for [@photographer, @photo],
-                 html: { multipart: true },
-                 class: "col-md-8 col-md-offset-2",
-                 url: photographer_photos_path do |f| %>
-
-      <%= render partial: "shared/errors", locals: { object: @photo } %>
-
-      <div class="form-group">
-        <%= f.label :image %>
-        <%= f.file_field :image, class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :name, "Title" %>
-        <%= f.text_field :name, class: "form-control", placeholder: "Title" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :category, "Category" %>
-        <%= f.collection_select(:category_id, Category.all, :id, :name)  %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :description %>
-        <%= f.text_field :description,
-                         class: "form-control",
-                         placeholder: "Description" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :price %>
-        <%= f.number_field :price,
+  <div class="row mt-80 mb-80">
+    <div class="col-lg-8 col-md-offset-2">
+      <h1>Upload a New Photo</h1>
+      <div class="create-store-form">
+        <%= form_for [@photographer, @photo],
+                     html: { multipart: true },
+                     url: photographer_photos_path do |f| %>
+​
+        <%= render partial: "shared/errors", locals: { object: @photo } %>
+​
+        <div class="form-group">
+          <%= f.label :image %>
+          <%= f.file_field :image, class: "form-control" %>
+        </div>
+​
+        <div class="form-group">
+          <%= f.label :name, "Title" %>
+          <%= f.text_field :name, class: "form-control", placeholder: "Title" %>
+        </div>
+​
+        <div class="form-group">
+          <%= f.label :category, "Category" %><br>
+          <%= f.collection_select(:category_id, Category.all, :id, :name)  %>
+        </div>
+​
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_area  :description,
+                           row: "4",
                            class: "form-control",
-                           placeholder: "Price" %>
+                           placeholder: "Description" %>
+        </div>
+​
+        <div class="form-group">
+          <%= f.label :price %>
+          <%= f.number_field :price,
+                             class: "form-control",
+                             placeholder: "Price" %>
+        </div>
+        <br>
+        <div class="form-group">
+          <%= f.submit "Submit", class: "btn btn-primary" %>
+        </div>
+        <% end %>
       </div>
-
-      <div class="form-group">
-        <%= f.submit "Submit", class: "btn btn-primary" %>
-      </div>
-    <% end %>
     </div>
+  </div>
 </div>
