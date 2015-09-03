@@ -25,4 +25,8 @@ class Store < ActiveRecord::Base
   def generate_url
     self.url = name.parameterize
   end
+
+  def sample_photos
+    self.photos.sample(4)
+  end
 end
