@@ -71,7 +71,8 @@ class Permission
         (action.in? %w( index show new create edit update))
     return true if (controller == 'stores/categories') &&
         (action == 'show')
-
+    return true if (controller == 'cart_photos') &&
+        (action.in? %w( index create update destroy ))
   end
 
   def registered_user_permissions
