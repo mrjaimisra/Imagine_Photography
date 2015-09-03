@@ -1,14 +1,17 @@
 <div class="row individual-photographer">
 
   <a href="<%= photographer_photos_path(photographer: photographer.url) %>">
-    <div class="col-md-2">
-      <%= image_tag photographer.avatar.url(:thumb, timestamps: false), alt: photographer.name %>
-      <%= photographer.name %>
-      <%= photographer.email %>
+    <div class="col-md-2 photographer-contact">
+      <%= image_tag photographer.avatar.url(:thumb, timestamps: false),
+                    alt: photographer.name, class: "img-circle pull-left" %>
+      <div class="pull-right">
+        <%= photographer.name %>
+        <%= photographer.email %>
+      </div>
     </div>
   </a>
 
-  <div class="pull-right">
+  <div class="photographer-photos pull-right">
     <% photographer.sample_photos.each do |photo| %>
       <a href="<%= photo_path(photo) %>"><%= image_tag photo.image.url(:thumb) %></a>
     <% end %>

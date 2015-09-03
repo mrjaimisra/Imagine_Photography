@@ -1,6 +1,7 @@
 // variables
 @import "superhero/variables"
 
+$gray-darker-dark: darken($gray-darker, 7)
 $gray-dark: #262626
 $gray: #383838
 $gray-light: #777777
@@ -30,6 +31,8 @@ header
   padding: 7px
   h1, h3
     padding-left: 25px
+    color: $gray-darker
+    font-weight: 500
   img
     padding-left: 30px
     padding-right: 10px
@@ -115,6 +118,12 @@ a:hover
   list-style-type: none
   padding-left: 0
   margin-left: 0
+
+.photographer-contact
+  margin-left: 15px
+
+.photographer-photos
+  margin-right: 25px
 
 // Use as-is
 .btn-primary

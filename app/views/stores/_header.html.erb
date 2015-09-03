@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row profile">
       <%= image_tag @photographer.avatar.url(:thumb, timestamps: false),
-                    class: "img-circle", alt: @photographer.name %>
+                    class: "img-circle pull-left", alt: @photographer.name %>
       <h1><%= @photographer.name %></h1>
       <h3><%= @photographer.email %></h3>
     </div>
