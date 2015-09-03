@@ -21,7 +21,6 @@ class CartPhotosController < ApplicationController
     redirect_to :back
   end
 
-
   private
 
   def remove_and_render_flash(id)
@@ -29,10 +28,4 @@ class CartPhotosController < ApplicationController
     cart.remove_from_cart(photo)
     flash[:success] = "Successfully removed #{photo.name} from your cart."
   end
-
-  # def delivery_flash?
-  #   unless current_user.valid_delivery?
-  #     flash.now[:warning] = "We unfortunately do not deliver in your area."
-  #   end
-  # end
 end

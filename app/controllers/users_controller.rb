@@ -11,7 +11,6 @@ class UsersController < ApplicationController
       flash[:success] = "Account successfully created!"
       redirect_to explore_path
     else
-      # flash[:danger] = "Invalid information!"
       render :new
     end
   end

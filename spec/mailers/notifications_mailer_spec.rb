@@ -2,11 +2,13 @@ require 'rails_helper'
 
 RSpec.describe NotificationsMailer, type: :mailer do
   describe 'business creation' do
-    let(:mail) { NotificationsMailer.contact(
+    let(:mail) {
+      NotificationsMailer.contact(
         name: "Imagine Photography",
         email: "tyler@tyler.com",
         message: "Hello!"
-      ) }
+      )
+    }
 
     it 'renders the subject' do
       expect(mail.subject).to eql('Message from Imagine Photography')

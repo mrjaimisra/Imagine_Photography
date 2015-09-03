@@ -56,26 +56,9 @@ class OrdersController < ApplicationController
     end
   end
 
-
   def add_default_order_status(order)
     order.status = Status.find_or_create_by(name: "Ordered")
   end
-
-  # def send_text_message
-  #   send_to = current_user.phone_number
-  #   twilio_phone_number = "5733033256"
-  #   @twilio_client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
-  #
-  #   @twilio_client.account.messages.create(
-  #     from: "+1#{twilio_phone_number}",
-  #     to: "+1#{send_to}",
-  #     body: "Your order is on it's way! Dinner will arrive in #{estimated_delivery_time} minutes. - Dinner's Ready"
-  #   )
-  # end
-  #
-  # def estimated_delivery_time
-  #   current_user.delivery_time
-  # end
 
   def create_order(order)
     add_order_photos(order)
@@ -88,9 +71,4 @@ class OrdersController < ApplicationController
     session[:cart] = {}
     cart.empty
   end
-
-  # def notify_user
-  #   send_text_message if current_user.phone_number
-  #   flash[:success] = "Order placed! Dinners on the way!"
-  # end
 end
