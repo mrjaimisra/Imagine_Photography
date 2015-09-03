@@ -31,6 +31,7 @@ RSpec.feature "A store admin" do
     click_on "Submit"
 
     expect(current_path).to eq(photographer_photos_path(photographer: store.url))
+
     expect(page).to have_content(store.name)
     expect(page).to have_content(store.email)
     expect(page).to have_xpath("//img[@src=\"#{photo.image.url(:medium)}\"]")
