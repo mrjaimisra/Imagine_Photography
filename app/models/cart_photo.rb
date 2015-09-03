@@ -7,8 +7,4 @@ class CartPhoto < SimpleDelegator
     @photo = photo
     @quantity = quantity
   end
-
-  def subtotal
-    @photo.price * quantity
-  end
 end
