@@ -31,11 +31,9 @@ class StoresController < ApplicationController
 
   def update
     @photographer = Store.find_by(url: params[:store][:url])
-    if @photographer.save
-      flash[:success] = "Store updated successfully."
-      redirect_to photographer_path
+    if @photographer.update_attributes(store_params)
+      redirect_to photographer_photos_path(photographer: @photographer.url)
     else
-      flash.now[:warning] = "There was a problem updating your information."
       render :edit
     end
   end
