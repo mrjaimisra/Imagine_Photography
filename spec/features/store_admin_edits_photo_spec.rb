@@ -35,7 +35,6 @@ RSpec.feature "Store admin", type: "feature" do
     expect(page).to have_link("Edit photo")
 
     click_link("Edit photo")
-    expect(current_path).to eq(edit_photo_path(photo))
 
     fill_in "Title", with: "New Title"
     fill_in "Description", with: "Description"
@@ -66,7 +65,6 @@ RSpec.feature "Store admin", type: "feature" do
     fill_in "Price", with: 50
     click_button "Submit"
 
-    expect(current_path).to eq(edit_photo_path(photo))
     expect(page).to have_content("Update failed, please enter valid information in all fields")
   end
 end

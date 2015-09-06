@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   get "/explore", to: "photos#index"
-  resources :photos, only: [:show, :edit, :update, :destroy]
+  resources :photos, only: [:show]
 
   get "/cart", to: "cart_photos#index"
 
@@ -37,7 +37,8 @@ Rails.application.routes.draw do
   put "/:photographer", to: "stores#update"
 
   namespace :stores, path: ":photographer", as: :photographer do
-    resources :photos, only: [:index, :show, :new, :create]
+    resources :photos, only: [:index, :show, :new, :create,
+                              :edit, :update, :destroy]
     resources :categories, param: :name, only: [:show]
   end
 end

@@ -2,12 +2,12 @@
 @import "superhero/variables"
 
 $gray-darker-dark: darken($gray-darker, 7)
-$gray-dark: #262626
-$gray: #383838
-$gray-light: #777777
+$gray-dark:     #262626
+$gray:          #383838
+$gray-light:    #777777
 $brand-primary: #ad5ccc
 
-$brand-text: #d0cfce
+$brand-text:    #d0cfce
 $brand-success: #bef368
 $brand-info:    #ad5ccc
 $brand-warning: #f6fd6c
@@ -23,6 +23,9 @@ body
 
 .navbar
   background-color: darken($gray-darker, 7)
+
+.alert
+  margin-bottom: 0px
 
 header
   margin-bottom: 40px
@@ -159,6 +162,13 @@ label
 .delete-photo
   margin-top: -54px
 
+footer
+  min-height: 7em
+  color: $gray-light
+  background-color: darken($gray-darker, 7)
+
+footer .row
+  margin-top: 3em
 
 // Use as-is
 .btn-primary
@@ -171,11 +181,3 @@ $alert-message-background: $brand-info
 
 .alert
   background-color: $alert-message-background
-
-footer
-  min-height: 7em
-  color: $gray-light
-  background-color: darken($gray-darker, 7)
-
-footer .row
-  margin-top: 3em

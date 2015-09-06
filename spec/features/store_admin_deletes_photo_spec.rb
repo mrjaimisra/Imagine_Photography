@@ -6,7 +6,7 @@ RSpec.feature "Store admin", type: "feature" do
     Store.create( name: "Linda Synder", email: "linda@snyder.com")
     Store.create( name: "Danielle Austin", email: "danielle@austin.com")
     Store.create( name: "Anne Johnson", email: "anne@johnson.com")
-    
+
     @store       = Fabricate(:store)
     @store_admin = Fabricate(:user)
     @store_admin.update_attributes(store_id: @store.id)
@@ -32,8 +32,7 @@ RSpec.feature "Store admin", type: "feature" do
     find(:xpath, "//a/img[@src='#{photo.image.url(:medium)}']/..").click
 
     click_link("Edit photo")
-    expect(current_path).to eq(edit_photo_path(photo))
-
+  
     click_on("Delete photo")
 
     expect(current_path).to eq(explore_path)
