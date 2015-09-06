@@ -41,7 +41,7 @@ class Permission
   #   return true if (controller == 'stores') &&
   #       (action.in? %w( index show new create edit update))
   #   return true if (controller == 'photos') &&
-  #       (action.in? %w( index show new create edit update destroy ))
+  #       (action.in? %w( index show ))
   #   return true if (controller == 'photos/categories') &&
   #       (action == 'show')
   #   return true if (controller == 'orders') &&
@@ -49,7 +49,7 @@ class Permission
   #   return true if (controller == 'admin/orders') &&
   #       (action.in? %w( index show update ))
   #   return true if (controller == 'stores/photos') &&
-  #       (action.in? %w( index show new create edit update))
+  #       (action.in? %w( index new create edit update destroy))
   #   return true if (controller == 'stores/categories') &&
   #       (action == 'show')
   # end
@@ -71,7 +71,7 @@ class Permission
     return true if (controller == 'admin/orders') &&
         (action.in? %w( index show update ))
     return true if (controller == 'stores/photos') &&
-        (action.in? %w( index show new create edit update destroy))
+        (action.in? %w( index new create edit update destroy))
     return true if (controller == 'stores/categories') &&
         (action == 'show')
     return true if (controller == 'cart_photos') &&
@@ -95,7 +95,7 @@ class Permission
     return true if (controller == 'orders') &&
         (action.in? %w( index show create ))
     return true if (controller == 'stores/photos') &&
-        (action.in? %w( index show ))
+        (action.in? %w( index ))
     return true if (controller == 'stores/categories') &&
         (action == 'show')
   end

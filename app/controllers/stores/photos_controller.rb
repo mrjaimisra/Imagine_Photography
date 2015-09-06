@@ -5,9 +5,6 @@ class Stores::PhotosController < ApplicationController
     @photos = @photographer.photos.paginate(page: params[:page]).order('created_at DESC')
   end
 
-  def show
-  end
-
   def new
     if current_user.store_id == current_store.id
       @photographer = Store.find_by(url: params[:photographer])
