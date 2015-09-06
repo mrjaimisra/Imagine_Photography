@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_permission
-    @current_permission ||= Permission.new(current_user)
+    @current_permission ||= Permission.new(current_user, current_store)
   end
 
   def authorize!
