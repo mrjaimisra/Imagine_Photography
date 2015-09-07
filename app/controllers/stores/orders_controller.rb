@@ -1,4 +1,4 @@
-class Stores::OrdersController < StoresController
+class Stores::OrdersController < Stores::StoresController
   before_action :set_photographer, only: [:index, :show]
 
   def index
