@@ -2,9 +2,9 @@
   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
     Store <b class="caret"></b>
   </a>
-  <ul class="dropdown-menu">
-    <li><%= link_to "My Store", photographer_path(photographer.url) %></li>
-    <li><%= link_to "Edit Store", edit_photographer_path(photographer.url) %></li>
-    <li><%= link_to "Orders", orders_path %></li>
+  <ul class="dropdown-menu" id="store-nav">
+    <li><%= link_to "My Store", photographer_path(photographer: photographer.url) %></li>
+    <li><%= link_to "Edit Store", edit_photographer_path(photographer: photographer.url) %></li>
+    <li><%= link_to "Orders", photographer_orders_path(photographer: photographer.url) %></li>
   </ul>
 </li>

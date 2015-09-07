@@ -48,10 +48,12 @@ class Permission
   #       (action.in? %w( index show ))
   #   return true if (controller == 'admin/orders') &&
   #       (action.in? %w( index show update ))
-  #   return true if (controller == 'stores/photos') &&
-  #       (action.in? %w( index new create edit update destroy))
   #   return true if (controller == 'stores/categories') &&
   #       (action == 'show')
+  #   return true if (controller == 'stores/orders') &&
+  #       (action.in? %w( index show ))
+  #   return true if (controller == 'stores/photos') &&
+  #       (action.in? %w( index new create edit update destroy))
   # end
 
   def store_admin_permissions
@@ -70,10 +72,12 @@ class Permission
         (action.in? %w( index show ))
     return true if (controller == 'admin/orders') &&
         (action.in? %w( index show update ))
-    return true if (controller == 'stores/photos') &&
-        (action.in? %w( index new create edit update destroy))
     return true if (controller == 'stores/categories') &&
         (action == 'show')
+    return true if (controller == 'stores/orders') &&
+        (action.in? %w( index show ))
+    return true if (controller == 'stores/photos') &&
+        (action.in? %w( index new create edit update destroy))
     return true if (controller == 'cart_photos') &&
         (action.in? %w( index create update destroy ))
   end

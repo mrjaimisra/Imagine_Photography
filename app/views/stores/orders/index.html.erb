@@ -1,0 +1,46 @@
+<div class="container mt-20 mb-80">
+  <h1><%= "#{@photographer.name} Orders" %></h1>
+  <br>
+  <div class="row">
+    <div class="col-md-3"><h4>Details:</h4></div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped orders">
+      <div class="row">
+        <tr>
+          <th class="col-md-1">Order #</th>
+          <th class="col-md-2">Customer</th>
+          <th class="col-md-2">Total</th>
+          <th class="col-md-2">Order Updated</th>
+          <th class="col-md-2"></th>
+        </tr>
+      </div>
+      <% @orders.each do |order| %>
+        <div class="row">
+          <tr>
+            <td class="col-md-1">
+              <%= link_to order.id,
+                          photographer_order_path(order,
+                                    photographer: @photographer.url) %>
+            </td>
+            <td>
+              <%= order.user.email %>
+            </td>
+            <td class="col-md-2">
+              <%= number_to_currency(order.total) %>
+            </td>
+            <td class="col-md-2">
+              <%= order.updated_at.strftime("%A, %b %d %Y %l:%M %p") %>
+            </td>
+            <td class="col-md-2">
+              <%= link_to "View",
+                          photographer_order_path(order,
+                                    photographer: @photographer.url) %>
+            </td>
+          </tr>
+        </div>
+      <% end %>
+    </table>
+  </div>
+</div>

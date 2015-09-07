@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   namespace :stores, path: ":photographer", as: :photographer do
     resources :photos, only: [:index, :show, :new, :create,
                               :edit, :update, :destroy]
+    resources :orders, only: [:index, :show]
     resources :categories, param: :name, only: [:show]
   end
 end
