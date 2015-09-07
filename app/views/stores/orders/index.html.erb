@@ -28,7 +28,7 @@
               <%= order.user.email %>
             </td>
             <td class="col-md-2">
-              <%= number_to_currency(order.total) %>
+              <%= number_to_currency( order_total_price(order) ) %>
             </td>
             <td class="col-md-2">
               <%= order.updated_at.strftime("%A, %b %d %Y %l:%M %p") %>
