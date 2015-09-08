@@ -20,7 +20,10 @@
       <div class="col-md-3 col-md-offset-1 cart-button">
         <h4><%= number_to_currency(@photo.price) %></h4>
       <% if current_user && current_user.store_id == Photo.find(params[:id].to_i).store_id %>
-        <%= link_to "Edit photo", edit_photo_path(@photo), class: "btn btn-primary"%>
+        <%= link_to "Edit photo",
+                     edit_photographer_photo_path(@photo,
+                                    photographer: photographer.url), 
+                     class: "btn btn-primary"%>
       <% else %>
         <%= button_to "Add to cart", cart_photos_path(photo_id: @photo.id),
                                                        class: "btn btn-primary" %>

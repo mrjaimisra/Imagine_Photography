@@ -1,0 +1,49 @@
+<div class="container mt-20 mb-80">
+  <h1><%= "Order ##{@order.id}" %></h1>
+
+  <div class="row">
+    <div class="col-md-3">
+      <h3>Status: <%= @order.status.name %></h3>
+      <h3>Items:</h3>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped orders">
+      <div class="row">
+        <tr>
+          <th class="col-md-1">Image</th>
+          <th class="col-md-2">Name</th>
+          <th class="col-md-2">Price</th>
+          <th class="col-md-2">Last Updated</th>
+        </tr>
+      </div>
+      <% @photos.each do |photo| %>
+        <div class="row">
+          <tr>
+            <td class="col-md-1">
+              <%= link_to image_tag(photo.image(:thumb),
+                                    height: "100px", width: "100px"),
+                          photo_path(photo) %>
+            </td>
+            <td class="col-md-2">
+              <%= link_to photo.name, photo_path(photo) %>
+            </td>
+            <td class="col-md-2">
+              <%= number_to_currency(photo.price) %>
+            </td>
+            <td class="col-md-2"><%= @order.updated_at.strftime("%A, %b %d %Y %l:%M %p") %></td>
+          </tr>
+        </div>
+      <% end %>
+    </table>
+  </div>
+
+  <div class="total">
+    <h3>Total: <%= number_to_currency(@total_price) %></h3>
+  </div>
+  <div class="btn btn-primary">
+    <%= link_to "Back to Orders",
+                photographer_orders_path(photographer: @photographer.url) %>
+  </div>
+</div>

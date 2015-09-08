@@ -1,4 +1,4 @@
-class Stores::CategoriesController < ApplicationController
+class Stores::CategoriesController < Stores::StoresController
   def show
     @category = Category.find_by(name: params[:name].capitalize)
     @photos = @category.photos.where(store_id: current_store.id).paginate(page: params[:page]).order('created_at DESC')

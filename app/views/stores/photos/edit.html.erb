@@ -8,7 +8,9 @@
     <div class="col-md-6">
       <h1>Edit Photo</h1>
       <div class="edit-photo-form">
-        <%= form_for @photo, html: { multipart: true },
+        <%= form_for [@photographer, @photo], html: { multipart: true },
+                     url: photographer_photo_path(@photo,
+                                    photographer: @photographer.url),
                      class: "col-md-8 col-md-offset-2" do |f| %>
 
           <%= render partial: "shared/errors", locals: { object: @photo } %>
@@ -43,7 +45,10 @@
           </div>
         <% end %>
         <div class="delete-photo pull-right">
-          <%= link_to "Delete photo", photo_path(@photo), method: :delete, class: "btn btn-primary" %>
+          <%= link_to "Delete photo",
+                      photographer_photo_path(@photo,
+                                photographer: @photographer.url),
+                      method: :delete, class: "btn btn-primary" %>
         </div>
 
       </div>

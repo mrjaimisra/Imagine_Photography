@@ -1,5 +1,5 @@
-class Stores::PhotosController < ApplicationController
-  before_action :set_photographer, only: [:index, :create, :new, :show]
+class Stores::PhotosController < Stores::StoresController
+  before_action :set_photographer, only: [:index, :create, :new, :show, :edit, :update]
 
   def index
     @photos = @photographer.photos.paginate(page: params[:page]).order('created_at DESC')
@@ -24,7 +24,27 @@ class Stores::PhotosController < ApplicationController
     end
   end
 
-  def show
+  def edit
+    @photo = Photo.find(params[:id])
+  end
+
+  def update
+    @photo = Photo.find(params[:id])
+    if @photo.update(photo_params)
+      redirect_to photo_path(@photo)
+    else
+      flash[:danger] = "Update failed, please enter valid information in all fields"
+      redirect_to edit_photographer_photo_path(@photo,
+                                 photographer: @photographer.url)
+    end
+  end
+
+  def destroy
+    photo = Photo.find(params[:id])
+    photo.destroy
+
+    redirect_to explore_path
+    flash[:message] = "Photo successfully deleted"
   end
 
   private

@@ -8,6 +8,7 @@ class Seed
     seed.generate_stores
     seed.generate_store_admins
     seed.generate_photos
+    seed.generate_statuses
     seed.generate_orders
   end
 
@@ -28,7 +29,7 @@ class Seed
       puts "Teacher: #{name} - #{email} created!"
     end
 
-    99.times do |i|
+    40.times do |i|
       customer = User.create!(
           name: Faker::Name.name,
           email: Faker::Internet.email,
@@ -69,7 +70,7 @@ class Seed
       puts "Photographer: #{name} created!"
     end
 
-    19.times do |i|
+    10.times do |i|
       store = Store.create!(
         name:   Faker::Company.name,
         email:  Faker::Internet.email,
@@ -86,7 +87,7 @@ class Seed
     admin.update_attribute(:store_id, 1)
     admin.roles << store_admin_role
 
-    19.times do |i|
+    10.times do |i|
       photographer = User.create!(
           name: Faker::Name.name,
           email: Faker::Internet.email,
@@ -99,7 +100,7 @@ class Seed
   end
 
   def generate_photos
-    50.times do |i|
+    25.times do |i|
       10.times do |j|
         photo = Photo.create!(
           name: Faker::Commerce.product_name,
@@ -114,8 +115,15 @@ class Seed
     end
   end
 
+  def generate_statuses
+    statuses = %w( ordered delivered cancelled refunded )
+    statuses.each do |status|
+      Status.create!(name: status)
+    end
+  end
+
   def generate_orders
-    10.times do |i|
+    4.times do |i|
       customers = User.registered_users
       customers.each do |customer|
         order = Order.create!(user_id: customer.id)
@@ -128,7 +136,7 @@ class Seed
   private
 
   def add_photos(order)
-    10.times do |i|
+    3.times do |i|
       photo = Photo.all.sample
       order.photos << photo
       puts "#{i}: Added photo #{photo.name} to order #{photo.id}."
