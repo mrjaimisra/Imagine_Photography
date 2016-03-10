@@ -26,7 +26,6 @@ In our case, we inherited a meals-on-wheels style restaurant, which we need to t
 - **Tools**
   - [waffle](https://waffle.io/mrjaimisra/the_pivot)
   - [travis]  (https://travis-ci.org/mrjaimisra/the_pivot)
-  - simple cov
 
 - **Workflow**
   - checkout a branch named after the waffle story and include the number
