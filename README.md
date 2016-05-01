@@ -13,7 +13,7 @@ In our case, we inherited a meals-on-wheels style restaurant, which we need to t
 - run `rails s`, access `http://localhost:3000` in your browser
 - to run the tests, run `bundle exec rspec`  
 
-[Project Outline](https://github.com/turingschool/lesson_plans/blob/master/ruby_03-professional_rails_applications/the_pivot.markdown#pivots) | [Heroku](https://photo_bomb.herokuapp.com/)
+[Project Outline](https://github.com/turingschool/lesson_plans/blob/master/ruby_03-professional_rails_applications/the_pivot.markdown#pivots) | [Heroku](https://imagine-take2.herokuapp.com/)
 
 ### Areas of focus
 - Working with Multitenancy
